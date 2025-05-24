@@ -26,13 +26,13 @@ public class Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu6 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
+
+        jMenu6.setText("jMenu6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,22 +47,13 @@ public class Admin extends javax.swing.JFrame {
             .addGap(0, 377, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Clientes");
-        jMenuBar1.add(jMenu1);
+        jMenu7.setText("File");
+        jMenuBar2.add(jMenu7);
 
-        jMenu2.setText("Propiedades");
-        jMenuBar1.add(jMenu2);
+        jMenu8.setText("Edit");
+        jMenuBar2.add(jMenu8);
 
-        jMenu3.setText("Agentes");
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Contratos");
-        jMenuBar1.add(jMenu4);
-
-        jMenu5.setText("Reportes");
-        jMenuBar1.add(jMenu5);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,12 +105,10 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
