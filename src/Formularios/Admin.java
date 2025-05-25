@@ -27,12 +27,9 @@ public class Admin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        Barraopc = new javax.swing.JMenuBar();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,25 +41,16 @@ public class Admin extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 377, Short.MAX_VALUE)
+            .addGap(0, 403, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Clientes");
-        jMenuBar1.add(jMenu1);
+        jMenu6.setText("File");
+        Barraopc.add(jMenu6);
 
-        jMenu2.setText("Propiedades");
-        jMenuBar1.add(jMenu2);
+        jMenu7.setText("Edit");
+        Barraopc.add(jMenu7);
 
-        jMenu3.setText("Agentes");
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Contratos");
-        jMenuBar1.add(jMenu4);
-
-        jMenu5.setText("Reportes");
-        jMenuBar1.add(jMenu5);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(Barraopc);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,12 +102,9 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar Barraopc;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
