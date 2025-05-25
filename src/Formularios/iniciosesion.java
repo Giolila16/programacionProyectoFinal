@@ -4,6 +4,7 @@
  */
 package Formularios;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -21,7 +22,55 @@ public class iniciosesion extends javax.swing.JFrame {
         this.setContentPane(fondo);
         initComponents();
         this.setLocationRelativeTo(this);
-    }
+        
+        
+        UsuarioText.setText("Usuario");
+    UsuarioText.setForeground(Color.GRAY);
+
+    UsuarioText.addFocusListener(new java.awt.event.FocusAdapter() {
+        @Override
+        public void focusGained(java.awt.event.FocusEvent e) {
+            if (UsuarioText.getText().equals("Usuario")) {
+                UsuarioText.setText("");
+                UsuarioText.setForeground(Color.BLACK);
+            }
+        }
+
+        @Override
+        public void focusLost(java.awt.event.FocusEvent e) {
+            if (UsuarioText.getText().isEmpty()) {
+                UsuarioText.setForeground(Color.GRAY);
+                UsuarioText.setText("Usuario");
+            }
+        }
+    });
+
+    // Placeholder para el campo de contraseña
+    ContrasenaText.setEchoChar((char) 0); // Mostrar texto como normal al principio
+    ContrasenaText.setText("Contraseña");
+    ContrasenaText.setForeground(Color.GRAY);
+
+    ContrasenaText.addFocusListener(new java.awt.event.FocusAdapter() {
+        @Override
+        public void focusGained(java.awt.event.FocusEvent e) {
+            if (String.valueOf(ContrasenaText.getPassword()).equals("Contraseña")) {
+                ContrasenaText.setText("");
+                ContrasenaText.setEchoChar('•'); // Mostrar caracteres ocultos
+                ContrasenaText.setForeground(Color.BLACK);
+            }
+        }
+
+        @Override
+        public void focusLost(java.awt.event.FocusEvent e) {
+            if (String.valueOf(ContrasenaText.getPassword()).isEmpty()) {
+                ContrasenaText.setEchoChar((char) 0); // Mostrar texto visible
+                ContrasenaText.setText("Contraseña");
+                ContrasenaText.setForeground(Color.GRAY);
+            }
+        }
+    });
+}
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,20 +82,77 @@ public class iniciosesion extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        UsuarioText = new javax.swing.JTextField();
+        ContrasenaText = new javax.swing.JPasswordField();
+        CargoCombo = new javax.swing.JComboBox<>();
+        InicioSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setOpaque(false);
 
+        jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
+
+        UsuarioText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsuarioTextActionPerformed(evt);
+            }
+        });
+
+        ContrasenaText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContrasenaTextActionPerformed(evt);
+            }
+        });
+
+        CargoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        InicioSesion.setText("INICIAR SESION");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 754, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(295, 295, 295)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(266, 266, 266)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(UsuarioText)
+                            .addComponent(ContrasenaText, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(291, 291, 291)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(CargoCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(InicioSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 491, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(UsuarioText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ContrasenaText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(CargoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(InicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -62,6 +168,14 @@ public class iniciosesion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ContrasenaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContrasenaTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ContrasenaTextActionPerformed
+
+    private void UsuarioTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UsuarioTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,6 +213,12 @@ public class iniciosesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CargoCombo;
+    private javax.swing.JPasswordField ContrasenaText;
+    private javax.swing.JButton InicioSesion;
+    private javax.swing.JTextField UsuarioText;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
@@ -109,7 +229,7 @@ class FondoPanel extends JPanel
         @Override
         public void paint(Graphics g)
         {
-            imagon = new ImageIcon(getClass().getResource("/imagenes/fondomapa.jpg")).getImage();
+            imagon = new ImageIcon(getClass().getResource("/imagenes/fondosin.jpg")).getImage();
           g.drawImage(imagon,0, 0, getWidth(), getHeight(),this);
             setOpaque(false);
             
