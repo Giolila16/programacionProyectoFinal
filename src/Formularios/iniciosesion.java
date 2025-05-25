@@ -36,6 +36,8 @@ public class iniciosesion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setOpaque(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,7 +109,7 @@ class FondoPanel extends JPanel
         @Override
         public void paint(Graphics g)
         {
-            imagon = new ImageIcon(getClass().getResource("/imagenes/Ola.jpg")).getImage();
+            imagon = new ImageIcon(getClass().getResource("/imagenes/fondomapa.jpg")).getImage();
           g.drawImage(imagon,0, 0, getWidth(), getHeight(),this);
             setOpaque(false);
             
