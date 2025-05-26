@@ -7,13 +7,18 @@ package Formularios;
 import java.awt.CardLayout;
 import java.awt.Graphics;
 import java.awt.Image;
+//import java.awt.List;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 /**
  *
  * @author kdeke
  */
+
 public class Administrador extends javax.swing.JFrame {
     
     private JPanel panelContenido;  
@@ -27,6 +32,25 @@ public class Administrador extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         
     }
+    private List<Propiedades> listaPropiedades = new ArrayList<>();
+    
+    private void mostrarPropiedadesEnTabla() {
+    DefaultTableModel modelo = (DefaultTableModel) TablaPropi.getModel();
+    modelo.setRowCount(0); // Limpiar la tabla antes de llenarla
+
+    for (Propiedades p : listaPropiedades) {
+        modelo.addRow(new Object[]{
+            p.getId(),
+            p.getTipo(),
+            p.getUbicacion(),
+            p.getArea(),
+            p.getValor(),
+            p.getEstado(),
+            p.isDisponible() ? "Sí" : "No",
+            p.getPropietario()
+        });
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,18 +72,15 @@ public class Administrador extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         PropiPan = new FondoPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        TablaPropi = new javax.swing.JTable();
         PagosPan = new FondoPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
         ClienPan = new FondoPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         PanelBotones.setBackground(new java.awt.Color(255, 255, 255));
+        PanelBotones.setOpaque(false);
 
         PropiedadesBot.setText("Propiedades");
         PropiedadesBot.addActionListener(new java.awt.event.ActionListener() {
@@ -161,57 +182,7 @@ public class Administrador extends javax.swing.JFrame {
         PropiPan.setBackground(new java.awt.Color(0, 204, 204));
         PropiPan.setOpaque(false);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        javax.swing.GroupLayout PropiPanLayout = new javax.swing.GroupLayout(PropiPan);
-        PropiPan.setLayout(PropiPanLayout);
-        PropiPanLayout.setHorizontalGroup(
-            PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PropiPanLayout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(447, Short.MAX_VALUE))
-        );
-        PropiPanLayout.setVerticalGroup(
-            PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropiPanLayout.createSequentialGroup()
-                .addContainerGap(316, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
-        );
-
-        ParentPan.add(PropiPan, "card5");
-
-        PagosPan.setBackground(new java.awt.Color(0, 0, 0));
-        PagosPan.setOpaque(false);
-
-        jScrollPane2.setViewportView(jTree1);
-
-        javax.swing.GroupLayout PagosPanLayout = new javax.swing.GroupLayout(PagosPan);
-        PagosPan.setLayout(PagosPanLayout);
-        PagosPanLayout.setHorizontalGroup(
-            PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PagosPanLayout.createSequentialGroup()
-                .addGap(319, 319, 319)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(374, Short.MAX_VALUE))
-        );
-        PagosPanLayout.setVerticalGroup(
-            PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PagosPanLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
-        );
-
-        ParentPan.add(PagosPan, "card4");
-
-        ClienPan.setBackground(new java.awt.Color(255, 0, 51));
-        ClienPan.setOpaque(false);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaPropi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -222,23 +193,55 @@ public class Administrador extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane4.setViewportView(TablaPropi);
+
+        javax.swing.GroupLayout PropiPanLayout = new javax.swing.GroupLayout(PropiPan);
+        PropiPan.setLayout(PropiPanLayout);
+        PropiPanLayout.setHorizontalGroup(
+            PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PropiPanLayout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(173, Short.MAX_VALUE))
+        );
+        PropiPanLayout.setVerticalGroup(
+            PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropiPanLayout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        ParentPan.add(PropiPan, "card5");
+
+        PagosPan.setBackground(new java.awt.Color(0, 0, 0));
+        PagosPan.setOpaque(false);
+
+        javax.swing.GroupLayout PagosPanLayout = new javax.swing.GroupLayout(PagosPan);
+        PagosPan.setLayout(PagosPanLayout);
+        PagosPanLayout.setHorizontalGroup(
+            PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 754, Short.MAX_VALUE)
+        );
+        PagosPanLayout.setVerticalGroup(
+            PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 468, Short.MAX_VALUE)
+        );
+
+        ParentPan.add(PagosPan, "card4");
+
+        ClienPan.setBackground(new java.awt.Color(255, 0, 51));
+        ClienPan.setOpaque(false);
 
         javax.swing.GroupLayout ClienPanLayout = new javax.swing.GroupLayout(ClienPan);
         ClienPan.setLayout(ClienPanLayout);
         ClienPanLayout.setHorizontalGroup(
             ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ClienPanLayout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+            .addGap(0, 754, Short.MAX_VALUE)
         );
         ClienPanLayout.setVerticalGroup(
             ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ClienPanLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+            .addGap(0, 468, Short.MAX_VALUE)
         );
 
         ParentPan.add(ClienPan, "card3");
@@ -253,6 +256,11 @@ public class Administrador extends javax.swing.JFrame {
         ParentPan.add(PropiPan);
         ParentPan.repaint();
         ParentPan.revalidate();
+        
+        PropiPan.setVisible(true);
+     CardLayout cl = (CardLayout)(ParentPan.getLayout());
+   cl.show(ParentPan, "propi"); // si usas CardLayout
+     mostrarPropiedadesEnTabla();
     }//GEN-LAST:event_PropiedadesBotActionPerformed
 
     private void PagosBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagosBotActionPerformed
@@ -322,15 +330,11 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JPanel ParentPan;
     private javax.swing.JPanel PropiPan;
     private javax.swing.JButton PropiedadesBot;
+    private javax.swing.JTable TablaPropi;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTree jTree1;
+    private javax.swing.JScrollPane jScrollPane4;
     // End of variables declaration//GEN-END:variables
 class FondoPanel extends JPanel {
     private Image imagen;
