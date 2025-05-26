@@ -4,11 +4,38 @@
  */
 package Formularios;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author kdeke
  */
 public class Usuarios {
+    
+    private String nombreCargo;
+
+    public Usuarios(String nombreCargo) {
+        this.nombreCargo = nombreCargo;
+    }
+
+    public String getNombreCargo() {
+        return nombreCargo;
+    }
+
+    @Override
+    public String toString() {
+        return nombreCargo;
+    }
+
+    public static List<Usuarios> obtenerCargos() {
+        List<Usuarios> lista = new ArrayList<>();
+        lista.add(new Usuarios("Administrador"));
+        lista.add(new Usuarios("Agente"));
+        lista.add(new Usuarios("Propietario"));
+        lista.add(new Usuarios("Cliente"));
+        return lista;
+    }
     
     
 }

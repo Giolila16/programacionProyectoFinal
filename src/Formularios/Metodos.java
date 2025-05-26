@@ -9,5 +9,13 @@ package Formularios;
  * @author kdeke
  */
 public class Metodos {
-    
+    private static Usuarios cargoSeleccionado;
+
+    public static void setCargo(Usuarios cargo) {
+        cargoSeleccionado = cargo;
+    }
+
+    public static Usuarios getCargo() {
+        return cargoSeleccionado;
+    }    
 }

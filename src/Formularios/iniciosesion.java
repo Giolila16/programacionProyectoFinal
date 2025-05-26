@@ -7,6 +7,7 @@ package Formularios;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -22,6 +23,7 @@ public class iniciosesion extends javax.swing.JFrame {
         this.setContentPane(fondo);
         initComponents();
         this.setLocationRelativeTo(this);
+        cargarCargos();
         
         
         UsuarioText.setText("Usuario");
@@ -69,6 +71,13 @@ public class iniciosesion extends javax.swing.JFrame {
         }
     });
 }
+    private void cargarCargos() {
+    List<Usuarios> cargos = Usuarios.obtenerCargos();
+    for (Usuarios cargo : cargos) {
+        CargoCombo.addItem(cargo);
+    }
+}
+    
     
 
     /**
@@ -84,7 +93,7 @@ public class iniciosesion extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         UsuarioText = new javax.swing.JTextField();
         ContrasenaText = new javax.swing.JPasswordField();
-        CargoCombo = new javax.swing.JComboBox<>();
+        CargoCombo = new javax.swing.JComboBox<Usuarios>();
         InicioSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,8 +113,6 @@ public class iniciosesion extends javax.swing.JFrame {
                 ContrasenaTextActionPerformed(evt);
             }
         });
-
-        CargoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         InicioSesion.setText("INICIAR SESION");
         InicioSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -174,9 +181,15 @@ public class iniciosesion extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuarioTextActionPerformed
 
     private void InicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioSesionActionPerformed
+        
+        Usuarios cargoSeleccionado = (Usuarios) CargoCombo.getSelectedItem();
+Metodos.setCargo(cargoSeleccionado);
+
         Administrador admin = new Administrador();
         admin.setVisible(true);
         this.setVisible(false);
+        
+        
     }//GEN-LAST:event_InicioSesionActionPerformed
 
     /**
@@ -215,7 +228,7 @@ public class iniciosesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CargoCombo;
+    private javax.swing.JComboBox<Usuarios> CargoCombo;
     private javax.swing.JPasswordField ContrasenaText;
     private javax.swing.JButton InicioSesion;
     private javax.swing.JTextField UsuarioText;
