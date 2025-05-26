@@ -9,5 +9,4 @@ package Formularios;
  * @author kdeke
  */
 public class Visitas {
-    jlnnnjfdfgdsfghjertyuixcvbnmdfghj
 }

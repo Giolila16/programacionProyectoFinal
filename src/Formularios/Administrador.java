@@ -78,6 +78,7 @@ public class Administrador extends javax.swing.JFrame {
         ClienPan = new FondoPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
         PanelBotones.setBackground(new java.awt.Color(255, 255, 255));
         PanelBotones.setOpaque(false);
@@ -134,10 +135,10 @@ public class Administrador extends javax.swing.JFrame {
                     .addComponent(PagosBot)
                     .addComponent(ClientesBot)
                     .addComponent(CasasBot))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(511, Short.MAX_VALUE))
         );
 
-        getContentPane().add(PanelBotones, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(PanelBotones, "card2");
 
         ParentPan.setBackground(new java.awt.Color(204, 204, 255));
         ParentPan.setOpaque(false);
@@ -173,7 +174,7 @@ public class Administrador extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addContainerGap(430, Short.MAX_VALUE))
         );
 
         ParentPan.add(CasasPan, "card2");
@@ -206,7 +207,7 @@ public class Administrador extends javax.swing.JFrame {
         PropiPanLayout.setVerticalGroup(
             PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropiPanLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(135, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -224,7 +225,7 @@ public class Administrador extends javax.swing.JFrame {
         );
         PagosPanLayout.setVerticalGroup(
             PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 468, Short.MAX_VALUE)
+            .addGap(0, 568, Short.MAX_VALUE)
         );
 
         ParentPan.add(PagosPan, "card4");
@@ -240,12 +241,12 @@ public class Administrador extends javax.swing.JFrame {
         );
         ClienPanLayout.setVerticalGroup(
             ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 468, Short.MAX_VALUE)
+            .addGap(0, 568, Short.MAX_VALUE)
         );
 
         ParentPan.add(ClienPan, "card3");
 
-        getContentPane().add(ParentPan, java.awt.BorderLayout.CENTER);
+        getContentPane().add(ParentPan, "card3");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
