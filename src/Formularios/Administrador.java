@@ -32,25 +32,8 @@ public class Administrador extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         
     }
-    private List<Propiedades> listaPropiedades = new ArrayList<>();
     
-    private void mostrarPropiedadesEnTabla() {
-    DefaultTableModel modelo = (DefaultTableModel) TablaPropi.getModel();
-    modelo.setRowCount(0); // Limpiar la tabla antes de llenarla
-
-    for (Propiedades p : listaPropiedades) {
-        modelo.addRow(new Object[]{
-            p.getId(),
-            p.getTipo(),
-            p.getUbicacion(),
-            p.getArea(),
-            p.getValor(),
-            p.getEstado(),
-            p.isDisponible() ? "Sí" : "No",
-            p.getPropietario()
-        });
-    }
-}
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,228 +44,117 @@ public class Administrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PanelBotones = new javax.swing.JPanel();
-        PropiedadesBot = new javax.swing.JButton();
-        PagosBot = new javax.swing.JButton();
-        ClientesBot = new javax.swing.JButton();
-        CasasBot = new javax.swing.JButton();
-        ParentPan = new javax.swing.JPanel();
-        CasasPan = new FondoPanel();
+        AdminBotones = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        PropiPan = new FondoPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        TablaPropi = new javax.swing.JTable();
-        PagosPan = new FondoPanel();
-        ClienPan = new FondoPanel();
+        ParentPan = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.CardLayout());
 
-        PanelBotones.setBackground(new java.awt.Color(255, 255, 255));
-        PanelBotones.setOpaque(false);
+        jButton1.setText("propiedades");
 
-        PropiedadesBot.setText("Propiedades");
-        PropiedadesBot.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PropiedadesBotActionPerformed(evt);
-            }
-        });
+        jButton2.setText("pagos");
 
-        PagosBot.setText("Pagos");
-        PagosBot.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PagosBotActionPerformed(evt);
-            }
-        });
+        jButton3.setText("visitas");
 
-        ClientesBot.setText("Clientes");
-        ClientesBot.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClientesBotActionPerformed(evt);
-            }
-        });
-
-        CasasBot.setText("Casas");
-        CasasBot.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CasasBotActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout PanelBotonesLayout = new javax.swing.GroupLayout(PanelBotones);
-        PanelBotones.setLayout(PanelBotonesLayout);
-        PanelBotonesLayout.setHorizontalGroup(
-            PanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelBotonesLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(PropiedadesBot)
-                .addGap(29, 29, 29)
-                .addComponent(PagosBot)
-                .addGap(18, 18, 18)
-                .addComponent(ClientesBot)
-                .addGap(18, 18, 18)
-                .addComponent(CasasBot)
-                .addContainerGap(323, Short.MAX_VALUE))
-        );
-        PanelBotonesLayout.setVerticalGroup(
-            PanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelBotonesLayout.createSequentialGroup()
+        javax.swing.GroupLayout AdminBotonesLayout = new javax.swing.GroupLayout(AdminBotones);
+        AdminBotones.setLayout(AdminBotonesLayout);
+        AdminBotonesLayout.setHorizontalGroup(
+            AdminBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AdminBotonesLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jButton1)
                 .addGap(34, 34, 34)
-                .addGroup(PanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PropiedadesBot)
-                    .addComponent(PagosBot)
-                    .addComponent(ClientesBot)
-                    .addComponent(CasasBot))
-                .addContainerGap(511, Short.MAX_VALUE))
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(428, Short.MAX_VALUE))
+        );
+        AdminBotonesLayout.setVerticalGroup(
+            AdminBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdminBotonesLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addGroup(AdminBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addGap(35, 35, 35))
         );
 
-        getContentPane().add(PanelBotones, "card2");
+        getContentPane().add(AdminBotones, java.awt.BorderLayout.PAGE_START);
 
-        ParentPan.setBackground(new java.awt.Color(204, 204, 255));
         ParentPan.setOpaque(false);
         ParentPan.setLayout(new java.awt.CardLayout());
 
-        CasasPan.setBackground(new java.awt.Color(255, 255, 204));
-        CasasPan.setOpaque(false);
+        jPanel4.setOpaque(false);
 
-        jButton1.setText("jButton1");
-
-        jButton2.setText("jButton2");
-
-        jButton3.setText("jButton3");
-
-        javax.swing.GroupLayout CasasPanLayout = new javax.swing.GroupLayout(CasasPan);
-        CasasPan.setLayout(CasasPanLayout);
-        CasasPanLayout.setHorizontalGroup(
-            CasasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CasasPanLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(416, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 778, Short.MAX_VALUE)
         );
-        CasasPanLayout.setVerticalGroup(
-            CasasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CasasPanLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(CasasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(430, Short.MAX_VALUE))
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
 
-        ParentPan.add(CasasPan, "card2");
+        ParentPan.add(jPanel4, "card5");
 
-        PropiPan.setBackground(new java.awt.Color(0, 204, 204));
-        PropiPan.setOpaque(false);
+        jPanel3.setOpaque(false);
 
-        TablaPropi.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane4.setViewportView(TablaPropi);
-
-        javax.swing.GroupLayout PropiPanLayout = new javax.swing.GroupLayout(PropiPan);
-        PropiPan.setLayout(PropiPanLayout);
-        PropiPanLayout.setHorizontalGroup(
-            PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PropiPanLayout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 778, Short.MAX_VALUE)
         );
-        PropiPanLayout.setVerticalGroup(
-            PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropiPanLayout.createSequentialGroup()
-                .addContainerGap(135, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
 
-        ParentPan.add(PropiPan, "card5");
+        ParentPan.add(jPanel3, "card4");
 
-        PagosPan.setBackground(new java.awt.Color(0, 0, 0));
-        PagosPan.setOpaque(false);
+        jPanel2.setOpaque(false);
 
-        javax.swing.GroupLayout PagosPanLayout = new javax.swing.GroupLayout(PagosPan);
-        PagosPan.setLayout(PagosPanLayout);
-        PagosPanLayout.setHorizontalGroup(
-            PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 754, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 778, Short.MAX_VALUE)
         );
-        PagosPanLayout.setVerticalGroup(
-            PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
-        );
-
-        ParentPan.add(PagosPan, "card4");
-
-        ClienPan.setBackground(new java.awt.Color(255, 0, 51));
-        ClienPan.setOpaque(false);
-
-        javax.swing.GroupLayout ClienPanLayout = new javax.swing.GroupLayout(ClienPan);
-        ClienPan.setLayout(ClienPanLayout);
-        ClienPanLayout.setHorizontalGroup(
-            ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 754, Short.MAX_VALUE)
-        );
-        ClienPanLayout.setVerticalGroup(
-            ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
 
-        ParentPan.add(ClienPan, "card3");
+        ParentPan.add(jPanel2, "card3");
 
-        getContentPane().add(ParentPan, "card3");
+        jPanel1.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 778, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 561, Short.MAX_VALUE)
+        );
+
+        ParentPan.add(jPanel1, "card2");
+
+        getContentPane().add(ParentPan, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void PropiedadesBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesBotActionPerformed
-        ParentPan.removeAll();
-        ParentPan.add(PropiPan);
-        ParentPan.repaint();
-        ParentPan.revalidate();
-        
-        PropiPan.setVisible(true);
-     CardLayout cl = (CardLayout)(ParentPan.getLayout());
-   cl.show(ParentPan, "propi"); // si usas CardLayout
-     mostrarPropiedadesEnTabla();
-    }//GEN-LAST:event_PropiedadesBotActionPerformed
-
-    private void PagosBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagosBotActionPerformed
-        ParentPan.removeAll();
-        ParentPan.add(PagosPan);
-        ParentPan.repaint();
-        ParentPan.revalidate();
-    }//GEN-LAST:event_PagosBotActionPerformed
-
-    private void ClientesBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesBotActionPerformed
-        ParentPan.removeAll();
-        ParentPan.add(ClienPan);
-        ParentPan.repaint();
-        ParentPan.revalidate();
-    }//GEN-LAST:event_ClientesBotActionPerformed
-
-    private void CasasBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CasasBotActionPerformed
-        ParentPan.removeAll();
-        ParentPan.add(CasasPan);
-        ParentPan.repaint();
-        ParentPan.revalidate();
-    }//GEN-LAST:event_CasasBotActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,21 +192,15 @@ public class Administrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CasasBot;
-    private javax.swing.JPanel CasasPan;
-    private javax.swing.JPanel ClienPan;
-    private javax.swing.JButton ClientesBot;
-    private javax.swing.JButton PagosBot;
-    private javax.swing.JPanel PagosPan;
-    private javax.swing.JPanel PanelBotones;
+    private javax.swing.JPanel AdminBotones;
     private javax.swing.JPanel ParentPan;
-    private javax.swing.JPanel PropiPan;
-    private javax.swing.JButton PropiedadesBot;
-    private javax.swing.JTable TablaPropi;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 class FondoPanel extends JPanel {
     private Image imagen;
