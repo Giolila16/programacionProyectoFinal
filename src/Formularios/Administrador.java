@@ -4,6 +4,7 @@
  */
 package Formularios;
 
+import java.awt.CardLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -14,13 +15,17 @@ import javax.swing.JPanel;
  * @author kdeke
  */
 public class Administrador extends javax.swing.JFrame {
+    
+    private JPanel panelContenido;  
+    private CardLayout cardLayout;
 
     Administrador.FondoPanel fondo = new Administrador.FondoPanel();
     
     public Administrador() {
-        this.setContentPane(fondo);
+        
         initComponents();
         this.setLocationRelativeTo(this);
+        
     }
 
     /**
@@ -32,21 +37,244 @@ public class Administrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PanelBotones = new javax.swing.JPanel();
+        PropiedadesBot = new javax.swing.JButton();
+        PagosBot = new javax.swing.JButton();
+        ClientesBot = new javax.swing.JButton();
+        CasasBot = new javax.swing.JButton();
+        ParentPan = new javax.swing.JPanel();
+        CasasPan = new FondoPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        PropiPan = new FondoPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        PagosPan = new FondoPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
+        ClienPan = new FondoPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 754, Short.MAX_VALUE)
+        PanelBotones.setBackground(new java.awt.Color(255, 255, 255));
+
+        PropiedadesBot.setText("Propiedades");
+        PropiedadesBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PropiedadesBotActionPerformed(evt);
+            }
+        });
+
+        PagosBot.setText("Pagos");
+        PagosBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PagosBotActionPerformed(evt);
+            }
+        });
+
+        ClientesBot.setText("Clientes");
+        ClientesBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClientesBotActionPerformed(evt);
+            }
+        });
+
+        CasasBot.setText("Casas");
+        CasasBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CasasBotActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelBotonesLayout = new javax.swing.GroupLayout(PanelBotones);
+        PanelBotones.setLayout(PanelBotonesLayout);
+        PanelBotonesLayout.setHorizontalGroup(
+            PanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelBotonesLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(PropiedadesBot)
+                .addGap(29, 29, 29)
+                .addComponent(PagosBot)
+                .addGap(18, 18, 18)
+                .addComponent(ClientesBot)
+                .addGap(18, 18, 18)
+                .addComponent(CasasBot)
+                .addContainerGap(323, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 491, Short.MAX_VALUE)
+        PanelBotonesLayout.setVerticalGroup(
+            PanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelBotonesLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(PanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PropiedadesBot)
+                    .addComponent(PagosBot)
+                    .addComponent(ClientesBot)
+                    .addComponent(CasasBot))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
+
+        getContentPane().add(PanelBotones, java.awt.BorderLayout.PAGE_START);
+
+        ParentPan.setBackground(new java.awt.Color(204, 204, 255));
+        ParentPan.setOpaque(false);
+        ParentPan.setLayout(new java.awt.CardLayout());
+
+        CasasPan.setBackground(new java.awt.Color(255, 255, 204));
+        CasasPan.setOpaque(false);
+
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
+
+        jButton3.setText("jButton3");
+
+        javax.swing.GroupLayout CasasPanLayout = new javax.swing.GroupLayout(CasasPan);
+        CasasPan.setLayout(CasasPanLayout);
+        CasasPanLayout.setHorizontalGroup(
+            CasasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CasasPanLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(416, Short.MAX_VALUE))
+        );
+        CasasPanLayout.setVerticalGroup(
+            CasasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CasasPanLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(CasasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                    .addGroup(CasasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(330, Short.MAX_VALUE))
+        );
+
+        ParentPan.add(CasasPan, "card2");
+
+        PropiPan.setBackground(new java.awt.Color(0, 204, 204));
+        PropiPan.setOpaque(false);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout PropiPanLayout = new javax.swing.GroupLayout(PropiPan);
+        PropiPan.setLayout(PropiPanLayout);
+        PropiPanLayout.setHorizontalGroup(
+            PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PropiPanLayout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(447, Short.MAX_VALUE))
+        );
+        PropiPanLayout.setVerticalGroup(
+            PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropiPanLayout.createSequentialGroup()
+                .addContainerGap(316, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
+        );
+
+        ParentPan.add(PropiPan, "card5");
+
+        PagosPan.setBackground(new java.awt.Color(0, 0, 0));
+        PagosPan.setOpaque(false);
+
+        jScrollPane2.setViewportView(jTree1);
+
+        javax.swing.GroupLayout PagosPanLayout = new javax.swing.GroupLayout(PagosPan);
+        PagosPan.setLayout(PagosPanLayout);
+        PagosPanLayout.setHorizontalGroup(
+            PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PagosPanLayout.createSequentialGroup()
+                .addGap(319, 319, 319)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(374, Short.MAX_VALUE))
+        );
+        PagosPanLayout.setVerticalGroup(
+            PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PagosPanLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+
+        ParentPan.add(PagosPan, "card4");
+
+        ClienPan.setBackground(new java.awt.Color(255, 0, 51));
+        ClienPan.setOpaque(false);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1);
+
+        javax.swing.GroupLayout ClienPanLayout = new javax.swing.GroupLayout(ClienPan);
+        ClienPan.setLayout(ClienPanLayout);
+        ClienPanLayout.setHorizontalGroup(
+            ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClienPanLayout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(171, Short.MAX_VALUE))
+        );
+        ClienPanLayout.setVerticalGroup(
+            ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ClienPanLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+        );
+
+        ParentPan.add(ClienPan, "card3");
+
+        getContentPane().add(ParentPan, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void PropiedadesBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(PropiPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_PropiedadesBotActionPerformed
+
+    private void PagosBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagosBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(PagosPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_PagosBotActionPerformed
+
+    private void ClientesBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(ClienPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_ClientesBotActionPerformed
+
+    private void CasasBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CasasBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(CasasPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_CasasBotActionPerformed
 
     /**
      * @param args the command line arguments
@@ -84,20 +312,36 @@ public class Administrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CasasBot;
+    private javax.swing.JPanel CasasPan;
+    private javax.swing.JPanel ClienPan;
+    private javax.swing.JButton ClientesBot;
+    private javax.swing.JButton PagosBot;
+    private javax.swing.JPanel PagosPan;
+    private javax.swing.JPanel PanelBotones;
+    private javax.swing.JPanel ParentPan;
+    private javax.swing.JPanel PropiPan;
+    private javax.swing.JButton PropiedadesBot;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
-class FondoPanel extends JPanel
-    {
-        private Image imagon;
-        
-        @Override
-        public void paint(Graphics g)
-        {
-            imagon = new ImageIcon(getClass().getResource("/imagenes/fondomapa.jpg")).getImage();
-          g.drawImage(imagon,0, 0, getWidth(), getHeight(),this);
-            setOpaque(false);
-            
-            super.paint(g);
-        }
+class FondoPanel extends JPanel {
+    private Image imagen;
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        imagen = new ImageIcon(getClass().getResource("/imagenes/fondomapa.jpg")).getImage();
+        g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+        setOpaque(false);
     }
+}
     
 }

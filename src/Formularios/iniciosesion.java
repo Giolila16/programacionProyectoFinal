@@ -45,8 +45,7 @@ public class iniciosesion extends javax.swing.JFrame {
         }
     });
 
-    // Placeholder para el campo de contraseña
-    ContrasenaText.setEchoChar((char) 0); // Mostrar texto como normal al principio
+    ContrasenaText.setEchoChar((char) 0); 
     ContrasenaText.setText("Contraseña");
     ContrasenaText.setForeground(Color.GRAY);
 
@@ -55,7 +54,7 @@ public class iniciosesion extends javax.swing.JFrame {
         public void focusGained(java.awt.event.FocusEvent e) {
             if (String.valueOf(ContrasenaText.getPassword()).equals("Contraseña")) {
                 ContrasenaText.setText("");
-                ContrasenaText.setEchoChar('•'); // Mostrar caracteres ocultos
+                ContrasenaText.setEchoChar('•');
                 ContrasenaText.setForeground(Color.BLACK);
             }
         }
@@ -82,7 +81,6 @@ public class iniciosesion extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         UsuarioText = new javax.swing.JTextField();
         ContrasenaText = new javax.swing.JPasswordField();
@@ -110,6 +108,11 @@ public class iniciosesion extends javax.swing.JFrame {
         CargoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         InicioSesion.setText("INICIAR SESION");
+        InicioSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InicioSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -119,9 +122,7 @@ public class iniciosesion extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(295, 295, 295)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(266, 266, 266)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -132,19 +133,14 @@ public class iniciosesion extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(CargoCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(InicioSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(309, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addComponent(UsuarioText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ContrasenaText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,6 +172,12 @@ public class iniciosesion extends javax.swing.JFrame {
     private void UsuarioTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UsuarioTextActionPerformed
+
+    private void InicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioSesionActionPerformed
+        Administrador admin = new Administrador();
+        admin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_InicioSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,7 +219,6 @@ public class iniciosesion extends javax.swing.JFrame {
     private javax.swing.JPasswordField ContrasenaText;
     private javax.swing.JButton InicioSesion;
     private javax.swing.JTextField UsuarioText;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

@@ -40,7 +40,6 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        Seguir.setForeground(new java.awt.Color(255, 255, 255));
         Seguir.setText("CONSEGUIR UNA CASA");
         Seguir.setOpaque(true);
         Seguir.addActionListener(new java.awt.event.ActionListener() {
