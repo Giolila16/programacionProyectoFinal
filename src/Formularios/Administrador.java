@@ -81,22 +81,22 @@ public class Administrador extends javax.swing.JFrame {
 
         AdminBotones = new javax.swing.JPanel();
         AgeBotPan = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        SeguimientoAgeBot = new javax.swing.JButton();
+        ClientesAgeBot = new javax.swing.JButton();
+        VisitasAgeBot = new javax.swing.JButton();
+        PropiedadesAgeBot = new javax.swing.JButton();
         OpcionesAgeBot = new javax.swing.JButton();
-        VisBotPan = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        OpcionesVisBot = new javax.swing.JButton();
+        ClientesBotPan = new javax.swing.JPanel();
+        ContratosClieBot = new javax.swing.JButton();
+        PropiedadesClieBot = new javax.swing.JButton();
+        VisitasClieBot = new javax.swing.JButton();
+        PagosClieBot = new javax.swing.JButton();
+        OpcionesClieBot = new javax.swing.JButton();
         ProBotPan = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
+        PropiedadesProBot = new javax.swing.JButton();
+        VisitasProBot = new javax.swing.JButton();
+        ContratosProBot = new javax.swing.JButton();
+        PagosProBot = new javax.swing.JButton();
         OpcionesProBot = new javax.swing.JButton();
         AdminBotPan = new javax.swing.JPanel();
         ProAdBot = new javax.swing.JButton();
@@ -108,6 +108,14 @@ public class Administrador extends javax.swing.JFrame {
         UsuAdBot = new javax.swing.JButton();
         OpcionesAdBot = new javax.swing.JButton();
         ParentPan = new javax.swing.JPanel();
+        PagosProPan = new javax.swing.JPanel();
+        PropiedadesProPan = new javax.swing.JPanel();
+        PagosCliePan = new javax.swing.JPanel();
+        MisContratosCliePan = new javax.swing.JPanel();
+        VisitasCliePan = new javax.swing.JPanel();
+        BuscarProCliePan = new javax.swing.JPanel();
+        ClientesAgePan = new javax.swing.JPanel();
+        VisitasAgePan = new javax.swing.JPanel();
         ContratosAdPan = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
@@ -157,13 +165,33 @@ public class Administrador extends javax.swing.JFrame {
 
         AgeBotPan.setBackground(new java.awt.Color(204, 204, 255));
 
-        jButton4.setText("Seguimiento");
+        SeguimientoAgeBot.setText("Seguimiento");
+        SeguimientoAgeBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeguimientoAgeBotActionPerformed(evt);
+            }
+        });
 
-        jButton11.setText("Mis Clientes");
+        ClientesAgeBot.setText("Mis Clientes");
+        ClientesAgeBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClientesAgeBotActionPerformed(evt);
+            }
+        });
 
-        jButton12.setText("Visitas");
+        VisitasAgeBot.setText("Visitas");
+        VisitasAgeBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VisitasAgeBotActionPerformed(evt);
+            }
+        });
 
-        jButton13.setText("Propiedades");
+        PropiedadesAgeBot.setText("Propiedades");
+        PropiedadesAgeBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PropiedadesAgeBotActionPerformed(evt);
+            }
+        });
 
         OpcionesAgeBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,13 +205,13 @@ public class Administrador extends javax.swing.JFrame {
             AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AgeBotPanLayout.createSequentialGroup()
                 .addGap(151, 151, 151)
-                .addComponent(jButton13)
+                .addComponent(PropiedadesAgeBot)
                 .addGap(18, 18, 18)
-                .addComponent(jButton12)
+                .addComponent(VisitasAgeBot)
                 .addGap(18, 18, 18)
-                .addComponent(jButton11)
+                .addComponent(ClientesAgeBot)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(SeguimientoAgeBot)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                 .addComponent(OpcionesAgeBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
@@ -198,81 +226,116 @@ public class Administrador extends javax.swing.JFrame {
                     .addGroup(AgeBotPanLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addGroup(AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4)
-                            .addComponent(jButton11)
-                            .addComponent(jButton12)
-                            .addComponent(jButton13))))
+                            .addComponent(SeguimientoAgeBot)
+                            .addComponent(ClientesAgeBot)
+                            .addComponent(VisitasAgeBot)
+                            .addComponent(PropiedadesAgeBot))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
         AdminBotones.add(AgeBotPan, "agente");
 
-        VisBotPan.setBackground(new java.awt.Color(0, 51, 51));
+        ClientesBotPan.setBackground(new java.awt.Color(0, 51, 51));
 
-        jButton3.setText("Mis Contratos");
-
-        jButton18.setText("Buscar Propiedades");
-
-        jButton19.setText("Visitas");
-
-        jButton20.setText("Pagos");
-
-        OpcionesVisBot.addActionListener(new java.awt.event.ActionListener() {
+        ContratosClieBot.setText("Mis Contratos");
+        ContratosClieBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OpcionesVisBotActionPerformed(evt);
+                ContratosClieBotActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout VisBotPanLayout = new javax.swing.GroupLayout(VisBotPan);
-        VisBotPan.setLayout(VisBotPanLayout);
-        VisBotPanLayout.setHorizontalGroup(
-            VisBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(VisBotPanLayout.createSequentialGroup()
+        PropiedadesClieBot.setText("Buscar Propiedades");
+        PropiedadesClieBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PropiedadesClieBotActionPerformed(evt);
+            }
+        });
+
+        VisitasClieBot.setText("Visitas");
+        VisitasClieBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VisitasClieBotActionPerformed(evt);
+            }
+        });
+
+        PagosClieBot.setText("Pagos");
+        PagosClieBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PagosClieBotActionPerformed(evt);
+            }
+        });
+
+        OpcionesClieBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OpcionesClieBotActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ClientesBotPanLayout = new javax.swing.GroupLayout(ClientesBotPan);
+        ClientesBotPan.setLayout(ClientesBotPanLayout);
+        ClientesBotPanLayout.setHorizontalGroup(
+            ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClientesBotPanLayout.createSequentialGroup()
                 .addGap(185, 185, 185)
-                .addComponent(jButton18)
+                .addComponent(PropiedadesClieBot)
                 .addGap(18, 18, 18)
-                .addComponent(jButton19)
+                .addComponent(VisitasClieBot)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(ContratosClieBot)
                 .addGap(18, 18, 18)
-                .addComponent(jButton20)
+                .addComponent(PagosClieBot)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                .addComponent(OpcionesVisBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48))
         );
-        VisBotPanLayout.setVerticalGroup(
-            VisBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(VisBotPanLayout.createSequentialGroup()
-                .addGroup(VisBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(VisBotPanLayout.createSequentialGroup()
+        ClientesBotPanLayout.setVerticalGroup(
+            ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClientesBotPanLayout.createSequentialGroup()
+                .addGroup(ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ClientesBotPanLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addGroup(VisBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton18)
-                            .addComponent(jButton19)
-                            .addComponent(jButton20)))
-                    .addGroup(VisBotPanLayout.createSequentialGroup()
+                        .addGroup(ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ContratosClieBot)
+                            .addComponent(PropiedadesClieBot)
+                            .addComponent(VisitasClieBot)
+                            .addComponent(PagosClieBot)))
+                    .addGroup(ClientesBotPanLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(OpcionesVisBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        AdminBotones.add(VisBotPan, "visitante");
+        AdminBotones.add(ClientesBotPan, "visitante");
 
         ProBotPan.setBackground(new java.awt.Color(51, 255, 102));
 
-        jButton2.setText("Mis Propiedades");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        PropiedadesProBot.setText("Mis Propiedades");
+        PropiedadesProBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                PropiedadesProBotActionPerformed(evt);
             }
         });
 
-        jButton14.setText("Visitas");
+        VisitasProBot.setText("Visitas");
+        VisitasProBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VisitasProBotActionPerformed(evt);
+            }
+        });
 
-        jButton15.setText("Contratos");
+        ContratosProBot.setText("Contratos");
+        ContratosProBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContratosProBotActionPerformed(evt);
+            }
+        });
 
-        jButton16.setText("Pagos");
+        PagosProBot.setText("Pagos");
+        PagosProBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PagosProBotActionPerformed(evt);
+            }
+        });
 
         OpcionesProBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,13 +349,13 @@ public class Administrador extends javax.swing.JFrame {
             ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ProBotPanLayout.createSequentialGroup()
                 .addGap(164, 164, 164)
-                .addComponent(jButton2)
+                .addComponent(PropiedadesProBot)
                 .addGap(18, 18, 18)
-                .addComponent(jButton14)
+                .addComponent(VisitasProBot)
                 .addGap(18, 18, 18)
-                .addComponent(jButton15)
+                .addComponent(ContratosProBot)
                 .addGap(18, 18, 18)
-                .addComponent(jButton16)
+                .addComponent(PagosProBot)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(OpcionesProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
@@ -304,10 +367,10 @@ public class Administrador extends javax.swing.JFrame {
                     .addGroup(ProBotPanLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton14)
-                            .addComponent(jButton15)
-                            .addComponent(jButton16)))
+                            .addComponent(PropiedadesProBot)
+                            .addComponent(VisitasProBot)
+                            .addComponent(ContratosProBot)
+                            .addComponent(PagosProBot)))
                     .addGroup(ProBotPanLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(OpcionesProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -423,6 +486,110 @@ public class Administrador extends javax.swing.JFrame {
 
         ParentPan.setOpaque(false);
         ParentPan.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout PagosProPanLayout = new javax.swing.GroupLayout(PagosProPan);
+        PagosProPan.setLayout(PagosProPanLayout);
+        PagosProPanLayout.setHorizontalGroup(
+            PagosProPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 807, Short.MAX_VALUE)
+        );
+        PagosProPanLayout.setVerticalGroup(
+            PagosProPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 545, Short.MAX_VALUE)
+        );
+
+        ParentPan.add(PagosProPan, "card16");
+
+        javax.swing.GroupLayout PropiedadesProPanLayout = new javax.swing.GroupLayout(PropiedadesProPan);
+        PropiedadesProPan.setLayout(PropiedadesProPanLayout);
+        PropiedadesProPanLayout.setHorizontalGroup(
+            PropiedadesProPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 807, Short.MAX_VALUE)
+        );
+        PropiedadesProPanLayout.setVerticalGroup(
+            PropiedadesProPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 545, Short.MAX_VALUE)
+        );
+
+        ParentPan.add(PropiedadesProPan, "card15");
+
+        javax.swing.GroupLayout PagosCliePanLayout = new javax.swing.GroupLayout(PagosCliePan);
+        PagosCliePan.setLayout(PagosCliePanLayout);
+        PagosCliePanLayout.setHorizontalGroup(
+            PagosCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 807, Short.MAX_VALUE)
+        );
+        PagosCliePanLayout.setVerticalGroup(
+            PagosCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 545, Short.MAX_VALUE)
+        );
+
+        ParentPan.add(PagosCliePan, "card14");
+
+        javax.swing.GroupLayout MisContratosCliePanLayout = new javax.swing.GroupLayout(MisContratosCliePan);
+        MisContratosCliePan.setLayout(MisContratosCliePanLayout);
+        MisContratosCliePanLayout.setHorizontalGroup(
+            MisContratosCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 807, Short.MAX_VALUE)
+        );
+        MisContratosCliePanLayout.setVerticalGroup(
+            MisContratosCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 545, Short.MAX_VALUE)
+        );
+
+        ParentPan.add(MisContratosCliePan, "card13");
+
+        javax.swing.GroupLayout VisitasCliePanLayout = new javax.swing.GroupLayout(VisitasCliePan);
+        VisitasCliePan.setLayout(VisitasCliePanLayout);
+        VisitasCliePanLayout.setHorizontalGroup(
+            VisitasCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 807, Short.MAX_VALUE)
+        );
+        VisitasCliePanLayout.setVerticalGroup(
+            VisitasCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 545, Short.MAX_VALUE)
+        );
+
+        ParentPan.add(VisitasCliePan, "card12");
+
+        javax.swing.GroupLayout BuscarProCliePanLayout = new javax.swing.GroupLayout(BuscarProCliePan);
+        BuscarProCliePan.setLayout(BuscarProCliePanLayout);
+        BuscarProCliePanLayout.setHorizontalGroup(
+            BuscarProCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 807, Short.MAX_VALUE)
+        );
+        BuscarProCliePanLayout.setVerticalGroup(
+            BuscarProCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 545, Short.MAX_VALUE)
+        );
+
+        ParentPan.add(BuscarProCliePan, "card11");
+
+        javax.swing.GroupLayout ClientesAgePanLayout = new javax.swing.GroupLayout(ClientesAgePan);
+        ClientesAgePan.setLayout(ClientesAgePanLayout);
+        ClientesAgePanLayout.setHorizontalGroup(
+            ClientesAgePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 807, Short.MAX_VALUE)
+        );
+        ClientesAgePanLayout.setVerticalGroup(
+            ClientesAgePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 545, Short.MAX_VALUE)
+        );
+
+        ParentPan.add(ClientesAgePan, "card10");
+
+        javax.swing.GroupLayout VisitasAgePanLayout = new javax.swing.GroupLayout(VisitasAgePan);
+        VisitasAgePan.setLayout(VisitasAgePanLayout);
+        VisitasAgePanLayout.setHorizontalGroup(
+            VisitasAgePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 807, Short.MAX_VALUE)
+        );
+        VisitasAgePanLayout.setVerticalGroup(
+            VisitasAgePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 545, Short.MAX_VALUE)
+        );
+
+        ParentPan.add(VisitasAgePan, "card9");
 
         ContratosAdPan.setOpaque(false);
 
@@ -720,7 +887,7 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(PropiPanLayout.createSequentialGroup()
                 .addGroup(PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PropiPanLayout.createSequentialGroup()
-                        .addGap(111, 111, 111)
+                        .addGap(126, 126, 126)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PropiPanLayout.createSequentialGroup()
                         .addGap(237, 237, 237)
@@ -729,7 +896,7 @@ public class Administrador extends javax.swing.JFrame {
                         .addComponent(jButton21)
                         .addGap(18, 18, 18)
                         .addComponent(jButton5)))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         PropiPanLayout.setVerticalGroup(
             PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1000,11 +1167,11 @@ jTable1.repaint();
     this.setVisible(false);
     }//GEN-LAST:event_OpcionesProBotActionPerformed
 
-    private void OpcionesVisBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesVisBotActionPerformed
+    private void OpcionesClieBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesClieBotActionPerformed
         iniciosesion Devolver = new iniciosesion();
     Devolver.setVisible(true);
     this.setVisible(false);
-    }//GEN-LAST:event_OpcionesVisBotActionPerformed
+    }//GEN-LAST:event_OpcionesClieBotActionPerformed
 
     private void OpcionesAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesAgeBotActionPerformed
         iniciosesion Devolver = new iniciosesion();
@@ -1012,9 +1179,86 @@ jTable1.repaint();
     this.setVisible(false);
     }//GEN-LAST:event_OpcionesAgeBotActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void PropiedadesProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesProBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(PropiedadesProPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_PropiedadesProBotActionPerformed
+
+    private void PropiedadesAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesAgeBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(PropiedadesProPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_PropiedadesAgeBotActionPerformed
+
+    private void VisitasAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisitasAgeBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(VisitasAgePan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_VisitasAgeBotActionPerformed
+
+    private void ClientesAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesAgeBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(ClienPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_ClientesAgeBotActionPerformed
+
+    private void SeguimientoAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeguimientoAgeBotActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_SeguimientoAgeBotActionPerformed
+
+    private void PropiedadesClieBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesClieBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(PropiedadesProPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_PropiedadesClieBotActionPerformed
+
+    private void VisitasClieBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisitasClieBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(VisitasCliePan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_VisitasClieBotActionPerformed
+
+    private void ContratosClieBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratosClieBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(ContratosAdPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_ContratosClieBotActionPerformed
+
+    private void PagosClieBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagosClieBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(PagosCliePan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_PagosClieBotActionPerformed
+
+    private void VisitasProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisitasProBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(VisitasPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_VisitasProBotActionPerformed
+
+    private void ContratosProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratosProBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(ContratosAdPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_ContratosProBotActionPerformed
+
+    private void PagosProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagosProBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(PagosProPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_PagosProBotActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1055,39 +1299,49 @@ jTable1.repaint();
     private javax.swing.JPanel AdminBotPan;
     private javax.swing.JPanel AdminBotones;
     private javax.swing.JPanel AgeBotPan;
+    private javax.swing.JPanel BuscarProCliePan;
     private javax.swing.JButton CliAdBot;
     private javax.swing.JPanel ClienPan;
+    private javax.swing.JButton ClientesAgeBot;
+    private javax.swing.JPanel ClientesAgePan;
+    private javax.swing.JPanel ClientesBotPan;
     private javax.swing.JButton ConAdBot;
     private javax.swing.JPanel ContratosAdPan;
+    private javax.swing.JButton ContratosClieBot;
+    private javax.swing.JButton ContratosProBot;
+    private javax.swing.JPanel MisContratosCliePan;
     private javax.swing.JButton OpcionesAdBot;
     private javax.swing.JButton OpcionesAgeBot;
+    private javax.swing.JButton OpcionesClieBot;
     private javax.swing.JButton OpcionesProBot;
-    private javax.swing.JButton OpcionesVisBot;
     private javax.swing.JButton PagosAdBot;
+    private javax.swing.JButton PagosClieBot;
+    private javax.swing.JPanel PagosCliePan;
     private javax.swing.JPanel PagosPan;
+    private javax.swing.JButton PagosProBot;
+    private javax.swing.JPanel PagosProPan;
     private javax.swing.JPanel ParentPan;
     private javax.swing.JButton ProAdBot;
     private javax.swing.JPanel ProBotPan;
     private javax.swing.JPanel PropiPan;
+    private javax.swing.JButton PropiedadesAgeBot;
+    private javax.swing.JButton PropiedadesClieBot;
+    private javax.swing.JButton PropiedadesProBot;
+    private javax.swing.JPanel PropiedadesProPan;
     private javax.swing.JButton RepAdBot;
     private javax.swing.JPanel ReportesAdPan;
+    private javax.swing.JButton SeguimientoAgeBot;
     private javax.swing.JButton UsuAdBot;
     private javax.swing.JPanel UsuariosAdPan;
     private javax.swing.JButton VisAdBot;
-    private javax.swing.JPanel VisBotPan;
+    private javax.swing.JButton VisitasAgeBot;
+    private javax.swing.JPanel VisitasAgePan;
+    private javax.swing.JButton VisitasClieBot;
+    private javax.swing.JPanel VisitasCliePan;
     private javax.swing.JPanel VisitasPan;
+    private javax.swing.JButton VisitasProBot;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
@@ -1097,13 +1351,11 @@ jTable1.repaint();
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
