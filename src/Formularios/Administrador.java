@@ -32,15 +32,8 @@ public class Administrador extends javax.swing.JFrame {
         
         
         //Se crea un modelo de tabla personalizado
-       modelo = new Parametrosparapanel.ModeloTablaEditable(
-    new Object[][] {
-        {"23422", "Casa", "Zona A", "80", "50000", "Disponible", "Ana", "Carlos", ""}
-    },
-    new String[] {"ID", "Tipo", "Ubicaciónm", "Área", "Precio", "Estado", "Propietario", "Agente", "(Botón)"}
-);
+   Propiedades.cargarCasasEjemplo();
 
-jTable1.setModel(modelo);
-        mostrarPanelSegunCargo();
         
          fondo.setLayout(new java.awt.BorderLayout());
 

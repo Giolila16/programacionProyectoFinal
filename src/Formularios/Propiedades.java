@@ -11,57 +11,49 @@ import java.util.ArrayList;
  * @author kdeke
  */
 public class Propiedades {
-     private String id;
+     // Atributos de cada casa
+    private String id;
     private String tipo;
     private String ubicacion;
-    private double area;
-    private double valor;
+    private String area;
+    private String precio;
     private String estado;
-    private String descripcion;
-    private String fotos; // ruta a la imagen
-    private boolean disponible;
     private String propietario;
+    private String agente;
 
-    public Propiedades(String id, String tipo, String ubicacion, double area, double valor, String estado,
-                     String descripcion, String fotos, boolean disponible, String propietario) {
+    // Lista de todas las casas
+    public static ArrayList<Propiedades> listaCasas = new ArrayList<>();
+
+    // Constructor
+    public Propiedades(String id, String tipo, String ubicacion, String area, String precio,
+                String estado, String propietario, String agente) {
         this.id = id;
         this.tipo = tipo;
         this.ubicacion = ubicacion;
         this.area = area;
-        this.valor = valor;
+        this.precio = precio;
         this.estado = estado;
-        this.descripcion = descripcion;
-        this.fotos = fotos;
-        this.disponible = disponible;
         this.propietario = propietario;
+        this.agente = agente;
     }
 
-    // Getters (puedes generar también setters si deseas editar)
+    // Getters
     public String getId() { return id; }
     public String getTipo() { return tipo; }
     public String getUbicacion() { return ubicacion; }
-    public double getArea() { return area; }
-    public double getValor() { return valor; }
+    public String getArea() { return area; }
+    public String getPrecio() { return precio; }
     public String getEstado() { return estado; }
-    public String getDescripcion() { return descripcion; }
-    public String getFotos() { return fotos; }
-    public boolean isDisponible() { return disponible; }
     public String getPropietario() { return propietario; }
-    
-    private ArrayList<Propiedades> listaPropiedades = new ArrayList<>();
+    public String getAgente() { return agente; }
 
-private void cargarPropiedades() {
-    listaPropiedades.add(new Propiedades("P001", "Casa", "Av. 1 #10-20", 120.5, 150000000, "Disponible",
-            "Casa familiar de 2 pisos", "/imagenes/casa1.jpg", true, "Luis Pérez"));
-    
-    listaPropiedades.add(new Propiedades("P002", "Apartamento", "Cra. 15 #45-60", 80.0, 100000000, "Reservado",
-            "Apartamento moderno con balcón", "/imagenes/apto1.jpg", false, "Marta Gómez"));
-    
-    listaPropiedades.add(new Propiedades("P003", "Local", "Zona Centro", 50.0, 75000000, "Arrendado",
-            "Local comercial remodelado", "/imagenes/local1.jpg", false, "Carlos Ruiz"));
+    // Método para cargar datos de ejemplo
+    public static void cargarCasasEjemplo() {
+        listaCasas.add(new Propiedades("23422", "Casa", "Zona A", "80", "50000", "Disponible", "Ana", "Carlos"));
+        listaCasas.add(new Propiedades("21345", "Casa", "Aeropuerto", "10", "10000", "Disponible", "Ana", "Jose"));
+        listaCasas.add(new Propiedades("02405", "Piña", "Zulia", "8", "20000", "Mantenimiento", "Sebastian", "Jose"));
+    }
+}
 
-    // Agrega 7 más con datos variados...
-}
-}
     
 
