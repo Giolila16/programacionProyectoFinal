@@ -14,6 +14,12 @@ import java.util.List;
 public class Usuarios {
     
     private String nombreCargo;
+    private String Usuario;
+    private String Nombre;
+    private String Telefono;
+    private String Cargo;
+    
+    
 
     public Usuarios(String nombreCargo) {
         this.nombreCargo = nombreCargo;
