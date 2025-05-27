@@ -80,12 +80,27 @@ public class Administrador extends javax.swing.JFrame {
         AdminBotones = new javax.swing.JPanel();
         AgeBotPan = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
         VisBotPan = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
         ProBotPan = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
         AdminBotPan = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         ParentPan = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -106,91 +121,175 @@ public class Administrador extends javax.swing.JFrame {
 
         AgeBotPan.setBackground(new java.awt.Color(204, 204, 255));
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Seguimiento");
+
+        jButton11.setText("Mis Clientes");
+
+        jButton12.setText("Visitas");
+
+        jButton13.setText("Propiedades");
 
         javax.swing.GroupLayout AgeBotPanLayout = new javax.swing.GroupLayout(AgeBotPan);
         AgeBotPan.setLayout(AgeBotPanLayout);
         AgeBotPanLayout.setHorizontalGroup(
             AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AgeBotPanLayout.createSequentialGroup()
-                .addContainerGap(611, Short.MAX_VALUE)
+            .addGroup(AgeBotPanLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(jButton13)
+                .addGap(18, 18, 18)
+                .addComponent(jButton12)
+                .addGap(18, 18, 18)
+                .addComponent(jButton11)
+                .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addGap(92, 92, 92))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
         AgeBotPanLayout.setVerticalGroup(
             AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AgeBotPanLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jButton4)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addGroup(AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton11)
+                    .addComponent(jButton12)
+                    .addComponent(jButton13))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         AdminBotones.add(AgeBotPan, "agente");
 
         VisBotPan.setBackground(new java.awt.Color(0, 51, 51));
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Mis Contratos");
+
+        jButton18.setText("Buscar Propiedades");
+
+        jButton19.setText("Visitas");
+
+        jButton20.setText("Pagos");
 
         javax.swing.GroupLayout VisBotPanLayout = new javax.swing.GroupLayout(VisBotPan);
         VisBotPan.setLayout(VisBotPanLayout);
         VisBotPanLayout.setHorizontalGroup(
             VisBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VisBotPanLayout.createSequentialGroup()
-                .addContainerGap(450, Short.MAX_VALUE)
+            .addGroup(VisBotPanLayout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(jButton18)
+                .addGap(18, 18, 18)
+                .addComponent(jButton19)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addGap(253, 253, 253))
+                .addGap(18, 18, 18)
+                .addComponent(jButton20)
+                .addContainerGap(196, Short.MAX_VALUE))
         );
         VisBotPanLayout.setVerticalGroup(
             VisBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VisBotPanLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jButton3)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(VisBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton18)
+                    .addComponent(jButton19)
+                    .addComponent(jButton20))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         AdminBotones.add(VisBotPan, "visitante");
 
         ProBotPan.setBackground(new java.awt.Color(51, 255, 102));
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Mis Propiedades");
+
+        jButton14.setText("Visitas");
+
+        jButton15.setText("Contratos");
+
+        jButton16.setText("Pagos");
 
         javax.swing.GroupLayout ProBotPanLayout = new javax.swing.GroupLayout(ProBotPan);
         ProBotPan.setLayout(ProBotPanLayout);
         ProBotPanLayout.setHorizontalGroup(
             ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ProBotPanLayout.createSequentialGroup()
-                .addGap(320, 320, 320)
+                .addGap(164, 164, 164)
                 .addComponent(jButton2)
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton14)
+                .addGap(18, 18, 18)
+                .addComponent(jButton15)
+                .addGap(18, 18, 18)
+                .addComponent(jButton16)
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         ProBotPanLayout.setVerticalGroup(
             ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ProBotPanLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jButton2)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton14)
+                    .addComponent(jButton15)
+                    .addComponent(jButton16))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         AdminBotones.add(ProBotPan, "propietario");
 
         AdminBotPan.setBackground(new java.awt.Color(102, 102, 255));
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Propiedades");
+
+        jButton5.setText("Clientes");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Visitas");
+
+        jButton7.setText("Contratos");
+
+        jButton8.setText("Pagos");
+
+        jButton9.setText("Reportes");
+
+        jButton10.setText("Usuarios");
 
         javax.swing.GroupLayout AdminBotPanLayout = new javax.swing.GroupLayout(AdminBotPan);
         AdminBotPan.setLayout(AdminBotPanLayout);
         AdminBotPanLayout.setHorizontalGroup(
             AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdminBotPanLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
+                .addGap(63, 63, 63)
                 .addComponent(jButton1)
-                .addContainerGap(615, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton5)
+                .addGap(18, 18, 18)
+                .addComponent(jButton6)
+                .addGap(18, 18, 18)
+                .addComponent(jButton7)
+                .addGap(18, 18, 18)
+                .addComponent(jButton8)
+                .addGap(18, 18, 18)
+                .addComponent(jButton9)
+                .addGap(18, 18, 18)
+                .addComponent(jButton10)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         AdminBotPanLayout.setVerticalGroup(
             AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdminBotPanLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jButton1)
+                .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6)
+                    .addComponent(jButton7)
+                    .addComponent(jButton8)
+                    .addComponent(jButton9)
+                    .addComponent(jButton10))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -317,6 +416,10 @@ public class Administrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -363,9 +466,24 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JPanel VisBotPan;
     private javax.swing.JPanel VisitasPan;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
