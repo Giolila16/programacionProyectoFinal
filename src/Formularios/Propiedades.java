@@ -61,6 +61,7 @@ public class Propiedades {
         listaCasas.add(new Propiedades("02412", "Casa", "San Luis", "11", "40000", "Vendida", "Rosa", "Camilo"));
 
     }
+    
 }
 
     

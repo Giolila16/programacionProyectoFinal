@@ -11,6 +11,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,12 +28,31 @@ public class Administrador extends javax.swing.JFrame {
     public Administrador() {
         
         initComponents();
+        Propiedades.cargarCasasEjemplo();
         mostrarPanelSegunCargo();
         
-        
-        
-        //Se crea un modelo de tabla personalizado
-   Propiedades.cargarCasasEjemplo();
+        DefaultTableModel modelo = new DefaultTableModel(
+    new Object[]{"ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario", "Agente"}, 
+    0
+);
+
+for (Propiedades casa : Propiedades.listaCasas) {
+    modelo.addRow(new Object[]{
+        casa.getId(),
+        casa.getTipo(),
+        casa.getUbicacion(),
+        casa.getArea(),
+        casa.getPrecio(),
+        casa.getEstado(),
+        casa.getPropietario(),
+        casa.getAgente()
+    });
+}
+
+// Aplica el modelo a la tabla
+jTable1.setModel(modelo);
+
+
 
         
          fondo.setLayout(new java.awt.BorderLayout());
@@ -1055,6 +1075,26 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_CliAdBotActionPerformed
 
     private void ProAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProAdBotActionPerformed
+ DefaultTableModel modelo = new DefaultTableModel(
+    new Object[]{"ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario", "Agente"}, 
+    0
+);
+
+for (Propiedades casa : Propiedades.listaCasas) {
+    modelo.addRow(new Object[]{
+        casa.getId(),
+        casa.getTipo(),
+        casa.getUbicacion(),
+        casa.getArea(),
+        casa.getPrecio(),
+        casa.getEstado(),
+        casa.getPropietario(),
+        casa.getAgente()
+    });
+}
+
+// Aplica el modelo a la tabla
+jTable1.setModel(modelo);
         ParentPan.removeAll();
         ParentPan.add(PropiPan);
         ParentPan.repaint();
