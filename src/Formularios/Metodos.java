@@ -17,5 +17,5 @@ public class Metodos {
 
     public static Usuarios getCargo() {
         return cargoSeleccionado;
-    }    
+    }   
 }

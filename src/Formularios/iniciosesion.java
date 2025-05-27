@@ -77,8 +77,6 @@ public class iniciosesion extends javax.swing.JFrame {
         CargoCombo.addItem(cargo);
     }
 }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,15 +179,12 @@ public class iniciosesion extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuarioTextActionPerformed
 
     private void InicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioSesionActionPerformed
-        
-        Usuarios cargoSeleccionado = (Usuarios) CargoCombo.getSelectedItem();
-Metodos.setCargo(cargoSeleccionado);
+   Usuarios cargoSeleccionado = (Usuarios) CargoCombo.getSelectedItem();
+   Metodos.setCargo(cargoSeleccionado);
 
         Administrador admin = new Administrador();
         admin.setVisible(true);
         this.setVisible(false);
-        
-        
     }//GEN-LAST:event_InicioSesionActionPerformed
 
     /**
@@ -251,3 +246,6 @@ class FondoPanel extends JPanel
         }
     }
 }
+
+
+

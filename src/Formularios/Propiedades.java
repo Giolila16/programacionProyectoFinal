@@ -52,6 +52,14 @@ public class Propiedades {
         listaCasas.add(new Propiedades("23422", "Casa", "Zona A", "80", "50000", "Disponible", "Ana", "Carlos"));
         listaCasas.add(new Propiedades("21345", "Casa", "Aeropuerto", "10", "10000", "Disponible", "Ana", "Jose"));
         listaCasas.add(new Propiedades("02405", "Piña", "Zulia", "8", "20000", "Mantenimiento", "Sebastian", "Jose"));
+        listaCasas.add(new Propiedades("02406", "Casa", "La Riviera", "10", "35000", "Disponible", "Andrea", "Carlos"));
+        listaCasas.add(new Propiedades("02407", "Apartamento", "Caobos", "6", "28000", "Vendida", "Luis", "Maria"));
+        listaCasas.add(new Propiedades("02408", "Finca", "El Pórtico", "20", "50000", "Disponible", "Claudia", "Andrés"));
+        listaCasas.add(new Propiedades("02409", "Casa", "Panamericano", "9", "32000", "Arrendada", "Fernando", "Laura"));
+        listaCasas.add(new Propiedades("02410", "Apartamento", "Belén", "7", "30000", "Disponible", "Marta", "Julian"));
+        listaCasas.add(new Propiedades("02411", "Finca", "Guaramito", "25", "60000", "Mantenimiento", "Pedro", "Lucia"));
+        listaCasas.add(new Propiedades("02412", "Casa", "San Luis", "11", "40000", "Vendida", "Rosa", "Camilo"));
+
     }
 }
 

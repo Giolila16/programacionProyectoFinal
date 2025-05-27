@@ -12,8 +12,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
-
 /**
  *
  * @author kdeke
@@ -29,6 +27,8 @@ public class Administrador extends javax.swing.JFrame {
     public Administrador() {
         
         initComponents();
+        mostrarPanelSegunCargo();
+        
         
         
         //Se crea un modelo de tabla personalizado
@@ -48,7 +48,7 @@ public class Administrador extends javax.swing.JFrame {
     Usuarios cargo = Metodos.getCargo();
 
     if (cargo != null) {
-        String nombreCargo = cargo.getNombreCargo().toLowerCase();
+        String nombreCargo = cargo.getNombreCargo().toLowerCase(); // ← CORREGIDO
         CardLayout cl = (CardLayout) AdminBotones.getLayout();
 
         switch (nombreCargo) {
@@ -262,6 +262,11 @@ public class Administrador extends javax.swing.JFrame {
         ProBotPan.setBackground(new java.awt.Color(51, 255, 102));
 
         jButton2.setText("Mis Propiedades");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton14.setText("Visitas");
 
@@ -1006,6 +1011,10 @@ jTable1.repaint();
     Devolver.setVisible(true);
     this.setVisible(false);
     }//GEN-LAST:event_OpcionesAgeBotActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
