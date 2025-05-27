@@ -36,7 +36,7 @@ public class Administrador extends javax.swing.JFrame {
     new Object[][] {
         {"23422", "Casa", "Zona A", "80", "50000", "Disponible", "Ana", "Carlos", ""}
     },
-    new String[] {"ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario", "Agente", "(Botón)"}
+    new String[] {"ID", "Tipo", "Ubicaciónm", "Área", "Precio", "Estado", "Propietario", "Agente", "(Botón)"}
 );
 
 jTable1.setModel(modelo);
