@@ -4,6 +4,7 @@
  */
 package Formularios;
 
+
 import java.awt.CardLayout;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -11,13 +12,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+
+
 /**
  *
  * @author kdeke
  */
 
 public class Administrador extends javax.swing.JFrame {
-    
+   Parametrosparapanel.ModeloTablaEditable modelo;
     private JPanel panelContenido;  
     private CardLayout cardLayout;
 
@@ -26,8 +29,17 @@ public class Administrador extends javax.swing.JFrame {
     public Administrador() {
         
         initComponents();
-        this.setLocationRelativeTo(this);
         
+        
+        //Se crea un modelo de tabla personalizado
+       modelo = new Parametrosparapanel.ModeloTablaEditable(
+    new Object[][] {
+        {"23422", "Casa", "Zona A", "80", "50000", "Disponible", "Ana", "Carlos", ""}
+    },
+    new String[] {"ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario", "Agente", "(Botón)"}
+);
+
+jTable1.setModel(modelo);
         mostrarPanelSegunCargo();
         
          fondo.setLayout(new java.awt.BorderLayout());
@@ -336,8 +348,8 @@ public class Administrador extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"arroz", null, null, null, null, null, null, null, null},
-                {"asdas", null, null, null, null, null, null, null, null},
+                {"23422", "Casa ", null, null, null, null, null, null, null},
+                {"12342", "Casa", null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -350,8 +362,18 @@ public class Administrador extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton17.setText("Editar");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton21.setText("Guardar");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PropiPanLayout = new javax.swing.GroupLayout(PropiPan);
         PropiPan.setLayout(PropiPanLayout);
@@ -447,6 +469,17 @@ public class Administrador extends javax.swing.JFrame {
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+ modelo.setEditable(false);
+jTable1.repaint();
+JOptionPane.showMessageDialog(this, "Cambios guardados.");
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+modelo.setEditable(true);
+jTable1.repaint();
+    }//GEN-LAST:event_jButton17ActionPerformed
 
     /**
      * @param args the command line arguments
