@@ -92,17 +92,19 @@ jTable1.setModel(modelo);
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        OpcionesAgeBot = new javax.swing.JButton();
         VisBotPan = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
+        OpcionesVisBot = new javax.swing.JButton();
         ProBotPan = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
+        OpcionesProBot = new javax.swing.JButton();
         AdminBotPan = new javax.swing.JPanel();
         ProAdBot = new javax.swing.JButton();
         CliAdBot = new javax.swing.JButton();
@@ -111,17 +113,32 @@ jTable1.setModel(modelo);
         PagosAdBot = new javax.swing.JButton();
         RepAdBot = new javax.swing.JButton();
         UsuAdBot = new javax.swing.JButton();
+        OpcionesAdBot = new javax.swing.JButton();
         ParentPan = new javax.swing.JPanel();
         ContratosAdPan = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jButton22 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         ReportesAdPan = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jButton24 = new javax.swing.JButton();
+        jButton25 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         UsuariosAdPan = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        jButton26 = new javax.swing.JButton();
+        jButton27 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         ClienPan = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jButton28 = new javax.swing.JButton();
+        jButton29 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         PropiPan = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -129,9 +146,17 @@ jTable1.setModel(modelo);
         jButton21 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         PagosPan = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable6 = new javax.swing.JTable();
+        jButton30 = new javax.swing.JButton();
+        jButton31 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         VisitasPan = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable7 = new javax.swing.JTable();
+        jButton32 = new javax.swing.JButton();
+        jButton33 = new javax.swing.JButton();
+        jButton34 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,6 +172,12 @@ jTable1.setModel(modelo);
 
         jButton13.setText("Propiedades");
 
+        OpcionesAgeBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OpcionesAgeBotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout AgeBotPanLayout = new javax.swing.GroupLayout(AgeBotPan);
         AgeBotPan.setLayout(AgeBotPanLayout);
         AgeBotPanLayout.setHorizontalGroup(
@@ -161,7 +192,7 @@ jTable1.setModel(modelo);
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(OpcionesAgeBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
         AgeBotPanLayout.setVerticalGroup(
@@ -170,7 +201,7 @@ jTable1.setModel(modelo);
                 .addGroup(AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AgeBotPanLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(OpcionesAgeBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AgeBotPanLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addGroup(AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -193,12 +224,18 @@ jTable1.setModel(modelo);
 
         jButton20.setText("Pagos");
 
+        OpcionesVisBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OpcionesVisBotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout VisBotPanLayout = new javax.swing.GroupLayout(VisBotPan);
         VisBotPan.setLayout(VisBotPanLayout);
         VisBotPanLayout.setHorizontalGroup(
             VisBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VisBotPanLayout.createSequentialGroup()
-                .addGap(147, 147, 147)
+                .addGap(185, 185, 185)
                 .addComponent(jButton18)
                 .addGap(18, 18, 18)
                 .addComponent(jButton19)
@@ -206,18 +243,25 @@ jTable1.setModel(modelo);
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton20)
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addComponent(OpcionesVisBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
         VisBotPanLayout.setVerticalGroup(
             VisBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VisBotPanLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(VisBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton18)
-                    .addComponent(jButton19)
-                    .addComponent(jButton20))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addGroup(VisBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(VisBotPanLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(VisBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton3)
+                            .addComponent(jButton18)
+                            .addComponent(jButton19)
+                            .addComponent(jButton20)))
+                    .addGroup(VisBotPanLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(OpcionesVisBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         AdminBotones.add(VisBotPan, "visitante");
@@ -232,6 +276,12 @@ jTable1.setModel(modelo);
 
         jButton16.setText("Pagos");
 
+        OpcionesProBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OpcionesProBotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ProBotPanLayout = new javax.swing.GroupLayout(ProBotPan);
         ProBotPan.setLayout(ProBotPanLayout);
         ProBotPanLayout.setHorizontalGroup(
@@ -245,18 +295,25 @@ jTable1.setModel(modelo);
                 .addComponent(jButton15)
                 .addGap(18, 18, 18)
                 .addComponent(jButton16)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addComponent(OpcionesProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
         );
         ProBotPanLayout.setVerticalGroup(
             ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ProBotPanLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton14)
-                    .addComponent(jButton15)
-                    .addComponent(jButton16))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGroup(ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ProBotPanLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(jButton14)
+                            .addComponent(jButton15)
+                            .addComponent(jButton16)))
+                    .addGroup(ProBotPanLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(OpcionesProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         AdminBotones.add(ProBotPan, "propietario");
@@ -313,6 +370,12 @@ jTable1.setModel(modelo);
             }
         });
 
+        OpcionesAdBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OpcionesAdBotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout AdminBotPanLayout = new javax.swing.GroupLayout(AdminBotPan);
         AdminBotPan.setLayout(AdminBotPanLayout);
         AdminBotPanLayout.setHorizontalGroup(
@@ -332,21 +395,28 @@ jTable1.setModel(modelo);
                 .addComponent(RepAdBot)
                 .addGap(18, 18, 18)
                 .addComponent(UsuAdBot)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(OpcionesAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         AdminBotPanLayout.setVerticalGroup(
             AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdminBotPanLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ProAdBot)
-                    .addComponent(CliAdBot)
-                    .addComponent(VisAdBot)
-                    .addComponent(ConAdBot)
-                    .addComponent(PagosAdBot)
-                    .addComponent(RepAdBot)
-                    .addComponent(UsuAdBot))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AdminBotPanLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ProAdBot)
+                            .addComponent(CliAdBot)
+                            .addComponent(VisAdBot)
+                            .addComponent(ConAdBot)
+                            .addComponent(PagosAdBot)
+                            .addComponent(RepAdBot)
+                            .addComponent(UsuAdBot)))
+                    .addGroup(AdminBotPanLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(OpcionesAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         AdminBotones.add(AdminBotPan, "admin");
@@ -358,24 +428,63 @@ jTable1.setModel(modelo);
 
         ContratosAdPan.setOpaque(false);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel4.setText("Contratos");
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Usuario", "Nombre", "Cargo", "Teléfono", "Estado"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable4);
+
+        jButton22.setText("Guardar");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
+
+        jButton23.setText("Editar");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Agregar");
 
         javax.swing.GroupLayout ContratosAdPanLayout = new javax.swing.GroupLayout(ContratosAdPan);
         ContratosAdPan.setLayout(ContratosAdPanLayout);
         ContratosAdPanLayout.setHorizontalGroup(
             ContratosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContratosAdPanLayout.createSequentialGroup()
+                .addContainerGap(179, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(176, 176, 176))
             .addGroup(ContratosAdPanLayout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addGap(253, 253, 253)
+                .addComponent(jButton23)
+                .addGap(29, 29, 29)
+                .addComponent(jButton22)
+                .addGap(18, 18, 18)
+                .addComponent(jButton6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ContratosAdPanLayout.setVerticalGroup(
             ContratosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ContratosAdPanLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContratosAdPanLayout.createSequentialGroup()
+                .addContainerGap(61, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(ContratosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton23)
+                    .addComponent(jButton22)
+                    .addComponent(jButton6))
+                .addGap(16, 16, 16))
         );
 
         ParentPan.add(ContratosAdPan, "card8");
@@ -399,44 +508,115 @@ jTable1.setModel(modelo);
         ));
         jScrollPane3.setViewportView(jTable3);
 
+        jButton24.setText("Guardar");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+
+        jButton25.setText("Editar");
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Agregar");
+
         javax.swing.GroupLayout ReportesAdPanLayout = new javax.swing.GroupLayout(ReportesAdPan);
         ReportesAdPan.setLayout(ReportesAdPanLayout);
         ReportesAdPanLayout.setHorizontalGroup(
             ReportesAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ReportesAdPanLayout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addGroup(ReportesAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ReportesAdPanLayout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ReportesAdPanLayout.createSequentialGroup()
+                        .addGap(245, 245, 245)
+                        .addComponent(jButton25)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton24)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton7)))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
         ReportesAdPanLayout.setVerticalGroup(
             ReportesAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ReportesAdPanLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(55, 55, 55)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(ReportesAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton25)
+                    .addComponent(jButton24)
+                    .addComponent(jButton7))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         ParentPan.add(ReportesAdPan, "card7");
 
         UsuariosAdPan.setOpaque(false);
 
-        jLabel7.setText("jLabel7");
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Usuario", "Nombre", "Rol", "Telefono", "Estado"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable5);
+
+        jButton26.setText("Guardar");
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
+
+        jButton27.setText("Editar");
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Agregar");
 
         javax.swing.GroupLayout UsuariosAdPanLayout = new javax.swing.GroupLayout(UsuariosAdPan);
         UsuariosAdPan.setLayout(UsuariosAdPanLayout);
         UsuariosAdPanLayout.setHorizontalGroup(
             UsuariosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UsuariosAdPanLayout.createSequentialGroup()
-                .addContainerGap(387, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(383, 383, 383))
+            .addGroup(UsuariosAdPanLayout.createSequentialGroup()
+                .addGroup(UsuariosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(UsuariosAdPanLayout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UsuariosAdPanLayout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(jButton27)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton26)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton8)))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         UsuariosAdPanLayout.setVerticalGroup(
             UsuariosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(UsuariosAdPanLayout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jLabel7)
-                .addContainerGap(422, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UsuariosAdPanLayout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(UsuariosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton27)
+                    .addComponent(jButton26)
+                    .addComponent(jButton8))
+                .addGap(17, 17, 17))
         );
 
         ParentPan.add(UsuariosAdPan, "card6");
@@ -453,21 +633,51 @@ jTable1.setModel(modelo);
         ));
         jScrollPane2.setViewportView(jTable2);
 
+        jButton28.setText("Guardar");
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
+
+        jButton29.setText("Editar");
+        jButton29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton29ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("Agregar");
+
         javax.swing.GroupLayout ClienPanLayout = new javax.swing.GroupLayout(ClienPan);
         ClienPan.setLayout(ClienPanLayout);
         ClienPanLayout.setHorizontalGroup(
             ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ClienPanLayout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ClienPanLayout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ClienPanLayout.createSequentialGroup()
+                        .addGap(255, 255, 255)
+                        .addComponent(jButton29)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton28)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton9)))
                 .addContainerGap(192, Short.MAX_VALUE))
         );
         ClienPanLayout.setVerticalGroup(
             ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ClienPanLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(55, 55, 55)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton29)
+                    .addComponent(jButton28)
+                    .addComponent(jButton9))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         ParentPan.add(ClienPan, "card2");
@@ -476,8 +686,8 @@ jTable1.setModel(modelo);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"23422", "Casa ", null, null, null, null, null, null, null},
-                {"12342", "Casa", null, null, null, null, null, null, null},
+                {"", "", null, null, null, null, null, null, null},
+                {"", "", null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -515,7 +725,7 @@ jTable1.setModel(modelo);
                         .addGap(111, 111, 111)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PropiPanLayout.createSequentialGroup()
-                        .addGap(295, 295, 295)
+                        .addGap(237, 237, 237)
                         .addComponent(jButton17)
                         .addGap(29, 29, 29)
                         .addComponent(jButton21)
@@ -541,48 +751,128 @@ jTable1.setModel(modelo);
         PagosPan.setBackground(new java.awt.Color(51, 255, 102));
         PagosPan.setOpaque(false);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel5.setText("Pagos");
+        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID de Pago", "Nombre", "Referencia", "Método de pago", "Monto", "Estado", "(Boton)"
+            }
+        ));
+        jScrollPane6.setViewportView(jTable6);
+
+        jButton30.setText("Guardar");
+        jButton30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton30ActionPerformed(evt);
+            }
+        });
+
+        jButton31.setText("Editar");
+        jButton31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton31ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setText("Agregar");
 
         javax.swing.GroupLayout PagosPanLayout = new javax.swing.GroupLayout(PagosPan);
         PagosPan.setLayout(PagosPanLayout);
         PagosPanLayout.setHorizontalGroup(
             PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PagosPanLayout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addGroup(PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PagosPanLayout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PagosPanLayout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(jButton31)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton30)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton10)))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         PagosPanLayout.setVerticalGroup(
             PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PagosPanLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton31)
+                    .addComponent(jButton30)
+                    .addComponent(jButton10))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         ParentPan.add(PagosPan, "card4");
 
         VisitasPan.setOpaque(false);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel6.setText("Visitas");
+        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID de Contrato", "Propiedad", "Cliente", "Agente", "Tipo", "Monto Total", "Estado"
+            }
+        ));
+        jScrollPane7.setViewportView(jTable7);
+
+        jButton32.setText("Guardar");
+        jButton32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton32ActionPerformed(evt);
+            }
+        });
+
+        jButton33.setText("Editar");
+        jButton33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton33ActionPerformed(evt);
+            }
+        });
+
+        jButton34.setText("Agregar");
 
         javax.swing.GroupLayout VisitasPanLayout = new javax.swing.GroupLayout(VisitasPan);
         VisitasPan.setLayout(VisitasPanLayout);
         VisitasPanLayout.setHorizontalGroup(
             VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VisitasPanLayout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addGroup(VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(VisitasPanLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(VisitasPanLayout.createSequentialGroup()
+                        .addGap(241, 241, 241)
+                        .addComponent(jButton33)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton32)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton34)))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         VisitasPanLayout.setVerticalGroup(
             VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(VisitasPanLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VisitasPanLayout.createSequentialGroup()
+                .addContainerGap(64, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton33)
+                    .addComponent(jButton32)
+                    .addComponent(jButton34))
+                .addGap(13, 13, 13))
         );
 
         ParentPan.add(VisitasPan, "card3");
@@ -652,6 +942,78 @@ modelo.setEditable(true);
 jTable1.repaint();
     }//GEN-LAST:event_jButton17ActionPerformed
 
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton26ActionPerformed
+
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton29ActionPerformed
+
+    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton30ActionPerformed
+
+    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton31ActionPerformed
+
+    private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton32ActionPerformed
+
+    private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton33ActionPerformed
+
+    private void OpcionesAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesAdBotActionPerformed
+    iniciosesion Devolver = new iniciosesion();
+    Devolver.setVisible(true);
+    this.setVisible(false);
+    }//GEN-LAST:event_OpcionesAdBotActionPerformed
+
+    private void OpcionesProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesProBotActionPerformed
+        iniciosesion Devolver = new iniciosesion();
+    Devolver.setVisible(true);
+    this.setVisible(false);
+    }//GEN-LAST:event_OpcionesProBotActionPerformed
+
+    private void OpcionesVisBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesVisBotActionPerformed
+        iniciosesion Devolver = new iniciosesion();
+    Devolver.setVisible(true);
+    this.setVisible(false);
+    }//GEN-LAST:event_OpcionesVisBotActionPerformed
+
+    private void OpcionesAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesAgeBotActionPerformed
+        iniciosesion Devolver = new iniciosesion();
+    Devolver.setVisible(true);
+    this.setVisible(false);
+    }//GEN-LAST:event_OpcionesAgeBotActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -695,6 +1057,10 @@ jTable1.repaint();
     private javax.swing.JPanel ClienPan;
     private javax.swing.JButton ConAdBot;
     private javax.swing.JPanel ContratosAdPan;
+    private javax.swing.JButton OpcionesAdBot;
+    private javax.swing.JButton OpcionesAgeBot;
+    private javax.swing.JButton OpcionesProBot;
+    private javax.swing.JButton OpcionesVisBot;
     private javax.swing.JButton PagosAdBot;
     private javax.swing.JPanel PagosPan;
     private javax.swing.JPanel ParentPan;
@@ -708,7 +1074,7 @@ jTable1.repaint();
     private javax.swing.JButton VisAdBot;
     private javax.swing.JPanel VisBotPan;
     private javax.swing.JPanel VisitasPan;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -721,19 +1087,40 @@ jTable1.repaint();
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton30;
+    private javax.swing.JButton jButton31;
+    private javax.swing.JButton jButton32;
+    private javax.swing.JButton jButton33;
+    private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
+    private javax.swing.JTable jTable6;
+    private javax.swing.JTable jTable7;
     // End of variables declaration//GEN-END:variables
 class FondoPanel extends JPanel {
     private Image imagen;
@@ -745,6 +1132,5 @@ class FondoPanel extends JPanel {
         g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
         
     }
-}
-    
+}  
 }
