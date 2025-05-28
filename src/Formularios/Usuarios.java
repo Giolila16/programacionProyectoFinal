@@ -70,7 +70,7 @@ class Agente extends Usuarios {
         super(usuario, contraseña, nombres, apellidos, "Agente");
     }
 
-    public static void cargarAgentes() {
+    public static void cargarAgentesEjemplo() {
         listaAgentes.add(new Agente("ag1", "123", "Ana", "Gomez"));
         listaAgentes.add(new Agente("ag2", "123", "Carlos", "Perez"));
         listaAgentes.add(new Agente("ag3", "123", "Jose", "Luna"));
@@ -86,7 +86,7 @@ class Propietario extends Usuarios {
         super(usuario, contraseña, nombres, apellidos, "Propietario");
     }
 
-    public static void cargarPropietarios() {
+    public static void cargarPropietariosEjemplo() {
         listaPropietarios.add(new Propietario("prop1", "123", "Ana", "Vargas"));
         listaPropietarios.add(new Propietario("prop2", "123", "Sebastian", "Moreno"));
         listaPropietarios.add(new Propietario("prop3", "123", "Luis", "Torres"));
@@ -116,13 +116,13 @@ class ClienteUsuario extends Usuarios {
     }
 }
 
-class Administrador extends Usuarios {
-    public static Administrador admin;
-    public Administrador(String usuario, String contraseña, String nombres, String apellidos) {
+class gio extends Usuarios {
+    public static gio perrito;
+    public gio(String usuario, String contraseña, String nombres, String apellidos) {
         super(usuario, contraseña, nombres, apellidos, "Administrador");
     }
 
     public static void cargarAdministradorEjemplo() {
-        admin = new Administrador("admin", "admin123", "Sofia", "Castro");
+        perrito = new gio("admin", "admin123", "Sofia", "Castro");
     }
 }
