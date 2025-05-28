@@ -8,6 +8,7 @@ package Formularios;
 import java.awt.CardLayout;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,13 +25,20 @@ public class Administrador extends javax.swing.JFrame {
     private CardLayout cardLayout;
 
     Administrador.FondoPanel fondo = new Administrador.FondoPanel();
-    
+    private void llenarComboBoxConIDs() {
+    ImagenesCombo.removeAllItems(); // Limpia por si acaso
+    for (Propiedades casa : Propiedades.listaCasas) {
+        ImagenesCombo.addItem(casa.getId());
+    }
+}
     public Administrador() {
         
         initComponents();
         this.setLocationRelativeTo(this);
         Propiedades.cargarCasasEjemplo();
         mostrarPanelSegunCargo();
+        Propiedades.cargarCasasEjemplo(); // Llena el ArrayList
+    llenarComboBoxConIDs();
         
         DefaultTableModel modelo = new DefaultTableModel(
     new Object[]{"ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario", "Agente"}, 
@@ -50,6 +58,7 @@ for (Propiedades casa : Propiedades.listaCasas) {
     });
 }
 
+    
 // Aplica el modelo a la tabla
 PropiedadesTable.setModel(modelo);
 
@@ -64,6 +73,33 @@ PropiedadesTable.setModel(modelo);
         
         setContentPane(fondo);
     }
+  private void mostrarImagenSegunID() {
+    String idSeleccionado = (String) ImagenesCombo.getSelectedItem();
+    if (idSeleccionado == null) return;
+
+    String ruta = "/imagenes/" + idSeleccionado + ".jpg"; // Cambia por .png si es necesario
+    try {
+        URL recurso = getClass().getResource(ruta);
+        if (recurso != null) {
+            ImageIcon iconoOriginal = new ImageIcon(recurso);
+            // Escalamos la imagen al tamaño del JLabel
+            Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(
+                ImagUnoLbl.getWidth(),
+                ImagUnoLbl.getHeight(),
+                Image.SCALE_SMOOTH
+            );
+            // Creamos un nuevo Icon con la imagen escalada
+            ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+            ImagUnoLbl.setIcon(iconoEscalado);
+        } else {
+            ImagUnoLbl.setIcon(null);
+            System.out.println("No se encontró la imagen para el ID: " + idSeleccionado);
+        }
+    } catch (Exception e) {
+        ImagUnoLbl.setIcon(null);
+        System.out.println("Error al cargar la imagen: " + e.getMessage());
+    }
+}
     iniciosesion Devolver = new iniciosesion();
     
     private void mostrarPanelSegunCargo() {
@@ -149,9 +185,7 @@ PropiedadesTable.setModel(modelo);
         PropImagenesPan = new javax.swing.JPanel();
         VolverProBot = new javax.swing.JButton();
         ImagenesCombo = new javax.swing.JComboBox<>();
-        ImagTresLbl = new javax.swing.JLabel();
         ImagUnoLbl = new javax.swing.JLabel();
-        ImagDosLbl = new javax.swing.JLabel();
         ContratosPan = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         ContratosTable = new javax.swing.JTable();
@@ -716,44 +750,38 @@ PropiedadesTable.setModel(modelo);
             }
         });
 
-        ImagTresLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ImagenesCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImagenesComboActionPerformed(evt);
+            }
+        });
 
         ImagUnoLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        ImagDosLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout PropImagenesPanLayout = new javax.swing.GroupLayout(PropImagenesPan);
         PropImagenesPan.setLayout(PropImagenesPanLayout);
         PropImagenesPanLayout.setHorizontalGroup(
             PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                .addGap(351, 351, 351)
-                .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropImagenesPanLayout.createSequentialGroup()
-                .addContainerGap(110, Short.MAX_VALUE)
+                .addContainerGap(659, Short.MAX_VALUE)
+                .addComponent(VolverProBot)
+                .addGap(97, 97, 97))
+            .addGroup(PropImagenesPanLayout.createSequentialGroup()
                 .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropImagenesPanLayout.createSequentialGroup()
-                        .addComponent(VolverProBot)
-                        .addGap(97, 97, 97))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropImagenesPanLayout.createSequentialGroup()
-                        .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(ImagDosLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(ImagTresLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105))))
+                    .addGroup(PropImagenesPanLayout.createSequentialGroup()
+                        .addGap(351, 351, 351)
+                        .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PropImagenesPanLayout.createSequentialGroup()
+                        .addGap(300, 300, 300)
+                        .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PropImagenesPanLayout.setVerticalGroup(
             PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
-                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ImagDosLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ImagTresLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addContainerGap(143, Short.MAX_VALUE)
+                .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68)
                 .addComponent(VolverProBot)
@@ -1611,6 +1639,10 @@ PropiedadesTable.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_VolverProBotActionPerformed
 
+    private void ImagenesComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImagenesComboActionPerformed
+  mostrarImagenSegunID();
+    }//GEN-LAST:event_ImagenesComboActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1664,8 +1696,6 @@ PropiedadesTable.repaint();
     private javax.swing.JPanel ContratosPan;
     private javax.swing.JButton ContratosProBot;
     private javax.swing.JTable ContratosTable;
-    private javax.swing.JLabel ImagDosLbl;
-    private javax.swing.JLabel ImagTresLbl;
     private javax.swing.JLabel ImagUnoLbl;
     private javax.swing.JComboBox<String> ImagenesCombo;
     private javax.swing.JButton IngresoComiRepBot;

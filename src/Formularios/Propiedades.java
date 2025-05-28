@@ -47,7 +47,7 @@ public class Propiedades {
     public String getPropietario() { return propietario; }
     public String getAgente() { return agente; }
 
-    // Método para cargar datos de ejemplo
+
     public static void cargarCasasEjemplo() {
         listaCasas.add(new Propiedades("23422", "Casa", "Zona A", "80", "50000", "Disponible", "Ana", "Carlos"));
         listaCasas.add(new Propiedades("21345", "Casa", "Aeropuerto", "10", "10000", "Disponible", "Ana", "Jose"));
