@@ -51,7 +51,7 @@ for (Propiedades casa : Propiedades.listaCasas) {
 }
 
 // Aplica el modelo a la tabla
-jTable1.setModel(modelo);
+PropiedadesTable.setModel(modelo);
 
 
 
@@ -64,6 +64,7 @@ jTable1.setModel(modelo);
         
         setContentPane(fondo);
     }
+    iniciosesion Devolver = new iniciosesion();
     
     private void mostrarPanelSegunCargo() {
     Usuarios cargo = Metodos.getCargo();
@@ -101,11 +102,27 @@ jTable1.setModel(modelo);
     private void initComponents() {
 
         AdminBotones = new javax.swing.JPanel();
+        RepAgeBotPan = new javax.swing.JPanel();
+        ProDisAgeRepBot = new javax.swing.JButton();
+        CliAgeRepBot = new javax.swing.JButton();
+        VisAgeRepBot = new javax.swing.JButton();
+        VolverAgeRepBot = new javax.swing.JButton();
+        OpciAgeRepBot = new javax.swing.JButton();
+        ReportesBotPan = new javax.swing.JPanel();
+        ProDispoRepBot = new javax.swing.JButton();
+        IngresoComiRepBot = new javax.swing.JButton();
+        ContVencerRepBot = new javax.swing.JButton();
+        ProRegisRepBot = new javax.swing.JButton();
+        ClientesRepBot = new javax.swing.JButton();
+        VisitasRepBot = new javax.swing.JButton();
+        ReportesBasicosRepBot = new javax.swing.JButton();
+        OpcionesRepBot = new javax.swing.JButton();
+        VolverRepBot = new javax.swing.JButton();
         AgeBotPan = new javax.swing.JPanel();
         SeguimientoAgeBot = new javax.swing.JButton();
         ClientesAgeBot = new javax.swing.JButton();
         VisitasAgeBot = new javax.swing.JButton();
-        PropiedadesAgeBot = new javax.swing.JButton();
+        ArriendosAgeBot = new javax.swing.JButton();
         OpcionesAgeBot = new javax.swing.JButton();
         ClientesBotPan = new javax.swing.JPanel();
         ContratosClieBot = new javax.swing.JButton();
@@ -113,68 +130,258 @@ jTable1.setModel(modelo);
         VisitasClieBot = new javax.swing.JButton();
         PagosClieBot = new javax.swing.JButton();
         OpcionesClieBot = new javax.swing.JButton();
-        ProBotPan = new javax.swing.JPanel();
+        PropietarioBotPan = new javax.swing.JPanel();
         PropiedadesProBot = new javax.swing.JButton();
         VisitasProBot = new javax.swing.JButton();
         ContratosProBot = new javax.swing.JButton();
         PagosProBot = new javax.swing.JButton();
         OpcionesProBot = new javax.swing.JButton();
         AdminBotPan = new javax.swing.JPanel();
-        ProAdBot = new javax.swing.JButton();
-        CliAdBot = new javax.swing.JButton();
-        VisAdBot = new javax.swing.JButton();
-        ConAdBot = new javax.swing.JButton();
+        PropiedadesAdBot = new javax.swing.JButton();
+        ClientesAdBot = new javax.swing.JButton();
+        VisitasAdBot = new javax.swing.JButton();
+        ContratosAdBot = new javax.swing.JButton();
         PagosAdBot = new javax.swing.JButton();
-        RepAdBot = new javax.swing.JButton();
-        UsuAdBot = new javax.swing.JButton();
+        ReportesAdBot = new javax.swing.JButton();
+        UsuariosAdBot = new javax.swing.JButton();
         OpcionesAdBot = new javax.swing.JButton();
         ParentPan = new javax.swing.JPanel();
-        ContratosAdPan = new javax.swing.JPanel();
+        PropImagenesPan = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        VolverProBot = new javax.swing.JButton();
+        ContratosPan = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        ContratosTable = new javax.swing.JTable();
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        ReportesAdPan = new javax.swing.JPanel();
+        ReportesPan = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        ReportesTable = new javax.swing.JTable();
         jButton24 = new javax.swing.JButton();
         jButton25 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        UsuariosAdPan = new javax.swing.JPanel();
+        UsuariosPan = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        UsuariosTable = new javax.swing.JTable();
         jButton26 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        ClienPan = new javax.swing.JPanel();
+        ClientesPan = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        ClientesTable = new javax.swing.JTable();
         jButton28 = new javax.swing.JButton();
         jButton29 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        PropiPan = new javax.swing.JPanel();
+        PropiedadesPan = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        PropiedadesTable = new javax.swing.JTable();
         jButton17 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        VerPropiBot = new javax.swing.JButton();
         PagosPan = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
+        PagosTable = new javax.swing.JTable();
         jButton30 = new javax.swing.JButton();
         jButton31 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         VisitasPan = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable7 = new javax.swing.JTable();
+        VisitasTable = new javax.swing.JTable();
         jButton32 = new javax.swing.JButton();
         jButton33 = new javax.swing.JButton();
         jButton34 = new javax.swing.JButton();
+        ReportesBasicosPan = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        ReportesBasicosTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         AdminBotones.setLayout(new java.awt.CardLayout());
+
+        RepAgeBotPan.setBackground(new java.awt.Color(255, 204, 204));
+
+        ProDisAgeRepBot.setText("Pro. Disponibilidad");
+        ProDisAgeRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProDisAgeRepBotActionPerformed(evt);
+            }
+        });
+
+        CliAgeRepBot.setText("Clientes");
+        CliAgeRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CliAgeRepBotActionPerformed(evt);
+            }
+        });
+
+        VisAgeRepBot.setText("Visitas");
+        VisAgeRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VisAgeRepBotActionPerformed(evt);
+            }
+        });
+
+        VolverAgeRepBot.setText("Volver");
+        VolverAgeRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverAgeRepBotActionPerformed(evt);
+            }
+        });
+
+        OpciAgeRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OpciAgeRepBotActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout RepAgeBotPanLayout = new javax.swing.GroupLayout(RepAgeBotPan);
+        RepAgeBotPan.setLayout(RepAgeBotPanLayout);
+        RepAgeBotPanLayout.setHorizontalGroup(
+            RepAgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RepAgeBotPanLayout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(ProDisAgeRepBot)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CliAgeRepBot)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(VisAgeRepBot)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(VolverAgeRepBot)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(OpciAgeRepBot)
+                .addContainerGap(305, Short.MAX_VALUE))
+        );
+        RepAgeBotPanLayout.setVerticalGroup(
+            RepAgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RepAgeBotPanLayout.createSequentialGroup()
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addGroup(RepAgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ProDisAgeRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CliAgeRepBot)
+                    .addComponent(VisAgeRepBot)
+                    .addComponent(VolverAgeRepBot)
+                    .addComponent(OpciAgeRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
+        );
+
+        AdminBotones.add(RepAgeBotPan, "card7");
+
+        ReportesBotPan.setBackground(new java.awt.Color(204, 204, 255));
+
+        ProDispoRepBot.setText("Pro. disponibilidad");
+        ProDispoRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProDispoRepBotActionPerformed(evt);
+            }
+        });
+
+        IngresoComiRepBot.setText("Ingreso Comision");
+        IngresoComiRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IngresoComiRepBotActionPerformed(evt);
+            }
+        });
+
+        ContVencerRepBot.setText("Contratos por vencer");
+        ContVencerRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContVencerRepBotActionPerformed(evt);
+            }
+        });
+
+        ProRegisRepBot.setText("Pro. Registradas");
+        ProRegisRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProRegisRepBotActionPerformed(evt);
+            }
+        });
+
+        ClientesRepBot.setText("Clientes");
+        ClientesRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClientesRepBotActionPerformed(evt);
+            }
+        });
+
+        VisitasRepBot.setText("Visitas");
+        VisitasRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VisitasRepBotActionPerformed(evt);
+            }
+        });
+
+        ReportesBasicosRepBot.setText("Reportes Basicos");
+        ReportesBasicosRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReportesBasicosRepBotActionPerformed(evt);
+            }
+        });
+
+        OpcionesRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OpcionesRepBotActionPerformed(evt);
+            }
+        });
+
+        VolverRepBot.setText("Volver");
+        VolverRepBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverRepBotActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ReportesBotPanLayout = new javax.swing.GroupLayout(ReportesBotPan);
+        ReportesBotPan.setLayout(ReportesBotPanLayout);
+        ReportesBotPanLayout.setHorizontalGroup(
+            ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReportesBotPanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ReportesBotPanLayout.createSequentialGroup()
+                        .addComponent(VolverRepBot)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(OpcionesRepBot))
+                    .addGroup(ReportesBotPanLayout.createSequentialGroup()
+                        .addComponent(ProDispoRepBot)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(IngresoComiRepBot)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ContVencerRepBot)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ProRegisRepBot)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ClientesRepBot)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(VisitasRepBot)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ReportesBasicosRepBot)))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        ReportesBotPanLayout.setVerticalGroup(
+            ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportesBotPanLayout.createSequentialGroup()
+                .addContainerGap(49, Short.MAX_VALUE)
+                .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ProDispoRepBot)
+                    .addComponent(IngresoComiRepBot)
+                    .addComponent(ContVencerRepBot)
+                    .addComponent(ProRegisRepBot)
+                    .addComponent(ClientesRepBot)
+                    .addComponent(VisitasRepBot)
+                    .addComponent(ReportesBasicosRepBot))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(VolverRepBot)
+                    .addComponent(OpcionesRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        AdminBotones.add(ReportesBotPan, "card6");
 
         AgeBotPan.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -199,10 +406,10 @@ jTable1.setModel(modelo);
             }
         });
 
-        PropiedadesAgeBot.setText("Propiedades");
-        PropiedadesAgeBot.addActionListener(new java.awt.event.ActionListener() {
+        ArriendosAgeBot.setText("Arriendos");
+        ArriendosAgeBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PropiedadesAgeBotActionPerformed(evt);
+                ArriendosAgeBotActionPerformed(evt);
             }
         });
 
@@ -218,14 +425,14 @@ jTable1.setModel(modelo);
             AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AgeBotPanLayout.createSequentialGroup()
                 .addGap(151, 151, 151)
-                .addComponent(PropiedadesAgeBot)
+                .addComponent(ArriendosAgeBot)
                 .addGap(18, 18, 18)
                 .addComponent(VisitasAgeBot)
                 .addGap(18, 18, 18)
                 .addComponent(ClientesAgeBot)
                 .addGap(18, 18, 18)
                 .addComponent(SeguimientoAgeBot)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
                 .addComponent(OpcionesAgeBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -242,7 +449,7 @@ jTable1.setModel(modelo);
                             .addComponent(SeguimientoAgeBot)
                             .addComponent(ClientesAgeBot)
                             .addComponent(VisitasAgeBot)
-                            .addComponent(PropiedadesAgeBot))))
+                            .addComponent(ArriendosAgeBot))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -297,7 +504,7 @@ jTable1.setModel(modelo);
                 .addComponent(ContratosClieBot)
                 .addGap(18, 18, 18)
                 .addComponent(PagosClieBot)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48))
         );
@@ -320,7 +527,7 @@ jTable1.setModel(modelo);
 
         AdminBotones.add(ClientesBotPan, "visitante");
 
-        ProBotPan.setBackground(new java.awt.Color(51, 255, 102));
+        PropietarioBotPan.setBackground(new java.awt.Color(51, 255, 102));
 
         PropiedadesProBot.setText("Mis Propiedades");
         PropiedadesProBot.addActionListener(new java.awt.event.ActionListener() {
@@ -356,11 +563,11 @@ jTable1.setModel(modelo);
             }
         });
 
-        javax.swing.GroupLayout ProBotPanLayout = new javax.swing.GroupLayout(ProBotPan);
-        ProBotPan.setLayout(ProBotPanLayout);
-        ProBotPanLayout.setHorizontalGroup(
-            ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProBotPanLayout.createSequentialGroup()
+        javax.swing.GroupLayout PropietarioBotPanLayout = new javax.swing.GroupLayout(PropietarioBotPan);
+        PropietarioBotPan.setLayout(PropietarioBotPanLayout);
+        PropietarioBotPanLayout.setHorizontalGroup(
+            PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PropietarioBotPanLayout.createSequentialGroup()
                 .addGap(164, 164, 164)
                 .addComponent(PropiedadesProBot)
                 .addGap(18, 18, 18)
@@ -369,57 +576,57 @@ jTable1.setModel(modelo);
                 .addComponent(ContratosProBot)
                 .addGap(18, 18, 18)
                 .addComponent(PagosProBot)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
                 .addComponent(OpcionesProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
         );
-        ProBotPanLayout.setVerticalGroup(
-            ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProBotPanLayout.createSequentialGroup()
-                .addGroup(ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ProBotPanLayout.createSequentialGroup()
+        PropietarioBotPanLayout.setVerticalGroup(
+            PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PropietarioBotPanLayout.createSequentialGroup()
+                .addGroup(PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PropietarioBotPanLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(ProBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(PropiedadesProBot)
                             .addComponent(VisitasProBot)
                             .addComponent(ContratosProBot)
                             .addComponent(PagosProBot)))
-                    .addGroup(ProBotPanLayout.createSequentialGroup()
+                    .addGroup(PropietarioBotPanLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(OpcionesProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        AdminBotones.add(ProBotPan, "propietario");
+        AdminBotones.add(PropietarioBotPan, "propietario");
 
         AdminBotPan.setBackground(new java.awt.Color(102, 102, 255));
         AdminBotPan.setOpaque(false);
 
-        ProAdBot.setText("Propiedades");
-        ProAdBot.addActionListener(new java.awt.event.ActionListener() {
+        PropiedadesAdBot.setText("Propiedades");
+        PropiedadesAdBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProAdBotActionPerformed(evt);
+                PropiedadesAdBotActionPerformed(evt);
             }
         });
 
-        CliAdBot.setText("Clientes");
-        CliAdBot.addActionListener(new java.awt.event.ActionListener() {
+        ClientesAdBot.setText("Clientes");
+        ClientesAdBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CliAdBotActionPerformed(evt);
+                ClientesAdBotActionPerformed(evt);
             }
         });
 
-        VisAdBot.setText("Visitas");
-        VisAdBot.addActionListener(new java.awt.event.ActionListener() {
+        VisitasAdBot.setText("Visitas");
+        VisitasAdBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VisAdBotActionPerformed(evt);
+                VisitasAdBotActionPerformed(evt);
             }
         });
 
-        ConAdBot.setText("Contratos");
-        ConAdBot.addActionListener(new java.awt.event.ActionListener() {
+        ContratosAdBot.setText("Contratos");
+        ContratosAdBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConAdBotActionPerformed(evt);
+                ContratosAdBotActionPerformed(evt);
             }
         });
 
@@ -430,17 +637,17 @@ jTable1.setModel(modelo);
             }
         });
 
-        RepAdBot.setText("Reportes");
-        RepAdBot.addActionListener(new java.awt.event.ActionListener() {
+        ReportesAdBot.setText("Reportes");
+        ReportesAdBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RepAdBotActionPerformed(evt);
+                ReportesAdBotActionPerformed(evt);
             }
         });
 
-        UsuAdBot.setText("Usuarios");
-        UsuAdBot.addActionListener(new java.awt.event.ActionListener() {
+        UsuariosAdBot.setText("Usuarios");
+        UsuariosAdBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsuAdBotActionPerformed(evt);
+                UsuariosAdBotActionPerformed(evt);
             }
         });
 
@@ -456,22 +663,22 @@ jTable1.setModel(modelo);
             AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdminBotPanLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addComponent(ProAdBot)
+                .addComponent(PropiedadesAdBot)
                 .addGap(18, 18, 18)
-                .addComponent(CliAdBot)
+                .addComponent(ClientesAdBot)
                 .addGap(18, 18, 18)
-                .addComponent(VisAdBot)
+                .addComponent(VisitasAdBot)
                 .addGap(18, 18, 18)
-                .addComponent(ConAdBot)
+                .addComponent(ContratosAdBot)
                 .addGap(18, 18, 18)
                 .addComponent(PagosAdBot)
                 .addGap(18, 18, 18)
-                .addComponent(RepAdBot)
+                .addComponent(ReportesAdBot)
                 .addGap(18, 18, 18)
-                .addComponent(UsuAdBot)
+                .addComponent(UsuariosAdBot)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(OpcionesAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         AdminBotPanLayout.setVerticalGroup(
             AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,13 +687,13 @@ jTable1.setModel(modelo);
                     .addGroup(AdminBotPanLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ProAdBot)
-                            .addComponent(CliAdBot)
-                            .addComponent(VisAdBot)
-                            .addComponent(ConAdBot)
+                            .addComponent(PropiedadesAdBot)
+                            .addComponent(ClientesAdBot)
+                            .addComponent(VisitasAdBot)
+                            .addComponent(ContratosAdBot)
                             .addComponent(PagosAdBot)
-                            .addComponent(RepAdBot)
-                            .addComponent(UsuAdBot)))
+                            .addComponent(ReportesAdBot)
+                            .addComponent(UsuariosAdBot)))
                     .addGroup(AdminBotPanLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(OpcionesAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -500,22 +707,74 @@ jTable1.setModel(modelo);
         ParentPan.setOpaque(false);
         ParentPan.setLayout(new java.awt.CardLayout());
 
-        ContratosAdPan.setOpaque(false);
+        PropImagenesPan.setOpaque(false);
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton1");
+
+        jButton4.setText("jButton1");
+
+        jButton11.setText("jButton11");
+
+        VolverProBot.setText("Volver");
+        VolverProBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverProBotActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PropImagenesPanLayout = new javax.swing.GroupLayout(PropImagenesPan);
+        PropImagenesPan.setLayout(PropImagenesPanLayout);
+        PropImagenesPanLayout.setHorizontalGroup(
+            PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PropImagenesPanLayout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(374, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropImagenesPanLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(VolverProBot)
+                .addGap(97, 97, 97))
+        );
+        PropImagenesPanLayout.setVerticalGroup(
+            PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PropImagenesPanLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
+                .addComponent(VolverProBot)
+                .addGap(58, 58, 58))
+        );
+
+        ParentPan.add(PropImagenesPan, "card10");
+
+        ContratosPan.setOpaque(false);
+
+        ContratosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Tipo", "Propiedad", "Cliente", "Agente", "Estado", "Valor", "Inicio", "Fin"
+                "ID", "Tipo", "Propiedad", "Cliente", "Agente", "Estado", "Valor", "Inicio", "Fin", "Dias Restantes"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
-        if (jTable4.getColumnModel().getColumnCount() > 0) {
-            jTable4.getColumnModel().getColumn(1).setResizable(false);
+        jScrollPane4.setViewportView(ContratosTable);
+        if (ContratosTable.getColumnModel().getColumnCount() > 0) {
+            ContratosTable.getColumnModel().getColumn(1).setResizable(false);
         }
 
         jButton22.setText("Guardar");
@@ -534,15 +793,15 @@ jTable1.setModel(modelo);
 
         jButton6.setText("Agregar");
 
-        javax.swing.GroupLayout ContratosAdPanLayout = new javax.swing.GroupLayout(ContratosAdPan);
-        ContratosAdPan.setLayout(ContratosAdPanLayout);
-        ContratosAdPanLayout.setHorizontalGroup(
-            ContratosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContratosAdPanLayout.createSequentialGroup()
-                .addContainerGap(179, Short.MAX_VALUE)
+        javax.swing.GroupLayout ContratosPanLayout = new javax.swing.GroupLayout(ContratosPan);
+        ContratosPan.setLayout(ContratosPanLayout);
+        ContratosPanLayout.setHorizontalGroup(
+            ContratosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContratosPanLayout.createSequentialGroup()
+                .addContainerGap(200, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(176, 176, 176))
-            .addGroup(ContratosAdPanLayout.createSequentialGroup()
+            .addGroup(ContratosPanLayout.createSequentialGroup()
                 .addGap(253, 253, 253)
                 .addComponent(jButton23)
                 .addGap(29, 29, 29)
@@ -551,24 +810,24 @@ jTable1.setModel(modelo);
                 .addComponent(jButton6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        ContratosAdPanLayout.setVerticalGroup(
-            ContratosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContratosAdPanLayout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
+        ContratosPanLayout.setVerticalGroup(
+            ContratosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContratosPanLayout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(ContratosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ContratosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton23)
                     .addComponent(jButton22)
                     .addComponent(jButton6))
                 .addGap(16, 16, 16))
         );
 
-        ParentPan.add(ContratosAdPan, "card8");
+        ParentPan.add(ContratosPan, "card8");
 
-        ReportesAdPan.setOpaque(false);
+        ReportesPan.setOpaque(false);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        ReportesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -583,7 +842,7 @@ jTable1.setModel(modelo);
                 "ID", "Tipo Reporte", "Usuario/Empleado", "Estado"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(ReportesTable);
 
         jButton24.setText("Guardar");
         jButton24.addActionListener(new java.awt.event.ActionListener() {
@@ -601,42 +860,42 @@ jTable1.setModel(modelo);
 
         jButton7.setText("Agregar");
 
-        javax.swing.GroupLayout ReportesAdPanLayout = new javax.swing.GroupLayout(ReportesAdPan);
-        ReportesAdPan.setLayout(ReportesAdPanLayout);
-        ReportesAdPanLayout.setHorizontalGroup(
-            ReportesAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ReportesAdPanLayout.createSequentialGroup()
-                .addGroup(ReportesAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ReportesAdPanLayout.createSequentialGroup()
+        javax.swing.GroupLayout ReportesPanLayout = new javax.swing.GroupLayout(ReportesPan);
+        ReportesPan.setLayout(ReportesPanLayout);
+        ReportesPanLayout.setHorizontalGroup(
+            ReportesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReportesPanLayout.createSequentialGroup()
+                .addGroup(ReportesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ReportesPanLayout.createSequentialGroup()
                         .addGap(159, 159, 159)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ReportesAdPanLayout.createSequentialGroup()
+                    .addGroup(ReportesPanLayout.createSequentialGroup()
                         .addGap(245, 245, 245)
                         .addComponent(jButton25)
                         .addGap(29, 29, 29)
                         .addComponent(jButton24)
                         .addGap(18, 18, 18)
                         .addComponent(jButton7)))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
-        ReportesAdPanLayout.setVerticalGroup(
-            ReportesAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ReportesAdPanLayout.createSequentialGroup()
+        ReportesPanLayout.setVerticalGroup(
+            ReportesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReportesPanLayout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(ReportesAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ReportesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton25)
                     .addComponent(jButton24)
                     .addComponent(jButton7))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        ParentPan.add(ReportesAdPan, "card7");
+        ParentPan.add(ReportesPan, "card7");
 
-        UsuariosAdPan.setOpaque(false);
+        UsuariosPan.setOpaque(false);
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        UsuariosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -644,10 +903,10 @@ jTable1.setModel(modelo);
                 {null, null, null, null, null}
             },
             new String [] {
-                "Usuario", "Contraseña", "Nombre", "Apellidos", "Rol"
+                "Usuario", "Contraseña", "Nombres", "Apellidos", "Cargo"
             }
         ));
-        jScrollPane5.setViewportView(jTable5);
+        jScrollPane5.setViewportView(UsuariosTable);
 
         jButton26.setText("Guardar");
         jButton26.addActionListener(new java.awt.event.ActionListener() {
@@ -665,50 +924,50 @@ jTable1.setModel(modelo);
 
         jButton8.setText("Agregar");
 
-        javax.swing.GroupLayout UsuariosAdPanLayout = new javax.swing.GroupLayout(UsuariosAdPan);
-        UsuariosAdPan.setLayout(UsuariosAdPanLayout);
-        UsuariosAdPanLayout.setHorizontalGroup(
-            UsuariosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(UsuariosAdPanLayout.createSequentialGroup()
-                .addGroup(UsuariosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(UsuariosAdPanLayout.createSequentialGroup()
+        javax.swing.GroupLayout UsuariosPanLayout = new javax.swing.GroupLayout(UsuariosPan);
+        UsuariosPan.setLayout(UsuariosPanLayout);
+        UsuariosPanLayout.setHorizontalGroup(
+            UsuariosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UsuariosPanLayout.createSequentialGroup()
+                .addGroup(UsuariosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(UsuariosPanLayout.createSequentialGroup()
                         .addGap(157, 157, 157)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(UsuariosAdPanLayout.createSequentialGroup()
+                    .addGroup(UsuariosPanLayout.createSequentialGroup()
                         .addGap(248, 248, 248)
                         .addComponent(jButton27)
                         .addGap(29, 29, 29)
                         .addComponent(jButton26)
                         .addGap(18, 18, 18)
                         .addComponent(jButton8)))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
-        UsuariosAdPanLayout.setVerticalGroup(
-            UsuariosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UsuariosAdPanLayout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+        UsuariosPanLayout.setVerticalGroup(
+            UsuariosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UsuariosPanLayout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(UsuariosAdPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(UsuariosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton27)
                     .addComponent(jButton26)
                     .addComponent(jButton8))
                 .addGap(17, 17, 17))
         );
 
-        ParentPan.add(UsuariosAdPan, "card6");
+        ParentPan.add(UsuariosPan, "card6");
 
-        ClienPan.setOpaque(false);
+        ClientesPan.setOpaque(false);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        ClientesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellidos", "Correo", "Telefono", "Cedula", "Propiedades"
+                "ID", "Nombres", "Apellidos", "Correo", "Telefono", "Cedula", "Propiedades"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(ClientesTable);
 
         jButton28.setText("Guardar");
         jButton28.addActionListener(new java.awt.event.ActionListener() {
@@ -726,42 +985,42 @@ jTable1.setModel(modelo);
 
         jButton9.setText("Agregar");
 
-        javax.swing.GroupLayout ClienPanLayout = new javax.swing.GroupLayout(ClienPan);
-        ClienPan.setLayout(ClienPanLayout);
-        ClienPanLayout.setHorizontalGroup(
-            ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ClienPanLayout.createSequentialGroup()
-                .addGroup(ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ClienPanLayout.createSequentialGroup()
+        javax.swing.GroupLayout ClientesPanLayout = new javax.swing.GroupLayout(ClientesPan);
+        ClientesPan.setLayout(ClientesPanLayout);
+        ClientesPanLayout.setHorizontalGroup(
+            ClientesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClientesPanLayout.createSequentialGroup()
+                .addGroup(ClientesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ClientesPanLayout.createSequentialGroup()
                         .addGap(255, 255, 255)
                         .addComponent(jButton29)
                         .addGap(29, 29, 29)
                         .addComponent(jButton28)
                         .addGap(18, 18, 18)
                         .addComponent(jButton9))
-                    .addGroup(ClienPanLayout.createSequentialGroup()
+                    .addGroup(ClientesPanLayout.createSequentialGroup()
                         .addGap(130, 130, 130)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
-        ClienPanLayout.setVerticalGroup(
-            ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ClienPanLayout.createSequentialGroup()
+        ClientesPanLayout.setVerticalGroup(
+            ClientesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClientesPanLayout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ClientesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton29)
                     .addComponent(jButton28)
                     .addComponent(jButton9))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        ParentPan.add(ClienPan, "card2");
+        ParentPan.add(ClientesPan, "card2");
 
-        PropiPan.setOpaque(false);
+        PropiedadesPan.setOpaque(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PropiedadesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"", "", null, null, null, null, null},
                 {"", "", null, null, null, null, null},
@@ -774,7 +1033,7 @@ jTable1.setModel(modelo);
                 "ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(PropiedadesTable);
 
         jButton17.setText("Editar");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
@@ -792,43 +1051,53 @@ jTable1.setModel(modelo);
 
         jButton5.setText("Agregar");
 
-        javax.swing.GroupLayout PropiPanLayout = new javax.swing.GroupLayout(PropiPan);
-        PropiPan.setLayout(PropiPanLayout);
-        PropiPanLayout.setHorizontalGroup(
-            PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PropiPanLayout.createSequentialGroup()
-                .addGroup(PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PropiPanLayout.createSequentialGroup()
-                        .addGap(126, 126, 126)
+        VerPropiBot.setText("Ver Propiedades");
+        VerPropiBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerPropiBotActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PropiedadesPanLayout = new javax.swing.GroupLayout(PropiedadesPan);
+        PropiedadesPan.setLayout(PropiedadesPanLayout);
+        PropiedadesPanLayout.setHorizontalGroup(
+            PropiedadesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PropiedadesPanLayout.createSequentialGroup()
+                .addGroup(PropiedadesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PropiedadesPanLayout.createSequentialGroup()
+                        .addGap(143, 143, 143)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PropiPanLayout.createSequentialGroup()
+                    .addGroup(PropiedadesPanLayout.createSequentialGroup()
                         .addGap(237, 237, 237)
                         .addComponent(jButton17)
                         .addGap(29, 29, 29)
                         .addComponent(jButton21)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5)))
-                .addContainerGap(139, Short.MAX_VALUE))
+                        .addComponent(jButton5)
+                        .addGap(18, 18, 18)
+                        .addComponent(VerPropiBot)))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
-        PropiPanLayout.setVerticalGroup(
-            PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropiPanLayout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
+        PropiedadesPanLayout.setVerticalGroup(
+            PropiedadesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropiedadesPanLayout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(PropiPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(PropiedadesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton17)
                     .addComponent(jButton21)
-                    .addComponent(jButton5))
+                    .addComponent(jButton5)
+                    .addComponent(VerPropiBot))
                 .addGap(13, 13, 13))
         );
 
-        ParentPan.add(PropiPan, "card5");
+        ParentPan.add(PropiedadesPan, "card5");
 
         PagosPan.setBackground(new java.awt.Color(51, 255, 102));
         PagosPan.setOpaque(false);
 
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+        PagosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -839,7 +1108,7 @@ jTable1.setModel(modelo);
                 "ID de Pago", "Motivo Pago", "Propiedad", "Cliente", "Monto", "Estado", "Método de pago", "Agente"
             }
         ));
-        jScrollPane6.setViewportView(jTable6);
+        jScrollPane6.setViewportView(PagosTable);
 
         jButton30.setText("Guardar");
         jButton30.addActionListener(new java.awt.event.ActionListener() {
@@ -873,7 +1142,7 @@ jTable1.setModel(modelo);
                     .addGroup(PagosPanLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         PagosPanLayout.setVerticalGroup(
             PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -885,14 +1154,14 @@ jTable1.setModel(modelo);
                     .addComponent(jButton31)
                     .addComponent(jButton30)
                     .addComponent(jButton10))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         ParentPan.add(PagosPan, "card4");
 
         VisitasPan.setOpaque(false);
 
-        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+        VisitasTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -900,10 +1169,10 @@ jTable1.setModel(modelo);
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID Visita", "Fecha", "Cliente", "Agente", "Propiedad", "Estado"
+                "ID Visita", "Fecha", "Cliente", "Agente", "Arriendos", "Estado"
             }
         ));
-        jScrollPane7.setViewportView(jTable7);
+        jScrollPane7.setViewportView(VisitasTable);
 
         jButton32.setText("Guardar");
         jButton32.addActionListener(new java.awt.event.ActionListener() {
@@ -937,12 +1206,12 @@ jTable1.setModel(modelo);
                         .addComponent(jButton32)
                         .addGap(18, 18, 18)
                         .addComponent(jButton34)))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         VisitasPanLayout.setVerticalGroup(
             VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VisitasPanLayout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -954,19 +1223,53 @@ jTable1.setModel(modelo);
 
         ParentPan.add(VisitasPan, "card3");
 
+        ReportesBasicosPan.setOpaque(false);
+
+        ReportesBasicosTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Fecha", "Propiedad", "Cliente", "Agente", "Valor Venta", "Comision", "Ingreso Neto"
+            }
+        ));
+        jScrollPane8.setViewportView(ReportesBasicosTable);
+
+        javax.swing.GroupLayout ReportesBasicosPanLayout = new javax.swing.GroupLayout(ReportesBasicosPan);
+        ReportesBasicosPan.setLayout(ReportesBasicosPanLayout);
+        ReportesBasicosPanLayout.setHorizontalGroup(
+            ReportesBasicosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReportesBasicosPanLayout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(163, Short.MAX_VALUE))
+        );
+        ReportesBasicosPanLayout.setVerticalGroup(
+            ReportesBasicosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReportesBasicosPanLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        ParentPan.add(ReportesBasicosPan, "card9");
+
         getContentPane().add(ParentPan, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CliAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CliAdBotActionPerformed
+    private void ClientesAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesAdBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(ClienPan);
+        ParentPan.add(ClientesPan);
         ParentPan.repaint();
         ParentPan.revalidate();
-    }//GEN-LAST:event_CliAdBotActionPerformed
+    }//GEN-LAST:event_ClientesAdBotActionPerformed
 
-    private void ProAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProAdBotActionPerformed
+    private void PropiedadesAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesAdBotActionPerformed
  DefaultTableModel modelo = new DefaultTableModel(
     new Object[]{"ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario", "Agente"}, 
     0
@@ -986,27 +1289,27 @@ for (Propiedades casa : Propiedades.listaCasas) {
 }
 
 // Aplica el modelo a la tabla
-jTable1.setModel(modelo);
+PropiedadesTable.setModel(modelo);
         ParentPan.removeAll();
-        ParentPan.add(PropiPan);
+        ParentPan.add(PropiedadesPan);
         ParentPan.repaint();
         ParentPan.revalidate();
-    }//GEN-LAST:event_ProAdBotActionPerformed
+    }//GEN-LAST:event_PropiedadesAdBotActionPerformed
 
-    private void VisAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisAdBotActionPerformed
+    private void VisitasAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisitasAdBotActionPerformed
         ParentPan.removeAll();
         ParentPan.add(VisitasPan);
         ParentPan.repaint();
         ParentPan.revalidate();
         
-    }//GEN-LAST:event_VisAdBotActionPerformed
+    }//GEN-LAST:event_VisitasAdBotActionPerformed
 
-    private void ConAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConAdBotActionPerformed
+    private void ContratosAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratosAdBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(ContratosAdPan);
+        ParentPan.add(ContratosPan);
         ParentPan.repaint();
         ParentPan.revalidate();
-    }//GEN-LAST:event_ConAdBotActionPerformed
+    }//GEN-LAST:event_ContratosAdBotActionPerformed
 
     private void PagosAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagosAdBotActionPerformed
         ParentPan.removeAll();
@@ -1015,29 +1318,29 @@ jTable1.setModel(modelo);
         ParentPan.revalidate();
     }//GEN-LAST:event_PagosAdBotActionPerformed
 
-    private void RepAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepAdBotActionPerformed
-        ParentPan.removeAll();
-        ParentPan.add(ReportesAdPan);
-        ParentPan.repaint();
-        ParentPan.revalidate();
-    }//GEN-LAST:event_RepAdBotActionPerformed
+    private void ReportesAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportesAdBotActionPerformed
+        AdminBotones.removeAll();
+        AdminBotones.add(ReportesBotPan);
+        AdminBotones.repaint();
+        AdminBotones.revalidate();
+    }//GEN-LAST:event_ReportesAdBotActionPerformed
 
-    private void UsuAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuAdBotActionPerformed
+    private void UsuariosAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosAdBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(UsuariosAdPan);
+        ParentPan.add(UsuariosPan);
         ParentPan.repaint();
         ParentPan.revalidate();
-    }//GEN-LAST:event_UsuAdBotActionPerformed
+    }//GEN-LAST:event_UsuariosAdBotActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
  modelo.setEditable(false);
-jTable1.repaint();
+PropiedadesTable.repaint();
 JOptionPane.showMessageDialog(this, "Cambios guardados.");
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
 modelo.setEditable(true);
-jTable1.repaint();
+PropiedadesTable.repaint();
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
@@ -1089,42 +1392,42 @@ jTable1.repaint();
     }//GEN-LAST:event_jButton33ActionPerformed
 
     private void OpcionesAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesAdBotActionPerformed
-    iniciosesion Devolver = new iniciosesion();
+    
     Devolver.setVisible(true);
     this.setVisible(false);
     }//GEN-LAST:event_OpcionesAdBotActionPerformed
 
     private void OpcionesProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesProBotActionPerformed
-        iniciosesion Devolver = new iniciosesion();
+        
     Devolver.setVisible(true);
     this.setVisible(false);
     }//GEN-LAST:event_OpcionesProBotActionPerformed
 
     private void OpcionesClieBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesClieBotActionPerformed
-        iniciosesion Devolver = new iniciosesion();
+        
     Devolver.setVisible(true);
     this.setVisible(false);
     }//GEN-LAST:event_OpcionesClieBotActionPerformed
 
     private void OpcionesAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesAgeBotActionPerformed
-        iniciosesion Devolver = new iniciosesion();
+        
     Devolver.setVisible(true);
     this.setVisible(false);
     }//GEN-LAST:event_OpcionesAgeBotActionPerformed
 
     private void PropiedadesProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesProBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(PropiPan);
+        ParentPan.add(PropiedadesPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_PropiedadesProBotActionPerformed
 
-    private void PropiedadesAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesAgeBotActionPerformed
+    private void ArriendosAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArriendosAgeBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(PropiPan);
+        ParentPan.add(PropiedadesPan);
         ParentPan.repaint();
         ParentPan.revalidate();
-    }//GEN-LAST:event_PropiedadesAgeBotActionPerformed
+    }//GEN-LAST:event_ArriendosAgeBotActionPerformed
 
     private void VisitasAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisitasAgeBotActionPerformed
         ParentPan.removeAll();
@@ -1135,18 +1438,21 @@ jTable1.repaint();
 
     private void ClientesAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesAgeBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(ClienPan);
+        ParentPan.add(ClientesPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_ClientesAgeBotActionPerformed
 
     private void SeguimientoAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeguimientoAgeBotActionPerformed
-        // TODO add your handling code here:
+        AdminBotones.removeAll();
+        AdminBotones.add(RepAgeBotPan);
+        AdminBotones.repaint();
+        AdminBotones.revalidate();
     }//GEN-LAST:event_SeguimientoAgeBotActionPerformed
 
     private void PropiedadesClieBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesClieBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(PropiPan);
+        ParentPan.add(PropiedadesPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_PropiedadesClieBotActionPerformed
@@ -1160,7 +1466,7 @@ jTable1.repaint();
 
     private void ContratosClieBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratosClieBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(ContratosAdPan);
+        ParentPan.add(ContratosPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_ContratosClieBotActionPerformed
@@ -1181,7 +1487,7 @@ jTable1.repaint();
 
     private void ContratosProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratosProBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(ContratosAdPan);
+        ParentPan.add(ContratosPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_ContratosProBotActionPerformed
@@ -1192,6 +1498,115 @@ jTable1.repaint();
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_PagosProBotActionPerformed
+
+    private void ProDisAgeRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProDisAgeRepBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(PropiedadesPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_ProDisAgeRepBotActionPerformed
+
+    private void CliAgeRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CliAgeRepBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(ClientesPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_CliAgeRepBotActionPerformed
+
+    private void VisAgeRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisAgeRepBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(VisitasPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_VisAgeRepBotActionPerformed
+
+    private void VolverAgeRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverAgeRepBotActionPerformed
+        AdminBotones.removeAll();
+        AdminBotones.add(AgeBotPan);
+        AdminBotones.repaint();
+        AdminBotones.revalidate();
+    }//GEN-LAST:event_VolverAgeRepBotActionPerformed
+
+    private void OpciAgeRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpciAgeRepBotActionPerformed
+        
+    Devolver.setVisible(true);
+    this.setVisible(false);
+    }//GEN-LAST:event_OpciAgeRepBotActionPerformed
+
+    private void ProDispoRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProDispoRepBotActionPerformed
+    ParentPan.removeAll();
+    ParentPan.add(PropiedadesPan);
+    ParentPan.repaint();
+    ParentPan.revalidate();    
+    }//GEN-LAST:event_ProDispoRepBotActionPerformed
+
+    private void IngresoComiRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresoComiRepBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(ReportesBasicosPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_IngresoComiRepBotActionPerformed
+
+    private void ContVencerRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContVencerRepBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(ContratosPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_ContVencerRepBotActionPerformed
+
+    private void ProRegisRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProRegisRepBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(PropiedadesPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_ProRegisRepBotActionPerformed
+
+    private void ClientesRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesRepBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(ClientesPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_ClientesRepBotActionPerformed
+
+    private void VisitasRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisitasRepBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(VisitasPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_VisitasRepBotActionPerformed
+
+    private void ReportesBasicosRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportesBasicosRepBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(ReportesPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_ReportesBasicosRepBotActionPerformed
+
+    private void VolverRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverRepBotActionPerformed
+        AdminBotones.removeAll();
+        AdminBotones.add(AdminBotPan);
+        AdminBotones.repaint();
+        AdminBotones.revalidate();
+    }//GEN-LAST:event_VolverRepBotActionPerformed
+
+    private void OpcionesRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesRepBotActionPerformed
+        Devolver.setVisible(true);
+    this.setVisible(false);
+    }//GEN-LAST:event_OpcionesRepBotActionPerformed
+
+    private void VerPropiBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerPropiBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(PropImagenesPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_VerPropiBotActionPerformed
+
+    private void VolverProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverProBotActionPerformed
+        ParentPan.removeAll();
+        ParentPan.add(PropiedadesPan);
+        ParentPan.repaint();
+        ParentPan.revalidate();
+    }//GEN-LAST:event_VolverProBotActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1232,41 +1647,72 @@ jTable1.repaint();
     private javax.swing.JPanel AdminBotPan;
     private javax.swing.JPanel AdminBotones;
     private javax.swing.JPanel AgeBotPan;
-    private javax.swing.JButton CliAdBot;
-    private javax.swing.JPanel ClienPan;
+    private javax.swing.JButton ArriendosAgeBot;
+    private javax.swing.JButton CliAgeRepBot;
+    private javax.swing.JButton ClientesAdBot;
     private javax.swing.JButton ClientesAgeBot;
     private javax.swing.JPanel ClientesBotPan;
-    private javax.swing.JButton ConAdBot;
-    private javax.swing.JPanel ContratosAdPan;
+    private javax.swing.JPanel ClientesPan;
+    private javax.swing.JButton ClientesRepBot;
+    private javax.swing.JTable ClientesTable;
+    private javax.swing.JButton ContVencerRepBot;
+    private javax.swing.JButton ContratosAdBot;
     private javax.swing.JButton ContratosClieBot;
+    private javax.swing.JPanel ContratosPan;
     private javax.swing.JButton ContratosProBot;
+    private javax.swing.JTable ContratosTable;
+    private javax.swing.JButton IngresoComiRepBot;
+    private javax.swing.JButton OpciAgeRepBot;
     private javax.swing.JButton OpcionesAdBot;
     private javax.swing.JButton OpcionesAgeBot;
     private javax.swing.JButton OpcionesClieBot;
     private javax.swing.JButton OpcionesProBot;
+    private javax.swing.JButton OpcionesRepBot;
     private javax.swing.JButton PagosAdBot;
     private javax.swing.JButton PagosClieBot;
     private javax.swing.JPanel PagosPan;
     private javax.swing.JButton PagosProBot;
+    private javax.swing.JTable PagosTable;
     private javax.swing.JPanel ParentPan;
-    private javax.swing.JButton ProAdBot;
-    private javax.swing.JPanel ProBotPan;
-    private javax.swing.JPanel PropiPan;
-    private javax.swing.JButton PropiedadesAgeBot;
+    private javax.swing.JButton ProDisAgeRepBot;
+    private javax.swing.JButton ProDispoRepBot;
+    private javax.swing.JButton ProRegisRepBot;
+    private javax.swing.JPanel PropImagenesPan;
+    private javax.swing.JButton PropiedadesAdBot;
     private javax.swing.JButton PropiedadesClieBot;
+    private javax.swing.JPanel PropiedadesPan;
     private javax.swing.JButton PropiedadesProBot;
-    private javax.swing.JButton RepAdBot;
-    private javax.swing.JPanel ReportesAdPan;
+    private javax.swing.JTable PropiedadesTable;
+    private javax.swing.JPanel PropietarioBotPan;
+    private javax.swing.JPanel RepAgeBotPan;
+    private javax.swing.JButton ReportesAdBot;
+    private javax.swing.JPanel ReportesBasicosPan;
+    private javax.swing.JButton ReportesBasicosRepBot;
+    private javax.swing.JTable ReportesBasicosTable;
+    private javax.swing.JPanel ReportesBotPan;
+    private javax.swing.JPanel ReportesPan;
+    private javax.swing.JTable ReportesTable;
     private javax.swing.JButton SeguimientoAgeBot;
-    private javax.swing.JButton UsuAdBot;
-    private javax.swing.JPanel UsuariosAdPan;
-    private javax.swing.JButton VisAdBot;
+    private javax.swing.JButton UsuariosAdBot;
+    private javax.swing.JPanel UsuariosPan;
+    private javax.swing.JTable UsuariosTable;
+    private javax.swing.JButton VerPropiBot;
+    private javax.swing.JButton VisAgeRepBot;
+    private javax.swing.JButton VisitasAdBot;
     private javax.swing.JButton VisitasAgeBot;
     private javax.swing.JButton VisitasClieBot;
     private javax.swing.JPanel VisitasPan;
     private javax.swing.JButton VisitasProBot;
+    private javax.swing.JButton VisitasRepBot;
+    private javax.swing.JTable VisitasTable;
+    private javax.swing.JButton VolverAgeRepBot;
+    private javax.swing.JButton VolverProBot;
+    private javax.swing.JButton VolverRepBot;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
@@ -1281,6 +1727,7 @@ jTable1.repaint();
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -1293,13 +1740,7 @@ jTable1.repaint();
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
-    private javax.swing.JTable jTable6;
-    private javax.swing.JTable jTable7;
+    private javax.swing.JScrollPane jScrollPane8;
     // End of variables declaration//GEN-END:variables
 class FondoPanel extends JPanel {
     private Image imagen;
