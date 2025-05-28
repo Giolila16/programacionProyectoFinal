@@ -190,6 +190,8 @@ public class iniciosesion extends javax.swing.JFrame {
     return;
 }
 
+   
+   
         Administrador admin = new Administrador();
         admin.setVisible(true);
         this.setVisible(false);
