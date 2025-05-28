@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -183,6 +184,11 @@ public class iniciosesion extends javax.swing.JFrame {
     private void InicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioSesionActionPerformed
    Usuarios cargoSeleccionado = (Usuarios) CargoCombo.getSelectedItem();
    Metodos.setCargo(cargoSeleccionado);
+   
+   if (cargoSeleccionado.getNombreCargo().equals("--Seleccione Cargo--")) {
+    JOptionPane.showMessageDialog(null, "Por favor, seleccione un cargo válido.");
+    return;
+}
 
         Administrador admin = new Administrador();
         admin.setVisible(true);

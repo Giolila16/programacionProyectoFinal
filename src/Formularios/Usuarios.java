@@ -36,6 +36,7 @@ public class Usuarios {
 
     public static List<Usuarios> obtenerCargos() {
         List<Usuarios> lista = new ArrayList<>();
+        lista.add(new Usuarios("--Seleccione Cargo--"));
         lista.add(new Usuarios("Administrador"));
         lista.add(new Usuarios("Agente"));
         lista.add(new Usuarios("Propietario"));
