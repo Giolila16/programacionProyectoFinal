@@ -26,7 +26,7 @@ public class Administrador extends javax.swing.JFrame {
 
     Administrador.FondoPanel fondo = new Administrador.FondoPanel();
     private void llenarComboBoxConIDs() {
-    ImagenesCombo.removeAllItems(); // Limpia por si acaso
+    ImagenesCombo.removeAllItems(); 
     for (Propiedades casa : Propiedades.listaCasas) {
         ImagenesCombo.addItem(casa.getId());
     }
@@ -37,8 +37,13 @@ public class Administrador extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         Propiedades.cargarCasasEjemplo();
         mostrarPanelSegunCargo();
-        Propiedades.cargarCasasEjemplo(); // Llena el ArrayList
-    llenarComboBoxConIDs();
+        ImagUnoLbl.setIcon(null);
+         ImagenesCombo.addItem("-- Seleccione una propiedad --");
+    for (Propiedades casa : Propiedades.listaCasas) {
+        ImagenesCombo.addItem(casa.getId());
+    }
+        Propiedades.cargarCasasEjemplo(); 
+ 
         
         DefaultTableModel modelo = new DefaultTableModel(
     new Object[]{"ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario", "Agente"}, 
@@ -73,22 +78,23 @@ PropiedadesTable.setModel(modelo);
         
         setContentPane(fondo);
     }
+    
   private void mostrarImagenSegunID() {
     String idSeleccionado = (String) ImagenesCombo.getSelectedItem();
     if (idSeleccionado == null) return;
 
-    String ruta = "/imagenes/" + idSeleccionado + ".jpg"; // Cambia por .png si es necesario
+    String ruta = "/imagenes/" + idSeleccionado + ".jpg"; 
     try {
         URL recurso = getClass().getResource(ruta);
         if (recurso != null) {
             ImageIcon iconoOriginal = new ImageIcon(recurso);
-            // Escalamos la imagen al tamaño del JLabel
+           
             Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(
                 ImagUnoLbl.getWidth(),
                 ImagUnoLbl.getHeight(),
                 Image.SCALE_SMOOTH
             );
-            // Creamos un nuevo Icon con la imagen escalada
+       
             ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
             ImagUnoLbl.setIcon(iconoEscalado);
         } else {
@@ -99,6 +105,7 @@ PropiedadesTable.setModel(modelo);
         ImagUnoLbl.setIcon(null);
         System.out.println("Error al cargar la imagen: " + e.getMessage());
     }
+    if (idSeleccionado == null || idSeleccionado.equals("-- Seleccione una propiedad --")) return;
 }
     iniciosesion Devolver = new iniciosesion();
     
@@ -751,8 +758,6 @@ PropiedadesTable.setModel(modelo);
             }
         });
 
-        ImagUnoLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         javax.swing.GroupLayout PropImagenesPanLayout = new javax.swing.GroupLayout(PropImagenesPan);
         PropImagenesPan.setLayout(PropImagenesPanLayout);
         PropImagenesPanLayout.setHorizontalGroup(
@@ -762,13 +767,10 @@ PropiedadesTable.setModel(modelo);
                 .addComponent(VolverProBot)
                 .addGap(97, 97, 97))
             .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                        .addGap(351, 351, 351)
-                        .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                        .addGap(300, 300, 300)
-                        .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(300, 300, 300)
+                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ImagUnoLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                    .addComponent(ImagenesCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PropImagenesPanLayout.setVerticalGroup(
@@ -776,9 +778,9 @@ PropiedadesTable.setModel(modelo);
             .addGroup(PropImagenesPanLayout.createSequentialGroup()
                 .addContainerGap(143, Short.MAX_VALUE)
                 .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addGap(83, 83, 83)
                 .addComponent(VolverProBot)
                 .addGap(58, 58, 58))
         );
