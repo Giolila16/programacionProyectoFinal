@@ -189,6 +189,7 @@ PropiedadesTable.setModel(modelo);
         UsuariosAdBot = new javax.swing.JButton();
         OpcionesAdBot = new javax.swing.JButton();
         ParentPan = new javax.swing.JPanel();
+        VacioPan = new javax.swing.JPanel();
         PropImagenesPan = new javax.swing.JPanel();
         VolverProBot = new javax.swing.JButton();
         ImagenesCombo = new javax.swing.JComboBox<>();
@@ -742,6 +743,21 @@ PropiedadesTable.setModel(modelo);
 
         ParentPan.setOpaque(false);
         ParentPan.setLayout(new java.awt.CardLayout());
+
+        VacioPan.setOpaque(false);
+
+        javax.swing.GroupLayout VacioPanLayout = new javax.swing.GroupLayout(VacioPan);
+        VacioPan.setLayout(VacioPanLayout);
+        VacioPanLayout.setHorizontalGroup(
+            VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 828, Short.MAX_VALUE)
+        );
+        VacioPanLayout.setVerticalGroup(
+            VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 529, Short.MAX_VALUE)
+        );
+
+        ParentPan.add(VacioPan, "card11");
 
         PropImagenesPan.setOpaque(false);
 
@@ -1730,6 +1746,7 @@ PropiedadesTable.repaint();
     private javax.swing.JButton UsuariosAdBot;
     private javax.swing.JPanel UsuariosPan;
     private javax.swing.JTable UsuariosTable;
+    private javax.swing.JPanel VacioPan;
     private javax.swing.JButton VerPropiBot;
     private javax.swing.JButton VisAgeRepBot;
     private javax.swing.JButton VisitasAdBot;
