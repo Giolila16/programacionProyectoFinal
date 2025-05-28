@@ -22,6 +22,7 @@ public class Inicio extends javax.swing.JFrame {
         this.setContentPane(fondo);
         initComponents();
         this.setLocationRelativeTo(this);
+        setTitle("Imbobiliaria Machape, :)");
     }
 
     /**

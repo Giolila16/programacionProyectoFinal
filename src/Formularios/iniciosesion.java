@@ -23,6 +23,7 @@ public class iniciosesion extends javax.swing.JFrame {
         this.setContentPane(fondo);
         initComponents();
         this.setLocationRelativeTo(this);
+        setTitle("Ingresa tu Usuario, Contraseña y tu Cargo para poder brindarte una ayuda mas personalizada");
         cargarCargos();
         
         
@@ -98,6 +99,7 @@ public class iniciosesion extends javax.swing.JFrame {
 
         jPanel1.setOpaque(false);
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo_machape_editado.png"))); // NOI18N
         jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
 
         UsuarioText.addActionListener(new java.awt.event.ActionListener() {

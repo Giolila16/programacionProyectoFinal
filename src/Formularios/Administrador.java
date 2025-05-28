@@ -28,6 +28,7 @@ public class Administrador extends javax.swing.JFrame {
     public Administrador() {
         
         initComponents();
+        this.setLocationRelativeTo(this);
         Propiedades.cargarCasasEjemplo();
         mostrarPanelSegunCargo();
         
@@ -128,14 +129,6 @@ jTable1.setModel(modelo);
         UsuAdBot = new javax.swing.JButton();
         OpcionesAdBot = new javax.swing.JButton();
         ParentPan = new javax.swing.JPanel();
-        PagosProPan = new javax.swing.JPanel();
-        PropiedadesProPan = new javax.swing.JPanel();
-        PagosCliePan = new javax.swing.JPanel();
-        MisContratosCliePan = new javax.swing.JPanel();
-        VisitasCliePan = new javax.swing.JPanel();
-        BuscarProCliePan = new javax.swing.JPanel();
-        ClientesAgePan = new javax.swing.JPanel();
-        VisitasAgePan = new javax.swing.JPanel();
         ContratosAdPan = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
@@ -507,124 +500,23 @@ jTable1.setModel(modelo);
         ParentPan.setOpaque(false);
         ParentPan.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout PagosProPanLayout = new javax.swing.GroupLayout(PagosProPan);
-        PagosProPan.setLayout(PagosProPanLayout);
-        PagosProPanLayout.setHorizontalGroup(
-            PagosProPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 807, Short.MAX_VALUE)
-        );
-        PagosProPanLayout.setVerticalGroup(
-            PagosProPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
-        );
-
-        ParentPan.add(PagosProPan, "card16");
-
-        javax.swing.GroupLayout PropiedadesProPanLayout = new javax.swing.GroupLayout(PropiedadesProPan);
-        PropiedadesProPan.setLayout(PropiedadesProPanLayout);
-        PropiedadesProPanLayout.setHorizontalGroup(
-            PropiedadesProPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 807, Short.MAX_VALUE)
-        );
-        PropiedadesProPanLayout.setVerticalGroup(
-            PropiedadesProPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
-        );
-
-        ParentPan.add(PropiedadesProPan, "card15");
-
-        javax.swing.GroupLayout PagosCliePanLayout = new javax.swing.GroupLayout(PagosCliePan);
-        PagosCliePan.setLayout(PagosCliePanLayout);
-        PagosCliePanLayout.setHorizontalGroup(
-            PagosCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 807, Short.MAX_VALUE)
-        );
-        PagosCliePanLayout.setVerticalGroup(
-            PagosCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
-        );
-
-        ParentPan.add(PagosCliePan, "card14");
-
-        javax.swing.GroupLayout MisContratosCliePanLayout = new javax.swing.GroupLayout(MisContratosCliePan);
-        MisContratosCliePan.setLayout(MisContratosCliePanLayout);
-        MisContratosCliePanLayout.setHorizontalGroup(
-            MisContratosCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 807, Short.MAX_VALUE)
-        );
-        MisContratosCliePanLayout.setVerticalGroup(
-            MisContratosCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
-        );
-
-        ParentPan.add(MisContratosCliePan, "card13");
-
-        javax.swing.GroupLayout VisitasCliePanLayout = new javax.swing.GroupLayout(VisitasCliePan);
-        VisitasCliePan.setLayout(VisitasCliePanLayout);
-        VisitasCliePanLayout.setHorizontalGroup(
-            VisitasCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 807, Short.MAX_VALUE)
-        );
-        VisitasCliePanLayout.setVerticalGroup(
-            VisitasCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
-        );
-
-        ParentPan.add(VisitasCliePan, "card12");
-
-        javax.swing.GroupLayout BuscarProCliePanLayout = new javax.swing.GroupLayout(BuscarProCliePan);
-        BuscarProCliePan.setLayout(BuscarProCliePanLayout);
-        BuscarProCliePanLayout.setHorizontalGroup(
-            BuscarProCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 807, Short.MAX_VALUE)
-        );
-        BuscarProCliePanLayout.setVerticalGroup(
-            BuscarProCliePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
-        );
-
-        ParentPan.add(BuscarProCliePan, "card11");
-
-        javax.swing.GroupLayout ClientesAgePanLayout = new javax.swing.GroupLayout(ClientesAgePan);
-        ClientesAgePan.setLayout(ClientesAgePanLayout);
-        ClientesAgePanLayout.setHorizontalGroup(
-            ClientesAgePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 807, Short.MAX_VALUE)
-        );
-        ClientesAgePanLayout.setVerticalGroup(
-            ClientesAgePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
-        );
-
-        ParentPan.add(ClientesAgePan, "card10");
-
-        javax.swing.GroupLayout VisitasAgePanLayout = new javax.swing.GroupLayout(VisitasAgePan);
-        VisitasAgePan.setLayout(VisitasAgePanLayout);
-        VisitasAgePanLayout.setHorizontalGroup(
-            VisitasAgePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 807, Short.MAX_VALUE)
-        );
-        VisitasAgePanLayout.setVerticalGroup(
-            VisitasAgePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
-        );
-
-        ParentPan.add(VisitasAgePan, "card9");
-
         ContratosAdPan.setOpaque(false);
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Usuario", "Nombre", "Cargo", "Teléfono", "Estado"
+                "ID", "Tipo", "Propiedad", "Cliente", "Agente", "Estado", "Valor", "Inicio", "Fin"
             }
         ));
         jScrollPane4.setViewportView(jTable4);
+        if (jTable4.getColumnModel().getColumnCount() > 0) {
+            jTable4.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jButton22.setText("Guardar");
         jButton22.addActionListener(new java.awt.event.ActionListener() {
@@ -752,7 +644,7 @@ jTable1.setModel(modelo);
                 {null, null, null, null, null}
             },
             new String [] {
-                "Usuario", "Nombre", "Rol", "Telefono", "Estado"
+                "Usuario", "Contraseña", "Nombre", "Apellidos", "Rol"
             }
         ));
         jScrollPane5.setViewportView(jTable5);
@@ -813,7 +705,7 @@ jTable1.setModel(modelo);
 
             },
             new String [] {
-                "ID", "Nombre", "Apellidos", "Correo", "Telefono", "Direccion", "Estado"
+                "ID", "Nombre", "Apellidos", "Correo", "Telefono", "Cedula", "Propiedades"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -841,16 +733,16 @@ jTable1.setModel(modelo);
             .addGroup(ClienPanLayout.createSequentialGroup()
                 .addGroup(ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ClienPanLayout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ClienPanLayout.createSequentialGroup()
                         .addGap(255, 255, 255)
                         .addComponent(jButton29)
                         .addGap(29, 29, 29)
                         .addComponent(jButton28)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton9)))
-                .addContainerGap(192, Short.MAX_VALUE))
+                        .addComponent(jButton9))
+                    .addGroup(ClienPanLayout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         ClienPanLayout.setVerticalGroup(
             ClienPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -871,15 +763,15 @@ jTable1.setModel(modelo);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", "", null, null, null, null, null, null, null},
-                {"", "", null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {"", "", null, null, null, null, null},
+                {"", "", null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario", "Agente", "(Boton)"
+                "ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -938,13 +830,13 @@ jTable1.setModel(modelo);
 
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID de Pago", "Nombre", "Referencia", "Método de pago", "Monto", "Estado", "(Boton)"
+                "ID de Pago", "Motivo Pago", "Propiedad", "Cliente", "Monto", "Estado", "Método de pago", "Agente"
             }
         ));
         jScrollPane6.setViewportView(jTable6);
@@ -972,16 +864,16 @@ jTable1.setModel(modelo);
             .addGroup(PagosPanLayout.createSequentialGroup()
                 .addGroup(PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PagosPanLayout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PagosPanLayout.createSequentialGroup()
                         .addGap(232, 232, 232)
                         .addComponent(jButton31)
                         .addGap(29, 29, 29)
                         .addComponent(jButton30)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton10)))
-                .addContainerGap(206, Short.MAX_VALUE))
+                        .addComponent(jButton10))
+                    .addGroup(PagosPanLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         PagosPanLayout.setVerticalGroup(
             PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1002,13 +894,13 @@ jTable1.setModel(modelo);
 
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID de Contrato", "Propiedad", "Cliente", "Agente", "Tipo", "Monto Total", "Estado"
+                "ID Visita", "Fecha", "Cliente", "Agente", "Propiedad", "Estado"
             }
         ));
         jScrollPane7.setViewportView(jTable7);
@@ -1106,6 +998,7 @@ jTable1.setModel(modelo);
         ParentPan.add(VisitasPan);
         ParentPan.repaint();
         ParentPan.revalidate();
+        
     }//GEN-LAST:event_VisAdBotActionPerformed
 
     private void ConAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConAdBotActionPerformed
@@ -1221,21 +1114,21 @@ jTable1.repaint();
 
     private void PropiedadesProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesProBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(PropiedadesProPan);
+        ParentPan.add(PropiPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_PropiedadesProBotActionPerformed
 
     private void PropiedadesAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesAgeBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(PropiedadesProPan);
+        ParentPan.add(PropiPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_PropiedadesAgeBotActionPerformed
 
     private void VisitasAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisitasAgeBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(VisitasAgePan);
+        ParentPan.add(VisitasPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_VisitasAgeBotActionPerformed
@@ -1253,14 +1146,14 @@ jTable1.repaint();
 
     private void PropiedadesClieBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesClieBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(PropiedadesProPan);
+        ParentPan.add(PropiPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_PropiedadesClieBotActionPerformed
 
     private void VisitasClieBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisitasClieBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(VisitasCliePan);
+        ParentPan.add(VisitasPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_VisitasClieBotActionPerformed
@@ -1274,7 +1167,7 @@ jTable1.repaint();
 
     private void PagosClieBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagosClieBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(PagosCliePan);
+        ParentPan.add(PagosPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_PagosClieBotActionPerformed
@@ -1295,7 +1188,7 @@ jTable1.repaint();
 
     private void PagosProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagosProBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(PagosProPan);
+        ParentPan.add(PagosPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_PagosProBotActionPerformed
@@ -1339,27 +1232,22 @@ jTable1.repaint();
     private javax.swing.JPanel AdminBotPan;
     private javax.swing.JPanel AdminBotones;
     private javax.swing.JPanel AgeBotPan;
-    private javax.swing.JPanel BuscarProCliePan;
     private javax.swing.JButton CliAdBot;
     private javax.swing.JPanel ClienPan;
     private javax.swing.JButton ClientesAgeBot;
-    private javax.swing.JPanel ClientesAgePan;
     private javax.swing.JPanel ClientesBotPan;
     private javax.swing.JButton ConAdBot;
     private javax.swing.JPanel ContratosAdPan;
     private javax.swing.JButton ContratosClieBot;
     private javax.swing.JButton ContratosProBot;
-    private javax.swing.JPanel MisContratosCliePan;
     private javax.swing.JButton OpcionesAdBot;
     private javax.swing.JButton OpcionesAgeBot;
     private javax.swing.JButton OpcionesClieBot;
     private javax.swing.JButton OpcionesProBot;
     private javax.swing.JButton PagosAdBot;
     private javax.swing.JButton PagosClieBot;
-    private javax.swing.JPanel PagosCliePan;
     private javax.swing.JPanel PagosPan;
     private javax.swing.JButton PagosProBot;
-    private javax.swing.JPanel PagosProPan;
     private javax.swing.JPanel ParentPan;
     private javax.swing.JButton ProAdBot;
     private javax.swing.JPanel ProBotPan;
@@ -1367,7 +1255,6 @@ jTable1.repaint();
     private javax.swing.JButton PropiedadesAgeBot;
     private javax.swing.JButton PropiedadesClieBot;
     private javax.swing.JButton PropiedadesProBot;
-    private javax.swing.JPanel PropiedadesProPan;
     private javax.swing.JButton RepAdBot;
     private javax.swing.JPanel ReportesAdPan;
     private javax.swing.JButton SeguimientoAgeBot;
@@ -1375,9 +1262,7 @@ jTable1.repaint();
     private javax.swing.JPanel UsuariosAdPan;
     private javax.swing.JButton VisAdBot;
     private javax.swing.JButton VisitasAgeBot;
-    private javax.swing.JPanel VisitasAgePan;
     private javax.swing.JButton VisitasClieBot;
-    private javax.swing.JPanel VisitasCliePan;
     private javax.swing.JPanel VisitasPan;
     private javax.swing.JButton VisitasProBot;
     private javax.swing.JButton jButton10;
