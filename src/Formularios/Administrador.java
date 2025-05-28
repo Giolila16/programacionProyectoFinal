@@ -105,7 +105,7 @@ PropiedadesTable.setModel(modelo);
         ImagUnoLbl.setIcon(null);
         System.out.println("Error al cargar la imagen: " + e.getMessage());
     }
-    if (idSeleccionado == null || idSeleccionado.equals("-- Seleccione una propiedad --")) return;
+   
 }
     iniciosesion Devolver = new iniciosesion();
     
