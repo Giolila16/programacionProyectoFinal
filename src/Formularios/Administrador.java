@@ -267,6 +267,7 @@ PropiedadesTable.setModel(modelo);
             }
         });
 
+        OpciAgeRepBot.setText("Cerrar Sesion");
         OpciAgeRepBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OpciAgeRepBotActionPerformed(evt);
@@ -278,7 +279,7 @@ PropiedadesTable.setModel(modelo);
         RepAgeBotPanLayout.setHorizontalGroup(
             RepAgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RepAgeBotPanLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addGap(176, 176, 176)
                 .addComponent(ProDisAgeRepBot)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CliAgeRepBot)
@@ -288,19 +289,19 @@ PropiedadesTable.setModel(modelo);
                 .addComponent(VolverAgeRepBot)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OpciAgeRepBot)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         RepAgeBotPanLayout.setVerticalGroup(
             RepAgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RepAgeBotPanLayout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addGroup(RepAgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ProDisAgeRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CliAgeRepBot)
                     .addComponent(VisAgeRepBot)
                     .addComponent(VolverAgeRepBot)
                     .addComponent(OpciAgeRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41))
+                .addGap(43, 43, 43))
         );
 
         AdminBotones.add(RepAgeBotPan, "card7");
@@ -356,6 +357,7 @@ PropiedadesTable.setModel(modelo);
             }
         });
 
+        OpcionesRepBot.setText("Cerrar Sesion");
         OpcionesRepBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OpcionesRepBotActionPerformed(evt);
@@ -374,13 +376,9 @@ PropiedadesTable.setModel(modelo);
         ReportesBotPanLayout.setHorizontalGroup(
             ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ReportesBotPanLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ReportesBotPanLayout.createSequentialGroup()
-                        .addComponent(VolverRepBot)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(OpcionesRepBot))
-                    .addGroup(ReportesBotPanLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(ProDispoRepBot)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(IngresoComiRepBot)
@@ -393,7 +391,12 @@ PropiedadesTable.setModel(modelo);
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(VisitasRepBot)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ReportesBasicosRepBot)))
+                        .addComponent(ReportesBasicosRepBot))
+                    .addGroup(ReportesBotPanLayout.createSequentialGroup()
+                        .addGap(307, 307, 307)
+                        .addComponent(VolverRepBot)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(OpcionesRepBot)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         ReportesBotPanLayout.setVerticalGroup(
@@ -408,11 +411,11 @@ PropiedadesTable.setModel(modelo);
                     .addComponent(ClientesRepBot)
                     .addComponent(VisitasRepBot)
                     .addComponent(ReportesBasicosRepBot))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(VolverRepBot)
-                    .addComponent(OpcionesRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(VolverRepBot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(OpcionesRepBot))
+                .addGap(15, 15, 15))
         );
 
         AdminBotones.add(ReportesBotPan, "card6");
@@ -447,6 +450,7 @@ PropiedadesTable.setModel(modelo);
             }
         });
 
+        OpcionesAgeBot.setText("Cerrar Sesion");
         OpcionesAgeBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OpcionesAgeBotActionPerformed(evt);
@@ -466,25 +470,21 @@ PropiedadesTable.setModel(modelo);
                 .addComponent(ClientesAgeBot)
                 .addGap(18, 18, 18)
                 .addComponent(SeguimientoAgeBot)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
-                .addComponent(OpcionesAgeBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(18, 18, 18)
+                .addComponent(OpcionesAgeBot)
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         AgeBotPanLayout.setVerticalGroup(
             AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AgeBotPanLayout.createSequentialGroup()
-                .addGroup(AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AgeBotPanLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(OpcionesAgeBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(AgeBotPanLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(SeguimientoAgeBot)
-                            .addComponent(ClientesAgeBot)
-                            .addComponent(VisitasAgeBot)
-                            .addComponent(ArriendosAgeBot))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addGroup(AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SeguimientoAgeBot)
+                    .addComponent(ClientesAgeBot)
+                    .addComponent(VisitasAgeBot)
+                    .addComponent(ArriendosAgeBot)
+                    .addComponent(OpcionesAgeBot))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         AdminBotones.add(AgeBotPan, "agente");
@@ -519,6 +519,7 @@ PropiedadesTable.setModel(modelo);
             }
         });
 
+        OpcionesClieBot.setText("Cerrar Sesion");
         OpcionesClieBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OpcionesClieBotActionPerformed(evt);
@@ -530,7 +531,7 @@ PropiedadesTable.setModel(modelo);
         ClientesBotPanLayout.setHorizontalGroup(
             ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ClientesBotPanLayout.createSequentialGroup()
-                .addGap(185, 185, 185)
+                .addGap(127, 127, 127)
                 .addComponent(PropiedadesClieBot)
                 .addGap(18, 18, 18)
                 .addComponent(VisitasClieBot)
@@ -538,25 +539,21 @@ PropiedadesTable.setModel(modelo);
                 .addComponent(ContratosClieBot)
                 .addGap(18, 18, 18)
                 .addComponent(PagosClieBot)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addGap(18, 18, 18)
+                .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         ClientesBotPanLayout.setVerticalGroup(
             ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ClientesBotPanLayout.createSequentialGroup()
-                .addGroup(ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ClientesBotPanLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ContratosClieBot)
-                            .addComponent(PropiedadesClieBot)
-                            .addComponent(VisitasClieBot)
-                            .addComponent(PagosClieBot)))
-                    .addGroup(ClientesBotPanLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addGroup(ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ContratosClieBot)
+                    .addComponent(PropiedadesClieBot)
+                    .addComponent(VisitasClieBot)
+                    .addComponent(PagosClieBot)
+                    .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         AdminBotones.add(ClientesBotPan, "visitante");
@@ -591,6 +588,7 @@ PropiedadesTable.setModel(modelo);
             }
         });
 
+        OpcionesProBot.setText("Cerrar Sesion");
         OpcionesProBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OpcionesProBotActionPerformed(evt);
@@ -602,7 +600,7 @@ PropiedadesTable.setModel(modelo);
         PropietarioBotPanLayout.setHorizontalGroup(
             PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PropietarioBotPanLayout.createSequentialGroup()
-                .addGap(164, 164, 164)
+                .addGap(144, 144, 144)
                 .addComponent(PropiedadesProBot)
                 .addGap(18, 18, 18)
                 .addComponent(VisitasProBot)
@@ -610,25 +608,21 @@ PropiedadesTable.setModel(modelo);
                 .addComponent(ContratosProBot)
                 .addGap(18, 18, 18)
                 .addComponent(PagosProBot)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
-                .addComponent(OpcionesProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addGap(18, 18, 18)
+                .addComponent(OpcionesProBot)
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         PropietarioBotPanLayout.setVerticalGroup(
             PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PropietarioBotPanLayout.createSequentialGroup()
-                .addGroup(PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PropietarioBotPanLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PropiedadesProBot)
-                            .addComponent(VisitasProBot)
-                            .addComponent(ContratosProBot)
-                            .addComponent(PagosProBot)))
-                    .addGroup(PropietarioBotPanLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(OpcionesProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PropiedadesProBot)
+                    .addComponent(VisitasProBot)
+                    .addComponent(ContratosProBot)
+                    .addComponent(PagosProBot)
+                    .addComponent(OpcionesProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         AdminBotones.add(PropietarioBotPan, "propietario");
@@ -685,6 +679,7 @@ PropiedadesTable.setModel(modelo);
             }
         });
 
+        OpcionesAdBot.setText("Cerrar Sesion");
         OpcionesAdBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OpcionesAdBotActionPerformed(evt);
@@ -696,7 +691,7 @@ PropiedadesTable.setModel(modelo);
         AdminBotPanLayout.setHorizontalGroup(
             AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdminBotPanLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(28, 28, 28)
                 .addComponent(PropiedadesAdBot)
                 .addGap(18, 18, 18)
                 .addComponent(ClientesAdBot)
@@ -711,14 +706,17 @@ PropiedadesTable.setModel(modelo);
                 .addGap(18, 18, 18)
                 .addComponent(UsuariosAdBot)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(OpcionesAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addComponent(OpcionesAdBot)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         AdminBotPanLayout.setVerticalGroup(
             AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdminBotPanLayout.createSequentialGroup()
-                .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(AdminBotPanLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(OpcionesAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AdminBotPanLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(PropiedadesAdBot)
@@ -727,11 +725,8 @@ PropiedadesTable.setModel(modelo);
                             .addComponent(ContratosAdBot)
                             .addComponent(PagosAdBot)
                             .addComponent(ReportesAdBot)
-                            .addComponent(UsuariosAdBot)))
-                    .addGroup(AdminBotPanLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(OpcionesAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                            .addComponent(UsuariosAdBot))))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         AdminBotones.add(AdminBotPan, "admin");
