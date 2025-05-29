@@ -30,6 +30,7 @@ public class Administrador extends javax.swing.JFrame {
     for (Propiedades casa : Propiedades.listaCasas) {
         ImagenesCombo.addItem(casa.getId());
     }
+    JPanel RepAgeBotPan = Metodos.crearPanelConFondoMadera();
 }
     public Administrador() {
         
@@ -67,9 +68,6 @@ for (Propiedades casa : Propiedades.listaCasas) {
 // Aplica el modelo a la tabla
 PropiedadesTable.setModel(modelo);
 
-
-
-        
          fondo.setLayout(new java.awt.BorderLayout());
 
     // Mueve los paneles existentes al fondo
@@ -243,9 +241,11 @@ PropiedadesTable.setModel(modelo);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        AdminBotones.setOpaque(false);
         AdminBotones.setLayout(new java.awt.CardLayout());
 
         RepAgeBotPan.setBackground(new java.awt.Color(255, 204, 204));
+        RepAgeBotPan.setOpaque(false);
 
         ProDisAgeRepBot.setText("Pro. Disponibilidad");
         ProDisAgeRepBot.addActionListener(new java.awt.event.ActionListener() {
@@ -1331,7 +1331,6 @@ for (Propiedades casa : Propiedades.listaCasas) {
         casa.getAgente()
     });
 }
-
 // Aplica el modelo a la tabla
 PropiedadesTable.setModel(modelo);
         ParentPan.removeAll();

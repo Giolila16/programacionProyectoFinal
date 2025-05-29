@@ -4,6 +4,11 @@
  */
 package Formularios;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
 /**
  *
  * @author kdeke
@@ -17,5 +22,17 @@ public class Metodos {
 
     public static Usuarios getCargo() {
         return cargoSeleccionado;
-    }   
+    }
+    
+    public static JPanel crearPanelConFondoMadera() {
+    return new JPanel() {
+        private Image imagen = new ImageIcon(getClass().getResource("/imagenes/Madera.jpg")).getImage();
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+        }
+    };
+}
 }
