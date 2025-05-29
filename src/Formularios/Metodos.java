@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,4 +36,29 @@ public class Metodos {
         }
     };
 }
+    //Metodo para pasar a la tabla de propiedades
+    
+    public static DefaultTableModel generarModeloCasas() {
+        DefaultTableModel modelo = new DefaultTableModel(
+            new Object[]{"ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario", "Agente"}, 0
+        );
+
+        for (Propiedades casa : Propiedades.listaCasas) {
+            modelo.addRow(new Object[]{
+                casa.getId(),
+                casa.getTipo(),
+                casa.getUbicacion(),
+                casa.getArea(),
+                casa.getPrecio(),
+                casa.getEstado(),
+                casa.getPropietario(),
+                casa.getAgente()
+            });
+        }
+
+        return modelo;
+    
+    }
+//metodo para ver a los clientes en tablas
+
 }

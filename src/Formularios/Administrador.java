@@ -44,29 +44,7 @@ public class Administrador extends javax.swing.JFrame {
         ImagenesCombo.addItem(casa.getId());
     }
         Propiedades.cargarCasasEjemplo(); 
- 
-        
-        DefaultTableModel modelo = new DefaultTableModel(
-    new Object[]{"ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario", "Agente"}, 
-    0
-);
-
-for (Propiedades casa : Propiedades.listaCasas) {
-    modelo.addRow(new Object[]{
-        casa.getId(),
-        casa.getTipo(),
-        casa.getUbicacion(),
-        casa.getArea(),
-        casa.getPrecio(),
-        casa.getEstado(),
-        casa.getPropietario(),
-        casa.getAgente()
-    });
-}
-
-    
-// Aplica el modelo a la tabla
-PropiedadesTable.setModel(modelo);
+ PropiedadesTable.setModel(Metodos.generarModeloCasas());
 
          fondo.setLayout(new java.awt.BorderLayout());
 
