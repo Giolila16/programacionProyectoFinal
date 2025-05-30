@@ -186,7 +186,7 @@ public class iniciosesion extends javax.swing.JFrame {
    Metodos.setCargo(cargoSeleccionado);
    
    if (cargoSeleccionado.getNombreCargo().equals("--Seleccione Cargo--")) {
-    JOptionPane.showMessageDialog(null, "Por favor, seleccione un cargo.");
+    JOptionPane.showMessageDialog(null, "Por favor seleccione un cargo.");
     return;
 }
 
