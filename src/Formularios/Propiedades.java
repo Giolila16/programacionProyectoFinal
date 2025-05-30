@@ -49,6 +49,8 @@ public class Propiedades {
 
 
     public static void cargarCasasEjemplo() {
+        //Leila Agrego el codigo con un condicional para que no se repitan los datos en la tabla
+               if (listaCasas.isEmpty()) {
         listaCasas.add(new Propiedades("23422", "Casa", "Zona A", "80", "50000", "Disponible", "Ana", "Carlos"));
         listaCasas.add(new Propiedades("21345", "Casa", "Aeropuerto", "10", "10000", "Disponible", "Ana", "Jose"));
         listaCasas.add(new Propiedades("02405", "Piña", "Zulia", "8", "20000", "Mantenimiento", "Sebastian", "Jose"));
@@ -63,6 +65,6 @@ public class Propiedades {
     }
     
 }
-
+}
     
 

@@ -34,10 +34,12 @@ public class Visitas {
     public String getEstado() { return estado; }
 
     public static void cargarVisitasEjemplo() {
+        //Leila Agrego el codigo con un condicional para que no se repitan los datos en la tabla
+        if (listaVisitas.isEmpty()) {
         listaVisitas.add(new Visitas("01", "Lunes", "Carlos", "23422", "Programada"));
         listaVisitas.add(new Visitas("02", "Martes", "Jose", "21345", "Cancelada"));
-        listaVisitas.add(new Visitas("03", "Miércoles", "Sebastian", "02405", "Reprogramar"));
+        listaVisitas.add(new Visitas("03", "Miércoles", "Sebastian", "02405", "Cancelada"));
         listaVisitas.add(new Visitas("04", "Jueves", "Andrea", "02406", "Programada"));
         listaVisitas.add(new Visitas("05", "Viernes", "Pedro", "02411", "Programada"));
     }
-}
+}}

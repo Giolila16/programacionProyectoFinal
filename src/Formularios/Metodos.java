@@ -8,6 +8,8 @@ import static Formularios.Clientes.listaClientes;
 import static Formularios.Propiedades.listaCasas;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.time.LocalDate;
+import java.time.Month;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -41,7 +43,7 @@ public class Metodos {
     //Metodo para pasar a la tabla de propiedades
     
     public static DefaultTableModel generarModeloCasas() {
-        listaCasas.clear();
+     
         DefaultTableModel modelo = new DefaultTableModel(
             new Object[]{"ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario", "Agente"}, 0
         );
@@ -64,12 +66,11 @@ public class Metodos {
     }
 //metodo para ver a los clientes en tablas 
 public static DefaultTableModel generarTablaClientes() {
-     listaClientes.clear();
+     
     DefaultTableModel modelo = new DefaultTableModel(
+            
         new Object[]{"ID", "Nombres", "Apellidos", "Correo", "Telefono", "Cedula", "Propiedades"}, 0
     );
-
-    System.out.println("Cantidad de clientes: " + Clientes.listaClientes.size()); 
 
     for (Clientes cliente : Clientes.listaClientes) {
         modelo.addRow(new Object[]{
@@ -84,4 +85,82 @@ public static DefaultTableModel generarTablaClientes() {
     }
     return modelo;
 }
+//Leila creo metodo de visitas
+    public static DefaultTableModel generarVisitas() {
+        DefaultTableModel modeloo = new DefaultTableModel(
+                new Object[]{"ID Visita", "Fecha", "Agente", "Propiedad ID", "Estado"}, 0
+        );
+        for (Visitas visitas : Visitas.listaVisitas) {
+            modeloo.addRow(new Object[]{
+                visitas.getIdVisita(),
+                visitas.getFecha(),
+                visitas.getAgente(),
+                visitas.getPropiedadId(),
+                visitas.getEstado()
+            });
+        }
+        return modeloo;
+
+    }
+    //Metodo para contratos
+    public static DefaultTableModel generarContratos() {
+    DefaultTableModel modelo = new DefaultTableModel(
+        new Object[]{"ID", "Tipo", "Propiedad", "Cliente", "Agente", "Estado", "Valor", "Inicio", "Fin", "Días Restantes"}, 0
+    );
+
+    for (Contratos contrato : Contratos.listaContratos) {
+        //Toma el año actual del sistema
+        int añoActual = LocalDate.now().getYear();
+        //mes de finalizacion del contrato
+        String mesFinTexto = contrato.getFin().toLowerCase();
+        
+        //Se convierte en un numero
+        int mesFinNumero = obtenerNumeroMes(mesFinTexto);//Obtener numero mes hace que se vuelva un numero
+        long diasRestantes = 0;
+
+        if (mesFinNumero != -1) {
+            //Construye un dia exacto
+            LocalDate fechaFin = LocalDate.of(añoActual, mesFinNumero, 1).withDayOfMonth(
+                LocalDate.of(añoActual, mesFinNumero, 1).lengthOfMonth()
+            );
+            //calcula cuantos dias faltan
+            diasRestantes = java.time.temporal.ChronoUnit.DAYS.between(LocalDate.now(), fechaFin);
+            if (diasRestantes < 0) diasRestantes = 0;
+        }
+
+        modelo.addRow(new Object[]{
+            contrato.getIdContrato(),
+            contrato.getTipoContrato(),
+            contrato.getIdPropiedad(),
+            contrato.getCliente(),
+            contrato.getAgente(),
+            contrato.getEstado(),
+            contrato.getValor(),
+            contrato.getInicio(),
+            contrato.getFin(),
+            diasRestantes
+        });
+    }
+
+    return modelo;
 }
+
+// Método auxiliar para convertir meses en español a números
+public static int obtenerNumeroMes(String mes) {
+    switch (mes.toLowerCase()) {
+        case "enero": return 1;
+        case "febrero": return 2;
+        case "marzo": return 3;
+        case "abril": return 4;
+        case "mayo": return 5;
+        case "junio": return 6;
+        case "julio": return 7;
+        case "agosto": return 8;
+        case "septiembre": return 9;
+        case "octubre": return 10;
+        case "noviembre": return 11;
+        case "diciembre": return 12;
+        default: return -1;
+    }
+}
+    }
