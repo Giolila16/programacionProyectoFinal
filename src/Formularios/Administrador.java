@@ -21,9 +21,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class Administrador extends javax.swing.JFrame {
    Parametrosparapanel.ModeloTablaEditable modelo;
+   DefaultTableModel modeloClientes;
+
     private JPanel panelContenido;  
     private CardLayout cardLayout;
-
+  
     Administrador.FondoPanel fondo = new Administrador.FondoPanel();
     private void llenarComboBoxConIDs() {
     ImagenesCombo.removeAllItems(); 
@@ -36,6 +38,13 @@ public class Administrador extends javax.swing.JFrame {
         
         initComponents();
         this.setLocationRelativeTo(this);
+      Clientes.cargarClientesEjemplo();
+
+    // Luego generamos el modelo
+    DefaultTableModel modeloClientes = Metodos.generarTablaClientes();
+
+    // Y lo asignamos a la tabla
+    ClientesTable.setModel(modeloClientes);
         Propiedades.cargarCasasEjemplo();
         mostrarPanelSegunCargo();
         ImagUnoLbl.setIcon(null);
