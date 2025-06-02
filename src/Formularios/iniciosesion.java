@@ -19,15 +19,13 @@ import javax.swing.JPanel;
  */
 public class iniciosesion extends javax.swing.JFrame {
     public static String usuarioLogueado = null; //añadido para tener el nombre de la variable
-
-    iniciosesion.FondoPanel fondo = new iniciosesion.FondoPanel();
     
     public iniciosesion() {
-        this.setContentPane(fondo);
         initComponents();
         this.setLocationRelativeTo(this);
         setTitle("Ingresa tu Usuario, Contraseña y tu Cargo para poder brindarte una ayuda mas personalizada");
         cargarCargos();
+        Metodos.configurarFondoCompleto(this, IniciosesionPan, "/imagenes/FondoInicio.jpg");
         
         
         UsuarioText.setText("Usuario");
@@ -92,8 +90,7 @@ public class iniciosesion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        IniciosesionPan = new javax.swing.JPanel();
         UsuarioText = new javax.swing.JTextField();
         ContrasenaText = new javax.swing.JPasswordField();
         CargoCombo = new javax.swing.JComboBox<Usuarios>();
@@ -101,10 +98,7 @@ public class iniciosesion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setOpaque(false);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo_machape_editado.png"))); // NOI18N
-        jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
+        IniciosesionPan.setOpaque(false);
 
         UsuarioText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +112,7 @@ public class iniciosesion extends javax.swing.JFrame {
             }
         });
 
+        InicioSesion.setBackground(new java.awt.Color(153, 0, 0));
         InicioSesion.setText("INICIAR SESION");
         InicioSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,52 +120,46 @@ public class iniciosesion extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(295, 295, 295)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        javax.swing.GroupLayout IniciosesionPanLayout = new javax.swing.GroupLayout(IniciosesionPan);
+        IniciosesionPan.setLayout(IniciosesionPanLayout);
+        IniciosesionPanLayout.setHorizontalGroup(
+            IniciosesionPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(IniciosesionPanLayout.createSequentialGroup()
+                .addGap(0, 458, Short.MAX_VALUE)
+                .addGroup(IniciosesionPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IniciosesionPanLayout.createSequentialGroup()
+                        .addGroup(IniciosesionPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(UsuarioText)
-                            .addComponent(ContrasenaText, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(291, 291, 291)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CargoCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(InicioSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))))
-                .addContainerGap(309, Short.MAX_VALUE))
+                            .addComponent(ContrasenaText)
+                            .addComponent(CargoCombo, 0, 147, Short.MAX_VALUE))
+                        .addGap(149, 149, 149))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IniciosesionPanLayout.createSequentialGroup()
+                        .addComponent(InicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(158, 158, 158))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(UsuarioText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ContrasenaText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+        IniciosesionPanLayout.setVerticalGroup(
+            IniciosesionPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(IniciosesionPanLayout.createSequentialGroup()
+                .addGap(191, 191, 191)
+                .addComponent(UsuarioText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ContrasenaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(CargoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(InicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(IniciosesionPan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(IniciosesionPan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -252,25 +241,9 @@ public class iniciosesion extends javax.swing.JFrame {
     private javax.swing.JComboBox<Usuarios> CargoCombo;
     private javax.swing.JPasswordField ContrasenaText;
     private javax.swing.JButton InicioSesion;
+    private javax.swing.JPanel IniciosesionPan;
     private javax.swing.JTextField UsuarioText;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
-class FondoPanel extends JPanel
-    {
-        private Image imagon;
-        
-        @Override
-        public void paint(Graphics g)
-        {
-            imagon = new ImageIcon(getClass().getResource("/imagenes/fondosin.jpg")).getImage();
-          g.drawImage(imagon,0, 0, getWidth(), getHeight(),this);
-            setOpaque(false);
-            
-            super.paint(g);
-        }
-    }
 }
 
 

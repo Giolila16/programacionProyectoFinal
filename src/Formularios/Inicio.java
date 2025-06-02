@@ -4,25 +4,15 @@
  */
 package Formularios;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
-/**
- *
- * @author USUARIO
- */
 public class Inicio extends javax.swing.JFrame {
 
-    FondoPanel fondo = new FondoPanel();
     
     public Inicio() {
-        
-        this.setContentPane(fondo);
         initComponents();
         this.setLocationRelativeTo(this);
         setTitle("Imbobiliaria Machape, :)");
+        Metodos.configurarFondoCompleto(this, jPanel1, "/imagenes/FondoInicio.jpg");
     }
 
     /**
@@ -34,12 +24,12 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new FondoPanel();
+        jPanel1 = new javax.swing.JPanel();
         Seguir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setOpaque(false);
 
         Seguir.setText("CONSEGUIR UNA CASA");
         Seguir.setOpaque(true);
@@ -130,21 +120,5 @@ Seguir.setOpaque(false);
     private javax.swing.JButton Seguir;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
-    class FondoPanel extends JPanel
-    {
-        private Image imagon;
-        
-        @Override
-        public void paint(Graphics g)
-        {
-            imagon = new ImageIcon(getClass().getResource("/imagenes/Ola.jpg")).getImage();
-          g.drawImage(imagon,0, 0, getWidth(), getHeight(),this);
-            setOpaque(false);
-            
-            super.paint(g);
-        }
-    }
-    
-         
+      
 }
