@@ -13,6 +13,12 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
@@ -373,10 +379,10 @@ public static int obtenerNumeroMes(String mes) {
 
     return null; // si no se encuentra
 }
-   public static void agregarNuevaPropiedadConImagen(JTable tabla) {
+   public static void agregarNuevaPropiedadConImagen(JTable tabla, JComboBox<String> comboBoxIds, JLabel imagenLabel) {
     // Asegurarse de que hay agentes cargados
     if (Agente.listaAgentes.isEmpty()) {
-        Agente.cargarAgentesEjemplo(); // Si no están cargados, se cargan
+        Agente.cargarAgentesEjemplo();
     }
 
     // Crear combos
@@ -396,18 +402,35 @@ public static int obtenerNumeroMes(String mes) {
 
     JButton btnSeleccionarImagen = new JButton("Seleccionar imagen");
     btnSeleccionarImagen.addActionListener(e -> {
-        JFileChooser chooser = new JFileChooser();
-        chooser.setFileFilter(new FileNameExtensionFilter("Imágenes (.jpg, .jpeg, .png)", "jpg", "jpeg", "png"));
-        int opcion = chooser.showOpenDialog(null);
-        if (opcion == JFileChooser.APPROVE_OPTION) {
-            File img = chooser.getSelectedFile();
-            rutaImagen[0] = img.getAbsolutePath();
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Selecciona una imagen para la propiedad");
+    int resultado = fileChooser.showOpenDialog(null);
 
-            ImageIcon icono = new ImageIcon(rutaImagen[0]);
-            Image imagenEscalada = icono.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
-            previewImagen.setIcon(new ImageIcon(imagenEscalada));
+    if (resultado == JFileChooser.APPROVE_OPTION) {
+        File archivoSeleccionado = fileChooser.getSelectedFile();
+        String nombreArchivo = archivoSeleccionado.getName(); // ej: casa1.jpg
+        String rutaDestino = "imagenes_cargadas/" + nombreArchivo;
+
+        // Asegurar que la carpeta exista
+        File carpetaDestino = new File("imagenes_cargadas");
+        if (!carpetaDestino.exists()) {
+            carpetaDestino.mkdir();
         }
-    });
+
+        // Copiar la imagen a la carpeta "imagenes_cargadas"
+        try {
+            Files.copy(archivoSeleccionado.toPath(), new File(rutaDestino).toPath(), StandardCopyOption.REPLACE_EXISTING);
+            rutaImagen[0] = rutaDestino;
+
+            // Mostrar vista previa en el label
+            ImageIcon icono = new ImageIcon(rutaDestino);
+            Image imgEscalada = icono.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
+            previewImagen.setIcon(new ImageIcon(imgEscalada));
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Error al copiar la imagen: " + ex.getMessage());
+        }
+    }
+});
 
     JPanel panelImagen = new JPanel(new BorderLayout(5, 5));
     panelImagen.add(previewImagen, BorderLayout.CENTER);
@@ -449,24 +472,54 @@ public static int obtenerNumeroMes(String mes) {
         String agente = (String) comboAgente.getSelectedItem();
 
         if (id.isEmpty() || tipo.isEmpty() || ubicacion.isEmpty() || area.isEmpty() ||
-            precio.isEmpty() || propietario.isEmpty() || rutaImagen[0] == null) {
+                precio.isEmpty() || propietario.isEmpty() || rutaImagen[0] == null) {
             JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos y selecciona una imagen.",
                     "Campos incompletos", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        // Crear y agregar propiedad
-        Propiedades nueva = new Propiedades(id, tipo, ubicacion, area, precio, estado, propietario, agente, rutaImagen[0]);
+        Propiedades nueva = new Propiedades(id, tipo, ubicacion, area, precio, estado, propietario, agente);
         Propiedades.listaCasas.add(nueva);
 
         // Agregar a la tabla
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         modelo.addRow(new Object[]{id, tipo, ubicacion, area, precio, estado, propietario, agente});
 
-        JOptionPane.showMessageDialog(null, "Propiedad agregada correctamente.");
-    } else {
-        JOptionPane.showMessageDialog(null, "Operación cancelada.");
+        // Agregar el ID al combo box
+        comboBoxIds.addItem(nueva.getId());
+        comboBoxIds.setSelectedItem("-- Seleccione una propiedad --");
+        String ruta = nueva.getRuta();
+ImageIcon iconoOriginal;
+
+// Si la ruta arranca con "/imagenes/", lo cargamos desde classpath:
+if (ruta.startsWith("/imagenes/")) {
+    URL url = Administrador.class.getResource(ruta);
+    iconoOriginal = (url != null ? new ImageIcon(url) : null);
+} else {
+    // Sino, asumimos “imagenes_cargadas/xxx.jpg” en disco
+    File f = new File(ruta);
+    iconoOriginal = (f.exists() ? new ImageIcon(ruta) : null);
+}
+
+if (iconoOriginal != null) {
+    Image img = iconoOriginal.getImage().getScaledInstance(
+        imagenLabel.getWidth(), imagenLabel.getHeight(), Image.SCALE_SMOOTH);
+    imagenLabel.setIcon(new ImageIcon(img));
+} else {
+    imagenLabel.setIcon(null);
+    JOptionPane.showMessageDialog(null, "No se encontró la imagen: " + ruta);
+
+}
+    }}
+
+public static void cargarIdsEnCombo(JComboBox<String> comboBox) {
+    comboBox.removeAllItems();
+    comboBox.addItem("-- Seleccione una propiedad --"); 
+
+    for (Propiedades p : Propiedades.listaCasas) {
+        comboBox.addItem(p.getId());
     }
-}}
+}
+}
 
     

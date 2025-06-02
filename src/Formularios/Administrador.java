@@ -8,6 +8,7 @@ package Formularios;
 import java.awt.CardLayout;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.File;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -45,7 +46,14 @@ public class Administrador extends javax.swing.JFrame {
     public Administrador() {
         
         initComponents();
+        
         this.setLocationRelativeTo(this);
+   Propiedades.cargarCasasEjemplo();
+
+ImagenesCombo.addItem("-- Seleccione una propiedad --");
+Metodos.cargarIdsEnCombo(ImagenesCombo);
+ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
+ // Limpias la imagen
         //Leila agrega un cardlayout que ayudara a identificar que usuario va ingresar
         //en el inicio de sesion
         CardLayout cl = new CardLayout();//cardlayout creado
@@ -91,11 +99,7 @@ public class Administrador extends javax.swing.JFrame {
         mostrarPanelSegunCargo();
         //Leila incluyo que la imagen cuando se inicialice se lean las propiedades atravez de la clase, sea nula la primera imagen de vista
         //y en el combo box aparezca la opcionn de seleccionar propiedad
-        ImagUnoLbl.setIcon(null);
-         ImagenesCombo.addItem("-- Seleccione una propiedad --");
-    for (Propiedades casa : Propiedades.listaCasas) {
-        ImagenesCombo.addItem(casa.getId());
-    }
+    
 
 
          fondo.setLayout(new java.awt.BorderLayout());
@@ -107,8 +111,12 @@ public class Administrador extends javax.swing.JFrame {
         setContentPane(fondo);
     }
     //Leila actualizo el metodo para mostrar imagenes y elimino Systems innecesarios
-  
-
+  private void actualizarComboPropiedades() {
+    ImagenesCombo.removeAllItems();
+    for (Propiedades p : Propiedades.listaCasas) {
+        ImagenesCombo.addItem(p.getId());
+    }
+}
     iniciosesion Devolver = new iniciosesion();
     
     private void mostrarPanelSegunCargo() {
@@ -138,23 +146,8 @@ public class Administrador extends javax.swing.JFrame {
     }
     
 }
-    public void actualizarComboPropiedades() {
-    ImagenesCombo.removeAllItems();
-    for (Propiedades p : Propiedades.listaCasas) {
-        ImagenesCombo.addItem(p.getId());  // Solo el ID para mostrar en el combo
-    }
-}
-    public void mostrarImagenEnLabel(String ruta, JLabel label) {
-    if (ruta != null) {
-        ImageIcon iconoOriginal = new ImageIcon(ruta);
-        Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(
-                label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
-        label.setIcon(new ImageIcon(imagenEscalada));
-    } else {
-        label.setIcon(null);
-        JOptionPane.showMessageDialog(null, "No hay imagen asociada a esta propiedad.");
-    }
-}
+   
+
     
 
     /**
@@ -214,6 +207,7 @@ public class Administrador extends javax.swing.JFrame {
         VacioPan = new javax.swing.JPanel();
         PropImagenesPan = new javax.swing.JPanel();
         VolverProBot = new javax.swing.JButton();
+        DetCasa = new javax.swing.JTextArea();
         ImagenesCombo = new javax.swing.JComboBox<>();
         ImagUnoLbl = new javax.swing.JLabel();
         ContratosPan = new javax.swing.JPanel();
@@ -787,6 +781,10 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
+        DetCasa.setColumns(20);
+        DetCasa.setRows(5);
+        DetCasa.setEnabled(false);
+
         ImagenesCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ImagenesComboActionPerformed(evt);
@@ -802,20 +800,24 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(VolverProBot)
                 .addGap(97, 97, 97))
             .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ImagUnoLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ImagenesCombo, 0, 266, Short.MAX_VALUE))
+                .addGap(97, 97, 97)
+                .addComponent(DetCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PropImagenesPanLayout.setVerticalGroup(
             PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap(89, Short.MAX_VALUE)
+                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ImagUnoLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DetCasa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
                 .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
                 .addComponent(VolverProBot)
                 .addGap(58, 58, 58))
         );
@@ -1642,7 +1644,57 @@ int fila = PropiedadesTable.getSelectedRow();
     }//GEN-LAST:event_VolverProBotActionPerformed
 
     private void ImagenesComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImagenesComboActionPerformed
-  
+String idSeleccionado = (String) ImagenesCombo.getSelectedItem();
+
+// Validar si hay un valor seleccionado
+if (idSeleccionado == null || idSeleccionado.equals("-- Seleccione una propiedad --")) {
+    DetCasa.setText(""); // limpiar descripción
+    ImagUnoLbl.setIcon(null); // limpiar imagen
+    return;
+}
+
+// Buscar y mostrar la descripción e imagen
+for (Propiedades p : Propiedades.listaCasas) {
+    if (p.getId().equals(idSeleccionado)) {
+        
+        // Mostrar descripción
+        DetCasa.setText(p.getDescripcion());
+
+        // Cargar imagen
+        String ruta = p.getRuta(); 
+
+        ImageIcon iconoOriginal = null;
+        if (ruta.startsWith("/")) {
+            URL urlRecurso = Administrador.class.getResource(ruta);
+            if (urlRecurso != null) {
+                iconoOriginal = new ImageIcon(urlRecurso);
+            }
+        }
+
+        if (iconoOriginal == null) {
+            File archivo = new File(ruta);
+            if (archivo.exists()) {
+                iconoOriginal = new ImageIcon(ruta);
+            }
+        }
+
+        if (iconoOriginal != null) {
+            Image img = iconoOriginal.getImage().getScaledInstance(
+                ImagUnoLbl.getWidth(),
+                ImagUnoLbl.getHeight(),
+                Image.SCALE_SMOOTH
+            );
+            ImagUnoLbl.setIcon(new ImageIcon(img));
+        } else {
+            ImagUnoLbl.setIcon(null);
+            JOptionPane.showMessageDialog(this,
+                "No se encontró la imagen para la propiedad:\n" + ruta,
+                "Imagen no hallada", JOptionPane.WARNING_MESSAGE);
+        }
+
+        break; // salir del for, ya encontramos la propiedad
+    }}  
+
     }//GEN-LAST:event_ImagenesComboActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1662,7 +1714,7 @@ private void actualizarTablaVisitas() {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
  // Leila agrego un metodo para pedir los datos al usuario
-      Metodos.agregarNuevaPropiedadConImagen(PropiedadesTable);
+      Metodos.agregarNuevaPropiedadConImagen(PropiedadesTable, ImagenesCombo, ImagUnoLbl);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
@@ -1719,6 +1771,7 @@ private void actualizarTablaVisitas() {
     private javax.swing.JPanel ContratosPan;
     private javax.swing.JButton ContratosProBot;
     private javax.swing.JTable ContratosTable;
+    private javax.swing.JTextArea DetCasa;
     private javax.swing.JLabel ImagUnoLbl;
     private javax.swing.JComboBox<String> ImagenesCombo;
     private javax.swing.JButton IngresoComiRepBot;
