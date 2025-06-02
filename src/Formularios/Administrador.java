@@ -107,28 +107,8 @@ public class Administrador extends javax.swing.JFrame {
         setContentPane(fondo);
     }
     //Leila actualizo el metodo para mostrar imagenes y elimino Systems innecesarios
-  private void mostrarImagenSegunID() {
-    String idSeleccionado = (String) ImagenesCombo.getSelectedItem();
-    if (idSeleccionado == null) return;
+  
 
-    String ruta = "/imagenes/" + idSeleccionado + ".jpg"; 
-        URL recurso = getClass().getResource(ruta);
-        if (recurso != null) {
-            ImageIcon iconoOriginal = new ImageIcon(recurso);
-           
-            Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(
-                ImagUnoLbl.getWidth(),
-                ImagUnoLbl.getHeight(),
-                Image.SCALE_SMOOTH
-            );
-       
-            ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-            ImagUnoLbl.setIcon(iconoEscalado);
-        } else {
-            ImagUnoLbl.setIcon(null);
-           
-        } 
-}
     iniciosesion Devolver = new iniciosesion();
     
     private void mostrarPanelSegunCargo() {
@@ -157,6 +137,12 @@ public class Administrador extends javax.swing.JFrame {
         }
     }
     
+}
+    public void actualizarComboPropiedades() {
+    ImagenesCombo.removeAllItems();
+    for (Propiedades p : Propiedades.listaCasas) {
+        ImagenesCombo.addItem(p.getId());  // Solo el ID para mostrar en el combo
+    }
 }
     public void mostrarImagenEnLabel(String ruta, JLabel label) {
     if (ruta != null) {
@@ -230,7 +216,6 @@ public class Administrador extends javax.swing.JFrame {
         VolverProBot = new javax.swing.JButton();
         ImagenesCombo = new javax.swing.JComboBox<>();
         ImagUnoLbl = new javax.swing.JLabel();
-        ImagenAgr = new javax.swing.JButton();
         ContratosPan = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         ContratosTable = new javax.swing.JTable();
@@ -808,13 +793,6 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        ImagenAgr.setText("Agregar Imagen");
-        ImagenAgr.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ImagenAgrActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout PropImagenesPanLayout = new javax.swing.GroupLayout(PropImagenesPan);
         PropImagenesPan.setLayout(PropImagenesPanLayout);
         PropImagenesPanLayout.setHorizontalGroup(
@@ -825,11 +803,9 @@ public class Administrador extends javax.swing.JFrame {
                 .addGap(97, 97, 97))
             .addGroup(PropImagenesPanLayout.createSequentialGroup()
                 .addGap(78, 78, 78)
-                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ImagenAgr, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PropImagenesPanLayout.setVerticalGroup(
@@ -839,9 +815,7 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addComponent(ImagenAgr, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
                 .addComponent(VolverProBot)
                 .addGap(58, 58, 58))
         );
@@ -1668,7 +1642,7 @@ int fila = PropiedadesTable.getSelectedRow();
     }//GEN-LAST:event_VolverProBotActionPerformed
 
     private void ImagenesComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImagenesComboActionPerformed
-  mostrarImagenSegunID();
+  
     }//GEN-LAST:event_ImagenesComboActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1690,28 +1664,6 @@ private void actualizarTablaVisitas() {
  // Leila agrego un metodo para pedir los datos al usuario
       Metodos.agregarNuevaPropiedadConImagen(PropiedadesTable);
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void ImagenAgrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImagenAgrActionPerformed
-    // Obtener el ID seleccionado del combo
-    String idSeleccionado = (String) ImagenesCombo.getSelectedItem();
-
-    if (idSeleccionado == null) {
-        JOptionPane.showMessageDialog(this, "Seleccione un ID primero.");
-        return;
-    }
-
-    // Buscar la propiedad con ese ID
-    for (Propiedades p : Propiedades.listaCasas) {
-        if (p.getId().equals(idSeleccionado)) {
-            // Mostrar la imagen en el JLabel
-            mostrarImagenEnLabel(p.getRuta(), ImagUnoLbl);
-            return;
-        }
-    }
-
-    JOptionPane.showMessageDialog(this, "No se encontró la propiedad con ese ID.");
-        
-    }//GEN-LAST:event_ImagenAgrActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1768,7 +1720,6 @@ private void actualizarTablaVisitas() {
     private javax.swing.JButton ContratosProBot;
     private javax.swing.JTable ContratosTable;
     private javax.swing.JLabel ImagUnoLbl;
-    private javax.swing.JButton ImagenAgr;
     private javax.swing.JComboBox<String> ImagenesCombo;
     private javax.swing.JButton IngresoComiRepBot;
     private javax.swing.JButton OpciAgeRepBot;

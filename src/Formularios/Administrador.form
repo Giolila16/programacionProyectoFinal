@@ -724,12 +724,9 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="ImagenAgr" min="-2" pref="142" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="ImagenesCombo" min="-2" pref="182" max="-2" attributes="0"/>
-                              <Component id="ImagUnoLbl" min="-2" pref="182" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="ImagenesCombo" min="-2" pref="182" max="-2" attributes="0"/>
+                          <Component id="ImagUnoLbl" min="-2" pref="182" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -742,9 +739,7 @@
                       <Component id="ImagUnoLbl" min="-2" pref="182" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="ImagenesCombo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                      <Component id="ImagenAgr" min="-2" pref="22" max="-2" attributes="0"/>
-                      <EmptySpace pref="81" max="32767" attributes="0"/>
+                      <EmptySpace pref="173" max="32767" attributes="0"/>
                       <Component id="VolverProBot" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   </Group>
@@ -774,14 +769,6 @@
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="ImagUnoLbl">
-            </Component>
-            <Component class="javax.swing.JButton" name="ImagenAgr">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar Imagen"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ImagenAgrActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
