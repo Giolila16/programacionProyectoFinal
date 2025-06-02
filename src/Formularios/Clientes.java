@@ -47,7 +47,7 @@ public class Clientes {
         listaClientes.add(new Clientes("566", "Laura", "Morales", "lauram@mail.com", "3015556677", "1091234567", "Apartamento"));
         listaClientes.add(new Clientes("434", "Camilo", "Gómez", "camilog@mail.com", "3029993344", "1087654321", "Casa"));
         listaClientes.add(new Clientes("869", "Maria", "Fernández", "mariaf@mail.com", "3041239876", "1076543210", "Apartamento"));
-        listaClientes.add(new Clientes("464", "Jose", "Martínez", "josem@mail.com", "3051114455", "1091122334", "Casa"));
+        listaClientes.add(new Clientes("464", "Jose", "Villamizar", "josem@mail.com", "3051114455", "1091122334", "Choza"));
         listaClientes.add(new Clientes("646", "Ana", "Torres", "anatorres@mail.com", "3009991122", "1094455667", "Finca"));
         listaClientes.add(new Clientes("323", "Lucia", "Rojas", "luciar@mail.com", "3038765432", "1099988776", "Finca"));
         listaClientes.add(new Clientes("643", "Sebastian", "Mejía", "sebastianm@mail.com", "3007778899", "1088997766", "Casa"));
