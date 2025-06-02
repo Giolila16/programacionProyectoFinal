@@ -467,12 +467,10 @@ public static int obtenerNumeroMes(String mes) {
     return null; // si no se encuentra
 }
    public static void agregarNuevaPropiedadConImagen(JTable tabla, JComboBox<String> comboBoxIds, JLabel imagenLabel) {
-    // Asegurarse de que hay agentes cargados
     if (Agente.listaAgentes.isEmpty()) {
         Agente.cargarAgentesEjemplo();
     }
 
-    // Crear combos
     String[] nombresAgentes = Agente.listaAgentes.stream()
             .map(a -> a.getNombres() + " " + a.getApellidos())
             .toArray(String[]::new);
@@ -481,7 +479,6 @@ public static int obtenerNumeroMes(String mes) {
     JComboBox<String> comboEstado = new JComboBox<>(estadoOpciones);
     JComboBox<String> comboAgente = new JComboBox<>(nombresAgentes);
 
-    // Imagen
     JLabel previewImagen = new JLabel();
     previewImagen.setPreferredSize(new Dimension(200, 150));
     previewImagen.setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -489,47 +486,49 @@ public static int obtenerNumeroMes(String mes) {
 
     JButton btnSeleccionarImagen = new JButton("Seleccionar imagen");
     btnSeleccionarImagen.addActionListener(e -> {
-    JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setDialogTitle("Selecciona una imagen para la propiedad");
-    int resultado = fileChooser.showOpenDialog(null);
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Selecciona una imagen para la propiedad");
+        int resultado = fileChooser.showOpenDialog(null);
 
-    if (resultado == JFileChooser.APPROVE_OPTION) {
-        File archivoSeleccionado = fileChooser.getSelectedFile();
-        String nombreArchivo = archivoSeleccionado.getName(); // ej: casa1.jpg
-        String rutaDestino = "imagenes_cargadas/" + nombreArchivo;
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File archivoSeleccionado = fileChooser.getSelectedFile();
+            String nombreArchivo = archivoSeleccionado.getName();
+            String rutaDestino = "imagenes_cargadas/" + nombreArchivo;
 
-        // Asegurar que la carpeta exista
-        File carpetaDestino = new File("imagenes_cargadas");
-        if (!carpetaDestino.exists()) {
-            carpetaDestino.mkdir();
+            File carpetaDestino = new File("imagenes_cargadas");
+            if (!carpetaDestino.exists()) carpetaDestino.mkdir();
+
+            try {
+                Files.copy(archivoSeleccionado.toPath(), new File(rutaDestino).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                rutaImagen[0] = rutaDestino;
+
+                ImageIcon icono = new ImageIcon(rutaDestino);
+                Image imgEscalada = icono.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
+                previewImagen.setIcon(new ImageIcon(imgEscalada));
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error al copiar la imagen: " + ex.getMessage());
+            }
         }
-
-        // Copiar la imagen a la carpeta "imagenes_cargadas"
-        try {
-            Files.copy(archivoSeleccionado.toPath(), new File(rutaDestino).toPath(), StandardCopyOption.REPLACE_EXISTING);
-            rutaImagen[0] = rutaDestino;
-
-            // Mostrar vista previa en el label
-            ImageIcon icono = new ImageIcon(rutaDestino);
-            Image imgEscalada = icono.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
-            previewImagen.setIcon(new ImageIcon(imgEscalada));
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Error al copiar la imagen: " + ex.getMessage());
-        }
-    }
-});
+    });
 
     JPanel panelImagen = new JPanel(new BorderLayout(5, 5));
     panelImagen.add(previewImagen, BorderLayout.CENTER);
     panelImagen.add(btnSeleccionarImagen, BorderLayout.SOUTH);
 
-    // Campos de texto
+    // Campos de texto básicos
     JTextField txtId = new JTextField();
     JTextField txtTipo = new JTextField();
     JTextField txtUbicacion = new JTextField();
     JTextField txtArea = new JTextField();
     JTextField txtPrecio = new JTextField();
     JTextField txtPropietario = new JTextField();
+
+    // Campos para descripción (números)
+    JTextField txtHabitaciones = new JTextField();
+    JTextField txtPisos = new JTextField();
+    JTextField txtCocinas = new JTextField();
+    JTextField txtBanios = new JTextField();
+    JTextField txtOtros = new JTextField();
 
     JPanel panelCampos = new JPanel(new GridLayout(0, 2, 5, 5));
     panelCampos.add(new JLabel("ID:")); panelCampos.add(txtId);
@@ -538,6 +537,11 @@ public static int obtenerNumeroMes(String mes) {
     panelCampos.add(new JLabel("Área:")); panelCampos.add(txtArea);
     panelCampos.add(new JLabel("Precio:")); panelCampos.add(txtPrecio);
     panelCampos.add(new JLabel("Propietario:")); panelCampos.add(txtPropietario);
+    panelCampos.add(new JLabel("Habitaciones:")); panelCampos.add(txtHabitaciones);
+    panelCampos.add(new JLabel("Pisos:")); panelCampos.add(txtPisos);
+    panelCampos.add(new JLabel("Cocinas:")); panelCampos.add(txtCocinas);
+    panelCampos.add(new JLabel("Baños:")); panelCampos.add(txtBanios);
+    panelCampos.add(new JLabel("Otros:")); panelCampos.add(txtOtros);
     panelCampos.add(new JLabel("Estado:")); panelCampos.add(comboEstado);
     panelCampos.add(new JLabel("Agente:")); panelCampos.add(comboAgente);
 
@@ -545,8 +549,7 @@ public static int obtenerNumeroMes(String mes) {
     panelFinal.add(panelCampos, BorderLayout.CENTER);
     panelFinal.add(panelImagen, BorderLayout.EAST);
 
-    int respuesta = JOptionPane.showConfirmDialog(null, panelFinal, "Agregar Propiedad",
-            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+    int respuesta = JOptionPane.showConfirmDialog(null, panelFinal, "Agregar Propiedad", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
     if (respuesta == JOptionPane.OK_OPTION) {
         String id = txtId.getText().trim();
@@ -557,47 +560,69 @@ public static int obtenerNumeroMes(String mes) {
         String propietario = txtPropietario.getText().trim();
         String estado = (String) comboEstado.getSelectedItem();
         String agente = (String) comboAgente.getSelectedItem();
+        String strHabitaciones = txtHabitaciones.getText().trim();
+        String strPisos = txtPisos.getText().trim();
+        String strCocinas = txtCocinas.getText().trim();
+        String strBanios = txtBanios.getText().trim();
+        String otros = txtOtros.getText().trim();
 
-        if (id.isEmpty() || tipo.isEmpty() || ubicacion.isEmpty() || area.isEmpty() ||
-                precio.isEmpty() || propietario.isEmpty() || rutaImagen[0] == null) {
-            JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos y selecciona una imagen.",
-                    "Campos incompletos", JOptionPane.WARNING_MESSAGE);
+        // Validar campos vacíos y que la imagen esté seleccionada
+        if (id.isEmpty() || tipo.isEmpty() || ubicacion.isEmpty() || area.isEmpty() || precio.isEmpty() ||
+            propietario.isEmpty() || strHabitaciones.isEmpty() || strPisos.isEmpty() || strCocinas.isEmpty() ||
+            strBanios.isEmpty() || otros.isEmpty() || rutaImagen[0] == null) {
+            JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos y selecciona una imagen.", "Campos incompletos", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        Propiedades nueva = new Propiedades(id, tipo, ubicacion, area, precio, estado, propietario, agente);
+        // Convertir los campos numéricos a int
+        int habitaciones;
+        int pisos;
+        int cocinas;
+        int banios;
+        try {
+            habitaciones = Integer.parseInt(strHabitaciones);
+            pisos = Integer.parseInt(strPisos);
+            cocinas = Integer.parseInt(strCocinas);
+            banios = Integer.parseInt(strBanios);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Los campos de Habitaciones, Pisos, Cocinas y Baños deben ser números enteros.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Crear el objeto Propiedades usando el constructor correcto
+        Propiedades nueva = new Propiedades(
+            id,
+            tipo,
+            ubicacion,
+            area,
+            precio,
+            estado,
+            propietario,
+            agente,
+            rutaImagen[0],  // aquí va la ruta como String
+            habitaciones,   // int
+            pisos,          // int
+            cocinas,        // int
+            banios,         // int
+            otros           // String
+        );
         Propiedades.listaCasas.add(nueva);
 
-        // Agregar a la tabla
+        // Agregar fila a la tabla (sin descripción en columna, solo los datos básicos)
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         modelo.addRow(new Object[]{id, tipo, ubicacion, area, precio, estado, propietario, agente});
 
-        // Agregar el ID al combo box
+        // Actualizar comboBoxIds
         comboBoxIds.addItem(nueva.getId());
         comboBoxIds.setSelectedItem("-- Seleccione una propiedad --");
-        String ruta = nueva.getRuta();
-ImageIcon iconoOriginal;
 
-// Si la ruta arranca con "/imagenes/", lo cargamos desde classpath:
-if (ruta.startsWith("/imagenes/")) {
-    URL url = Administrador.class.getResource(ruta);
-    iconoOriginal = (url != null ? new ImageIcon(url) : null);
-} else {
-    // Sino, asumimos “imagenes_cargadas/xxx.jpg” en disco
-    File f = new File(ruta);
-    iconoOriginal = (f.exists() ? new ImageIcon(ruta) : null);
+        // Mostrar imagen cargada
+        ImageIcon iconoOriginal = new ImageIcon(rutaImagen[0]);
+        Image img = iconoOriginal.getImage().getScaledInstance(imagenLabel.getWidth(), imagenLabel.getHeight(), Image.SCALE_SMOOTH);
+        imagenLabel.setIcon(new ImageIcon(img));
+    }
 }
 
-if (iconoOriginal != null) {
-    Image img = iconoOriginal.getImage().getScaledInstance(
-        imagenLabel.getWidth(), imagenLabel.getHeight(), Image.SCALE_SMOOTH);
-    imagenLabel.setIcon(new ImageIcon(img));
-} else {
-    imagenLabel.setIcon(null);
-    JOptionPane.showMessageDialog(null, "No se encontró la imagen: " + ruta);
-
-}
-    }}
 
 public static void cargarIdsEnCombo(JComboBox<String> comboBox) {
     comboBox.removeAllItems();
@@ -607,6 +632,7 @@ public static void cargarIdsEnCombo(JComboBox<String> comboBox) {
         comboBox.addItem(p.getId());
     }
 }
+
 }
 
     

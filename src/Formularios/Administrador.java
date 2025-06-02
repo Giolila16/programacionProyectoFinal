@@ -1023,7 +1023,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ));
         jScrollPane2.setViewportView(ClientesTable);
 
-        jButton29.setText("Editar");
+        jButton29.setText("Eliminar");
         jButton29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton29ActionPerformed(evt);
@@ -1712,10 +1712,10 @@ private void actualizarTablaVisitas() {
     VisitasTable.setModel(Metodos.generarTablaVisitasCliente(usuarioActual));
     }//GEN-LAST:event_jButton34ActionPerformed
 
-    private void AgregarProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProBotActionPerformed
+    private void AgregarProBotActionPerformed(java.awt.event.ActionEvent evt) {                                              
  // Leila agrego un metodo para pedir los datos al usuario
       Metodos.agregarNuevaPropiedadConImagen(PropiedadesTable, ImagenesCombo, ImagUnoLbl);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }                                        
 
     /**
      * @param args the command line arguments
