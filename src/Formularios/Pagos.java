@@ -44,6 +44,7 @@ public class Pagos {
     public String getAgente() { return agente; }
 
     public static void cargarPagosEjemplo() {
+         if (listaPagos.isEmpty()) {
         listaPagos.add(new Pagos("10001", "Arriendo", "23422", "Carlos", 40000, "Pagado", "Efectivo", "Ana"));
         listaPagos.add(new Pagos("10002", "Arriendo", "21345", "Jose", 30000, "Pendiente", "Tarjeta", "Ana"));
         listaPagos.add(new Pagos("10003", "Local", "02405", "Jose", 20000, "Pagado", "Efectivo", "Sebastian"));
@@ -52,7 +53,8 @@ public class Pagos {
         listaPagos.add(new Pagos("10006", "Apartamento", "02410", "Julian", 30000, "Pendiente", "Tarjeta", "Marta"));
         listaPagos.add(new Pagos("10007", "Finca", "02411", "Lucia", 60000, "Pagado", "Tarjeta", "Pedro"));
         listaPagos.add(new Pagos("10008", "Casa", "02412", "Camilo", 40000, "Pagado", "Efectivo", "Rosa"));
-    }
+    }}
+         
 }
 
 

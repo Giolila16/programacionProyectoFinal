@@ -72,13 +72,14 @@ class Agente extends Usuarios {
     }
 
     public static void cargarAgentesEjemplo() {
+         if (listaAgentes.isEmpty()) {
         listaAgentes.add(new Agente("ag1", "123", "Ana", "Gomez"));
         listaAgentes.add(new Agente("ag2", "123", "Carlos", "Perez"));
         listaAgentes.add(new Agente("ag3", "123", "Jose", "Luna"));
         listaAgentes.add(new Agente("ag4", "123", "Andrea", "Mora"));
         listaAgentes.add(new Agente("ag5", "123", "Fernando", "Ruiz"));
         listaAgentes.add(new Agente("ag6", "123", "Pedro", "Salas"));
-    }
+    }}
 }
 
 class Propietario extends Usuarios {
@@ -88,13 +89,14 @@ class Propietario extends Usuarios {
     }
 
     public static void cargarPropietariosEjemplo() {
+        if (listaPropietarios.isEmpty()) {
         listaPropietarios.add(new Propietario("prop1", "123", "Ana", "Vargas"));
         listaPropietarios.add(new Propietario("prop2", "123", "Sebastian", "Moreno"));
         listaPropietarios.add(new Propietario("prop3", "123", "Luis", "Torres"));
         listaPropietarios.add(new Propietario("prop4", "123", "Claudia", "Rojas"));
         listaPropietarios.add(new Propietario("prop5", "123", "Fernando", "Diaz"));
         listaPropietarios.add(new Propietario("prop6", "123", "Pedro", "Linares"));
-    }
+    }}
 }
 
 class ClienteUsuario extends Usuarios {
@@ -104,6 +106,7 @@ class ClienteUsuario extends Usuarios {
     }
 
     public static void cargarClientesUsuarioEjemplo() {
+         if (listaUsuariosCliente.isEmpty()) {
         listaUsuariosCliente.add(new ClienteUsuario("cli1", "123", "Carlos", "López"));
         listaUsuariosCliente.add(new ClienteUsuario("cli2", "123", "Jose", "Martinez"));
         listaUsuariosCliente.add(new ClienteUsuario("cli3", "123", "Laura", "Torres"));
@@ -114,7 +117,7 @@ class ClienteUsuario extends Usuarios {
         listaUsuariosCliente.add(new ClienteUsuario("cli8", "123", "Maria", "Salazar"));
         listaUsuariosCliente.add(new ClienteUsuario("cli9", "123", "Sebastian", "Ruiz"));
         listaUsuariosCliente.add(new ClienteUsuario("cli10", "123", "Ana", "Moreno"));
-    }
+    }}
 }
 
 class gio extends Usuarios {
@@ -124,6 +127,7 @@ class gio extends Usuarios {
     }
 
     public static void cargarAdministradorEjemplo() {
-        perrito = new gio("admin", "admin123", "Sofia", "Castro");
+    
+        perrito = new gio("admin", "admin123", "Kevin", "Castro");
     }
 }

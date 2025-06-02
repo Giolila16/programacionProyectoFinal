@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
+import javax.swing.JLabel;
 
 /**
  *
@@ -28,6 +29,8 @@ public class Administrador extends javax.swing.JFrame {
    DefaultTableModel modeloClientes;
    DefaultTableModel modeloVisitas;
    DefaultTableModel modeloContratos;
+   DefaultTableModel modeloPagos;
+   DefaultTableModel modeloUsuario;
     private JPanel panelContenido;  
     private CardLayout cardLayout;
   
@@ -43,7 +46,16 @@ public class Administrador extends javax.swing.JFrame {
         
         initComponents();
         this.setLocationRelativeTo(this);
-        
+        //Leila agrega un cardlayout que ayudara a identificar que usuario va ingresar
+        //en el inicio de sesion
+        CardLayout cl = new CardLayout();//cardlayout creado
+        ParentPan.setLayout(cl); // Asegura que el ParentPan use CardLayout
+
+        // Agrega los paneles
+        AdminBotones.add(ClientesBotPan, "Cliente");
+        AdminBotones.add(AgeBotPan, "Agente");
+        AdminBotones.add(PropietarioBotPan, "Propietario");
+        AdminBotones.add(AdminBotPan, "Administrador");
         //Leila Coloco el llamado del metodo clientes para la tabla
         Clientes.cargarClientesEjemplo();
         modeloClientes = Metodos.generarTablaClientes();
@@ -54,12 +66,27 @@ public class Administrador extends javax.swing.JFrame {
         PropiedadesTable.setModel(modelo);
         //Leila llamo al metodo de visitas para la tabla de visitas
         Visitas.cargarVisitasEjemplo();
-        modeloVisitas = Metodos.generarVisitas();
+        modeloVisitas = Metodos.generarTablaVisitasCompleta();
         VisitasTable.setModel(modeloVisitas);
         //Leila llamo al metodo de contratos
         Contratos.cargarContratosEjemplo();
         modeloContratos = Metodos.generarContratos();
         ContratosTable.setModel(modeloContratos);
+        //leila llamo al metodo de pagos
+        Pagos.cargarPagosEjemplo();
+        modeloPagos = Metodos.generarPagos();
+        PagosTable.setModel(modeloPagos);
+        //Leila llamo al metodo de usuarios;
+        //se llaman a las clases heredadas por Usuarios
+        Agente.cargarAgentesEjemplo();
+        Propietario.cargarPropietariosEjemplo();
+        ClienteUsuario.cargarClientesUsuarioEjemplo();
+        gio.cargarAdministradorEjemplo();
+        //muestra los datos a la tabla
+        modeloUsuario = Metodos.generarTablaUsuariosCompleta();
+        UsuariosTable.setModel(modeloUsuario);
+        
+        
         
         mostrarPanelSegunCargo();
         //Leila incluyo que la imagen cuando se inicialice se lean las propiedades atravez de la clase, sea nula la primera imagen de vista
@@ -129,7 +156,21 @@ public class Administrador extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Cargo desconocido: " + nombreCargo);
         }
     }
+    
 }
+    public void mostrarImagenEnLabel(String ruta, JLabel label) {
+    if (ruta != null) {
+        ImageIcon iconoOriginal = new ImageIcon(ruta);
+        Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(
+                label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+        label.setIcon(new ImageIcon(imagenEscalada));
+    } else {
+        label.setIcon(null);
+        JOptionPane.showMessageDialog(null, "No hay imagen asociada a esta propiedad.");
+    }
+}
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -189,6 +230,7 @@ public class Administrador extends javax.swing.JFrame {
         VolverProBot = new javax.swing.JButton();
         ImagenesCombo = new javax.swing.JComboBox<>();
         ImagUnoLbl = new javax.swing.JLabel();
+        ImagenAgr = new javax.swing.JButton();
         ContratosPan = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         ContratosTable = new javax.swing.JTable();
@@ -289,7 +331,7 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(VolverAgeRepBot)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OpciAgeRepBot)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
         RepAgeBotPanLayout.setVerticalGroup(
             RepAgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,7 +439,7 @@ public class Administrador extends javax.swing.JFrame {
                         .addComponent(VolverRepBot)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(OpcionesRepBot)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         ReportesBotPanLayout.setVerticalGroup(
             ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -472,7 +514,7 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(SeguimientoAgeBot)
                 .addGap(18, 18, 18)
                 .addComponent(OpcionesAgeBot)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         AgeBotPanLayout.setVerticalGroup(
             AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,7 +583,7 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(PagosClieBot)
                 .addGap(18, 18, 18)
                 .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         ClientesBotPanLayout.setVerticalGroup(
             ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -610,7 +652,7 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(PagosProBot)
                 .addGap(18, 18, 18)
                 .addComponent(OpcionesProBot)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
         PropietarioBotPanLayout.setVerticalGroup(
             PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -707,7 +749,7 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(UsuariosAdBot)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(OpcionesAdBot)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         AdminBotPanLayout.setVerticalGroup(
             AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -742,7 +784,7 @@ public class Administrador extends javax.swing.JFrame {
         VacioPan.setLayout(VacioPanLayout);
         VacioPanLayout.setHorizontalGroup(
             VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 828, Short.MAX_VALUE)
+            .addGap(0, 834, Short.MAX_VALUE)
         );
         VacioPanLayout.setVerticalGroup(
             VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -766,29 +808,40 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
+        ImagenAgr.setText("Agregar Imagen");
+        ImagenAgr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImagenAgrActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PropImagenesPanLayout = new javax.swing.GroupLayout(PropImagenesPan);
         PropImagenesPan.setLayout(PropImagenesPanLayout);
         PropImagenesPanLayout.setHorizontalGroup(
             PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropImagenesPanLayout.createSequentialGroup()
-                .addContainerGap(659, Short.MAX_VALUE)
+                .addContainerGap(665, Short.MAX_VALUE)
                 .addComponent(VolverProBot)
                 .addGap(97, 97, 97))
             .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                .addGap(300, 300, 300)
-                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ImagUnoLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                    .addComponent(ImagenesCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ImagenAgr, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PropImagenesPanLayout.setVerticalGroup(
             PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                .addContainerGap(143, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
                 .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
+                .addGap(70, 70, 70)
+                .addComponent(ImagenAgr, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(VolverProBot)
                 .addGap(58, 58, 58))
         );
@@ -827,7 +880,7 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(ContratosPanLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContratosPanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ConElimi)
@@ -896,7 +949,7 @@ public class Administrador extends javax.swing.JFrame {
                         .addComponent(jButton24)
                         .addGap(18, 18, 18)
                         .addComponent(jButton7)))
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
         ReportesPanLayout.setVerticalGroup(
             ReportesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -943,6 +996,11 @@ public class Administrador extends javax.swing.JFrame {
         });
 
         jButton8.setText("Agregar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout UsuariosPanLayout = new javax.swing.GroupLayout(UsuariosPan);
         UsuariosPan.setLayout(UsuariosPanLayout);
@@ -960,7 +1018,7 @@ public class Administrador extends javax.swing.JFrame {
                         .addComponent(jButton26)
                         .addGap(18, 18, 18)
                         .addComponent(jButton8)))
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
         UsuariosPanLayout.setVerticalGroup(
             UsuariosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1003,12 +1061,12 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(ClientesPanLayout.createSequentialGroup()
                 .addGroup(ClientesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ClientesPanLayout.createSequentialGroup()
-                        .addGap(130, 130, 130)
+                        .addGap(127, 127, 127)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ClientesPanLayout.createSequentialGroup()
                         .addGap(361, 361, 361)
                         .addComponent(jButton29)))
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         ClientesPanLayout.setVerticalGroup(
             ClientesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1047,6 +1105,11 @@ public class Administrador extends javax.swing.JFrame {
         });
 
         jButton5.setText("Agregar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         VerPropiBot.setText("Ver Propiedades");
         VerPropiBot.addActionListener(new java.awt.event.ActionListener() {
@@ -1071,7 +1134,7 @@ public class Administrador extends javax.swing.JFrame {
                         .addComponent(jButton5)
                         .addGap(18, 18, 18)
                         .addComponent(VerPropiBot)))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         PropiedadesPanLayout.setVerticalGroup(
             PropiedadesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1136,7 +1199,7 @@ public class Administrador extends javax.swing.JFrame {
                     .addGroup(PagosPanLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         PagosPanLayout.setVerticalGroup(
             PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1157,13 +1220,13 @@ public class Administrador extends javax.swing.JFrame {
 
         VisitasTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID Visita", "Fecha", "Cliente", "Agente", "Arriendos", "Estado"
+                "ID Visita", "Fecha", "Dia", "Agente", "Cliente", "Arriendos", "Estado"
             }
         ));
         jScrollPane7.setViewportView(VisitasTable);
@@ -1183,6 +1246,11 @@ public class Administrador extends javax.swing.JFrame {
         });
 
         jButton34.setText("Agregar");
+        jButton34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton34ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout VisitasPanLayout = new javax.swing.GroupLayout(VisitasPan);
         VisitasPan.setLayout(VisitasPanLayout);
@@ -1200,7 +1268,7 @@ public class Administrador extends javax.swing.JFrame {
                         .addComponent(jButton32)
                         .addGap(18, 18, 18)
                         .addComponent(jButton34)))
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         VisitasPanLayout.setVerticalGroup(
             VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1239,7 +1307,7 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(ReportesBasicosPanLayout.createSequentialGroup()
                 .addGap(136, 136, 136)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         ReportesBasicosPanLayout.setVerticalGroup(
             ReportesBasicosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1309,7 +1377,17 @@ PropiedadesTable.setModel(modelo);
     }//GEN-LAST:event_UsuariosAdBotActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-
+int fila = PropiedadesTable.getSelectedRow();
+    if (fila >= 0) {
+        // Eliminar de la lista
+        Propiedades.listaCasas.remove(fila);
+        
+        // Eliminar de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) PropiedadesTable.getModel();
+        modelo.removeRow(fila);
+    } else {
+        JOptionPane.showMessageDialog(this, "Seleccione una fila para eliminar.");
+    }
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void ConElimiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConElimiActionPerformed
@@ -1593,6 +1671,48 @@ PropiedadesTable.setModel(modelo);
   mostrarImagenSegunID();
     }//GEN-LAST:event_ImagenesComboActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+  
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
+ String usuarioActual = iniciosesion.usuarioLogueado;// O la variable que tengas con el usuario actual
+    Metodos.agendarVisita(usuarioActual);
+    actualizarTablaVisitas();
+}
+
+private void actualizarTablaVisitas() {
+    String usuarioActual = iniciosesion.usuarioLogueado; // Mismo usuario para que actualize la vista
+    VisitasTable.setModel(Metodos.generarTablaVisitasCliente(usuarioActual));
+    }//GEN-LAST:event_jButton34ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+ // Leila agrego un metodo para pedir los datos al usuario
+      Metodos.agregarNuevaPropiedadConImagen(PropiedadesTable);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void ImagenAgrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImagenAgrActionPerformed
+    // Obtener el ID seleccionado del combo
+    String idSeleccionado = (String) ImagenesCombo.getSelectedItem();
+
+    if (idSeleccionado == null) {
+        JOptionPane.showMessageDialog(this, "Seleccione un ID primero.");
+        return;
+    }
+
+    // Buscar la propiedad con ese ID
+    for (Propiedades p : Propiedades.listaCasas) {
+        if (p.getId().equals(idSeleccionado)) {
+            // Mostrar la imagen en el JLabel
+            mostrarImagenEnLabel(p.getRuta(), ImagUnoLbl);
+            return;
+        }
+    }
+
+    JOptionPane.showMessageDialog(this, "No se encontró la propiedad con ese ID.");
+        
+    }//GEN-LAST:event_ImagenAgrActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1630,7 +1750,7 @@ PropiedadesTable.setModel(modelo);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AdminBotPan;
-    private javax.swing.JPanel AdminBotones;
+    public javax.swing.JPanel AdminBotones;
     private javax.swing.JPanel AgeBotPan;
     private javax.swing.JButton ArriendosAgeBot;
     private javax.swing.JButton CliAgeRepBot;
@@ -1648,6 +1768,7 @@ PropiedadesTable.setModel(modelo);
     private javax.swing.JButton ContratosProBot;
     private javax.swing.JTable ContratosTable;
     private javax.swing.JLabel ImagUnoLbl;
+    private javax.swing.JButton ImagenAgr;
     private javax.swing.JComboBox<String> ImagenesCombo;
     private javax.swing.JButton IngresoComiRepBot;
     private javax.swing.JButton OpciAgeRepBot;

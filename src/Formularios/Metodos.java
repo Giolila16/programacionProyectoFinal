@@ -6,12 +6,29 @@ package Formularios;
 
 import static Formularios.Clientes.listaClientes;
 import static Formularios.Propiedades.listaCasas;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Image;
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +36,17 @@ import javax.swing.table.DefaultTableModel;
  * @author kdeke
  */
 public class Metodos {
+     public static String obtenerDiaSemana(String fecha) {
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            Date date = formato.parse(fecha);
+            
+            SimpleDateFormat formatoDia = new SimpleDateFormat("EEEE", new java.util.Locale("es"));
+            return formatoDia.format(date);
+        } catch (Exception e) {
+            return "Fecha inválida";
+        }
+    }
     private static Usuarios cargoSeleccionado;
 
     public static void setCargo(Usuarios cargo) {
@@ -67,13 +95,13 @@ public class Metodos {
 //metodo para ver a los clientes en tablas 
 public static DefaultTableModel generarTablaClientes() {
      
-    DefaultTableModel modelo = new DefaultTableModel(
+    DefaultTableModel modeloC = new DefaultTableModel(
             
         new Object[]{"ID", "Nombres", "Apellidos", "Correo", "Telefono", "Cedula", "Propiedades"}, 0
     );
 
     for (Clientes cliente : Clientes.listaClientes) {
-        modelo.addRow(new Object[]{
+        modeloC.addRow(new Object[]{
             cliente.getIdCliente(),
             cliente.getNombres(),
             cliente.getApellidos(),
@@ -83,25 +111,58 @@ public static DefaultTableModel generarTablaClientes() {
             cliente.getPropiedadAsignada()
         });
     }
-    return modelo;
+    return modeloC;
 }
 //Leila creo metodo de visitas
-    public static DefaultTableModel generarVisitas() {
-        DefaultTableModel modeloo = new DefaultTableModel(
-                new Object[]{"ID Visita", "Fecha", "Agente", "Propiedad ID", "Estado"}, 0
-        );
-        for (Visitas visitas : Visitas.listaVisitas) {
-            modeloo.addRow(new Object[]{
-                visitas.getIdVisita(),
-                visitas.getFecha(),
-                visitas.getAgente(),
-                visitas.getPropiedadId(),
-                visitas.getEstado()
-            });
-        }
-        return modeloo;
+public static DefaultTableModel generarTablaVisitasCompleta() {
+    DefaultTableModel modelo = new DefaultTableModel(
+        new Object[]{"ID", "Fecha", "Día", "Cliente", "Agente", "Propiedad", "Estado"}, 0
+    );
 
+    for (Visitas visita : Visitas.listaVisitas) {
+        // Buscar nombre del CLIENTE
+        String nombreCliente = buscarNombre(visita.getCliente(), 
+            ClienteUsuario.listaUsuariosCliente, 
+            Propietario.listaPropietarios);
+        
+        // Buscar nombre del AGENTE
+        String nombreAgente = buscarNombre(visita.getAgente(), 
+            Agente.listaAgentes, 
+            null);
+
+        modelo.addRow(new Object[]{
+            visita.getIdVisita(),
+            visita.getFecha(),
+            visita.getDiaSemana(),
+            nombreCliente,   // Ej: "Ana López"
+            nombreAgente,    // Ej: "Carlos Pérez"
+            visita.getPropiedadId(),
+            visita.getEstado()
+        });
     }
+    return modelo;
+}
+private static String buscarNombre(String usuarioId, 
+                                 ArrayList<? extends Usuarios> lista1, 
+                                 ArrayList<? extends Usuarios> lista2) {
+    // Buscar en la primera lista (ej: Clientes)
+    for (Usuarios usuario : lista1) {
+        if (usuario.getUsuario().equals(usuarioId)) {
+            return usuario.getNombres() + " " + usuario.getApellidos();
+        }
+    }
+    
+    // Buscar en la segunda lista (ej: Propietarios) si existe
+    if (lista2 != null) {
+        for (Usuarios usuario : lista2) {
+            if (usuario.getUsuario().equals(usuarioId)) {
+                return usuario.getNombres() + " " + usuario.getApellidos();
+            }
+        }
+    }
+    
+    return usuarioId; // Si no se encuentra, devolver el ID original
+}
     //Metodo para contratos
     public static DefaultTableModel generarContratos() {
     DefaultTableModel modelo = new DefaultTableModel(
@@ -163,4 +224,249 @@ public static int obtenerNumeroMes(String mes) {
         default: return -1;
     }
 }
+//Metodo para pagos
+ public static DefaultTableModel generarPagos() {
+        DefaultTableModel modeloa = new DefaultTableModel(
+                new Object[]{"ID Pago", "Tipo Pago", "Propiedad ID", "Cliente", "Monto", " Estado", "Metodo Pago", "Agente"}, 0
+        );
+        for (Pagos pagos : Pagos.listaPagos) {
+            modeloa.addRow(new Object[]{
+                pagos.getIdPago(),
+                pagos.getTipoPago(),
+                pagos.getPropiedadId(),
+                pagos.getCliente(),
+                pagos.getMonto(),
+                pagos.getEstado(),
+                pagos.getMetodoPago(),
+                pagos.getAgente()
+            });
+        }
+        return modeloa;
     }
+    public static DefaultTableModel generarTablaUsuariosCompleta() {
+        DefaultTableModel modelo = new DefaultTableModel(
+            new Object[]{"Usuario", "Contraseña", "Nombres", "Apellidos", "Cargo"}, 0
+        );
+
+        //  Agregar Agentes
+        agregarUsuariosDeLista(modelo, new ArrayList<>(Agente.listaAgentes));
+        
+        //  Agregar Propietarios
+        agregarUsuariosDeLista(modelo, new ArrayList<>(Propietario.listaPropietarios));
+        
+        //  Agregar Clientes
+        agregarUsuariosDeLista(modelo, new ArrayList<>(ClienteUsuario.listaUsuariosCliente));
+        
+        //  Agregar Administrador 
+        if (gio.perrito != null) {
+            agregarUsuario(modelo, gio.perrito);
+        }
+
+        return modelo;
+    }
+
+    // Método para agregar un usuario individual
+    private static void agregarUsuario(DefaultTableModel modelo, Usuarios usuario) {
+        modelo.addRow(new Object[]{
+            usuario.getUsuario(),
+            usuario.getContraseña(),
+            usuario.getNombres(),
+            usuario.getApellidos(),
+            usuario.getCargo()
+        });
+    }
+
+    // Método auxiliar para agregar una lista de usuarios
+    private static void agregarUsuariosDeLista(DefaultTableModel modelo, ArrayList<? extends Usuarios> listaUsuarios) {
+        for (Usuarios usuario : listaUsuarios) {
+            agregarUsuario(modelo, usuario);
+        }}
+    //AGREGAR VISITA PARA CLIENTE
+  public static void agendarVisita(String clienteActual) {
+    // Agentes
+    String[] nombresAgentes = Agente.listaAgentes.stream()
+        .map(a -> a.getNombres() + " " + a.getApellidos())
+        .toArray(String[]::new);
+
+    String nombreAgente = (String) JOptionPane.showInputDialog(
+        null, "Seleccione un agente:", "Agendar Visita",
+        JOptionPane.QUESTION_MESSAGE, null, nombresAgentes, null);
+
+    if (nombreAgente != null) {
+        String idAgente = Agente.listaAgentes.stream()
+            .filter(a -> (a.getNombres() + " " + a.getApellidos()).equals(nombreAgente))
+            .map(Agente::getUsuario)
+            .findFirst().orElse(null);
+
+        if (idAgente != null) {
+            // PROPIEDADES
+            String[] propiedadesOpciones = Propiedades.listaCasas.stream()
+                .map(p -> p.getId() + " - " + p.getTipo()) // Ej: "P001 - Casa en el centro"
+                .toArray(String[]::new);
+
+            String propiedadSeleccionada = (String) JOptionPane.showInputDialog(
+                null, "Seleccione una propiedad:", "Agendar Visita",
+                JOptionPane.QUESTION_MESSAGE, null, propiedadesOpciones, null);
+
+            if (propiedadSeleccionada != null) {
+                // Extraer solo el ID antes del guión
+                String propiedadId = propiedadSeleccionada.split(" - ")[0];
+
+                String fecha = JOptionPane.showInputDialog("Fecha (DD/MM/AAAA):");
+
+                if (fecha != null && !fecha.isEmpty()) {
+                    String idVisita = "V" + (Visitas.listaVisitas.size() + 1);
+                    Visitas.agregarVisita(
+                        idVisita,
+                        fecha,
+                        obtenerDiaSemana(fecha),
+                        idAgente,
+                        clienteActual,
+                        propiedadId
+                    );
+                    JOptionPane.showMessageDialog(null, "Visita agendada con " + nombreAgente);
+                }
+            }
+        }
+    }
+}
+  public static DefaultTableModel generarTablaVisitasCliente(String usuarioCliente) {
+    DefaultTableModel modelo = new DefaultTableModel(
+        new Object[]{"ID", "Fecha", "Día", "Agente", "Propiedad", "Estado"}, 0
+    );
+
+    Visitas.listaVisitas.stream()
+        .filter(v -> v.getCliente().equals(usuarioCliente))
+        .forEach(v -> modelo.addRow(new Object[]{
+            v.getIdVisita(),
+            v.getFecha(),
+            v.getDiaSemana(),
+            v.getAgente(),
+            v.getPropiedadId(),
+            v.getEstado()
+        }));
+
+    return modelo;
+}
+  public static Usuarios verificarUsuario(String usuario, String contraseña) {
+    for (ClienteUsuario c : ClienteUsuario.listaUsuariosCliente) {
+        if (c.getUsuario().equals(usuario) && c.getContraseña().equals(contraseña)) {
+            return c;
+        }
+    }
+
+    for (Agente a : Agente.listaAgentes) {
+        if (a.getUsuario().equals(usuario) && a.getContraseña().equals(contraseña)) {
+            return a;
+        }
+    }
+
+    for (Propietario p : Propietario.listaPropietarios) {
+        if (p.getUsuario().equals(usuario) && p.getContraseña().equals(contraseña)) {
+            return p;
+        }
+    }
+
+    if (gio.perrito != null && gio.perrito.getUsuario().equals(usuario) && gio.perrito.getContraseña().equals(contraseña)) {
+        return gio.perrito;
+    }
+
+    return null; // si no se encuentra
+}
+   public static void agregarNuevaPropiedadConImagen(JTable tabla) {
+    // Asegurarse de que hay agentes cargados
+    if (Agente.listaAgentes.isEmpty()) {
+        Agente.cargarAgentesEjemplo(); // Si no están cargados, se cargan
+    }
+
+    // Crear combos
+    String[] nombresAgentes = Agente.listaAgentes.stream()
+            .map(a -> a.getNombres() + " " + a.getApellidos())
+            .toArray(String[]::new);
+    String[] estadoOpciones = {"Disponible", "Reservado", "Vendido", "Arrendado", "Mantenimiento"};
+
+    JComboBox<String> comboEstado = new JComboBox<>(estadoOpciones);
+    JComboBox<String> comboAgente = new JComboBox<>(nombresAgentes);
+
+    // Imagen
+    JLabel previewImagen = new JLabel();
+    previewImagen.setPreferredSize(new Dimension(200, 150));
+    previewImagen.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+    final String[] rutaImagen = {null};
+
+    JButton btnSeleccionarImagen = new JButton("Seleccionar imagen");
+    btnSeleccionarImagen.addActionListener(e -> {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileFilter(new FileNameExtensionFilter("Imágenes (.jpg, .jpeg, .png)", "jpg", "jpeg", "png"));
+        int opcion = chooser.showOpenDialog(null);
+        if (opcion == JFileChooser.APPROVE_OPTION) {
+            File img = chooser.getSelectedFile();
+            rutaImagen[0] = img.getAbsolutePath();
+
+            ImageIcon icono = new ImageIcon(rutaImagen[0]);
+            Image imagenEscalada = icono.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
+            previewImagen.setIcon(new ImageIcon(imagenEscalada));
+        }
+    });
+
+    JPanel panelImagen = new JPanel(new BorderLayout(5, 5));
+    panelImagen.add(previewImagen, BorderLayout.CENTER);
+    panelImagen.add(btnSeleccionarImagen, BorderLayout.SOUTH);
+
+    // Campos de texto
+    JTextField txtId = new JTextField();
+    JTextField txtTipo = new JTextField();
+    JTextField txtUbicacion = new JTextField();
+    JTextField txtArea = new JTextField();
+    JTextField txtPrecio = new JTextField();
+    JTextField txtPropietario = new JTextField();
+
+    JPanel panelCampos = new JPanel(new GridLayout(0, 2, 5, 5));
+    panelCampos.add(new JLabel("ID:")); panelCampos.add(txtId);
+    panelCampos.add(new JLabel("Tipo:")); panelCampos.add(txtTipo);
+    panelCampos.add(new JLabel("Ubicación:")); panelCampos.add(txtUbicacion);
+    panelCampos.add(new JLabel("Área:")); panelCampos.add(txtArea);
+    panelCampos.add(new JLabel("Precio:")); panelCampos.add(txtPrecio);
+    panelCampos.add(new JLabel("Propietario:")); panelCampos.add(txtPropietario);
+    panelCampos.add(new JLabel("Estado:")); panelCampos.add(comboEstado);
+    panelCampos.add(new JLabel("Agente:")); panelCampos.add(comboAgente);
+
+    JPanel panelFinal = new JPanel(new BorderLayout(10, 10));
+    panelFinal.add(panelCampos, BorderLayout.CENTER);
+    panelFinal.add(panelImagen, BorderLayout.EAST);
+
+    int respuesta = JOptionPane.showConfirmDialog(null, panelFinal, "Agregar Propiedad",
+            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+    if (respuesta == JOptionPane.OK_OPTION) {
+        String id = txtId.getText().trim();
+        String tipo = txtTipo.getText().trim();
+        String ubicacion = txtUbicacion.getText().trim();
+        String area = txtArea.getText().trim();
+        String precio = txtPrecio.getText().trim();
+        String propietario = txtPropietario.getText().trim();
+        String estado = (String) comboEstado.getSelectedItem();
+        String agente = (String) comboAgente.getSelectedItem();
+
+        if (id.isEmpty() || tipo.isEmpty() || ubicacion.isEmpty() || area.isEmpty() ||
+            precio.isEmpty() || propietario.isEmpty() || rutaImagen[0] == null) {
+            JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos y selecciona una imagen.",
+                    "Campos incompletos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Crear y agregar propiedad
+        Propiedades nueva = new Propiedades(id, tipo, ubicacion, area, precio, estado, propietario, agente, rutaImagen[0]);
+        Propiedades.listaCasas.add(nueva);
+
+        // Agregar a la tabla
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        modelo.addRow(new Object[]{id, tipo, ubicacion, area, precio, estado, propietario, agente});
+
+        JOptionPane.showMessageDialog(null, "Propiedad agregada correctamente.");
+    } else {
+        JOptionPane.showMessageDialog(null, "Operación cancelada.");
+    }
+}}
+
+    

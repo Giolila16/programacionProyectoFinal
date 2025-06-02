@@ -4,6 +4,7 @@
  */
 package Formularios;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -17,6 +18,7 @@ import javax.swing.JPanel;
  * @author kdeke
  */
 public class iniciosesion extends javax.swing.JFrame {
+    public static String usuarioLogueado = null; //añadido para tener el nombre de la variable
 
     iniciosesion.FondoPanel fondo = new iniciosesion.FondoPanel();
     
@@ -79,7 +81,8 @@ public class iniciosesion extends javax.swing.JFrame {
         CargoCombo.addItem(cargo);
     }
 }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -182,19 +185,32 @@ public class iniciosesion extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuarioTextActionPerformed
 
     private void InicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioSesionActionPerformed
-   Usuarios cargoSeleccionado = (Usuarios) CargoCombo.getSelectedItem();
-   Metodos.setCargo(cargoSeleccionado);
-   
-   if (cargoSeleccionado.getNombreCargo().equals("--Seleccione Cargo--")) {
-    JOptionPane.showMessageDialog(null, "Por favor seleccione un cargo.");
-    return;
-}
+        //Leila modifico el inicio de sesion
+        String usuario = UsuarioText.getText(); // toma el usuario 
+        char[] contrasenachar = ContrasenaText.getPassword(); //Toma la contraseña
+        String contraseña = new String(contrasenachar);
+        gio.cargarAdministradorEjemplo();//se cargan a lista de los usuarios
+        Agente.cargarAgentesEjemplo();
+        Propietario.cargarPropietariosEjemplo();
+        ClienteUsuario.cargarClientesUsuarioEjemplo();
+        Usuarios usuarioLogueadoObj = Metodos.verificarUsuario(usuario, contraseña); //verifica usuarios y contraseña
 
-   
-   
-        Administrador admin = new Administrador();
-        admin.setVisible(true);
-        this.setVisible(false);
+        if (usuarioLogueadoObj != null) {
+            // Guardamos el usuario logueado
+            iniciosesion.usuarioLogueado = usuarioLogueadoObj.getUsuario(); //obtiene usuario
+
+            // Abrimos la ventana principal
+            Administrador ventana = new Administrador();
+            ventana.setVisible(true);
+            this.setVisible(false); // Ocultamos la de inicio
+
+            // Mostramos el panel correspondiente
+            CardLayout cl = (CardLayout) ventana.AdminBotones.getLayout();// llamamos a el cardlayout creado en la ventana de admin
+            cl.show(ventana.AdminBotones, usuarioLogueadoObj.getCargo());
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos"); //si no da los datos bien
+        }
     }//GEN-LAST:event_InicioSesionActionPerformed
 
     /**

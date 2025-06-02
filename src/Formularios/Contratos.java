@@ -48,14 +48,13 @@ public class Contratos {
     public String getFin() { return fin; }
 
     public static void cargarContratosEjemplo() {
+         if (listaContratos.isEmpty()) {
         listaContratos.add(new Contratos("C001", "Arriendo", "21345", "José Morales", "Jose", "Activo", 10000, "Enero", "Junio"));
         listaContratos.add(new Contratos("C002", "Venta", "02412", "Camilo Arias", "Camilo", "Finalizado", 40000, "Febrero", "Abril"));
         listaContratos.add(new Contratos("C003", "Arriendo", "02406", "Carlos Ruiz", "Carlos", "Activo", 35000, "Marzo", "Agosto"));
         listaContratos.add(new Contratos("C004", "Local", "02410", "Laura Gómez", "Julian", "Cancelado", 30000, "Enero", "Marzo"));
         listaContratos.add(new Contratos("C005", "Finca", "02408", "Andrés Peña", "Andrés", "Activo", 50000, "Abril", "Octubre"));
-        listaContratos.add(new Contratos(" ", " ", " ", " ", " ", " ", 0, " ", " "));
-        listaContratos.add(new Contratos(" ", " ", " ", " ", " ", " ", 0, " ", " "));
-        listaContratos.add(new Contratos(" ", " ", " ", " ", " ", " ", 0, " ", " "));
-        
+
+         }
     }
 }
