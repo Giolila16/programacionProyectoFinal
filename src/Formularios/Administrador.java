@@ -240,7 +240,7 @@ public class Administrador extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         PropiedadesTable = new javax.swing.JTable();
         jButton17 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        AgregarProBot = new javax.swing.JButton();
         VerPropiBot = new javax.swing.JButton();
         PagosPan = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -1078,10 +1078,10 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Agregar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        AgregarProBot.setText("Agregar");
+        AgregarProBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                AgregarProBotActionPerformed(evt);
             }
         });
 
@@ -1105,7 +1105,7 @@ public class Administrador extends javax.swing.JFrame {
                         .addGap(260, 260, 260)
                         .addComponent(jButton17)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5)
+                        .addComponent(AgregarProBot)
                         .addGap(18, 18, 18)
                         .addComponent(VerPropiBot)))
                 .addContainerGap(149, Short.MAX_VALUE))
@@ -1118,7 +1118,7 @@ public class Administrador extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(PropiedadesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton17)
-                    .addComponent(jButton5)
+                    .addComponent(AgregarProBot)
                     .addComponent(VerPropiBot))
                 .addGap(13, 13, 13))
         );
@@ -1660,10 +1660,10 @@ private void actualizarTablaVisitas() {
     VisitasTable.setModel(Metodos.generarTablaVisitasCliente(usuarioActual));
     }//GEN-LAST:event_jButton34ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void AgregarProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProBotActionPerformed
  // Leila agrego un metodo para pedir los datos al usuario
       Metodos.agregarNuevaPropiedadConImagen(PropiedadesTable);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_AgregarProBotActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1704,6 +1704,7 @@ private void actualizarTablaVisitas() {
     private javax.swing.JPanel AdminBotPan;
     public javax.swing.JPanel AdminBotones;
     private javax.swing.JPanel AgeBotPan;
+    private javax.swing.JButton AgregarProBot;
     private javax.swing.JButton ArriendosAgeBot;
     private javax.swing.JButton CliAgeRepBot;
     private javax.swing.JButton ClientesAdBot;
@@ -1781,7 +1782,6 @@ private void actualizarTablaVisitas() {
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JScrollPane jScrollPane1;

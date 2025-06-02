@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.MediaTracker;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -23,6 +24,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -36,6 +38,91 @@ import javax.swing.table.DefaultTableModel;
  * @author kdeke
  */
 public class Metodos {
+    
+    
+    public static void configurarFondoCompleto(JFrame frame, JPanel panelPrincipal, String rutaImagen) {
+    try {
+        ImageIcon icon = new ImageIcon(Metodos.class.getResource(rutaImagen));
+        if (icon.getImageLoadStatus() != MediaTracker.COMPLETE) {
+            throw new RuntimeException("No se pudo cargar la imagen: " + rutaImagen);
+        }
+
+        JPanel fondo = new JPanel(new BorderLayout()) {
+            private Image img = icon.getImage();
+            
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        
+        panelPrincipal.setOpaque(false);
+        fondo.add(panelPrincipal, BorderLayout.CENTER);
+        frame.setContentPane(fondo);
+        frame.revalidate();
+        
+    } catch (Exception e) {
+        System.err.println("Error al configurar fondo: " + e.getMessage());
+        e.printStackTrace();
+    }
+}
+    //Kevin - metodo para fondo de administrador
+    
+    public static void configurarFondoDoble(JFrame frame, JPanel panelNorth, String rutaNorth, 
+                                       JPanel panelCenter, String rutaCenter) {
+    
+    // Panel principal que contendrá ambos paneles
+    JPanel mainPanel = new JPanel(new BorderLayout());
+    mainPanel.setOpaque(false);
+    
+    // 1. Configura panel NORTH con imagen
+    JPanel northWithBackground = new JPanel(new BorderLayout()) {
+        private Image img = new ImageIcon(getClass().getResource(rutaNorth)).getImage();
+        
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+        }
+    };
+    northWithBackground.add(panelNorth, BorderLayout.CENTER);
+    panelNorth.setOpaque(false);
+    mainPanel.add(northWithBackground, BorderLayout.NORTH);
+    
+    // 2. Configura panel CENTER con imagen
+    JPanel centerWithBackground = new JPanel(new BorderLayout()) {
+        private Image img = new ImageIcon(getClass().getResource(rutaCenter)).getImage();
+        
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+        }
+    };
+    centerWithBackground.add(panelCenter, BorderLayout.CENTER);
+    panelCenter.setOpaque(false);
+    mainPanel.add(centerWithBackground, BorderLayout.CENTER);
+    
+    // 3. Aplicar al frame
+    frame.setContentPane(mainPanel);
+    frame.revalidate();
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
      public static String obtenerDiaSemana(String fecha) {
         try {
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
