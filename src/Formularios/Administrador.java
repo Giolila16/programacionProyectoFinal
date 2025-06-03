@@ -1043,7 +1043,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ));
         jScrollPane2.setViewportView(ClientesTable);
 
-        jButton29.setText("Editar");
+        jButton29.setText("Eliminar");
         jButton29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton29ActionPerformed(evt);
