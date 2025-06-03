@@ -73,61 +73,6 @@ public class Metodos {
         e.printStackTrace();
     }
 }
-    //Kevin - metodo para fondo de administrador
-    
-    public static void configurarFondoDoble(JFrame frame, JPanel panelNorth, String rutaNorth, 
-                                       JPanel panelCenter, String rutaCenter) {
-    
-    // Panel principal que contendrá ambos paneles
-    JPanel mainPanel = new JPanel(new BorderLayout());
-    mainPanel.setOpaque(false);
-    
-    // 1. Configura panel NORTH con imagen
-    JPanel northWithBackground = new JPanel(new BorderLayout()) {
-        private Image img = new ImageIcon(getClass().getResource(rutaNorth)).getImage();
-        
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-        }
-    };
-    northWithBackground.add(panelNorth, BorderLayout.CENTER);
-    panelNorth.setOpaque(false);
-    mainPanel.add(northWithBackground, BorderLayout.NORTH);
-    
-    // 2. Configura panel CENTER con imagen
-    JPanel centerWithBackground = new JPanel(new BorderLayout()) {
-        private Image img = new ImageIcon(getClass().getResource(rutaCenter)).getImage();
-        
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-        }
-    };
-    centerWithBackground.add(panelCenter, BorderLayout.CENTER);
-    panelCenter.setOpaque(false);
-    mainPanel.add(centerWithBackground, BorderLayout.CENTER);
-    
-    // 3. Aplicar al frame
-    frame.setContentPane(mainPanel);
-    frame.revalidate();
-}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
      public static String obtenerDiaSemana(String fecha) {
         try {

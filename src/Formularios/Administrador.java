@@ -5,6 +5,7 @@
 package Formularios;
 
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -35,17 +36,26 @@ public class Administrador extends javax.swing.JFrame {
     private JPanel panelContenido;  
     private CardLayout cardLayout;
   
-    Administrador.FondoPanel fondo = new Administrador.FondoPanel();
     private void llenarComboBoxConIDs() {
     ImagenesCombo.removeAllItems(); 
     for (Propiedades casa : Propiedades.listaCasas) {
         ImagenesCombo.addItem(casa.getId());
     }
-    JPanel RepAgeBotPan = Metodos.crearPanelConFondoMadera();
+    
 }
     public Administrador() {
-        
         initComponents();
+        
+       FondoPanel fondo = new FondoPanel();
+    fondo.setLayout(new BorderLayout());
+    
+    // Mover los paneles existentes al fondo
+    fondo.add(AdminBotones, BorderLayout.NORTH);
+    fondo.add(ParentPan, BorderLayout.CENTER);
+    
+    // Reemplazar el contenido del JFrame
+    getContentPane().removeAll();
+    getContentPane().add(fondo);
         
         this.setLocationRelativeTo(this);
    Propiedades.cargarCasasEjemplo();
@@ -102,13 +112,11 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
     
 
 
-         fondo.setLayout(new java.awt.BorderLayout());
 
     // Mueve los paneles existentes al fondo
-    fondo.add(AdminBotones, java.awt.BorderLayout.PAGE_START);
-    fondo.add(ParentPan, java.awt.BorderLayout.CENTER);
+
+
         
-        setContentPane(fondo);
     }
     //Leila actualizo el metodo para mostrar imagenes y elimino Systems innecesarios
   private void actualizarComboPropiedades() {
@@ -204,12 +212,12 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         UsuariosAdBot = new javax.swing.JButton();
         OpcionesAdBot = new javax.swing.JButton();
         ParentPan = new javax.swing.JPanel();
-        VacioPan = new javax.swing.JPanel();
         PropImagenesPan = new javax.swing.JPanel();
         VolverProBot = new javax.swing.JButton();
         DetCasa = new javax.swing.JTextArea();
         ImagenesCombo = new javax.swing.JComboBox<>();
         ImagUnoLbl = new javax.swing.JLabel();
+        VacioPan = new javax.swing.JPanel();
         ContratosPan = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         ContratosTable = new javax.swing.JTable();
@@ -328,6 +336,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         AdminBotones.add(RepAgeBotPan, "card7");
 
         ReportesBotPan.setBackground(new java.awt.Color(204, 204, 255));
+        ReportesBotPan.setOpaque(false);
 
         ProDispoRepBot.setText("Pro. disponibilidad");
         ProDispoRepBot.addActionListener(new java.awt.event.ActionListener() {
@@ -399,49 +408,50 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             .addGroup(ReportesBotPanLayout.createSequentialGroup()
                 .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ReportesBotPanLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(142, 142, 142)
                         .addComponent(ProDispoRepBot)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IngresoComiRepBot)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ContVencerRepBot)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ProRegisRepBot)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ClientesRepBot)
+                        .addComponent(ClientesRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(VisitasRepBot)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ReportesBasicosRepBot))
+                        .addComponent(VisitasRepBot))
                     .addGroup(ReportesBotPanLayout.createSequentialGroup()
-                        .addGap(307, 307, 307)
-                        .addComponent(VolverRepBot)
+                        .addGap(172, 172, 172)
+                        .addComponent(IngresoComiRepBot)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(OpcionesRepBot)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(ReportesBasicosRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(VolverRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(OpcionesRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         ReportesBotPanLayout.setVerticalGroup(
             ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportesBotPanLayout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ProDispoRepBot)
-                    .addComponent(IngresoComiRepBot)
                     .addComponent(ContVencerRepBot)
                     .addComponent(ProRegisRepBot)
                     .addComponent(ClientesRepBot)
-                    .addComponent(VisitasRepBot)
-                    .addComponent(ReportesBasicosRepBot))
+                    .addComponent(VisitasRepBot))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IngresoComiRepBot)
+                    .addComponent(ReportesBasicosRepBot)
                     .addComponent(VolverRepBot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(OpcionesRepBot))
-                .addGap(15, 15, 15))
+                .addGap(44, 44, 44))
         );
 
         AdminBotones.add(ReportesBotPan, "card6");
 
         AgeBotPan.setBackground(new java.awt.Color(204, 204, 255));
+        AgeBotPan.setOpaque(false);
 
         SeguimientoAgeBot.setText("Seguimiento");
         SeguimientoAgeBot.addActionListener(new java.awt.event.ActionListener() {
@@ -511,6 +521,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         AdminBotones.add(AgeBotPan, "agente");
 
         ClientesBotPan.setBackground(new java.awt.Color(0, 51, 51));
+        ClientesBotPan.setOpaque(false);
 
         ContratosClieBot.setText("Mis Contratos");
         ContratosClieBot.addActionListener(new java.awt.event.ActionListener() {
@@ -551,8 +562,8 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ClientesBotPan.setLayout(ClientesBotPanLayout);
         ClientesBotPanLayout.setHorizontalGroup(
             ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ClientesBotPanLayout.createSequentialGroup()
-                .addGap(127, 127, 127)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ClientesBotPanLayout.createSequentialGroup()
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addComponent(PropiedadesClieBot)
                 .addGap(18, 18, 18)
                 .addComponent(VisitasClieBot)
@@ -562,24 +573,25 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addComponent(PagosClieBot)
                 .addGap(18, 18, 18)
                 .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGap(134, 134, 134))
         );
         ClientesBotPanLayout.setVerticalGroup(
             ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ClientesBotPanLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(45, 45, 45)
                 .addGroup(ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ContratosClieBot)
                     .addComponent(PropiedadesClieBot)
                     .addComponent(VisitasClieBot)
                     .addComponent(PagosClieBot)
                     .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         AdminBotones.add(ClientesBotPan, "visitante");
 
         PropietarioBotPan.setBackground(new java.awt.Color(51, 255, 102));
+        PropietarioBotPan.setOpaque(false);
 
         PropiedadesProBot.setText("Mis Propiedades");
         PropiedadesProBot.addActionListener(new java.awt.event.ActionListener() {
@@ -711,43 +723,43 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         AdminBotPan.setLayout(AdminBotPanLayout);
         AdminBotPanLayout.setHorizontalGroup(
             AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AdminBotPanLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(PropiedadesAdBot)
-                .addGap(18, 18, 18)
-                .addComponent(ClientesAdBot)
-                .addGap(18, 18, 18)
-                .addComponent(VisitasAdBot)
-                .addGap(18, 18, 18)
-                .addComponent(ContratosAdBot)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdminBotPanLayout.createSequentialGroup()
+                .addContainerGap(146, Short.MAX_VALUE)
+                .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(AdminBotPanLayout.createSequentialGroup()
+                        .addComponent(UsuariosAdBot)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(OpcionesAdBot))
+                    .addGroup(AdminBotPanLayout.createSequentialGroup()
+                        .addComponent(PropiedadesAdBot)
+                        .addGap(18, 18, 18)
+                        .addComponent(ClientesAdBot)
+                        .addGap(18, 18, 18)
+                        .addComponent(VisitasAdBot)
+                        .addGap(18, 18, 18)
+                        .addComponent(ContratosAdBot)))
                 .addGap(18, 18, 18)
                 .addComponent(PagosAdBot)
                 .addGap(18, 18, 18)
                 .addComponent(ReportesAdBot)
-                .addGap(18, 18, 18)
-                .addComponent(UsuariosAdBot)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(OpcionesAdBot)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(128, 128, 128))
         );
         AdminBotPanLayout.setVerticalGroup(
             AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdminBotPanLayout.createSequentialGroup()
-                .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(AdminBotPanLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(OpcionesAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AdminBotPanLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PropiedadesAdBot)
-                            .addComponent(ClientesAdBot)
-                            .addComponent(VisitasAdBot)
-                            .addComponent(ContratosAdBot)
-                            .addComponent(PagosAdBot)
-                            .addComponent(ReportesAdBot)
-                            .addComponent(UsuariosAdBot))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PropiedadesAdBot)
+                    .addComponent(ClientesAdBot)
+                    .addComponent(VisitasAdBot)
+                    .addComponent(ContratosAdBot)
+                    .addComponent(PagosAdBot)
+                    .addComponent(ReportesAdBot))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(OpcionesAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UsuariosAdBot))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         AdminBotones.add(AdminBotPan, "admin");
@@ -756,21 +768,6 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
 
         ParentPan.setOpaque(false);
         ParentPan.setLayout(new java.awt.CardLayout());
-
-        VacioPan.setOpaque(false);
-
-        javax.swing.GroupLayout VacioPanLayout = new javax.swing.GroupLayout(VacioPan);
-        VacioPan.setLayout(VacioPanLayout);
-        VacioPanLayout.setHorizontalGroup(
-            VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 834, Short.MAX_VALUE)
-        );
-        VacioPanLayout.setVerticalGroup(
-            VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 529, Short.MAX_VALUE)
-        );
-
-        ParentPan.add(VacioPan, "card11");
 
         PropImagenesPan.setOpaque(false);
 
@@ -791,6 +788,19 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             }
         });
 
+        VacioPan.setOpaque(false);
+
+        javax.swing.GroupLayout VacioPanLayout = new javax.swing.GroupLayout(VacioPan);
+        VacioPan.setLayout(VacioPanLayout);
+        VacioPanLayout.setHorizontalGroup(
+            VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 834, Short.MAX_VALUE)
+        );
+        VacioPanLayout.setVerticalGroup(
+            VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 529, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout PropImagenesPanLayout = new javax.swing.GroupLayout(PropImagenesPan);
         PropImagenesPan.setLayout(PropImagenesPanLayout);
         PropImagenesPanLayout.setHorizontalGroup(
@@ -807,6 +817,11 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addGap(97, 97, 97)
                 .addComponent(DetCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PropImagenesPanLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(VacioPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         PropImagenesPanLayout.setVerticalGroup(
             PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -820,6 +835,11 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addGap(43, 43, 43)
                 .addComponent(VolverProBot)
                 .addGap(58, 58, 58))
+            .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PropImagenesPanLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(VacioPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         ParentPan.add(PropImagenesPan, "card10");
@@ -1281,16 +1301,16 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ReportesBasicosPanLayout.setHorizontalGroup(
             ReportesBasicosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ReportesBasicosPanLayout.createSequentialGroup()
-                .addGap(136, 136, 136)
+                .addGap(148, 148, 148)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         ReportesBasicosPanLayout.setVerticalGroup(
             ReportesBasicosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ReportesBasicosPanLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportesBasicosPanLayout.createSequentialGroup()
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(44, 44, 44))
         );
 
         ParentPan.add(ReportesBasicosPan, "card9");
@@ -1712,10 +1732,10 @@ private void actualizarTablaVisitas() {
     VisitasTable.setModel(Metodos.generarTablaVisitasCliente(usuarioActual));
     }//GEN-LAST:event_jButton34ActionPerformed
 
-    private void AgregarProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProBotActionPerformed
+    private void AgregarProBotActionPerformed(java.awt.event.ActionEvent evt) {                                              
  // Leila agrego un metodo para pedir los datos al usuario
       Metodos.agregarNuevaPropiedadConImagen(PropiedadesTable, ImagenesCombo, ImagUnoLbl);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }                                        
 
     /**
      * @param args the command line arguments
@@ -1852,9 +1872,8 @@ class FondoPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        imagen = new ImageIcon(getClass().getResource("/imagenes/fondomapa.jpg")).getImage();
+        imagen = new ImageIcon(getClass().getResource("/imagenes/Menus.jpg")).getImage();
         g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
-        
     }
-}  
+}
 }
