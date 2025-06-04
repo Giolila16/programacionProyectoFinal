@@ -18,7 +18,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-123,0,0,3,66"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-102,0,0,3,66"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -72,7 +72,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                      <EmptySpace pref="85" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="ProDisAgeRepBot" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="CliAgeRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -176,7 +176,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="55" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="ProDispoRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ContVencerRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -298,7 +298,9 @@
                       <Component id="SeguimientoAgeBot" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="OpcionesAgeBot" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="168" max="32767" attributes="0"/>
+                      <EmptySpace pref="64" max="32767" attributes="0"/>
+                      <Component id="CerrarAgeBot" min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -312,6 +314,7 @@
                           <Component id="VisitasAgeBot" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ArriendosAgeBot" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="OpcionesAgeBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="CerrarAgeBot" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="54" max="32767" attributes="0"/>
                   </Group>
@@ -359,6 +362,11 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OpcionesAgeBotActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="CerrarAgeBot">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CerrarAgeBotActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="ClientesBotPan">
@@ -388,22 +396,32 @@
                       <Component id="PagosClieBot" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="OpcionesClieBot" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="CerrarCliBot" min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ContratosClieBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="PropiedadesClieBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="VisitasClieBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="PagosClieBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="OpcionesClieBot" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="ContratosClieBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="PropiedadesClieBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="VisitasClieBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="PagosClieBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="OpcionesClieBot" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="CerrarCliBot" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="48" max="32767" attributes="0"/>
+                      <EmptySpace pref="52" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -449,6 +467,11 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OpcionesClieBotActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="CerrarCliBot">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CerrarCliBotActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="PropietarioBotPan">
@@ -478,22 +501,32 @@
                       <Component id="PagosProBot" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="OpcionesProBot" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="175" max="32767" attributes="0"/>
+                      <EmptySpace pref="76" max="32767" attributes="0"/>
+                      <Component id="CerrarProBot" min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="PropiedadesProBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="VisitasProBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ContratosProBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="PagosProBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="OpcionesProBot" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="PropiedadesProBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="VisitasProBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ContratosProBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="PagosProBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="OpcionesProBot" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="CerrarProBot" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="55" max="32767" attributes="0"/>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -539,6 +572,11 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OpcionesProBotActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="CerrarProBot">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CerrarProBotActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="AdminBotPan">
@@ -579,7 +617,9 @@
                       <Component id="PagosAdBot" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="ReportesAdBot" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="CerrarAdBot" min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -587,20 +627,25 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="PropiedadesAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ClientesAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="VisitasAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ContratosAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="PagosAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ReportesAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="CerrarAdBot" min="-2" pref="58" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="PropiedadesAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ClientesAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="VisitasAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ContratosAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="PagosAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ReportesAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="OpcionesAdBot" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="UsuariosAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="OpcionesAdBot" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="UsuariosAdBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="19" max="32767" attributes="0"/>
+                      <EmptySpace pref="54" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -670,6 +715,11 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OpcionesAdBotActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="CerrarAdBot">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CerrarAdBotActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
@@ -704,7 +754,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="529" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="515" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -742,7 +792,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="89" max="32767" attributes="0"/>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="ImagUnoLbl" alignment="1" min="-2" pref="243" max="-2" attributes="0"/>
                           <Component id="DetCasa" alignment="1" min="-2" pref="243" max="-2" attributes="0"/>
@@ -809,9 +859,9 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="ConElimi" min="-2" max="-2" attributes="0"/>
+                      <Component id="EliminarConBot" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="AgrCon" min="-2" max="-2" attributes="0"/>
+                      <Component id="AgregarConBot" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="323" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -819,12 +869,12 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ConElimi" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="AgrCon" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EliminarConBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="AgregarConBot" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
@@ -916,20 +966,20 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="ConElimi">
+            <Component class="javax.swing.JButton" name="EliminarConBot">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Eliminar Datos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConElimiActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EliminarConBotActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="AgrCon">
+            <Component class="javax.swing.JButton" name="AgregarConBot">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar contrato"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgrConActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarConBotActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -1010,20 +1060,8 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
-                              <Component id="jButton27" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jButton26" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton8" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                      <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="225" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -1031,15 +1069,9 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                       <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton27" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton26" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1099,30 +1131,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton26">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Guardar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton26ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton27">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Editar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton27ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton8">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
-              </Events>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="ClientesPan">
@@ -1146,7 +1154,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="361" max="-2" attributes="0"/>
-                              <Component id="jButton29" min="-2" max="-2" attributes="0"/>
+                              <Component id="EliminarCliBot" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="172" max="32767" attributes="0"/>
@@ -1159,8 +1167,8 @@
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton29" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
+                      <Component id="EliminarCliBot" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1232,12 +1240,12 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton29">
+            <Component class="javax.swing.JButton" name="EliminarCliBot">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton29ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EliminarCliBotActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -1277,7 +1285,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="48" max="32767" attributes="0"/>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1416,11 +1424,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
-                              <Component id="jButton31" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jButton30" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="423" max="-2" attributes="0"/>
                               <Component id="AgregarPagoBot" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -1438,12 +1442,8 @@
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Component id="jScrollPane6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton31" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton30" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="AgregarPagoBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="9" max="32767" attributes="0"/>
+                      <Component id="AgregarPagoBot" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1521,22 +1521,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton30">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Guardar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton30ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton31">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Editar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton31ActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="AgregarPagoBot">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
@@ -1577,7 +1561,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="48" max="32767" attributes="0"/>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
                       <Component id="jScrollPane7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1695,7 +1679,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <EmptySpace pref="44" max="32767" attributes="0"/>
                       <Component id="jScrollPane8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>

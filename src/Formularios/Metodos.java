@@ -13,6 +13,8 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.MediaTracker;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -808,4 +810,23 @@ public static void crearPago(String clienteActual) {
     JOptionPane.showMessageDialog(null, "Pago creado exitosamente con ID: " + idPago,
             "Nuevo Pago", JOptionPane.INFORMATION_MESSAGE);
 }
+//Metodo para ajustar tamaño de imagen a el boton
+public static void ponerImagenEscalada(JButton boton, String rutaImagen) {
+        ImageIcon imagenOriginal = new ImageIcon(Metodos.class.getResource(rutaImagen));
+
+        // Escalar la imagen cuando el botón cambie de tamaño
+        boton.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                int ancho = boton.getWidth();
+                int alto = boton.getHeight();
+
+                if (ancho > 0 && alto > 0) {
+                    Image imagenEscalada = imagenOriginal.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+                    boton.setIcon(new ImageIcon(imagenEscalada));
+                    boton.setText(""); // Opcional: eliminar texto del botón
+                }
+            }
+        });
+    }
 }
