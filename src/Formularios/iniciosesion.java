@@ -79,6 +79,7 @@ public class iniciosesion extends javax.swing.JFrame {
         CargoCombo.addItem(cargo);
     }
 }
+   
     
     
     /**
@@ -174,32 +175,49 @@ public class iniciosesion extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuarioTextActionPerformed
 
     private void InicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioSesionActionPerformed
-        //Leila modifico el inicio de sesion
-        String usuario = UsuarioText.getText(); // toma el usuario 
-        char[] contrasenachar = ContrasenaText.getPassword(); //Toma la contraseña
-        String contraseña = new String(contrasenachar);
-        gio.cargarAdministradorEjemplo();//se cargan a lista de los usuarios
-        Agente.cargarAgentesEjemplo();
-        Propietario.cargarPropietariosEjemplo();
-        ClienteUsuario.cargarClientesUsuarioEjemplo();
-        Usuarios usuarioLogueadoObj = Metodos.verificarUsuario(usuario, contraseña); //verifica usuarios y contraseña
+   // 1. Obtener texto y contraseña
+String usuario = UsuarioText.getText(); 
+char[] contrasenachar = ContrasenaText.getPassword(); 
+String contraseña = new String(contrasenachar);
 
-        if (usuarioLogueadoObj != null) {
-            // Guardamos el usuario logueado
-            iniciosesion.usuarioLogueado = usuarioLogueadoObj.getUsuario(); //obtiene usuario
+// 2. Obtener el cargo seleccionado del ComboBox (debe ser un objeto Usuarios que solo tiene nombreCargo)
+Usuarios usuarioSeleccionado = (Usuarios) CargoCombo.getSelectedItem();
 
-            // Abrimos la ventana principal
-            Administrador ventana = new Administrador();
-            ventana.setVisible(true);
-            this.setVisible(false); // Ocultamos la de inicio
+if (usuarioSeleccionado == null || usuarioSeleccionado.getNombreCargo().equals("--Seleccione Cargo--")) {
+    JOptionPane.showMessageDialog(this, "Por favor seleccione un rol antes de iniciar sesión.");
+    return;
+}
 
-            // Mostramos el panel correspondiente
-            CardLayout cl = (CardLayout) ventana.AdminBotones.getLayout();// llamamos a el cardlayout creado en la ventana de admin
-            cl.show(ventana.AdminBotones, usuarioLogueadoObj.getCargo());
+String rolSeleccionado = usuarioSeleccionado.getNombreCargo(); // Ej: "Administrador", "Agente", etc.
 
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos"); //si no da los datos bien
-        }
+// 3. Cargar ejemplos de usuarios
+gio.cargarAdministradorEjemplo();
+Agente.cargarAgentesEjemplo();
+Propietario.cargarPropietariosEjemplo();
+ClienteUsuario.cargarClientesUsuarioEjemplo();
+
+// 4. Verificar usuario (retorna usuario con datos completos o null)
+Usuarios usuarioLogueadoObj = Metodos.verificarUsuario(usuario, contraseña);
+
+if (usuarioLogueadoObj != null) {
+    // 5. Comparar el cargo del usuario con el cargo seleccionado
+    if (!usuarioLogueadoObj.getCargo().equalsIgnoreCase(rolSeleccionado)) {
+        JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos");
+        return;
+    }
+
+    // 6. Guardar sesión
+    iniciosesion.usuarioLogueado = usuarioLogueadoObj.getUsuario();
+    Metodos.setCargo(usuarioLogueadoObj); // Método para usar después en mostrarPanelSegunCargo()
+
+    // 7. Abrir ventana principal
+    Administrador ventana = new Administrador();
+    ventana.setVisible(true);
+    ventana.mostrarPanelSegunCargo();
+    this.setVisible(false);
+} else {
+    JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos");
+}
     }//GEN-LAST:event_InicioSesionActionPerformed
 
     /**

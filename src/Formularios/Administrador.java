@@ -104,7 +104,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         modeloUsuario = Metodos.generarTablaUsuariosCompleta();
         UsuariosTable.setModel(modeloUsuario);
         
-        
+   
         
         mostrarPanelSegunCargo();
         //Leila incluyo que la imagen cuando se inicialice se lean las propiedades atravez de la clase, sea nula la primera imagen de vista
@@ -127,27 +127,25 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
 }
     iniciosesion Devolver = new iniciosesion();
     
-    private void mostrarPanelSegunCargo() {
+    void mostrarPanelSegunCargo() {
     Usuarios cargo = Metodos.getCargo();
 
     if (cargo != null) {
-        String nombreCargo = cargo.getNombreCargo().toLowerCase(); // ← CORREGIDO
+       String nombreCargo = cargo.getCargo().toLowerCase();// ← CORREGIDO
         CardLayout cl = (CardLayout) AdminBotones.getLayout();
 
         switch (nombreCargo) {
             case "administrador":
-                cl.show(AdminBotones, "admin");
+                cl.show(AdminBotones, "Administrador");
                 break;
             case "propietario":
-                cl.show(AdminBotones, "propietario");
+                cl.show(AdminBotones, "Propietario");
                 break;
             case "agente":
-                cl.show(AdminBotones, "agente");
+                cl.show(AdminBotones, "Agente");
                 break;
             case "cliente":
-            case "visitante":
-                cl.show(AdminBotones, "visitante");
-                break;
+                cl.show(AdminBotones, "Cliente");
             default:
                 JOptionPane.showMessageDialog(this, "Cargo desconocido: " + nombreCargo);
         }
@@ -222,6 +220,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         jScrollPane4 = new javax.swing.JScrollPane();
         ContratosTable = new javax.swing.JTable();
         ConElimi = new javax.swing.JButton();
+        AgrCon = new javax.swing.JButton();
         ReportesPan = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         ReportesTable = new javax.swing.JTable();
@@ -869,6 +868,13 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             }
         });
 
+        AgrCon.setText("Agregar contrato");
+        AgrCon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgrConActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ContratosPanLayout = new javax.swing.GroupLayout(ContratosPan);
         ContratosPan.setLayout(ContratosPanLayout);
         ContratosPanLayout.setHorizontalGroup(
@@ -880,7 +886,9 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContratosPanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ConElimi)
-                .addGap(372, 372, 372))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AgrCon)
+                .addGap(323, 323, 323))
         );
         ContratosPanLayout.setVerticalGroup(
             ContratosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -888,7 +896,9 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addContainerGap(34, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(ConElimi)
+                .addGroup(ContratosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ConElimi)
+                    .addComponent(AgrCon))
                 .addGap(27, 27, 27))
         );
 
@@ -1732,6 +1742,15 @@ private void actualizarTablaVisitas() {
     VisitasTable.setModel(Metodos.generarTablaVisitasCliente(usuarioActual));
     }//GEN-LAST:event_jButton34ActionPerformed
 
+    private void AgrConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgrConActionPerformed
+       String usuarioActual = iniciosesion.usuarioLogueado;
+    Metodos.crearContrato(usuarioActual);
+    actualizarTablaContratos();}
+    private void actualizarTablaContratos() {
+    ContratosTable.setModel(Metodos.generarContratos());
+
+    }//GEN-LAST:event_AgrConActionPerformed
+
     private void AgregarProBotActionPerformed(java.awt.event.ActionEvent evt) {                                              
  // Leila agrego un metodo para pedir los datos al usuario
       Metodos.agregarNuevaPropiedadConImagen(PropiedadesTable, ImagenesCombo, ImagUnoLbl);
@@ -1776,6 +1795,7 @@ private void actualizarTablaVisitas() {
     private javax.swing.JPanel AdminBotPan;
     public javax.swing.JPanel AdminBotones;
     private javax.swing.JPanel AgeBotPan;
+    private javax.swing.JButton AgrCon;
     private javax.swing.JButton AgregarProBot;
     private javax.swing.JButton ArriendosAgeBot;
     private javax.swing.JButton CliAgeRepBot;
