@@ -14,10 +14,11 @@ import java.util.List;
 public class Usuarios {
     
     private String nombreCargo;
-    private String Usuario;
-    private String Nombre;
-    private String Telefono;
-    private String Cargo;
+    private String usuario;
+    private String contraseña;
+    private String nombres;
+    private String apellidos;
+    private String cargo;
     
     
 
@@ -44,11 +45,7 @@ public class Usuarios {
         return lista;
     }
     
-     private String usuario;
-    private String contraseña;
-    private String nombres;
-    private String apellidos;
-    private String cargo;
+
 
     public Usuarios(String usuario, String contraseña, String nombres, String apellidos, String cargo) {
         this.usuario = usuario;

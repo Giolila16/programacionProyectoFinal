@@ -223,8 +223,6 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ContratosTable = new javax.swing.JTable();
         ConElimi = new javax.swing.JButton();
         ReportesPan = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        ReportesTable = new javax.swing.JTable();
         jButton24 = new javax.swing.JButton();
         jButton25 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -896,23 +894,6 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
 
         ReportesPan.setOpaque(false);
 
-        ReportesTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Tipo Reporte", "Usuario/Empleado", "Estado"
-            }
-        ));
-        jScrollPane3.setViewportView(ReportesTable);
-
         jButton24.setText("Guardar");
         jButton24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -934,25 +915,18 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ReportesPanLayout.setHorizontalGroup(
             ReportesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ReportesPanLayout.createSequentialGroup()
-                .addGroup(ReportesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ReportesPanLayout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ReportesPanLayout.createSequentialGroup()
-                        .addGap(245, 245, 245)
-                        .addComponent(jButton25)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton24)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton7)))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addGap(274, 274, 274)
+                .addComponent(jButton25)
+                .addGap(29, 29, 29)
+                .addComponent(jButton24)
+                .addGap(18, 18, 18)
+                .addComponent(jButton7)
+                .addContainerGap(296, Short.MAX_VALUE))
         );
         ReportesPanLayout.setVerticalGroup(
             ReportesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ReportesPanLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(500, 500, 500)
                 .addGroup(ReportesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton25)
                     .addComponent(jButton24)
@@ -1334,6 +1308,7 @@ PropiedadesTable.setModel(modelo);
         ParentPan.add(PropiedadesPan);
         ParentPan.repaint();
         ParentPan.revalidate();
+        Metodos.mostrarColumnasOcultas(PropiedadesTable);
     }//GEN-LAST:event_PropiedadesAdBotActionPerformed
 
     private void VisitasAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisitasAdBotActionPerformed
@@ -1592,7 +1567,9 @@ int fila = PropiedadesTable.getSelectedRow();
     ParentPan.removeAll();
     ParentPan.add(PropiedadesPan);
     ParentPan.repaint();
-    ParentPan.revalidate();    
+    ParentPan.revalidate();
+int[] columnasAocultar = {4, 5}; // Teléfono y Email
+        Metodos.ocultarColumnas(PropiedadesTable, columnasAocultar);    
     }//GEN-LAST:event_ProDispoRepBotActionPerformed
 
     private void IngresoComiRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresoComiRepBotActionPerformed
@@ -1632,7 +1609,7 @@ int fila = PropiedadesTable.getSelectedRow();
 
     private void ReportesBasicosRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportesBasicosRepBotActionPerformed
         ParentPan.removeAll();
-        ParentPan.add(ReportesPan);
+        ParentPan.add(ReportesBasicosPan);
         ParentPan.repaint();
         ParentPan.revalidate();
     }//GEN-LAST:event_ReportesBasicosRepBotActionPerformed
@@ -1825,7 +1802,6 @@ private void actualizarTablaVisitas() {
     private javax.swing.JTable ReportesBasicosTable;
     private javax.swing.JPanel ReportesBotPan;
     private javax.swing.JPanel ReportesPan;
-    private javax.swing.JTable ReportesTable;
     private javax.swing.JButton SeguimientoAgeBot;
     private javax.swing.JButton UsuariosAdBot;
     private javax.swing.JPanel UsuariosPan;
@@ -1859,7 +1835,6 @@ private void actualizarTablaVisitas() {
     private javax.swing.JButton jButton8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
