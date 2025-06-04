@@ -16,7 +16,7 @@ public class Pagos {
     private String propiedadId;
     private String cliente;
     private int monto;
-    private String estado;
+    String estado;
     private String metodoPago;
     private String agente;
 

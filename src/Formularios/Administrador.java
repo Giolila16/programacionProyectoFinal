@@ -5,6 +5,7 @@
 package Formularios;
 
 
+import static Formularios.iniciosesion.usuarioLogueado;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Graphics;
@@ -244,7 +245,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         PagosTable = new javax.swing.JTable();
         jButton30 = new javax.swing.JButton();
         jButton31 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        AgregarPagoBot = new javax.swing.JButton();
         VisitasPan = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         VisitasTable = new javax.swing.JTable();
@@ -1150,7 +1151,12 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             }
         });
 
-        jButton10.setText("Agregar");
+        AgregarPagoBot.setText("Agregar");
+        AgregarPagoBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarPagoBotActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PagosPanLayout = new javax.swing.GroupLayout(PagosPan);
         PagosPan.setLayout(PagosPanLayout);
@@ -1164,7 +1170,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                         .addGap(29, 29, 29)
                         .addComponent(jButton30)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton10))
+                        .addComponent(AgregarPagoBot))
                     .addGroup(PagosPanLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1179,7 +1185,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addGroup(PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton31)
                     .addComponent(jButton30)
-                    .addComponent(jButton10))
+                    .addComponent(AgregarPagoBot))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -1397,7 +1403,9 @@ int fila = PropiedadesTable.getSelectedRow();
     }//GEN-LAST:event_jButton30ActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
-        // TODO add your handling code here:
+   String usuarioActual = iniciosesion.usuarioLogueado;
+Metodos.crearPago(usuarioActual);
+actualizarTablaPagos();
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void EliminarVisiBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarVisiBotActionPerformed
@@ -1693,14 +1701,14 @@ for (Propiedades p : Propiedades.listaCasas) {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void AgregarVisiBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarVisiBotActionPerformed
- String usuarioActual = iniciosesion.usuarioLogueado;// O la variable que tengas con el usuario actual
-    Metodos.agendarVisita(usuarioActual);
-    actualizarTablaVisitas();
-}
+String usuarioActual = iniciosesion.usuarioLogueado;
+Metodos.agendarVisita(usuarioActual);
+actualizarTablaVisitas();}
 
 private void actualizarTablaVisitas() {
-    String usuarioActual = iniciosesion.usuarioLogueado; // Mismo usuario para que actualize la vista
+    String usuarioActual = iniciosesion.usuarioLogueado;
     VisitasTable.setModel(Metodos.generarTablaVisitasCliente(usuarioActual));
+
     }//GEN-LAST:event_AgregarVisiBotActionPerformed
 
     private void AgrConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgrConActionPerformed
@@ -1711,6 +1719,15 @@ private void actualizarTablaVisitas() {
     ContratosTable.setModel(Metodos.generarContratos());
 
     }//GEN-LAST:event_AgrConActionPerformed
+
+    private void AgregarPagoBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarPagoBotActionPerformed
+     String usuarioActual = iniciosesion.usuarioLogueado;
+     Metodos.crearPago(usuarioActual);
+actualizarTablaPagos();}
+private void actualizarTablaPagos() {
+    PagosTable.setModel(Metodos.generarPagos());
+
+    }//GEN-LAST:event_AgregarPagoBotActionPerformed
 
     private void AgregarProBotActionPerformed(java.awt.event.ActionEvent evt) {                                              
  // Leila agrego un metodo para pedir los datos al usuario
@@ -1757,6 +1774,7 @@ private void actualizarTablaVisitas() {
     public javax.swing.JPanel AdminBotones;
     private javax.swing.JPanel AgeBotPan;
     private javax.swing.JButton AgrCon;
+    private javax.swing.JButton AgregarPagoBot;
     private javax.swing.JButton AgregarProBot;
     private javax.swing.JButton AgregarVisiBot;
     private javax.swing.JButton ArriendosAgeBot;
@@ -1826,7 +1844,6 @@ private void actualizarTablaVisitas() {
     private javax.swing.JButton VolverAgeRepBot;
     private javax.swing.JButton VolverProBot;
     private javax.swing.JButton VolverRepBot;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;

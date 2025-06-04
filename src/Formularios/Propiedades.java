@@ -78,8 +78,8 @@ public class Propiedades {
     // Carga de ejemplos
     public static void cargarCasasEjemplo() {
         if (listaCasas.isEmpty()) {
-            listaCasas.add(new Propiedades("23422", "Casa", "Zona A", "80", "50000", "Disponible", "Ana", "Carlos", "/imagenes/23422.jpg", 3, 2, 1, 2, "patio amplio"));
-            listaCasas.add(new Propiedades("21345", "Casa", "Aeropuerto", "10", "10000", "Disponible", "Ana", "Jose", "/imagenes/21345.jpg", 2, 1, 1, 1, "Zona de juegos"));
+            listaCasas.add(new Propiedades("02403", "Casa", "Zona A", "80", "50000", "Disponible", "Ana", "Carlos", "/imagenes/23422.jpg", 3, 2, 1, 2, "patio amplio"));
+            listaCasas.add(new Propiedades("02404", "Casa", "Aeropuerto", "10", "10000", "Disponible", "Ana", "Jose", "/imagenes/21345.jpg", 2, 1, 1, 1, "Zona de juegos"));
             listaCasas.add(new Propiedades("02405", "Casa", "Zulia", "8", "20000", "Mantenimiento", "Sebastian", "Jose", "/imagenes/02405.jpg", 2, 1, 1, 1, "Taller de trabajo"));
             listaCasas.add(new Propiedades("02406", "Casa", "La Riviera", "10", "35000", "Disponible", "Andrea", "Carlos", "/imagenes/02405.jpg", 3, 2, 1, 2, "terraza"));
             listaCasas.add(new Propiedades("02407", "Apartamento", "Caobos", "6", "28000", "Vendida", "Luis", "Maria", "/imagenes/02407.jpg", 1, 1, 1, 1, "Sala de cine"));

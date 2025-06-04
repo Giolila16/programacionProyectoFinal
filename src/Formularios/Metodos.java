@@ -5,6 +5,7 @@
 package Formularios;
 
 
+import static Formularios.Pagos.listaPagos;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -24,6 +25,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -322,7 +324,7 @@ public static int obtenerNumeroMes(String mes) {
     
     //AGREGAR VISITA PARA CLIENTE
   public static void agendarVisita(String clienteActual) {
-    // Agentes
+     // Agentes
     String[] nombresAgentes = Agente.listaAgentes.stream()
         .map(a -> a.getNombres() + " " + a.getApellidos())
         .toArray(String[]::new);
@@ -340,7 +342,7 @@ public static int obtenerNumeroMes(String mes) {
         if (idAgente != null) {
             // PROPIEDADES
             String[] propiedadesOpciones = Propiedades.listaCasas.stream()
-                .map(p -> p.getId() + " - " + p.getTipo()) // Ej: "P001 - Casa en el centro"
+                .map(p -> p.getId() + " - " + p.getTipo())
                 .toArray(String[]::new);
 
             String propiedadSeleccionada = (String) JOptionPane.showInputDialog(
@@ -348,9 +350,7 @@ public static int obtenerNumeroMes(String mes) {
                 JOptionPane.QUESTION_MESSAGE, null, propiedadesOpciones, null);
 
             if (propiedadSeleccionada != null) {
-                // Extraer solo el ID antes del guión
                 String propiedadId = propiedadSeleccionada.split(" - ")[0];
-
                 String fecha = JOptionPane.showInputDialog("Fecha (DD/MM/AAAA):");
 
                 if (fecha != null && !fecha.isEmpty()) {
@@ -369,22 +369,44 @@ public static int obtenerNumeroMes(String mes) {
         }
     }
 }
+  //obtener nombre del cliente 
+  public static String getNombreClientePorUsuario(String usuario) {
+    for (ClienteUsuario c : ClienteUsuario.listaUsuariosCliente) {
+        if (c.getUsuario().equals(usuario)) {
+            return c.getNombres() + " " + c.getApellidos();
+        }
+    }
+    return "Desconocido";
+}
   public static DefaultTableModel generarTablaVisitasCliente(String usuarioCliente) {
-    DefaultTableModel modelo = new DefaultTableModel(
-        new Object[]{"ID", "Fecha", "Día", "Agente", "Propiedad", "Estado"}, 0
-    );
+    String[] columnas = {"ID", "Fecha", "Día", "Agente", "Cliente", "Propiedad"};
+    DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
 
-    Visitas.listaVisitas.stream()
-        .filter(v -> v.getCliente().equals(usuarioCliente))
-        .forEach(v -> modelo.addRow(new Object[]{
-            v.getIdVisita(),
-            v.getFecha(),
-            v.getDiaSemana(),
-            v.getAgente(),
-            v.getPropiedadId(),
-            v.getEstado()
-        }));
+    for (Visitas visita : Visitas.listaVisitas) {
+        if (visita.getCliente().equals(usuarioCliente)) {
+            String nombreAgente = Agente.listaAgentes.stream()
+                .filter(a -> a.getUsuario().equals(visita.getAgente()))
+                .map(a -> a.getNombres() + " " + a.getApellidos())
+                .findFirst().orElse("Agente Desconocido");
 
+            String nombreCliente = getNombreClientePorUsuario(visita.getCliente());
+
+            String propiedad = Propiedades.listaCasas.stream()
+                .filter(p -> p.getId().equals(visita.getPropiedadId()))
+                .map(p -> p.getId() + " - " + p.getTipo())
+                .findFirst().orElse("Propiedad Desconocida");
+
+            Object[] fila = {
+                visita.getIdVisita(),
+                visita.getFecha(),
+                visita.getDiaSemana(),
+                nombreAgente,
+                nombreCliente,
+                propiedad
+            };
+            modelo.addRow(fila);
+        }
+    }
     return modelo;
 }
   public static Usuarios verificarUsuario(String usuario, String contraseña) {
@@ -599,11 +621,6 @@ public static void crearContrato(String clienteActual) {
 
     if (nombreAgente == null) return;
 
-    String usuarioAgente = Agente.listaAgentes.stream()
-            .filter(a -> (a.getNombres() + " " + a.getApellidos()).equals(nombreAgente))
-            .map(Agente::getUsuario)
-            .findFirst().orElse("Desconocido");
-
     // 3. Propiedad
     String[] propiedadesOpciones = Propiedades.listaCasas.stream()
             .map(p -> p.getId() + " - " + p.getTipo())
@@ -616,38 +633,67 @@ public static void crearContrato(String clienteActual) {
 
     String propiedadId = propiedadSeleccionada.split(" - ")[0];
 
-    // 4. Valor
-    String valorStr = JOptionPane.showInputDialog(null, "Ingrese el valor del contrato:",
-    "Nuevo Contrato", JOptionPane.PLAIN_MESSAGE);
-    if (valorStr == null || valorStr.isEmpty()) return;
-
+    // 4. Valor (obligatorio)
     int valor;
-    try {
-        valor = Integer.parseInt(valorStr);
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(null, "Valor inválido.");
-        return;
+    while (true) {
+        String valorStr = JOptionPane.showInputDialog(null, "Ingrese el valor del contrato:",
+                "Nuevo Contrato", JOptionPane.PLAIN_MESSAGE);
+        if (valorStr == null) return;
+        if (!valorStr.trim().isEmpty()) {
+            try {
+                valor = Integer.parseInt(valorStr);
+                break;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar un número válido.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Este campo no puede estar vacío.");
+        }
     }
 
-    // 5. Inicio y fin
-    String mesInicio = JOptionPane.showInputDialog(null, "Mes de inicio (Ej: Enero):",
-            "Nuevo Contrato", JOptionPane.PLAIN_MESSAGE);
-    if (mesInicio == null || mesInicio.isEmpty()) return;
+    // 5. Meses (obligatorio)
+    String mesInicio = "", mesFin = "";
+    while (mesInicio.trim().isEmpty()) {
+        mesInicio = JOptionPane.showInputDialog(null, "Mes de inicio (Ej: Enero):",
+                "Nuevo Contrato", JOptionPane.PLAIN_MESSAGE);
+        if (mesInicio == null) return;
+    }
+    while (mesFin.trim().isEmpty()) {
+        mesFin = JOptionPane.showInputDialog(null, "Mes de finalización (Ej: Junio):",
+                "Nuevo Contrato", JOptionPane.PLAIN_MESSAGE);
+        if (mesFin == null) return;
+    }
 
-    String mesFin = JOptionPane.showInputDialog(null, "Mes de finalización (Ej: Junio):",
-            "Nuevo Contrato", JOptionPane.PLAIN_MESSAGE);
-    if (mesFin == null || mesFin.isEmpty()) return;
+    // 6. Verificar si el contrato está en el pasado
+    Map<String, Integer> mesesOrden = new HashMap<>();
+mesesOrden.put("Enero", 1);
+mesesOrden.put("Febrero", 2);
+mesesOrden.put("Marzo", 3);
+mesesOrden.put("Abril", 4);
+mesesOrden.put("Mayo", 5);
+mesesOrden.put("Junio", 6);
+mesesOrden.put("Julio", 7);
+mesesOrden.put("Agosto", 8);
+mesesOrden.put("Septiembre", 9);
+mesesOrden.put("Octubre", 10);
+mesesOrden.put("Noviembre", 11);
+mesesOrden.put("Diciembre", 12);
 
-    // 6. Crear contrato
+    int mesActual = LocalDate.now().getMonthValue();
+    int fin = mesesOrden.getOrDefault(mesFin, 0);
+
+    String estado = (fin < mesActual) ? "Cancelado" : "Activo";
+
+    // 7. Crear contrato
     String idContrato = "C00" + (Contratos.listaContratos.size() + 1);
 
-    Contratos nuevo = new Contratos(idContrato, tipo, propiedadId, clienteActual, usuarioAgente,
-            "Activo", valor, mesInicio, mesFin);
+    Contratos nuevo = new Contratos(idContrato, tipo, propiedadId, clienteActual, nombreAgente,
+            estado, valor, mesInicio, mesFin);
 
     Contratos.listaContratos.add(nuevo);
 
-    JOptionPane.showMessageDialog(null, "Contrato creado exitosamente con ID: " + idContrato,
-            "Nuevo Contrato", JOptionPane.PLAIN_MESSAGE);
+    JOptionPane.showMessageDialog(null, "Contrato creado con ID: " + idContrato + "\nEstado: " + estado,
+            "Nuevo Contrato", JOptionPane.INFORMATION_MESSAGE);
 }
 //Metodo para ocultar columnas
 private static final Map<JTable, Map<Integer, TableColumn>> columnasOcultasMap = new HashMap<>();
@@ -688,7 +734,115 @@ private static final Map<JTable, Map<Integer, TableColumn>> columnasOcultasMap =
         columnasOcultas.clear();
     }
 
+public static void crearPago(String clienteActual) {
+    // 1. Tipo de pago
+    String[] tiposPago = {"Arriendo", "Venta", "Finca", "Local", "Casa", "Apartamento"};
+    String tipoPago = (String) JOptionPane.showInputDialog(null, "Seleccione el tipo de pago:",
+            "Nuevo Pago", JOptionPane.QUESTION_MESSAGE, null, tiposPago, tiposPago[0]);
+    if (tipoPago == null) return;
 
+    // 2. Seleccionar propiedad
+    String[] propiedadesOpciones = Propiedades.listaCasas.stream()
+            .map(p -> p.getId() + " - " + p.getTipo())
+            .toArray(String[]::new);
+
+    String propiedadSeleccionada = (String) JOptionPane.showInputDialog(null, "Seleccione una propiedad:",
+            "Nuevo Pago", JOptionPane.QUESTION_MESSAGE, null, propiedadesOpciones, null);
+    if (propiedadSeleccionada == null) return;
+
+    String propiedadId = propiedadSeleccionada.split(" - ")[0];
+
+    // 3. Monto
+    int monto = 0;
+    while (true) {
+        String montoStr = JOptionPane.showInputDialog(null, "Ingrese el monto del pago:", "Nuevo Pago", JOptionPane.PLAIN_MESSAGE);
+        if (montoStr == null || montoStr.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un monto válido.");
+            continue;
+        }
+        try {
+            monto = Integer.parseInt(montoStr);
+            if (monto <= 0) throw new NumberFormatException();
+            break;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Monto inválido. Ingrese un número positivo.");
+        }
+    }
+
+    // 4. Método de pago
+    String[] metodos = {"Efectivo", "Tarjeta", "Transferencia"};
+    String metodoPago = (String) JOptionPane.showInputDialog(null, "Seleccione el método de pago:",
+            "Nuevo Pago", JOptionPane.QUESTION_MESSAGE, null, metodos, metodos[0]);
+    if (metodoPago == null) return;
+
+    // 5. Agente (solo nombres)
+    String[] nombresAgentes = Agente.listaAgentes.stream()
+            .map(Agente::getNombres)
+            .toArray(String[]::new);
+
+    String nombreAgente = (String) JOptionPane.showInputDialog(null, "Seleccione un agente:",
+            "Nuevo Pago", JOptionPane.QUESTION_MESSAGE, null, nombresAgentes, null);
+    if (nombreAgente == null) return;
+
+    // 6. Estado del pago
+    String[] estados = {"Pagado", "Pendiente"};
+    String estado = (String) JOptionPane.showInputDialog(null, "Seleccione el estado del pago:",
+            "Nuevo Pago", JOptionPane.QUESTION_MESSAGE, null, estados, estados[0]);
+    if (estado == null) return;
+
+    // 7. ID automático basado en el último ID existente
+    int maxId = Pagos.listaPagos.stream()
+            .mapToInt(p -> Integer.parseInt(p.getIdPago()))
+            .max().orElse(10000); // por defecto si está vacío
+    String idPago = String.valueOf(maxId + 1);
+
+    // 8. Crear y guardar el pago
+    Pagos nuevoPago = new Pagos(idPago, tipoPago, propiedadId, clienteActual, monto,
+            estado, metodoPago, nombreAgente);
+    Pagos.listaPagos.add(nuevoPago);
+
+    JOptionPane.showMessageDialog(null, "Pago creado exitosamente con ID: " + idPago,
+            "Nuevo Pago", JOptionPane.INFORMATION_MESSAGE);
+}
+public static void editarPago(String tipoUsuario) {
+    // Solo admin o agente puede editar
+    if (!tipoUsuario.equals("admin") && !tipoUsuario.equals("agente")) {
+        JOptionPane.showMessageDialog(null, "No tiene permisos para editar pagos.");
+        return;
+    }
+
+    // Filtrar solo los pagos pendientes
+    List<Pagos> pagosPendientes = listaPagos.stream()
+            .filter(p -> p.getEstado().equalsIgnoreCase("Pendiente"))
+            .collect(Collectors.toList());
+
+    if (pagosPendientes.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No hay pagos pendientes para editar.");
+        return;
+    }
+
+    // Mostrar lista de pagos pendientes con ID y cliente
+    String[] opciones = pagosPendientes.stream()
+            .map(p -> "ID: " + p.getIdPago() + " | Cliente: " + p.getCliente() + " | Monto: " + p.getMonto())
+            .toArray(String[]::new);
+
+    String seleccion = (String) JOptionPane.showInputDialog(null, "Seleccione un pago para marcar como pagado:",
+            "Editar Pago", JOptionPane.QUESTION_MESSAGE, null, opciones, null);
+
+    if (seleccion == null) return;
+
+    // Obtener el ID seleccionado
+    String idSeleccionado = seleccion.split(" ")[1]; // después de "ID: "
+
+    // Buscar el pago y actualizar estado
+    for (Pagos p : listaPagos) {
+        if (p.getIdPago().equals(idSeleccionado)) {
+            p.estado = "Pagado";
+            JOptionPane.showMessageDialog(null, "El pago " + idSeleccionado + " ha sido marcado como pagado.");
+            break;
+        }
+    }
+}
 }
 
 
