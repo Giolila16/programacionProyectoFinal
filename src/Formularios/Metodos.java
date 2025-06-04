@@ -91,15 +91,15 @@ public class Metodos {
             return "Fecha inválida";
         }
     }
-    private static Usuarios cargoSeleccionado;
+   private static Usuarios cargo;
 
-    public static void setCargo(Usuarios cargo) {
-        cargoSeleccionado = cargo;
-    }
+public static void setCargo(Usuarios u) {
+    cargo = u;
+}
 
-    public static Usuarios getCargo() {
-        return cargoSeleccionado;
-    }
+public static Usuarios getCargo() {
+    return cargo;
+}
     
     public static JPanel crearPanelConFondoMadera() {
     return new JPanel() {
@@ -325,6 +325,10 @@ public static int obtenerNumeroMes(String mes) {
         for (Usuarios usuario : listaUsuarios) {
             agregarUsuario(modelo, usuario);
         }}
+    //Agregar visita para Contratos
+    
+  
+    
     //AGREGAR VISITA PARA CLIENTE
   public static void agendarVisita(String clienteActual) {
     // Agentes
@@ -466,8 +470,11 @@ public static int obtenerNumeroMes(String mes) {
     panelImagen.add(previewImagen, BorderLayout.CENTER);
     panelImagen.add(btnSeleccionarImagen, BorderLayout.SOUTH);
 
-    // Campos de texto básicos
-    JTextField txtId = new JTextField();
+    // Generar ID automático
+    String idGenerado = String.format("02411", Propiedades.listaCasas.size() + 1);
+    JLabel lblIdGenerado = new JLabel(idGenerado);
+
+    // Campos de texto básicos (sin ID manual)
     JTextField txtTipo = new JTextField();
     JTextField txtUbicacion = new JTextField();
     JTextField txtArea = new JTextField();
@@ -482,7 +489,7 @@ public static int obtenerNumeroMes(String mes) {
     JTextField txtOtros = new JTextField();
 
     JPanel panelCampos = new JPanel(new GridLayout(0, 2, 5, 5));
-    panelCampos.add(new JLabel("ID:")); panelCampos.add(txtId);
+    panelCampos.add(new JLabel("ID (auto):")); panelCampos.add(lblIdGenerado);
     panelCampos.add(new JLabel("Tipo:")); panelCampos.add(txtTipo);
     panelCampos.add(new JLabel("Ubicación:")); panelCampos.add(txtUbicacion);
     panelCampos.add(new JLabel("Área:")); panelCampos.add(txtArea);
@@ -503,7 +510,7 @@ public static int obtenerNumeroMes(String mes) {
     int respuesta = JOptionPane.showConfirmDialog(null, panelFinal, "Agregar Propiedad", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
     if (respuesta == JOptionPane.OK_OPTION) {
-        String id = txtId.getText().trim();
+        String id = idGenerado;
         String tipo = txtTipo.getText().trim();
         String ubicacion = txtUbicacion.getText().trim();
         String area = txtArea.getText().trim();
@@ -518,7 +525,7 @@ public static int obtenerNumeroMes(String mes) {
         String otros = txtOtros.getText().trim();
 
         // Validar campos vacíos y que la imagen esté seleccionada
-        if (id.isEmpty() || tipo.isEmpty() || ubicacion.isEmpty() || area.isEmpty() || precio.isEmpty() ||
+        if (tipo.isEmpty() || ubicacion.isEmpty() || area.isEmpty() || precio.isEmpty() ||
             propietario.isEmpty() || strHabitaciones.isEmpty() || strPisos.isEmpty() || strCocinas.isEmpty() ||
             strBanios.isEmpty() || otros.isEmpty() || rutaImagen[0] == null) {
             JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos y selecciona una imagen.", "Campos incompletos", JOptionPane.WARNING_MESSAGE);
@@ -540,7 +547,7 @@ public static int obtenerNumeroMes(String mes) {
             return;
         }
 
-        // Crear el objeto Propiedades usando el constructor correcto
+        // Crear el objeto Propiedades
         Propiedades nueva = new Propiedades(
             id,
             tipo,
@@ -550,16 +557,16 @@ public static int obtenerNumeroMes(String mes) {
             estado,
             propietario,
             agente,
-            rutaImagen[0],  // aquí va la ruta como String
-            habitaciones,   // int
-            pisos,          // int
-            cocinas,        // int
-            banios,         // int
-            otros           // String
+            rutaImagen[0],
+            habitaciones,
+            pisos,
+            cocinas,
+            banios,
+            otros
         );
         Propiedades.listaCasas.add(nueva);
 
-        // Agregar fila a la tabla (sin descripción en columna, solo los datos básicos)
+        // Agregar fila a la tabla
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         modelo.addRow(new Object[]{id, tipo, ubicacion, area, precio, estado, propietario, agente});
 
@@ -583,7 +590,70 @@ public static void cargarIdsEnCombo(JComboBox<String> comboBox) {
         comboBox.addItem(p.getId());
     }
 }
+public static void crearContrato(String clienteActual) {
+    // 1. Tipo de contrato
+    String[] tiposContrato = {"Arriendo", "Venta"};
+    String tipo = (String) JOptionPane.showInputDialog(null, "Tipo de contrato:", "Nuevo Contrato",
+            JOptionPane.QUESTION_MESSAGE, null, tiposContrato, tiposContrato[0]);
 
+    if (tipo == null) return;
+
+    // 2. Agente
+    String[] nombresAgentes = Agente.listaAgentes.stream()
+            .map(a -> a.getNombres() + " " + a.getApellidos())
+            .toArray(String[]::new);
+
+    String nombreAgente = (String) JOptionPane.showInputDialog(null, "Seleccione un agente:", "Nuevo Contrato",
+            JOptionPane.QUESTION_MESSAGE, null, nombresAgentes, null);
+
+    if (nombreAgente == null) return;
+
+    String usuarioAgente = Agente.listaAgentes.stream()
+            .filter(a -> (a.getNombres() + " " + a.getApellidos()).equals(nombreAgente))
+            .map(Agente::getUsuario)
+            .findFirst().orElse("Desconocido");
+
+    // 3. Propiedad
+    String[] propiedadesOpciones = Propiedades.listaCasas.stream()
+            .map(p -> p.getId() + " - " + p.getTipo())
+            .toArray(String[]::new);
+
+    String propiedadSeleccionada = (String) JOptionPane.showInputDialog(null, "Seleccione una propiedad:",
+            "Nuevo Contrato", JOptionPane.QUESTION_MESSAGE, null, propiedadesOpciones, null);
+
+    if (propiedadSeleccionada == null) return;
+
+    String propiedadId = propiedadSeleccionada.split(" - ")[0];
+
+    // 4. Valor
+    String valorStr = JOptionPane.showInputDialog("Ingrese el valor del contrato:");
+    if (valorStr == null || valorStr.isEmpty()) return;
+
+    int valor;
+    try {
+        valor = Integer.parseInt(valorStr);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Valor inválido.");
+        return;
+    }
+
+    // 5. Inicio y fin
+    String mesInicio = JOptionPane.showInputDialog("Mes de inicio (Ej: Enero):");
+    if (mesInicio == null || mesInicio.isEmpty()) return;
+
+    String mesFin = JOptionPane.showInputDialog("Mes de finalización (Ej: Junio):");
+    if (mesFin == null || mesFin.isEmpty()) return;
+
+    // 6. Crear contrato
+    String idContrato = "C00" + (Contratos.listaContratos.size() + 1);
+
+    Contratos nuevo = new Contratos(idContrato, tipo, propiedadId, clienteActual, usuarioAgente,
+            "Activo", valor, mesInicio, mesFin);
+
+    Contratos.listaContratos.add(nuevo);
+
+    JOptionPane.showMessageDialog(null, "Contrato creado exitosamente con ID: " + idContrato);
+}
 //Metodo para ocultar columnas
 private static final Map<JTable, Map<Integer, TableColumn>> columnasOcultasMap = new HashMap<>();
 
@@ -625,5 +695,7 @@ private static final Map<JTable, Map<Integer, TableColumn>> columnasOcultasMap =
 
 
 }
+
+
 
     

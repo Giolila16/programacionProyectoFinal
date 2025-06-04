@@ -12,7 +12,7 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(this);
         setTitle("Imbobiliaria Machape, :)");
-        Metodos.configurarFondoCompleto(this, jPanel1, "/imagenes/Fondo.jpg");
+        Metodos.configurarFondoCompleto(this, jPanel1, "/imagenes/FondoPre.jpg");
     }
 
     /**
