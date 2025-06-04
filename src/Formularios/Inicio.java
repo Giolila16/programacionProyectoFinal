@@ -4,6 +4,8 @@
  */
 package Formularios;
 
+import javax.swing.JPanel;
+
 
 public class Inicio extends javax.swing.JFrame {
 
@@ -14,6 +16,9 @@ public class Inicio extends javax.swing.JFrame {
         setTitle("Imbobiliaria Machape, :)");
         Metodos.configurarFondoCompleto(this, jPanel1, "/imagenes/FondoPre.jpg");
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,9 +49,9 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(417, 417, 417)
+                .addGap(415, 415, 415)
                 .addComponent(Seguir)
-                .addContainerGap(418, Short.MAX_VALUE))
+                .addContainerGap(420, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

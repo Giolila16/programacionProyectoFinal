@@ -50,6 +50,8 @@ public class Administrador extends javax.swing.JFrame {
        FondoPanel fondo = new FondoPanel();
     fondo.setLayout(new BorderLayout());
     
+        setTitle("Machape Imbobiliaria");
+    
     // Mover los paneles existentes al fondo
     fondo.add(AdminBotones, BorderLayout.NORTH);
     fondo.add(ParentPan, BorderLayout.CENTER);
@@ -113,6 +115,8 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         Metodos.ponerImagenEscalada(CerrarAgeBot, "/imagenes/Apagar.png");
         Metodos.ponerImagenEscalada(CerrarCliBot, "/imagenes/Apagar.png");
         Metodos.ponerImagenEscalada(CerrarProBot, "/imagenes/Apagar.png");
+        Metodos.ponerImagenEscalada(CerrarRepAdBot, "/imagenes/Apagar.png");
+        Metodos.ponerImagenEscalada(CerrarRepaBot, "/imagenes/Apagar.png");
     
   
     }
@@ -168,6 +172,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         VisAgeRepBot = new javax.swing.JButton();
         VolverAgeRepBot = new javax.swing.JButton();
         OpciAgeRepBot = new javax.swing.JButton();
+        CerrarRepaBot = new javax.swing.JButton();
         ReportesBotPan = new javax.swing.JPanel();
         ProDispoRepBot = new javax.swing.JButton();
         IngresoComiRepBot = new javax.swing.JButton();
@@ -178,6 +183,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ReportesBasicosRepBot = new javax.swing.JButton();
         OpcionesRepBot = new javax.swing.JButton();
         VolverRepBot = new javax.swing.JButton();
+        CerrarRepAdBot = new javax.swing.JButton();
         AgeBotPan = new javax.swing.JPanel();
         SeguimientoAgeBot = new javax.swing.JButton();
         ClientesAgeBot = new javax.swing.JButton();
@@ -294,6 +300,12 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             }
         });
 
+        CerrarRepaBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarRepaBotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout RepAgeBotPanLayout = new javax.swing.GroupLayout(RepAgeBotPan);
         RepAgeBotPan.setLayout(RepAgeBotPanLayout);
         RepAgeBotPanLayout.setHorizontalGroup(
@@ -309,19 +321,25 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addComponent(VolverAgeRepBot)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OpciAgeRepBot)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addComponent(CerrarRepaBot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
         RepAgeBotPanLayout.setVerticalGroup(
             RepAgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RepAgeBotPanLayout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
+            .addGroup(RepAgeBotPanLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
                 .addGroup(RepAgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ProDisAgeRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CliAgeRepBot)
                     .addComponent(VisAgeRepBot)
                     .addComponent(VolverAgeRepBot)
                     .addComponent(OpciAgeRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RepAgeBotPanLayout.createSequentialGroup()
+                .addContainerGap(49, Short.MAX_VALUE)
+                .addComponent(CerrarRepaBot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
         );
 
         AdminBotones.add(RepAgeBotPan, "card7");
@@ -392,12 +410,27 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             }
         });
 
+        CerrarRepAdBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarRepAdBotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ReportesBotPanLayout = new javax.swing.GroupLayout(ReportesBotPan);
         ReportesBotPan.setLayout(ReportesBotPanLayout);
         ReportesBotPanLayout.setHorizontalGroup(
             ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ReportesBotPanLayout.createSequentialGroup()
                 .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ReportesBotPanLayout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(IngresoComiRepBot)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ReportesBasicosRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(VolverRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(OpcionesRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ReportesBotPanLayout.createSequentialGroup()
                         .addGap(142, 142, 142)
                         .addComponent(ProDispoRepBot)
@@ -408,35 +441,33 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ClientesRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(VisitasRepBot))
-                    .addGroup(ReportesBotPanLayout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(IngresoComiRepBot)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ReportesBasicosRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(VolverRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(OpcionesRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                        .addComponent(VisitasRepBot)))
+                .addGap(30, 30, 30)
+                .addComponent(CerrarRepAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         ReportesBotPanLayout.setVerticalGroup(
             ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportesBotPanLayout.createSequentialGroup()
+            .addGroup(ReportesBotPanLayout.createSequentialGroup()
                 .addContainerGap(55, Short.MAX_VALUE)
-                .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ProDispoRepBot)
-                    .addComponent(ContVencerRepBot)
-                    .addComponent(ProRegisRepBot)
-                    .addComponent(ClientesRepBot)
-                    .addComponent(VisitasRepBot))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IngresoComiRepBot)
-                    .addComponent(ReportesBasicosRepBot)
-                    .addComponent(VolverRepBot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(OpcionesRepBot))
-                .addGap(44, 44, 44))
+                .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ReportesBotPanLayout.createSequentialGroup()
+                        .addComponent(CerrarRepAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(ReportesBotPanLayout.createSequentialGroup()
+                        .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ProDispoRepBot)
+                            .addComponent(ContVencerRepBot)
+                            .addComponent(ProRegisRepBot)
+                            .addComponent(ClientesRepBot)
+                            .addComponent(VisitasRepBot))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(IngresoComiRepBot)
+                            .addComponent(ReportesBasicosRepBot)
+                            .addComponent(VolverRepBot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(OpcionesRepBot))
+                        .addGap(44, 44, 44))))
         );
 
         AdminBotones.add(ReportesBotPan, "card6");
@@ -1289,6 +1320,7 @@ PropiedadesTable.setModel(modelo);
         ParentPan.repaint();
         ParentPan.revalidate();
         Metodos.mostrarColumnasOcultas(PropiedadesTable);
+        
     }//GEN-LAST:event_PropiedadesAdBotActionPerformed
 
     private void VisitasAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisitasAdBotActionPerformed
@@ -1538,8 +1570,7 @@ int fila = PropiedadesTable.getSelectedRow();
     ParentPan.add(PropiedadesPan);
     ParentPan.repaint();
     ParentPan.revalidate();
-int[] columnasAocultar = {4, 5}; // Teléfono y Email
-        Metodos.ocultarColumnas(PropiedadesTable, columnasAocultar);    
+Metodos.mostrarSoloColumnas(PropiedadesTable, new int[]{0, 5});   
     }//GEN-LAST:event_ProDispoRepBotActionPerformed
 
     private void IngresoComiRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresoComiRepBotActionPerformed
@@ -1709,6 +1740,14 @@ private void actualizarTablaPagos() {
         System.exit(0);
     }//GEN-LAST:event_CerrarAgeBotActionPerformed
 
+    private void CerrarRepaBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarRepaBotActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_CerrarRepaBotActionPerformed
+
+    private void CerrarRepAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarRepAdBotActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_CerrarRepAdBotActionPerformed
+
     private void AgregarProBotActionPerformed(java.awt.event.ActionEvent evt) {                                              
  // Leila agrego un metodo para pedir los datos al usuario
       Metodos.agregarNuevaPropiedadConImagen(PropiedadesTable, ImagenesCombo, ImagUnoLbl);
@@ -1762,6 +1801,8 @@ private void actualizarTablaPagos() {
     private javax.swing.JButton CerrarAgeBot;
     private javax.swing.JButton CerrarCliBot;
     private javax.swing.JButton CerrarProBot;
+    private javax.swing.JButton CerrarRepAdBot;
+    private javax.swing.JButton CerrarRepaBot;
     private javax.swing.JButton CliAgeRepBot;
     private javax.swing.JButton ClientesAdBot;
     private javax.swing.JButton ClientesAgeBot;

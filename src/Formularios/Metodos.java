@@ -22,6 +22,7 @@ import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -719,22 +720,40 @@ private static final Map<JTable, Map<Integer, TableColumn>> columnasOcultasMap =
     }
 //Metodo para mostrar columnas ocultas o modificadas
     public static void mostrarColumnasOcultas(JTable tabla) {
-        Map<Integer, TableColumn> columnasOcultas = columnasOcultasMap.get(tabla);
-        if (columnasOcultas == null || columnasOcultas.isEmpty()) return;
+    Map<Integer, TableColumn> columnasOcultas = columnasOcultasMap.get(tabla);
+    if (columnasOcultas == null || columnasOcultas.isEmpty()) return;
 
-        TableColumnModel columnModel = tabla.getColumnModel();
+    TableColumnModel columnModel = tabla.getColumnModel();
 
-        // Ordenar las columnas por su índice original para mantener el orden correcto
-        List<Integer> indicesOrdenados = new ArrayList<>(columnasOcultas.keySet());
-        Collections.sort(indicesOrdenados);
+    // Ordenar para insertar en orden correcto
+    List<Integer> indices = new ArrayList<>(columnasOcultas.keySet());
+    Collections.sort(indices);
 
-        for (int index : indicesOrdenados) {
-            TableColumn col = columnasOcultas.get(index);
-            columnModel.addColumn(col);
-        }
-
-        columnasOcultas.clear();
+    for (int index : indices) {
+        columnModel.addColumn(columnasOcultas.get(index));
     }
+
+    columnasOcultas.clear();
+}
+    
+    public static void mostrarSoloColumnas(JTable tabla, int[] columnasVisibles) {
+        mostrarColumnasOcultas(tabla);
+    int totalColumnas = tabla.getColumnModel().getColumnCount();
+    List<Integer> visibles = Arrays.stream(columnasVisibles).boxed().toList();
+
+    // Calcular índices reales desde modelo
+    List<Integer> ocultar = new ArrayList<>();
+    for (int i = 0; i < totalColumnas; i++) {
+        TableColumn col = tabla.getColumnModel().getColumn(i);
+        int modelIndex = col.getModelIndex();
+        if (!visibles.contains(modelIndex)) {
+            ocultar.add(i);
+        }
+    }
+
+    int[] ocultarArray = ocultar.stream().mapToInt(Integer::intValue).toArray();
+    ocultarColumnas(tabla, ocultarArray);
+}
 
 public static void crearPago(String clienteActual) {
     // 1. Tipo de pago
@@ -808,21 +827,23 @@ public static void crearPago(String clienteActual) {
 }
 //Metodo para ajustar tamaño de imagen a el boton
 public static void ponerImagenEscalada(JButton boton, String rutaImagen) {
-        ImageIcon imagenOriginal = new ImageIcon(Metodos.class.getResource(rutaImagen));
-
-        // Escalar la imagen cuando el botón cambie de tamaño
-        boton.addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                int ancho = boton.getWidth();
-                int alto = boton.getHeight();
-
-                if (ancho > 0 && alto > 0) {
-                    Image imagenEscalada = imagenOriginal.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
-                    boton.setIcon(new ImageIcon(imagenEscalada));
-                    boton.setText(""); // Opcional: eliminar texto del botón
-                }
+        // Espera hasta que el botón tenga tamaño (ya está renderizado)
+        boton.addHierarchyListener(e -> {
+            if ((e.getChangeFlags() & java.awt.event.HierarchyEvent.SHOWING_CHANGED) != 0 && boton.isShowing()) {
+                escalarYAsignarImagen(boton, rutaImagen);
             }
         });
+    }
+
+    private static void escalarYAsignarImagen(JButton boton, String rutaImagen) {
+        ImageIcon iconoOriginal = new ImageIcon(Metodos.class.getResource(rutaImagen));
+        int ancho = boton.getWidth();
+        int alto = boton.getHeight();
+
+        if (ancho > 0 && alto > 0) {
+            Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+            boton.setIcon(new ImageIcon(imagenEscalada));
+            boton.setText(""); // Quita el texto si solo quieres la imagen
+        }
     }
 }

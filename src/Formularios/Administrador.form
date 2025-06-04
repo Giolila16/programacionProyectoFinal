@@ -65,14 +65,16 @@
                       <Component id="VolverAgeRepBot" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="OpciAgeRepBot" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="186" max="32767" attributes="0"/>
+                      <EmptySpace pref="82" max="32767" attributes="0"/>
+                      <Component id="CerrarRepaBot" min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="ProDisAgeRepBot" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="CliAgeRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -80,7 +82,12 @@
                           <Component id="VolverAgeRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="OpciAgeRepBot" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <Component id="CerrarRepaBot" min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -126,6 +133,11 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OpciAgeRepBotActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="CerrarRepaBot">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CerrarRepaBotActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="ReportesBotPan">
@@ -147,6 +159,16 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
+                              <Component id="IngresoComiRepBot" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="ReportesBasicosRepBot" min="-2" pref="126" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="VolverRepBot" min="-2" pref="106" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="OpcionesRepBot" min="-2" pref="140" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
                               <Component id="ProDispoRepBot" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -158,40 +180,40 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="VisitasRepBot" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
-                              <Component id="IngresoComiRepBot" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ReportesBasicosRepBot" min="-2" pref="126" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="VolverRepBot" min="-2" pref="106" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="OpcionesRepBot" min="-2" pref="140" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
-                      <EmptySpace pref="111" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="CerrarRepAdBot" min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace pref="23" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace pref="55" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ProDispoRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ContVencerRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ProRegisRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ClientesRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="VisitasRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="CerrarRepAdBot" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="ProDispoRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ContVencerRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ProRegisRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ClientesRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="VisitasRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="IngresoComiRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ReportesBasicosRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="VolverRepBot" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="OpcionesRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="IngresoComiRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ReportesBasicosRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="VolverRepBot" alignment="3" max="32767" attributes="0"/>
-                          <Component id="OpcionesRepBot" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -267,6 +289,11 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VolverRepBotActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="CerrarRepAdBot">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CerrarRepAdBotActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
