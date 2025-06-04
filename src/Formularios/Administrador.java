@@ -108,16 +108,13 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
    
         
         mostrarPanelSegunCargo();
-        //Leila incluyo que la imagen cuando se inicialice se lean las propiedades atravez de la clase, sea nula la primera imagen de vista
-        //y en el combo box aparezca la opcionn de seleccionar propiedad
-    
-
-
-
-    // Mueve los paneles existentes al fondo
-
-
         
+        Metodos.ponerImagenEscalada(CerrarAdBot, "/imagenes/Apagar.png");
+        Metodos.ponerImagenEscalada(CerrarAgeBot, "/imagenes/Apagar.png");
+        Metodos.ponerImagenEscalada(CerrarCliBot, "/imagenes/Apagar.png");
+        Metodos.ponerImagenEscalada(CerrarProBot, "/imagenes/Apagar.png");
+    
+  
     }
     //Leila actualizo el metodo para mostrar imagenes y elimino Systems innecesarios
   private void actualizarComboPropiedades() {
@@ -187,18 +184,21 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         VisitasAgeBot = new javax.swing.JButton();
         ArriendosAgeBot = new javax.swing.JButton();
         OpcionesAgeBot = new javax.swing.JButton();
+        CerrarAgeBot = new javax.swing.JButton();
         ClientesBotPan = new javax.swing.JPanel();
         ContratosClieBot = new javax.swing.JButton();
         PropiedadesClieBot = new javax.swing.JButton();
         VisitasClieBot = new javax.swing.JButton();
         PagosClieBot = new javax.swing.JButton();
         OpcionesClieBot = new javax.swing.JButton();
+        CerrarCliBot = new javax.swing.JButton();
         PropietarioBotPan = new javax.swing.JPanel();
         PropiedadesProBot = new javax.swing.JButton();
         VisitasProBot = new javax.swing.JButton();
         ContratosProBot = new javax.swing.JButton();
         PagosProBot = new javax.swing.JButton();
         OpcionesProBot = new javax.swing.JButton();
+        CerrarProBot = new javax.swing.JButton();
         AdminBotPan = new javax.swing.JPanel();
         PropiedadesAdBot = new javax.swing.JButton();
         ClientesAdBot = new javax.swing.JButton();
@@ -208,6 +208,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ReportesAdBot = new javax.swing.JButton();
         UsuariosAdBot = new javax.swing.JButton();
         OpcionesAdBot = new javax.swing.JButton();
+        CerrarAdBot = new javax.swing.JButton();
         ParentPan = new javax.swing.JPanel();
         VacioPan = new javax.swing.JPanel();
         PropImagenesPan = new javax.swing.JPanel();
@@ -313,7 +314,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         RepAgeBotPanLayout.setVerticalGroup(
             RepAgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RepAgeBotPanLayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addGroup(RepAgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ProDisAgeRepBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CliAgeRepBot)
@@ -422,7 +423,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ReportesBotPanLayout.setVerticalGroup(
             ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportesBotPanLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(ReportesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ProDispoRepBot)
                     .addComponent(ContVencerRepBot)
@@ -478,6 +479,12 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             }
         });
 
+        CerrarAgeBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarAgeBotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout AgeBotPanLayout = new javax.swing.GroupLayout(AgeBotPan);
         AgeBotPan.setLayout(AgeBotPanLayout);
         AgeBotPanLayout.setHorizontalGroup(
@@ -493,7 +500,9 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addComponent(SeguimientoAgeBot)
                 .addGap(18, 18, 18)
                 .addComponent(OpcionesAgeBot)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(CerrarAgeBot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
         AgeBotPanLayout.setVerticalGroup(
             AgeBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,7 +513,8 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                     .addComponent(ClientesAgeBot)
                     .addComponent(VisitasAgeBot)
                     .addComponent(ArriendosAgeBot)
-                    .addComponent(OpcionesAgeBot))
+                    .addComponent(OpcionesAgeBot)
+                    .addComponent(CerrarAgeBot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
@@ -548,6 +558,12 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             }
         });
 
+        CerrarCliBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarCliBotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ClientesBotPanLayout = new javax.swing.GroupLayout(ClientesBotPan);
         ClientesBotPan.setLayout(ClientesBotPanLayout);
         ClientesBotPanLayout.setHorizontalGroup(
@@ -563,19 +579,26 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addComponent(PagosClieBot)
                 .addGap(18, 18, 18)
                 .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(134, 134, 134))
+                .addGap(33, 33, 33)
+                .addComponent(CerrarCliBot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
         ClientesBotPanLayout.setVerticalGroup(
             ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ClientesBotPanLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ContratosClieBot)
-                    .addComponent(PropiedadesClieBot)
-                    .addComponent(VisitasClieBot)
-                    .addComponent(PagosClieBot)
-                    .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGroup(ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ClientesBotPanLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(ClientesBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ContratosClieBot)
+                            .addComponent(PropiedadesClieBot)
+                            .addComponent(VisitasClieBot)
+                            .addComponent(PagosClieBot)
+                            .addComponent(OpcionesClieBot, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(ClientesBotPanLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(CerrarCliBot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         AdminBotones.add(ClientesBotPan, "visitante");
@@ -618,6 +641,12 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             }
         });
 
+        CerrarProBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarProBotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PropietarioBotPanLayout = new javax.swing.GroupLayout(PropietarioBotPan);
         PropietarioBotPan.setLayout(PropietarioBotPanLayout);
         PropietarioBotPanLayout.setHorizontalGroup(
@@ -633,19 +662,26 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addComponent(PagosProBot)
                 .addGap(18, 18, 18)
                 .addComponent(OpcionesProBot)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(CerrarProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         PropietarioBotPanLayout.setVerticalGroup(
             PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PropietarioBotPanLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PropiedadesProBot)
-                    .addComponent(VisitasProBot)
-                    .addComponent(ContratosProBot)
-                    .addComponent(PagosProBot)
-                    .addComponent(OpcionesProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGroup(PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PropietarioBotPanLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(PropietarioBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PropiedadesProBot)
+                            .addComponent(VisitasProBot)
+                            .addComponent(ContratosProBot)
+                            .addComponent(PagosProBot)
+                            .addComponent(OpcionesProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(PropietarioBotPanLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(CerrarProBot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         AdminBotones.add(PropietarioBotPan, "propietario");
@@ -709,6 +745,12 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             }
         });
 
+        CerrarAdBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarAdBotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout AdminBotPanLayout = new javax.swing.GroupLayout(AdminBotPan);
         AdminBotPan.setLayout(AdminBotPanLayout);
         AdminBotPanLayout.setHorizontalGroup(
@@ -732,24 +774,29 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addComponent(PagosAdBot)
                 .addGap(18, 18, 18)
                 .addComponent(ReportesAdBot)
-                .addGap(128, 128, 128))
+                .addGap(30, 30, 30)
+                .addComponent(CerrarAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
         AdminBotPanLayout.setVerticalGroup(
             AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdminBotPanLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PropiedadesAdBot)
-                    .addComponent(ClientesAdBot)
-                    .addComponent(VisitasAdBot)
-                    .addComponent(ContratosAdBot)
-                    .addComponent(PagosAdBot)
-                    .addComponent(ReportesAdBot))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(OpcionesAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UsuariosAdBot))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CerrarAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(AdminBotPanLayout.createSequentialGroup()
+                        .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PropiedadesAdBot)
+                            .addComponent(ClientesAdBot)
+                            .addComponent(VisitasAdBot)
+                            .addComponent(ContratosAdBot)
+                            .addComponent(PagosAdBot)
+                            .addComponent(ReportesAdBot))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(AdminBotPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(OpcionesAdBot, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UsuariosAdBot))))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         AdminBotones.add(AdminBotPan, "admin");
@@ -769,7 +816,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         );
         VacioPanLayout.setVerticalGroup(
             VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 529, Short.MAX_VALUE)
+            .addGap(0, 515, Short.MAX_VALUE)
         );
 
         ParentPan.add(VacioPan, "card12");
@@ -813,7 +860,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         PropImagenesPanLayout.setVerticalGroup(
             PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ImagUnoLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DetCasa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -876,7 +923,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ContratosPanLayout.setVerticalGroup(
             ContratosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContratosPanLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(ContratosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -958,7 +1005,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         UsuariosPanLayout.setVerticalGroup(
             UsuariosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UsuariosPanLayout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -1005,7 +1052,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(EliminarCliBot)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         ParentPan.add(ClientesPan, "card2");
@@ -1069,7 +1116,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         PropiedadesPanLayout.setVerticalGroup(
             PropiedadesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropiedadesPanLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(PropiedadesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1125,7 +1172,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(AgregarPagoBot)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         ParentPan.add(PagosPan, "card4");
@@ -1177,7 +1224,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         VisitasPanLayout.setVerticalGroup(
             VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VisitasPanLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1215,7 +1262,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ReportesBasicosPanLayout.setVerticalGroup(
             ReportesBasicosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportesBasicosPanLayout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
@@ -1646,6 +1693,22 @@ private void actualizarTablaPagos() {
 
     }//GEN-LAST:event_AgregarPagoBotActionPerformed
 
+    private void CerrarCliBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarCliBotActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_CerrarCliBotActionPerformed
+
+    private void CerrarAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarAdBotActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_CerrarAdBotActionPerformed
+
+    private void CerrarProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarProBotActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_CerrarProBotActionPerformed
+
+    private void CerrarAgeBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarAgeBotActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_CerrarAgeBotActionPerformed
+
     private void AgregarProBotActionPerformed(java.awt.event.ActionEvent evt) {                                              
  // Leila agrego un metodo para pedir los datos al usuario
       Metodos.agregarNuevaPropiedadConImagen(PropiedadesTable, ImagenesCombo, ImagUnoLbl);
@@ -1695,6 +1758,10 @@ private void actualizarTablaPagos() {
     private javax.swing.JButton AgregarProBot;
     private javax.swing.JButton AgregarVisiBot;
     private javax.swing.JButton ArriendosAgeBot;
+    private javax.swing.JButton CerrarAdBot;
+    private javax.swing.JButton CerrarAgeBot;
+    private javax.swing.JButton CerrarCliBot;
+    private javax.swing.JButton CerrarProBot;
     private javax.swing.JButton CliAgeRepBot;
     private javax.swing.JButton ClientesAdBot;
     private javax.swing.JButton ClientesAgeBot;
