@@ -4,8 +4,7 @@
  */
 package Formularios;
 
-import static Formularios.Clientes.listaClientes;
-import static Formularios.Propiedades.listaCasas;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,14 +14,10 @@ import java.awt.Image;
 import java.awt.MediaTracker;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -40,7 +35,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -53,7 +47,7 @@ public class Metodos {
     
     
     public static void configurarFondoCompleto(JFrame frame, JPanel panelPrincipal, String rutaImagen) {
-    try {
+    
         ImageIcon icon = new ImageIcon(Metodos.class.getResource(rutaImagen));
         if (icon.getImageLoadStatus() != MediaTracker.COMPLETE) {
             throw new RuntimeException("No se pudo cargar la imagen: " + rutaImagen);
@@ -74,10 +68,7 @@ public class Metodos {
         frame.setContentPane(fondo);
         frame.revalidate();
         
-    } catch (Exception e) {
-        System.err.println("Error al configurar fondo: " + e.getMessage());
-        e.printStackTrace();
-    }
+     
 }
     
      public static String obtenerDiaSemana(String fecha) {
@@ -471,7 +462,7 @@ public static int obtenerNumeroMes(String mes) {
     panelImagen.add(btnSeleccionarImagen, BorderLayout.SOUTH);
 
     // Generar ID automático
-    String idGenerado = String.format("02411", Propiedades.listaCasas.size() + 1);
+    String idGenerado = String.format("02413", Propiedades.listaCasas.size() + 1);
     JLabel lblIdGenerado = new JLabel(idGenerado);
 
     // Campos de texto básicos (sin ID manual)
@@ -626,7 +617,8 @@ public static void crearContrato(String clienteActual) {
     String propiedadId = propiedadSeleccionada.split(" - ")[0];
 
     // 4. Valor
-    String valorStr = JOptionPane.showInputDialog("Ingrese el valor del contrato:");
+    String valorStr = JOptionPane.showInputDialog(null, "Ingrese el valor del contrato:",
+    "Nuevo Contrato", JOptionPane.PLAIN_MESSAGE);
     if (valorStr == null || valorStr.isEmpty()) return;
 
     int valor;
@@ -638,10 +630,12 @@ public static void crearContrato(String clienteActual) {
     }
 
     // 5. Inicio y fin
-    String mesInicio = JOptionPane.showInputDialog("Mes de inicio (Ej: Enero):");
+    String mesInicio = JOptionPane.showInputDialog(null, "Mes de inicio (Ej: Enero):",
+            "Nuevo Contrato", JOptionPane.PLAIN_MESSAGE);
     if (mesInicio == null || mesInicio.isEmpty()) return;
 
-    String mesFin = JOptionPane.showInputDialog("Mes de finalización (Ej: Junio):");
+    String mesFin = JOptionPane.showInputDialog(null, "Mes de finalización (Ej: Junio):",
+            "Nuevo Contrato", JOptionPane.PLAIN_MESSAGE);
     if (mesFin == null || mesFin.isEmpty()) return;
 
     // 6. Crear contrato
@@ -652,7 +646,8 @@ public static void crearContrato(String clienteActual) {
 
     Contratos.listaContratos.add(nuevo);
 
-    JOptionPane.showMessageDialog(null, "Contrato creado exitosamente con ID: " + idContrato);
+    JOptionPane.showMessageDialog(null, "Contrato creado exitosamente con ID: " + idContrato,
+            "Nuevo Contrato", JOptionPane.PLAIN_MESSAGE);
 }
 //Metodo para ocultar columnas
 private static final Map<JTable, Map<Integer, TableColumn>> columnasOcultasMap = new HashMap<>();

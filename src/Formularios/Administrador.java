@@ -146,8 +146,6 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 break;
             case "cliente":
                 cl.show(AdminBotones, "Cliente");
-            default:
-                JOptionPane.showMessageDialog(this, "Cargo desconocido: " + nombreCargo);
         }
     }
     
@@ -210,12 +208,12 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         UsuariosAdBot = new javax.swing.JButton();
         OpcionesAdBot = new javax.swing.JButton();
         ParentPan = new javax.swing.JPanel();
+        VacioPan = new javax.swing.JPanel();
         PropImagenesPan = new javax.swing.JPanel();
         VolverProBot = new javax.swing.JButton();
         DetCasa = new javax.swing.JTextArea();
         ImagenesCombo = new javax.swing.JComboBox<>();
         ImagUnoLbl = new javax.swing.JLabel();
-        VacioPan = new javax.swing.JPanel();
         ContratosPan = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         ContratosTable = new javax.swing.JTable();
@@ -238,7 +236,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         PropiedadesPan = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PropiedadesTable = new javax.swing.JTable();
-        jButton17 = new javax.swing.JButton();
+        EliminarProBot = new javax.swing.JButton();
         AgregarProBot = new javax.swing.JButton();
         VerPropiBot = new javax.swing.JButton();
         PagosPan = new javax.swing.JPanel();
@@ -250,9 +248,8 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         VisitasPan = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         VisitasTable = new javax.swing.JTable();
-        jButton32 = new javax.swing.JButton();
-        jButton33 = new javax.swing.JButton();
-        jButton34 = new javax.swing.JButton();
+        EliminarVisiBot = new javax.swing.JButton();
+        AgregarVisiBot = new javax.swing.JButton();
         ReportesBasicosPan = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         ReportesBasicosTable = new javax.swing.JTable();
@@ -766,6 +763,21 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ParentPan.setOpaque(false);
         ParentPan.setLayout(new java.awt.CardLayout());
 
+        VacioPan.setOpaque(false);
+
+        javax.swing.GroupLayout VacioPanLayout = new javax.swing.GroupLayout(VacioPan);
+        VacioPan.setLayout(VacioPanLayout);
+        VacioPanLayout.setHorizontalGroup(
+            VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 834, Short.MAX_VALUE)
+        );
+        VacioPanLayout.setVerticalGroup(
+            VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 529, Short.MAX_VALUE)
+        );
+
+        ParentPan.add(VacioPan, "card12");
+
         PropImagenesPan.setOpaque(false);
 
         VolverProBot.setText("Volver");
@@ -785,19 +797,6 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             }
         });
 
-        VacioPan.setOpaque(false);
-
-        javax.swing.GroupLayout VacioPanLayout = new javax.swing.GroupLayout(VacioPan);
-        VacioPan.setLayout(VacioPanLayout);
-        VacioPanLayout.setHorizontalGroup(
-            VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 834, Short.MAX_VALUE)
-        );
-        VacioPanLayout.setVerticalGroup(
-            VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 529, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout PropImagenesPanLayout = new javax.swing.GroupLayout(PropImagenesPan);
         PropImagenesPan.setLayout(PropImagenesPanLayout);
         PropImagenesPanLayout.setHorizontalGroup(
@@ -814,11 +813,6 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addGap(97, 97, 97)
                 .addComponent(DetCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(VacioPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         PropImagenesPanLayout.setVerticalGroup(
             PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -832,11 +826,6 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addGap(43, 43, 43)
                 .addComponent(VolverProBot)
                 .addGap(58, 58, 58))
-            .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(VacioPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         ParentPan.add(PropImagenesPan, "card10");
@@ -1077,10 +1066,10 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ));
         jScrollPane1.setViewportView(PropiedadesTable);
 
-        jButton17.setText("Eliminar Datos");
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
+        EliminarProBot.setText("Eliminar Datos");
+        EliminarProBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                EliminarProBotActionPerformed(evt);
             }
         });
 
@@ -1109,7 +1098,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PropiedadesPanLayout.createSequentialGroup()
                         .addGap(260, 260, 260)
-                        .addComponent(jButton17)
+                        .addComponent(EliminarProBot)
                         .addGap(18, 18, 18)
                         .addComponent(AgregarProBot)
                         .addGap(18, 18, 18)
@@ -1123,7 +1112,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(PropiedadesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton17)
+                    .addComponent(EliminarProBot)
                     .addComponent(AgregarProBot)
                     .addComponent(VerPropiBot))
                 .addGap(13, 13, 13))
@@ -1211,24 +1200,17 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ));
         jScrollPane7.setViewportView(VisitasTable);
 
-        jButton32.setText("Guardar");
-        jButton32.addActionListener(new java.awt.event.ActionListener() {
+        EliminarVisiBot.setText("Eliminar Datos");
+        EliminarVisiBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton32ActionPerformed(evt);
+                EliminarVisiBotActionPerformed(evt);
             }
         });
 
-        jButton33.setText("Editar");
-        jButton33.addActionListener(new java.awt.event.ActionListener() {
+        AgregarVisiBot.setText("Agregar");
+        AgregarVisiBot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton33ActionPerformed(evt);
-            }
-        });
-
-        jButton34.setText("Agregar");
-        jButton34.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton34ActionPerformed(evt);
+                AgregarVisiBotActionPerformed(evt);
             }
         });
 
@@ -1236,19 +1218,16 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         VisitasPan.setLayout(VisitasPanLayout);
         VisitasPanLayout.setHorizontalGroup(
             VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VisitasPanLayout.createSequentialGroup()
+                .addContainerGap(131, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105))
             .addGroup(VisitasPanLayout.createSequentialGroup()
-                .addGroup(VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(VisitasPanLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(VisitasPanLayout.createSequentialGroup()
-                        .addGap(241, 241, 241)
-                        .addComponent(jButton33)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton32)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton34)))
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addGap(302, 302, 302)
+                .addComponent(EliminarVisiBot)
+                .addGap(18, 18, 18)
+                .addComponent(AgregarVisiBot)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         VisitasPanLayout.setVerticalGroup(
             VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1257,9 +1236,8 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton33)
-                    .addComponent(jButton32)
-                    .addComponent(jButton34))
+                    .addComponent(EliminarVisiBot)
+                    .addComponent(AgregarVisiBot))
                 .addGap(13, 13, 13))
         );
 
@@ -1357,7 +1335,7 @@ PropiedadesTable.setModel(modelo);
         ParentPan.revalidate();
     }//GEN-LAST:event_UsuariosAdBotActionPerformed
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+    private void EliminarProBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarProBotActionPerformed
 int fila = PropiedadesTable.getSelectedRow();
     if (fila >= 0) {
         // Eliminar de la lista
@@ -1369,7 +1347,7 @@ int fila = PropiedadesTable.getSelectedRow();
     } else {
         JOptionPane.showMessageDialog(this, "Seleccione una fila para eliminar.");
     }
-    }//GEN-LAST:event_jButton17ActionPerformed
+    }//GEN-LAST:event_EliminarProBotActionPerformed
 
     private void ConElimiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConElimiActionPerformed
     int fila = ContratosTable.getSelectedRow();
@@ -1405,7 +1383,7 @@ int fila = PropiedadesTable.getSelectedRow();
       int fila = ClientesTable.getSelectedRow();
     if (fila >= 0) {
         // Eliminar de la lista
-        Contratos.listaContratos.remove(fila);
+        Clientes.listaClientes.remove(fila);
         
         // Eliminar de la tabla
         DefaultTableModel modelo = (DefaultTableModel) ClientesTable.getModel();
@@ -1422,13 +1400,19 @@ int fila = PropiedadesTable.getSelectedRow();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton31ActionPerformed
 
-    private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton32ActionPerformed
-
-    private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton33ActionPerformed
+    private void EliminarVisiBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarVisiBotActionPerformed
+        int fila = VisitasTable.getSelectedRow();
+    if (fila >= 0) {
+        // Eliminar de la lista
+        Visitas.listaVisitas.remove(fila);
+        
+        // Eliminar de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) VisitasTable.getModel();
+        modelo.removeRow(fila);
+    } else {
+        JOptionPane.showMessageDialog(this, "Seleccione una fila para eliminar.");
+    }
+    }//GEN-LAST:event_EliminarVisiBotActionPerformed
 
     private void OpcionesAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionesAdBotActionPerformed
     
@@ -1708,7 +1692,7 @@ for (Propiedades p : Propiedades.listaCasas) {
   
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
+    private void AgregarVisiBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarVisiBotActionPerformed
  String usuarioActual = iniciosesion.usuarioLogueado;// O la variable que tengas con el usuario actual
     Metodos.agendarVisita(usuarioActual);
     actualizarTablaVisitas();
@@ -1717,7 +1701,7 @@ for (Propiedades p : Propiedades.listaCasas) {
 private void actualizarTablaVisitas() {
     String usuarioActual = iniciosesion.usuarioLogueado; // Mismo usuario para que actualize la vista
     VisitasTable.setModel(Metodos.generarTablaVisitasCliente(usuarioActual));
-    }//GEN-LAST:event_jButton34ActionPerformed
+    }//GEN-LAST:event_AgregarVisiBotActionPerformed
 
     private void AgrConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgrConActionPerformed
        String usuarioActual = iniciosesion.usuarioLogueado;
@@ -1774,6 +1758,7 @@ private void actualizarTablaVisitas() {
     private javax.swing.JPanel AgeBotPan;
     private javax.swing.JButton AgrCon;
     private javax.swing.JButton AgregarProBot;
+    private javax.swing.JButton AgregarVisiBot;
     private javax.swing.JButton ArriendosAgeBot;
     private javax.swing.JButton CliAgeRepBot;
     private javax.swing.JButton ClientesAdBot;
@@ -1790,6 +1775,8 @@ private void actualizarTablaVisitas() {
     private javax.swing.JButton ContratosProBot;
     private javax.swing.JTable ContratosTable;
     private javax.swing.JTextArea DetCasa;
+    private javax.swing.JButton EliminarProBot;
+    private javax.swing.JButton EliminarVisiBot;
     private javax.swing.JLabel ImagUnoLbl;
     private javax.swing.JComboBox<String> ImagenesCombo;
     private javax.swing.JButton IngresoComiRepBot;
@@ -1840,7 +1827,6 @@ private void actualizarTablaVisitas() {
     private javax.swing.JButton VolverProBot;
     private javax.swing.JButton VolverRepBot;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
@@ -1848,9 +1834,6 @@ private void actualizarTablaVisitas() {
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton33;
-    private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JScrollPane jScrollPane1;
