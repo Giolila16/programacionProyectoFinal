@@ -804,47 +804,4 @@ public static void crearPago(String clienteActual) {
     JOptionPane.showMessageDialog(null, "Pago creado exitosamente con ID: " + idPago,
             "Nuevo Pago", JOptionPane.INFORMATION_MESSAGE);
 }
-public static void editarPago(String tipoUsuario) {
-    // Solo admin o agente puede editar
-    if (!tipoUsuario.equals("admin") && !tipoUsuario.equals("agente")) {
-        JOptionPane.showMessageDialog(null, "No tiene permisos para editar pagos.");
-        return;
-    }
-
-    // Filtrar solo los pagos pendientes
-    List<Pagos> pagosPendientes = listaPagos.stream()
-            .filter(p -> p.getEstado().equalsIgnoreCase("Pendiente"))
-            .collect(Collectors.toList());
-
-    if (pagosPendientes.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "No hay pagos pendientes para editar.");
-        return;
-    }
-
-    // Mostrar lista de pagos pendientes con ID y cliente
-    String[] opciones = pagosPendientes.stream()
-            .map(p -> "ID: " + p.getIdPago() + " | Cliente: " + p.getCliente() + " | Monto: " + p.getMonto())
-            .toArray(String[]::new);
-
-    String seleccion = (String) JOptionPane.showInputDialog(null, "Seleccione un pago para marcar como pagado:",
-            "Editar Pago", JOptionPane.QUESTION_MESSAGE, null, opciones, null);
-
-    if (seleccion == null) return;
-
-    // Obtener el ID seleccionado
-    String idSeleccionado = seleccion.split(" ")[1]; // después de "ID: "
-
-    // Buscar el pago y actualizar estado
-    for (Pagos p : listaPagos) {
-        if (p.getIdPago().equals(idSeleccionado)) {
-            p.estado = "Pagado";
-            JOptionPane.showMessageDialog(null, "El pago " + idSeleccionado + " ha sido marcado como pagado.");
-            break;
-        }
-    }
 }
-}
-
-
-
-    
