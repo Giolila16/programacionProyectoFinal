@@ -24,7 +24,11 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,6 +42,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -577,6 +583,46 @@ public static void cargarIdsEnCombo(JComboBox<String> comboBox) {
         comboBox.addItem(p.getId());
     }
 }
+
+//Metodo para ocultar columnas
+private static final Map<JTable, Map<Integer, TableColumn>> columnasOcultasMap = new HashMap<>();
+
+    public static void ocultarColumnas(JTable tabla, int[] indicesColumnas) {
+        TableColumnModel columnModel = tabla.getColumnModel();
+        Map<Integer, TableColumn> columnasOcultas = columnasOcultasMap.computeIfAbsent(tabla, k -> new HashMap<>());
+
+        for (int i = 0; i < indicesColumnas.length; i++) {
+            int index = indicesColumnas[i];
+
+            for (int j = 0; j < columnModel.getColumnCount(); j++) {
+                TableColumn col = columnModel.getColumn(j);
+                if (col.getModelIndex() == index) {
+                    columnasOcultas.put(index, col);
+                    columnModel.removeColumn(col);
+                    break;
+                }
+            }
+        }
+    }
+//Metodo para mostrar columnas ocultas o modificadas
+    public static void mostrarColumnasOcultas(JTable tabla) {
+        Map<Integer, TableColumn> columnasOcultas = columnasOcultasMap.get(tabla);
+        if (columnasOcultas == null || columnasOcultas.isEmpty()) return;
+
+        TableColumnModel columnModel = tabla.getColumnModel();
+
+        // Ordenar las columnas por su índice original para mantener el orden correcto
+        List<Integer> indicesOrdenados = new ArrayList<>(columnasOcultas.keySet());
+        Collections.sort(indicesOrdenados);
+
+        for (int index : indicesOrdenados) {
+            TableColumn col = columnasOcultas.get(index);
+            columnModel.addColumn(col);
+        }
+
+        columnasOcultas.clear();
+    }
+
 
 }
 
