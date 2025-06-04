@@ -378,35 +378,39 @@ public static int obtenerNumeroMes(String mes) {
     }
     return "Desconocido";
 }
-  public static DefaultTableModel generarTablaVisitasCliente(String usuarioCliente) {
+  public static DefaultTableModel generarTablaVisitasPorRol(String usuario, String rol) {
     String[] columnas = {"ID", "Fecha", "Día", "Agente", "Cliente", "Propiedad"};
     DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
 
     for (Visitas visita : Visitas.listaVisitas) {
-        if (visita.getCliente().equals(usuarioCliente)) {
-            String nombreAgente = Agente.listaAgentes.stream()
-                .filter(a -> a.getUsuario().equals(visita.getAgente()))
-                .map(a -> a.getNombres() + " " + a.getApellidos())
-                .findFirst().orElse("Agente Desconocido");
-
-            String nombreCliente = getNombreClientePorUsuario(visita.getCliente());
-
-            String propiedad = Propiedades.listaCasas.stream()
-                .filter(p -> p.getId().equals(visita.getPropiedadId()))
-                .map(p -> p.getId() + " - " + p.getTipo())
-                .findFirst().orElse("Propiedad Desconocida");
-
-            Object[] fila = {
-                visita.getIdVisita(),
-                visita.getFecha(),
-                visita.getDiaSemana(),
-                nombreAgente,
-                nombreCliente,
-                propiedad
-            };
-            modelo.addRow(fila);
+        // Mostrar todas si es admin, solo sus visitas si es cliente
+        if (rol.equals("Cliente") && !visita.getCliente().equals(usuario)) {
+            continue;
         }
+
+        String nombreAgente = Agente.listaAgentes.stream()
+            .filter(a -> a.getUsuario().equals(visita.getAgente()))
+            .map(a -> a.getNombres() + " " + a.getApellidos())
+            .findFirst().orElse("Agente Desconocido");
+
+        String nombreCliente = getNombreClientePorUsuario(visita.getCliente());
+
+        String propiedad = Propiedades.listaCasas.stream()
+            .filter(p -> p.getId().equals(visita.getPropiedadId()))
+            .map(p -> p.getId() + " - " + p.getTipo())
+            .findFirst().orElse("Propiedad Desconocida");
+
+        Object[] fila = {
+            visita.getIdVisita(),
+            visita.getFecha(),
+            visita.getDiaSemana(),
+            nombreAgente,
+            nombreCliente,
+            propiedad
+        };
+        modelo.addRow(fila);
     }
+
     return modelo;
 }
   public static Usuarios verificarUsuario(String usuario, String contraseña) {

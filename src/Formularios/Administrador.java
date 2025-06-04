@@ -1707,7 +1707,8 @@ actualizarTablaVisitas();}
 
 private void actualizarTablaVisitas() {
     String usuarioActual = iniciosesion.usuarioLogueado;
-    VisitasTable.setModel(Metodos.generarTablaVisitasCliente(usuarioActual));
+    String rolActual = iniciosesion.usuarioLogueado;
+    VisitasTable.setModel(Metodos.generarTablaVisitasPorRol(usuarioActual, rolActual));
 
     }//GEN-LAST:event_AgregarVisiBotActionPerformed
 
