@@ -283,15 +283,15 @@ public static int obtenerNumeroMes(String mes) {
         default: return -1;
     }
 }
-  //Metodo para pagos
- public static List<Pagos> filtrarPagosPorUsuario(Usuarios usuario) {
+public static List<Pagos> filtrarPagosPorNombre(Usuarios usuario) {
     if (usuario == null) return Collections.emptyList();
 
     List<Pagos> pagosFiltrados = new ArrayList<>();
-    String nombre = usuario.getNombres(); // antes usabas getUsuario()
+  String nombreUsuario = usuario.getNombres().split(" ")[0].toLowerCase();
 
     for (Pagos pago : listaPagos) {
-        if (pago.getCliente().equalsIgnoreCase(nombre) || pago.getAgente().equalsIgnoreCase(nombre)) {
+        if (pago.getCliente().toLowerCase().contains(nombreUsuario) ||
+            pago.getAgente().toLowerCase().contains(nombreUsuario)) {
             pagosFiltrados.add(pago);
         }
     }
@@ -302,7 +302,7 @@ public static int obtenerNumeroMes(String mes) {
         new Object[]{"ID Pago", "Tipo Pago", "Propiedad ID", "Cliente", "Monto", "Estado", "Método Pago", "Agente"}, 0
     );
 
-    List<Pagos> pagosFiltrados = filtrarPagosPorUsuario(usuario); // usa tu método de filtrado
+    List<Pagos> pagosFiltrados = filtrarPagosPorNombre(usuario); 
 
     for (Pagos p : pagosFiltrados) {
         modelo.addRow(new Object[]{

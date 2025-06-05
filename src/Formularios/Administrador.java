@@ -5,6 +5,7 @@
 package Formularios;
 
 
+import static Formularios.Metodos.generarModeloPagosFiltrados;
 import static Formularios.Visitas.listaVisitas;
 import static Formularios.iniciosesion.usuarioLogueado;
 import java.awt.BorderLayout;
@@ -35,7 +36,7 @@ public class Administrador extends javax.swing.JFrame {
    DefaultTableModel modeloClientes;
    DefaultTableModel modeloVisitas;
    DefaultTableModel modeloContratos;
-   DefaultTableModel modeloPagos;
+   DefaultTableModel modeloP;
    DefaultTableModel modeloUsuario;
     private JPanel panelContenido;  
     private CardLayout cardLayout;
@@ -95,21 +96,23 @@ ReportesBasicosTable.setModel(Metodos.generarModeloReportes());
         modeloClientes = Metodos.generarTablaClientes();
         ClientesTable.setModel(modeloClientes);
         //Leila Llamo al metodo propiedades para la tabla de propiedades
+
+cargarTablaPropiedadesSegunRol();
         Propiedades.cargarCasasEjemplo();
 //        modelo = Metodos.generarModeloCasas();
-        PropiedadesTable.setModel(modelo);
+      
         //Leila llamo al metodo de visitas para la tabla de visitas
         Visitas.cargarVisitasEjemplo();
 //        modeloVisitas = Metodos.generarTablaVisitasCompleta();
-        VisitasTable.setModel(modeloVisitas);
+      
         //Leila llamo al metodo de contratos
         Contratos.cargarContratosEjemplo();
         modeloContratos = Metodos.generarContratos();
         ContratosTable.setModel(modeloContratos);
         //leila llamo al metodo de pagos
-        Pagos.cargarPagosEjemplo();
-//        modeloPagos = Metodos.generarPagos();
-        PagosTable.setModel(modeloPagos);
+        Pagos.cargarPagosEjemplo(); 
+        PagosTable.setModel(Metodos.generarModeloPagosFiltrados(usuarioLogueado));
+//      
         //Leila llamo al metodo de usuarios;
         //se llaman a las clases heredadas por Usuarios
         Agente.cargarAgentesEjemplo();
@@ -141,9 +144,9 @@ ReportesBasicosTable.setModel(Metodos.generarModeloReportes());
     modeloContratos = Metodos.generarContratos();
     ContratosTable.setModel(modeloContratos);
 
-    // Tabla de pagos
-    Pagos.cargarPagosEjemplo();
-   PagosTable.setModel(Metodos.generarModeloPagosFiltrados(usuarioLogueado));
+
+    
+ 
 
     // Tabla de usuarios
     modeloUsuario = Metodos.generarTablaUsuariosCompleta();
