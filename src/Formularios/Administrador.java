@@ -5,6 +5,7 @@
 package Formularios;
 
 
+import static Formularios.Visitas.listaVisitas;
 import static Formularios.iniciosesion.usuarioLogueado;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -19,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 import javax.swing.JLabel;
 
 /**
@@ -36,86 +38,117 @@ public class Administrador extends javax.swing.JFrame {
    DefaultTableModel modeloUsuario;
     private JPanel panelContenido;  
     private CardLayout cardLayout;
+  private Usuarios usuarioLogueadoObj;
   
-    private void llenarComboBoxConIDs() {
-    ImagenesCombo.removeAllItems(); 
-    for (Propiedades casa : Propiedades.listaCasas) {
-        ImagenesCombo.addItem(casa.getId());
-    }
     
-}
     public Administrador() {
-        initComponents();
-        
-       FondoPanel fondo = new FondoPanel();
+}
+public Administrador(Usuarios usuarioLogueado) {
+    initComponents();
+    this.usuarioLogueadoObj = usuarioLogueado;
+
+    // Cargar ejemplos de datos
+    Agente.cargarAgentesEjemplo();
+    ClienteUsuario.cargarClientesUsuarioEjemplo();
+    Propietario.cargarPropietariosEjemplo();
+    gio.cargarAdministradorEjemplo();
+    Visitas.cargarVisitasEjemplo();
+    Propiedades.cargarCasasEjemplo();
+     Reportes.cargarReportesEjemplo(); 
+    
+
+    // Configurar CardLayout para AdminBotones
+    CardLayout cl = new CardLayout();
+    AdminBotones.setLayout(cl);
+    AdminBotones.add(ClientesBotPan,    "Cliente");
+    AdminBotones.add(AgeBotPan,         "Agente");
+    AdminBotones.add(PropietarioBotPan, "Propietario");
+    AdminBotones.add(AdminBotPan,       "Administrador");
+    mostrarPanelSegunCargo();
+
+    // Cargar la tabla de propiedades según el rol del usuario
+    cargarTablaPropiedadesSegunRol();
+ReportesBasicosTable.setModel(Metodos.generarModeloReportes());
+    // Ahora configuro el fondo y agrego los paneles al JFrame
+    FondoPanel fondo = new FondoPanel();
     fondo.setLayout(new BorderLayout());
-    
-    // Mover los paneles existentes al fondo
     fondo.add(AdminBotones, BorderLayout.NORTH);
-    fondo.add(ParentPan, BorderLayout.CENTER);
-    
-    // Reemplazar el contenido del JFrame
+    fondo.add(ParentPan,     BorderLayout.CENTER);
     getContentPane().removeAll();
     getContentPane().add(fondo);
-        
-        this.setLocationRelativeTo(this);
-   Propiedades.cargarCasasEjemplo();
 
-ImagenesCombo.addItem("-- Seleccione una propiedad --");
-Metodos.cargarIdsEnCombo(ImagenesCombo);
-ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
- // Limpias la imagen
-        //Leila agrega un cardlayout que ayudara a identificar que usuario va ingresar
-        //en el inicio de sesion
-        CardLayout cl = new CardLayout();//cardlayout creado
-        ParentPan.setLayout(cl); // Asegura que el ParentPan use CardLayout
+    // Posicionar la ventana en el centro
+    this.setLocationRelativeTo(this);
 
-        // Agrega los paneles
-        AdminBotones.add(ClientesBotPan, "Cliente");
-        AdminBotones.add(AgeBotPan, "Agente");
-        AdminBotones.add(PropietarioBotPan, "Propietario");
-        AdminBotones.add(AdminBotPan, "Administrador");
-        //Leila Coloco el llamado del metodo clientes para la tabla
-        Clientes.cargarClientesEjemplo();
-        modeloClientes = Metodos.generarTablaClientes();
-        ClientesTable.setModel(modeloClientes);
-        //Leila Llamo al metodo propiedades para la tabla de propiedades
-        Propiedades.cargarCasasEjemplo();
-        modelo = Metodos.generarModeloCasas();
-        PropiedadesTable.setModel(modelo);
-        //Leila llamo al metodo de visitas para la tabla de visitas
-        Visitas.cargarVisitasEjemplo();
-        modeloVisitas = Metodos.generarTablaVisitasCompleta();
-        VisitasTable.setModel(modeloVisitas);
-        //Leila llamo al metodo de contratos
-        Contratos.cargarContratosEjemplo();
-        modeloContratos = Metodos.generarContratos();
-        ContratosTable.setModel(modeloContratos);
-        //leila llamo al metodo de pagos
-        Pagos.cargarPagosEjemplo();
-        modeloPagos = Metodos.generarPagos();
-        PagosTable.setModel(modeloPagos);
-        //Leila llamo al metodo de usuarios;
-        //se llaman a las clases heredadas por Usuarios
-        Agente.cargarAgentesEjemplo();
-        Propietario.cargarPropietariosEjemplo();
-        ClienteUsuario.cargarClientesUsuarioEjemplo();
-        gio.cargarAdministradorEjemplo();
-        //muestra los datos a la tabla
-        modeloUsuario = Metodos.generarTablaUsuariosCompleta();
-        UsuariosTable.setModel(modeloUsuario);
-        
-   
-        
-        mostrarPanelSegunCargo();
-        
-        Metodos.ponerImagenEscalada(CerrarAdBot, "/imagenes/Apagar.png");
-        Metodos.ponerImagenEscalada(CerrarAgeBot, "/imagenes/Apagar.png");
-        Metodos.ponerImagenEscalada(CerrarCliBot, "/imagenes/Apagar.png");
-        Metodos.ponerImagenEscalada(CerrarProBot, "/imagenes/Apagar.png");
+    // Configurar otros componentes (combo de imágenes, tablas de clientes, visitas, etc.)
+    ImagenesCombo.addItem("-- Seleccione una propiedad --");
+    Metodos.cargarIdsEnCombo(ImagenesCombo);
+    ImagUnoLbl.setIcon(null);
+
+    // Tabla de clientes
+    Clientes.cargarClientesEjemplo();
+    modeloClientes = Metodos.generarTablaClientes();
+    ClientesTable.setModel(modeloClientes);
+
+    // Ya no vuelvas a asignar modelo a PropiedadesTable aquí—ya lo hizo cargarTablaPropiedadesSegunRol(). 
+
+    // Tabla de visitas
     
-  
+    List<Visitas> visitasFiltradas = Metodos.filtrarVisitasPorUsuario(usuarioLogueadoObj);
+    modeloVisitas = new DefaultTableModel();
+    Metodos.cargarVisitasEnTabla(VisitasTable, visitasFiltradas);
+
+    // Tabla de contratos
+    Contratos.cargarContratosEjemplo();
+    modeloContratos = Metodos.generarContratos();
+    ContratosTable.setModel(modeloContratos);
+
+    // Tabla de pagos
+    Pagos.cargarPagosEjemplo();
+   PagosTable.setModel(Metodos.generarModeloPagosFiltrados(usuarioLogueado));
+
+    // Tabla de usuarios
+    modeloUsuario = Metodos.generarTablaUsuariosCompleta();
+    UsuariosTable.setModel(modeloUsuario);
+
+    // Poner íconos en botones de cerrar
+    Metodos.ponerImagenEscalada(CerrarAdBot,  "/imagenes/Apagar.png");
+    Metodos.ponerImagenEscalada(CerrarAgeBot, "/imagenes/Apagar.png");
+    Metodos.ponerImagenEscalada(CerrarCliBot, "/imagenes/Apagar.png");
+    Metodos.ponerImagenEscalada(CerrarProBot, "/imagenes/Apagar.png");
+}
+    
+   private void cargarTablaPropiedadesSegunRol() {
+    String rol = usuarioLogueadoObj.getCargo().toLowerCase();
+
+    DefaultTableModel modelo = null;
+
+    switch (rol) {
+        case "administrador":
+        case "agente":
+            modelo = Metodos.generarModeloCasasTodas();
+            break;
+
+        case "cliente":
+            modelo = Metodos.generarModeloCasasDisponibles();
+            break;
+
+        case "propietario":
+            String propietarioId = usuarioLogueadoObj.getNombres(); // o getUsuario()
+            modelo = Metodos.generarModeloCasasPorPropietario(propietarioId);
+            break;
+
+        default:
+            modelo = new DefaultTableModel();
+            break;
     }
+
+    if (modelo != null) {
+        PropiedadesTable.setModel(modelo);
+    } else {
+        System.out.println("Error: El modelo para la tabla de propiedades es null.");
+    }
+}
     //Leila actualizo el metodo para mostrar imagenes y elimino Systems innecesarios
   private void actualizarComboPropiedades() {
     ImagenesCombo.removeAllItems();
@@ -124,8 +157,10 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
     }
 }
     iniciosesion Devolver = new iniciosesion();
-    
-    void mostrarPanelSegunCargo() {
+    public void actualizarTablaPagos() {
+    PagosTable.setModel(Metodos.generarModeloPagosFiltrados(usuarioLogueadoObj));
+}
+   void mostrarPanelSegunCargo() {
     Usuarios cargo = Metodos.getCargo();
 
     if (cargo != null) {
@@ -146,8 +181,9 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 cl.show(AdminBotones, "Cliente");
         }
     }
-    
+
 }
+
    
 
     
@@ -1283,7 +1319,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
 
     private void PropiedadesAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropiedadesAdBotActionPerformed
 
-PropiedadesTable.setModel(modelo);
+cargarTablaPropiedadesSegunRol();
         ParentPan.removeAll();
         ParentPan.add(PropiedadesPan);
         ParentPan.repaint();
@@ -1665,15 +1701,19 @@ for (Propiedades p : Propiedades.listaCasas) {
     }//GEN-LAST:event_ImagenesComboActionPerformed
 
     private void AgregarVisiBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarVisiBotActionPerformed
-String usuarioActual = iniciosesion.usuarioLogueado;
-Metodos.agendarVisita(usuarioActual);
-actualizarTablaVisitas();}
+ String user = iniciosesion.usuarioLogueado;
 
-private void actualizarTablaVisitas() {
-    String usuarioActual = iniciosesion.usuarioLogueado;
-    String rolActual = iniciosesion.usuarioLogueado;
-    VisitasTable.setModel(Metodos.generarTablaVisitasPorRol(usuarioActual, rolActual));
+    // 1. Agregamos la visita
+    Metodos.agendarVisita(user, VisitasTable);
 
+    // 2. Volvemos a cargar todas las visitas si el filtro falla
+    if (usuarioLogueadoObj != null) {
+        List<Visitas> visitasFiltradas = Metodos.filtrarVisitasPorUsuario(usuarioLogueadoObj);
+        Metodos.cargarVisitasEnTabla(VisitasTable, visitasFiltradas);
+    } else {
+        JOptionPane.showMessageDialog(this, "Error: usuario no encontrado.");
+        Metodos.cargarVisitasEnTabla(VisitasTable, listaVisitas); // Carga todo como emergencia
+    }
     }//GEN-LAST:event_AgregarVisiBotActionPerformed
 
     private void AgregarConBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarConBotActionPerformed
@@ -1686,11 +1726,9 @@ private void actualizarTablaVisitas() {
     }//GEN-LAST:event_AgregarConBotActionPerformed
 
     private void AgregarPagoBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarPagoBotActionPerformed
-     String usuarioActual = iniciosesion.usuarioLogueado;
-     Metodos.crearPago(usuarioActual);
-actualizarTablaPagos();}
-private void actualizarTablaPagos() {
-    PagosTable.setModel(Metodos.generarPagos());
+     Metodos.crearPago(usuarioLogueado);
+actualizarTablaPagos();// usuarioActual es del tipo Usuarios
+
 
     }//GEN-LAST:event_AgregarPagoBotActionPerformed
 

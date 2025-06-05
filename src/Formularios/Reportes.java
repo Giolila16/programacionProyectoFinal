@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author USUARIO
  */
 public class Reportes {
-    private String mes;
+
     private String año;
     private String idPropiedad;
     private String cliente;
@@ -22,8 +22,8 @@ public class Reportes {
 
     public static ArrayList<Reportes> listaReportes = new ArrayList<>();
 
-    public Reportes(String mes, String año, String idPropiedad, String cliente, String agente, int valorVenta) {
-        this.mes = mes;
+    public Reportes( String año, String idPropiedad, String cliente, String agente, int valorVenta) {
+  
         this.año = año;
         this.idPropiedad = idPropiedad;
         this.cliente = cliente;
@@ -34,7 +34,7 @@ public class Reportes {
     }
 
     // Getters
-    public String getMes() { return mes; }
+   
     public String getAño() { return año; }
     public String getIdPropiedad() { return idPropiedad; }
     public String getCliente() { return cliente; }
@@ -43,12 +43,12 @@ public class Reportes {
     public double getComisionAgente() { return comisionAgente; }
     public double getIngresoNeto() { return ingresoNeto; }
 
-
+    
     public static void cargarReportesEjemplo() {
-        listaReportes.add(new Reportes("Enero", "2025", "02407", "Maria", "Maria", 28000));
-        listaReportes.add(new Reportes("Febrero", "2025", "02412", "Camilo", "Camilo", 40000));
-        listaReportes.add(new Reportes("Marzo", "2025", "02406", "Carlos", "Carlos", 35000));
-        listaReportes.add(new Reportes("Abril", "2025", "21345", "Jose", "Jose", 10000));
-        listaReportes.add(new Reportes("Mayo", "2025", "02409", "Laura", "Laura", 32000));
+        listaReportes.add(new Reportes( "2025", "02403", "Ana", "Maria", 28000));
+        listaReportes.add(new Reportes( "2025", "02404", "Ana", "Camilo", 40000));
+        listaReportes.add(new Reportes( "2025", "02405", "Sebastian", "Carlos", 35000));
+        listaReportes.add(new Reportes( "2025", "21406", "Andrea", "Jose", 10000));
+  
     }
 }

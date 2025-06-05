@@ -22,63 +22,71 @@ public class iniciosesion extends javax.swing.JFrame {
     
     public iniciosesion() {
         initComponents();
+        
         this.setLocationRelativeTo(this);
-        setTitle("Ingresa tu Usuario, Contraseña y tu Cargo para poder brindarte una ayuda mas personalizada");
+        setTitle("Ingresa tu Usuario, Contraseña y tu Cargo para poder brindarte una ayuda más personalizada");
         cargarCargos();
         Metodos.configurarFondoCompleto(this, IniciosesionPan, "/imagenes/FondoInicio.jpg");
-        
-        
+
+        // ----- Texto “placeholder” en UsuarioText -----
         UsuarioText.setText("Usuario");
-    UsuarioText.setForeground(Color.GRAY);
-
-    UsuarioText.addFocusListener(new java.awt.event.FocusAdapter() {
-        @Override
-        public void focusGained(java.awt.event.FocusEvent e) {
-            if (UsuarioText.getText().equals("Usuario")) {
-                UsuarioText.setText("");
-                UsuarioText.setForeground(Color.BLACK);
+        UsuarioText.setForeground(Color.GRAY);
+        UsuarioText.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (UsuarioText.getText().equals("Usuario")) {
+                    UsuarioText.setText("");
+                    UsuarioText.setForeground(Color.BLACK);
+                }
             }
-        }
-
-        @Override
-        public void focusLost(java.awt.event.FocusEvent e) {
-            if (UsuarioText.getText().isEmpty()) {
-                UsuarioText.setForeground(Color.GRAY);
-                UsuarioText.setText("Usuario");
+            @Override
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (UsuarioText.getText().isEmpty()) {
+                    UsuarioText.setForeground(Color.GRAY);
+                    UsuarioText.setText("Usuario");
+                }
             }
-        }
-    });
+        });
 
-    ContrasenaText.setEchoChar((char) 0); 
-    ContrasenaText.setText("Contraseña");
-    ContrasenaText.setForeground(Color.GRAY);
-
-    ContrasenaText.addFocusListener(new java.awt.event.FocusAdapter() {
-        @Override
-        public void focusGained(java.awt.event.FocusEvent e) {
-            if (String.valueOf(ContrasenaText.getPassword()).equals("Contraseña")) {
-                ContrasenaText.setText("");
-                ContrasenaText.setEchoChar('•');
-                ContrasenaText.setForeground(Color.BLACK);
+        // ----- Texto “placeholder” en ContrasenaText -----
+        ContrasenaText.setEchoChar((char) 0);
+        ContrasenaText.setText("Contraseña");
+        ContrasenaText.setForeground(Color.GRAY);
+        ContrasenaText.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (String.valueOf(ContrasenaText.getPassword()).equals("Contraseña")) {
+                    ContrasenaText.setText("");
+                    ContrasenaText.setEchoChar('•');
+                    ContrasenaText.setForeground(Color.BLACK);
+                }
             }
-        }
-
-        @Override
-        public void focusLost(java.awt.event.FocusEvent e) {
-            if (String.valueOf(ContrasenaText.getPassword()).isEmpty()) {
-                ContrasenaText.setEchoChar((char) 0); // Mostrar texto visible
-                ContrasenaText.setText("Contraseña");
-                ContrasenaText.setForeground(Color.GRAY);
+            @Override
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (String.valueOf(ContrasenaText.getPassword()).isEmpty()) {
+                    ContrasenaText.setEchoChar((char) 0);
+                    ContrasenaText.setText("Contraseña");
+                    ContrasenaText.setForeground(Color.GRAY);
+                }
             }
-        }
-    });
-}
-    private void cargarCargos() {
-    List<Usuarios> cargos = Usuarios.obtenerCargos();
-    for (Usuarios cargo : cargos) {
-        CargoCombo.addItem(cargo);
+        });
     }
-}
+
+    // ----- MÉTODO CORREGIDO: cargarCargos() -----
+   private void cargarCargos() {
+    // 1) Limpiamos el ComboBox
+    CargoCombo.removeAllItems();
+
+    // 2) listarCargos() devuelve List<String>, así que lo asignamos a List<String>
+    List<String> listaRoles = Usuarios.listarCargos();
+
+    // 3) Recorremos cada rol (String) y lo agregamos al ComboBox
+    for (String rol : listaRoles) {
+        CargoCombo.addItem(rol);
+    }
+
+    }
+
    
     
     
@@ -94,7 +102,7 @@ public class iniciosesion extends javax.swing.JFrame {
         IniciosesionPan = new javax.swing.JPanel();
         UsuarioText = new javax.swing.JTextField();
         ContrasenaText = new javax.swing.JPasswordField();
-        CargoCombo = new javax.swing.JComboBox<Usuarios>();
+        CargoCombo = new javax.swing.JComboBox<String>();
         InicioSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -110,6 +118,13 @@ public class iniciosesion extends javax.swing.JFrame {
         ContrasenaText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContrasenaTextActionPerformed(evt);
+            }
+        });
+
+        CargoCombo.setFocusable(false);
+        CargoCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CargoComboActionPerformed(evt);
             }
         });
 
@@ -175,50 +190,52 @@ public class iniciosesion extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuarioTextActionPerformed
 
     private void InicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioSesionActionPerformed
-   // 1. Obtener texto y contraseña
-String usuario = UsuarioText.getText(); 
-char[] contrasenachar = ContrasenaText.getPassword(); 
-String contraseña = new String(contrasenachar);
+   // 1) Leemos usuario + contraseña
+        String usuario = UsuarioText.getText();
+        char[] contrasenachar = ContrasenaText.getPassword();
+        String contraseña = new String(contrasenachar);
 
-// 2. Obtener el cargo seleccionado del ComboBox (debe ser un objeto Usuarios que solo tiene nombreCargo)
-Usuarios usuarioSeleccionado = (Usuarios) CargoCombo.getSelectedItem();
+        // 2) Leemos el rol seleccionado COMO String
+        String rolSeleccionado = (String) CargoCombo.getSelectedItem();
+        if (rolSeleccionado == null || rolSeleccionado.equals("--Seleccione Cargo--")) {
+            JOptionPane.showMessageDialog(this, "Por favor seleccione un rol antes de iniciar sesión.");
+            return;
+        }
 
-if (usuarioSeleccionado == null || usuarioSeleccionado.getNombreCargo().equals("--Seleccione Cargo--")) {
-    JOptionPane.showMessageDialog(this, "Por favor seleccione un rol antes de iniciar sesión.");
-    return;
-}
+        // 3) Cargamos ejemplos de usuarios (para que existan en las listas estáticas)
+        gio.cargarAdministradorEjemplo();
+        Agente.cargarAgentesEjemplo();
+        Propietario.cargarPropietariosEjemplo();
+        ClienteUsuario.cargarClientesUsuarioEjemplo();
 
-String rolSeleccionado = usuarioSeleccionado.getNombreCargo(); // Ej: "Administrador", "Agente", etc.
+        // 4) Verificamos usuario+contraseña
+        Usuarios usuarioLogueadoObj = Metodos.verificarUsuario(usuario, contraseña);
 
-// 3. Cargar ejemplos de usuarios
-gio.cargarAdministradorEjemplo();
-Agente.cargarAgentesEjemplo();
-Propietario.cargarPropietariosEjemplo();
-ClienteUsuario.cargarClientesUsuarioEjemplo();
+        if (usuarioLogueadoObj != null) {
+            // 5) Comparamos el cargo real con el seleccionado
+            if (!usuarioLogueadoObj.getCargo().equalsIgnoreCase(rolSeleccionado)) {
+                JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos");
+                return;
+            }
 
-// 4. Verificar usuario (retorna usuario con datos completos o null)
-Usuarios usuarioLogueadoObj = Metodos.verificarUsuario(usuario, contraseña);
+            // 6) Guardamos en la variable estática el ID real de quien inició sesión
+            iniciosesion.usuarioLogueado = usuarioLogueadoObj.getUsuario();
+            Metodos.setCargo(usuarioLogueadoObj);
 
-if (usuarioLogueadoObj != null) {
-    // 5. Comparar el cargo del usuario con el cargo seleccionado
-    if (!usuarioLogueadoObj.getCargo().equalsIgnoreCase(rolSeleccionado)) {
-        JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos");
-        return;
-    }
-
-    // 6. Guardar sesión
-    iniciosesion.usuarioLogueado = usuarioLogueadoObj.getUsuario();
-    Metodos.setCargo(usuarioLogueadoObj); // Método para usar después en mostrarPanelSegunCargo()
-
-    // 7. Abrir ventana principal
-    Administrador ventana = new Administrador();
-    ventana.setVisible(true);
-    ventana.mostrarPanelSegunCargo();
-    this.setVisible(false);
-} else {
-    JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos");
-}
+            // 7) Abrimos la ventana principal (por ejemplo Administrador)
+            Administrador ventana = new Administrador(usuarioLogueadoObj);
+            ventana.setVisible(true);
+            ventana.mostrarPanelSegunCargo();
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos");
+        }
+    
     }//GEN-LAST:event_InicioSesionActionPerformed
+
+    private void CargoComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargoComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CargoComboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,7 +273,7 @@ if (usuarioLogueadoObj != null) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Usuarios> CargoCombo;
+    private javax.swing.JComboBox CargoCombo;
     private javax.swing.JPasswordField ContrasenaText;
     private javax.swing.JButton InicioSesion;
     private javax.swing.JPanel IniciosesionPan;

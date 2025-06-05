@@ -5,7 +5,9 @@
 package Formularios;
 
 
+import static Formularios.Agente.listaAgentes;
 import static Formularios.Pagos.listaPagos;
+import static Formularios.Visitas.listaVisitas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -109,11 +111,12 @@ public static Usuarios getCargo() {
 }
     //Metodo para pasar a la tabla de propiedades
     
-    public static DefaultTableModel generarModeloCasas() {
-     
-        DefaultTableModel modelo = new DefaultTableModel(
-            new Object[]{"ID", "Tipo", "Ubicación", "Área", "Precio", "Estado", "Propietario", "Agente"}, 0
-        );
+    public static DefaultTableModel generarModeloCasasTodas() {
+        String[] columnas = {
+            "ID", "Tipo", "Ubicación", "Área",
+            "Precio", "Estado", "Propietario", "Agente"
+        };
+        DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
 
         for (Propiedades casa : Propiedades.listaCasas) {
             modelo.addRow(new Object[]{
@@ -127,10 +130,68 @@ public static Usuarios getCargo() {
                 casa.getAgente()
             });
         }
-
         return modelo;
-    
     }
+
+    /**
+     * 2. Devuelve un DefaultTableModel con las propiedades cuyo estado sea "Disponible".
+     *    (Para el rol Cliente.)
+     *    Columnas: {ID, Tipo, Ubicación, Área, Precio, Estado, Propietario, Agente}
+     */
+    public static DefaultTableModel generarModeloCasasDisponibles() {
+        String[] columnas = {
+            "ID", "Tipo", "Ubicación", "Área",
+            "Precio", "Estado", "Propietario", "Agente"
+        };
+        DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+
+        for (Propiedades casa : Propiedades.listaCasas) {
+            // Solo cargo si está "Disponible"
+            if ("Disponible".equalsIgnoreCase(casa.getEstado())) {
+                modelo.addRow(new Object[]{
+                    casa.getId(),
+                    casa.getTipo(),
+                    casa.getUbicacion(),
+                    casa.getArea(),
+                    casa.getPrecio(),
+                    casa.getEstado(),
+                    casa.getPropietario(),
+                    casa.getAgente()
+                });
+            }
+        }
+        return modelo;
+    }
+
+    /**
+     * 3. Devuelve un DefaultTableModel con las propiedades de UN SOLO PROPIETARIO.
+     *    (Para el rol Propietario.)
+     *    Columnas: {ID, Tipo, Ubicación, Área, Precio, Estado}
+     *    Nota: aquí omitimos Propietario y Agente en la tabla, ya que el dueño
+     *    solo necesita ver sus propiedades.
+     */
+    public static DefaultTableModel generarModeloCasasPorPropietario(String propietarioId) {
+        String[] columnas = {
+            "ID", "Tipo", "Ubicación", "Área",
+            "Precio", "Estado"
+        };
+        DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+
+        for (Propiedades casa : Propiedades.listaCasas) {
+            if (casa.getPropietario().equalsIgnoreCase(propietarioId)) {
+                modelo.addRow(new Object[]{
+                    casa.getId(),
+                    casa.getTipo(),
+                    casa.getUbicacion(),
+                    casa.getArea(),
+                    casa.getPrecio(),
+                    casa.getEstado()
+                });
+            }
+        }
+        return modelo;
+    }
+
 //metodo para ver a los clientes en tablas 
 public static DefaultTableModel generarTablaClientes() {
      
@@ -152,56 +213,11 @@ public static DefaultTableModel generarTablaClientes() {
     }
     return modeloC;
 }
-//Leila creo metodo de visitas
-public static DefaultTableModel generarTablaVisitasCompleta() {
-    DefaultTableModel modelo = new DefaultTableModel(
-        new Object[]{"ID", "Fecha", "Día", "Cliente", "Agente", "Propiedad", "Estado"}, 0
-    );
+//Leila creo metodo metodo para filtrar casas de propiedades segun el propietario
 
-    for (Visitas visita : Visitas.listaVisitas) {
-        // Buscar nombre del CLIENTE
-        String nombreCliente = buscarNombre(visita.getCliente(), 
-            ClienteUsuario.listaUsuariosCliente, 
-            Propietario.listaPropietarios);
-        
-        // Buscar nombre del AGENTE
-        String nombreAgente = buscarNombre(visita.getAgente(), 
-            Agente.listaAgentes, 
-            null);
 
-        modelo.addRow(new Object[]{
-            visita.getIdVisita(),
-            visita.getFecha(),
-            visita.getDiaSemana(),
-            nombreCliente,   // Ej: "Ana López"
-            nombreAgente,    // Ej: "Carlos Pérez"
-            visita.getPropiedadId(),
-            visita.getEstado()
-        });
-    }
-    return modelo;
-}
-private static String buscarNombre(String usuarioId, 
-                                 ArrayList<? extends Usuarios> lista1, 
-                                 ArrayList<? extends Usuarios> lista2) {
-    // Buscar en la primera lista (ej: Clientes)
-    for (Usuarios usuario : lista1) {
-        if (usuario.getUsuario().equals(usuarioId)) {
-            return usuario.getNombres() + " " + usuario.getApellidos();
-        }
-    }
-    
-    // Buscar en la segunda lista (ej: Propietarios) si existe
-    if (lista2 != null) {
-        for (Usuarios usuario : lista2) {
-            if (usuario.getUsuario().equals(usuarioId)) {
-                return usuario.getNombres() + " " + usuario.getApellidos();
-            }
-        }
-    }
-    
-    return usuarioId; // Si no se encuentra, devolver el ID original
-}
+       
+
     //Metodo para contratos
     public static DefaultTableModel generarContratos() {
     DefaultTableModel modelo = new DefaultTableModel(
@@ -263,25 +279,42 @@ public static int obtenerNumeroMes(String mes) {
         default: return -1;
     }
 }
-//Metodo para pagos
- public static DefaultTableModel generarPagos() {
-        DefaultTableModel modeloa = new DefaultTableModel(
-                new Object[]{"ID Pago", "Tipo Pago", "Propiedad ID", "Cliente", "Monto", " Estado", "Metodo Pago", "Agente"}, 0
-        );
-        for (Pagos pagos : Pagos.listaPagos) {
-            modeloa.addRow(new Object[]{
-                pagos.getIdPago(),
-                pagos.getTipoPago(),
-                pagos.getPropiedadId(),
-                pagos.getCliente(),
-                pagos.getMonto(),
-                pagos.getEstado(),
-                pagos.getMetodoPago(),
-                pagos.getAgente()
-            });
+  //Metodo para pagos
+ public static List<Pagos> filtrarPagosPorUsuario(Usuarios usuario) {
+    if (usuario == null) return Collections.emptyList();
+
+    List<Pagos> pagosFiltrados = new ArrayList<>();
+    String nombre = usuario.getNombres(); // antes usabas getUsuario()
+
+    for (Pagos pago : listaPagos) {
+        if (pago.getCliente().equalsIgnoreCase(nombre) || pago.getAgente().equalsIgnoreCase(nombre)) {
+            pagosFiltrados.add(pago);
         }
-        return modeloa;
     }
+    return pagosFiltrados;
+}
+ public static DefaultTableModel generarModeloPagosFiltrados(Usuarios usuario) {
+    DefaultTableModel modelo = new DefaultTableModel(
+        new Object[]{"ID Pago", "Tipo Pago", "Propiedad ID", "Cliente", "Monto", "Estado", "Método Pago", "Agente"}, 0
+    );
+
+    List<Pagos> pagosFiltrados = filtrarPagosPorUsuario(usuario); // usa tu método de filtrado
+
+    for (Pagos p : pagosFiltrados) {
+        modelo.addRow(new Object[]{
+            p.getIdPago(),
+            p.getTipoPago(),
+            p.getPropiedadId(),
+            p.getCliente(),
+            p.getMonto(),
+            p.getEstado(),
+            p.getMetodoPago(),
+            p.getAgente()
+        });
+    }
+
+    return modelo;
+}
     public static DefaultTableModel generarTablaUsuariosCompleta() {
         DefaultTableModel modelo = new DefaultTableModel(
             new Object[]{"Usuario", "Contraseña", "Nombres", "Apellidos", "Cargo"}, 0
@@ -325,52 +358,172 @@ public static int obtenerNumeroMes(String mes) {
   
     
     //AGREGAR VISITA PARA CLIENTE
-  public static void agendarVisita(String clienteActual) {
-     // Agentes
-    String[] nombresAgentes = Agente.listaAgentes.stream()
-        .map(a -> a.getNombres() + " " + a.getApellidos())
-        .toArray(String[]::new);
+ public static String obtenerNombreDesdeID(String idUsuario) {
 
-    String nombreAgente = (String) JOptionPane.showInputDialog(
-        null, "Seleccione un agente:", "Agendar Visita",
-        JOptionPane.QUESTION_MESSAGE, null, nombresAgentes, null);
+        if (Agente.listaAgentes != null) {
+            for (Agente a : Agente.listaAgentes) {
+                if (a.getUsuario().equals(idUsuario)) {
+                    return a.getNombres() + " " + a.getApellidos();
+                }
+            }
+        }
 
-    if (nombreAgente != null) {
-        String idAgente = Agente.listaAgentes.stream()
-            .filter(a -> (a.getNombres() + " " + a.getApellidos()).equals(nombreAgente))
-            .map(Agente::getUsuario)
-            .findFirst().orElse(null);
+        if (ClienteUsuario.listaUsuariosCliente != null) {
+            for (ClienteUsuario c : ClienteUsuario.listaUsuariosCliente) {
+                if (c.getUsuario().equals(idUsuario)) {
+                    return c.getNombres() + " " + c.getApellidos();
+                }
+            }
+        }
 
-        if (idAgente != null) {
-            // PROPIEDADES
-            String[] propiedadesOpciones = Propiedades.listaCasas.stream()
-                .map(p -> p.getId() + " - " + p.getTipo())
-                .toArray(String[]::new);
+        if (Propietario.listaPropietarios != null) {
+            for (Propietario p : Propietario.listaPropietarios) {
+                if (p.getUsuario().equals(idUsuario)) {
+                    return p.getNombres() + " " + p.getApellidos();
+                }
+            }
+        }
 
-            String propiedadSeleccionada = (String) JOptionPane.showInputDialog(
-                null, "Seleccione una propiedad:", "Agendar Visita",
-                JOptionPane.QUESTION_MESSAGE, null, propiedadesOpciones, null);
+        if (gio.perrito != null && gio.perrito.getUsuario().equals(idUsuario)) {
+            return gio.perrito.getNombres() + " " + gio.perrito.getApellidos();
+        }
 
-            if (propiedadSeleccionada != null) {
-                String propiedadId = propiedadSeleccionada.split(" - ")[0];
-                String fecha = JOptionPane.showInputDialog("Fecha (DD/MM/AAAA):");
+        // Si no se encuentra en ninguna lista, devuelve el mismo idUsuario
+        return idUsuario;
+    }
+public static void cargarVisitasEnTabla(JTable tabla, List<Visitas> listaVisitas) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new String[]{
+            "ID", "Fecha", "Agente", "Cliente", "Propiedad", "Estado"
+        });
 
-                if (fecha != null && !fecha.isEmpty()) {
-                    String idVisita = "V" + (Visitas.listaVisitas.size() + 1);
-                    Visitas.agregarVisita(
-                        idVisita,
-                        fecha,
-                        obtenerDiaSemana(fecha),
-                        idAgente,
-                        clienteActual,
-                        propiedadId
-                    );
-                    JOptionPane.showMessageDialog(null, "Visita agendada con " + nombreAgente);
+        for (Visitas v : listaVisitas) {
+            String nombreAgente  = obtenerNombreDesdeID(v.getAgenteId());
+            String nombreCliente = obtenerNombreDesdeID(v.getClienteId());
+
+            modelo.addRow(new Object[]{
+                v.getIdVisita(),
+                v.getFecha(),
+                nombreAgente,
+                nombreCliente,
+                v.getPropiedadId(),
+                v.getEstado()
+            });
+        }
+
+        tabla.setModel(modelo);
+    }
+
+    /**
+     * Muestra diálogos para que el usuario (cliente o agente) seleccione agente y propiedad,
+     * ingrese fecha y luego agrega la visita a la lista estática.
+     */
+    public static void agendarVisita(String clienteActual, JTable tablaVisitas) {
+        // 1) Armar array de nombres de agentes para el diálogo
+        String[] nombresAgentes = Agente.listaAgentes.stream()
+            .map(a -> a.getNombres() + " " + a.getApellidos())
+            .toArray(String[]::new);
+
+        String nombreAgenteSeleccionado = (String) JOptionPane.showInputDialog(
+            null,
+            "Seleccione un agente:",
+            "Agendar Visita",
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            nombresAgentes,
+            null
+        );
+
+        if (nombreAgenteSeleccionado != null) {
+            // 2) Obtener ID del agente a partir del nombre completo
+            String idAgente = Agente.listaAgentes.stream()
+                .filter(a -> (a.getNombres() + " " + a.getApellidos()).equals(nombreAgenteSeleccionado))
+                .map(Agente::getUsuario)
+                .findFirst()
+                .orElse(null);
+
+            if (idAgente != null) {
+                // 3) Armar array de “ID - Tipo” de cada propiedad
+                String[] propiedadesOpciones = Propiedades.listaCasas.stream()
+                    .map(p -> p.getId() + " - " + p.getTipo())
+                    .toArray(String[]::new);
+
+                String propiedadSeleccionada = (String) JOptionPane.showInputDialog(
+                    null,
+                    "Seleccione una propiedad:",
+                    "Agendar Visita",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    propiedadesOpciones,
+                    null
+                );
+
+                if (propiedadSeleccionada != null) {
+                    String propiedadId = propiedadSeleccionada.split(" - ")[0];
+                    String fecha = JOptionPane.showInputDialog("Fecha (DD/MM/AAAA):");
+
+                    if (fecha != null && !fecha.trim().isEmpty()) {
+                        // 4) Construir nuevo ID de visita: “V” + (tamaño de la lista + 1)
+                        String idVisita = "V" + (Visitas.listaVisitas.size() + 1);
+
+                        // 5) Llamar a Visitas.agregarVisita(...)
+                        Visitas.agregarVisita(
+                            idVisita,
+                            fecha,
+                            obtenerDiaSemana(fecha), // Necesitas implementar este método en tu util
+                            idAgente,
+                            clienteActual,
+                            propiedadId
+                        );
+
+                        JOptionPane.showMessageDialog(
+                            null,
+                            "Visita agendada con " + nombreAgenteSeleccionado
+                        );
+
+                        // 6) Actualizar la tabla completa (se podría recargar desde el botón)
+                        cargarVisitasEnTabla(tablaVisitas, Visitas.listaVisitas);
+                    }
                 }
             }
         }
     }
-}
+
+    /**
+     * Filtra la lista de visitas según el rol del usuario (instanceof) y su ID.
+     * - Administrador: devuelve todas las visitas.
+     * - Cliente: solo donde clienteId == usuario.getUsuario().
+     * - Agente: solo donde agenteId == usuario.getUsuario().
+     * - Propietario: no ve nada (lista vacía).
+     */
+    public static List<Visitas> filtrarVisitasPorUsuario(Usuarios usuario) {
+        if (usuario instanceof gio) {
+            // Administrador ve todo
+            return Visitas.listaVisitas;
+        }
+        else if (usuario instanceof ClienteUsuario) {
+            // Cliente ve sus propias visitas
+            return Visitas.listaVisitas.stream()
+                .filter(v -> v.getClienteId().equals(usuario.getUsuario()))
+                .collect(Collectors.toList());
+        }
+        else if (usuario instanceof Agente) {
+            // Agente ve las visitas donde es agente
+            return Visitas.listaVisitas.stream()
+                .filter(v -> v.getAgenteId().equals(usuario.getUsuario()))
+                .collect(Collectors.toList());
+        }
+        // Propietario o cualquier otro rol no ve visitas
+        return new ArrayList<>();
+    }
+
+    /**
+     * Ejemplo de función auxiliar para convertir "DD/MM/AAAA" a día de la semana.
+     * Tú debes implementar la lógica real si la necesitas.
+     */
+   
+    
+
   //obtener nombre del cliente 
   public static String getNombreClientePorUsuario(String usuario) {
     for (ClienteUsuario c : ClienteUsuario.listaUsuariosCliente) {
@@ -380,41 +533,8 @@ public static int obtenerNumeroMes(String mes) {
     }
     return "Desconocido";
 }
-  public static DefaultTableModel generarTablaVisitasPorRol(String usuario, String rol) {
-    String[] columnas = {"ID", "Fecha", "Día", "Agente", "Cliente", "Propiedad"};
-    DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
-
-    for (Visitas visita : Visitas.listaVisitas) {
-        // Mostrar todas si es admin, solo sus visitas si es cliente
-        if (rol.equals("Cliente") && !visita.getCliente().equals(usuario)) {
-            continue;
-        }
-
-        String nombreAgente = Agente.listaAgentes.stream()
-            .filter(a -> a.getUsuario().equals(visita.getAgente()))
-            .map(a -> a.getNombres() + " " + a.getApellidos())
-            .findFirst().orElse("Agente Desconocido");
-
-        String nombreCliente = getNombreClientePorUsuario(visita.getCliente());
-
-        String propiedad = Propiedades.listaCasas.stream()
-            .filter(p -> p.getId().equals(visita.getPropiedadId()))
-            .map(p -> p.getId() + " - " + p.getTipo())
-            .findFirst().orElse("Propiedad Desconocida");
-
-        Object[] fila = {
-            visita.getIdVisita(),
-            visita.getFecha(),
-            visita.getDiaSemana(),
-            nombreAgente,
-            nombreCliente,
-            propiedad
-        };
-        modelo.addRow(fila);
-    }
-
-    return modelo;
-}
+  
+  
   public static Usuarios verificarUsuario(String usuario, String contraseña) {
     for (ClienteUsuario c : ClienteUsuario.listaUsuariosCliente) {
         if (c.getUsuario().equals(usuario) && c.getContraseña().equals(contraseña)) {
@@ -829,4 +949,22 @@ public static void ponerImagenEscalada(JButton boton, String rutaImagen) {
             }
         });
     }
+ public static DefaultTableModel generarModeloReportes() {
+    String[] columnas = {"Año", "ID Propiedad", "Cliente", "Agente", "Valor Venta", "Comisión Agente (3%)", "Ingreso Neto"};
+    DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+
+    for (Reportes r : Reportes.listaReportes) {
+        Object[] fila = {
+            r.getAño(),
+            r.getIdPropiedad(),
+            r.getCliente(),
+            r.getAgente(),
+            r.getValorVenta(),
+            String.format("%.2f", r.getComisionAgente()),
+            String.format("%.2f", r.getIngresoNeto())
+        };
+        modelo.addRow(fila);
+    }
+
+    return modelo;}
 }
