@@ -5,6 +5,10 @@
 package Formularios;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -54,6 +58,7 @@ public class Pagos {
         listaPagos.add(new Pagos("10007", "Finca", "02411", "Lucia", 60000, "Pagado", "Tarjeta", "Pedro"));
         listaPagos.add(new Pagos("10008", "Casa", "02412", "Camilo", 40000, "Pagado", "Efectivo", "Rosa"));
     }}
+  
          
 }
 
