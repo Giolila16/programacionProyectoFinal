@@ -16,7 +16,9 @@ import java.awt.MediaTracker;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
@@ -40,6 +42,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -437,67 +440,62 @@ public static int obtenerNumeroMes(String mes) {
 
     return null; // si no se encuentra
 }
-   public static void agregarNuevaPropiedadConImagen(JTable tabla, JComboBox<String> comboBoxIds, JLabel imagenLabel) {
+   public static void agregarNuevaPropiedadConImagen(JTable tabla, JComboBox<String> comboBoxIds, JLabel imagenLabel, JLabel gifLabel) {
     if (Agente.listaAgentes.isEmpty()) {
         Agente.cargarAgentesEjemplo();
+    }
+    if (Propietario.listaPropietarios.isEmpty()){
+        Propietario.cargarPropietariosEjemplo();
     }
 
     String[] nombresAgentes = Agente.listaAgentes.stream()
             .map(a -> a.getNombres() + " " + a.getApellidos())
             .toArray(String[]::new);
+    
+    String[] nombresPropietarios = Propietario.listaPropietarios.stream()
+            .map(a -> a.getNombres() + " " + a.getApellidos())
+            .toArray(String[]::new);
+    
     String[] estadoOpciones = {"Disponible", "Reservado", "Vendido", "Arrendado", "Mantenimiento"};
 
     JComboBox<String> comboEstado = new JComboBox<>(estadoOpciones);
     JComboBox<String> comboAgente = new JComboBox<>(nombresAgentes);
+    JComboBox<String> comboPropietario = new JComboBox<>(nombresPropietarios);
+    
+    
 
+    // Panel para imagen principal
     JLabel previewImagen = new JLabel();
     previewImagen.setPreferredSize(new Dimension(200, 150));
-    previewImagen.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+    previewImagen.setBorder(BorderFactory.createLineBorder(Color.RED));
     final String[] rutaImagen = {null};
 
     JButton btnSeleccionarImagen = new JButton("Seleccionar imagen");
-    btnSeleccionarImagen.addActionListener(e -> {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Selecciona una imagen para la propiedad");
-        int resultado = fileChooser.showOpenDialog(null);
+    btnSeleccionarImagen.addActionListener(e -> seleccionarArchivo(previewImagen, rutaImagen, "imagen"));
 
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            File archivoSeleccionado = fileChooser.getSelectedFile();
-            String nombreArchivo = archivoSeleccionado.getName();
-            String rutaDestino = "imagenes_cargadas/" + nombreArchivo;
+    // Panel para GIF
+    JLabel previewGif = new JLabel();
+    previewGif.setPreferredSize(new Dimension(200, 150));
+    previewGif.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+    final String[] rutaGif = {"/imagenes/casa_animada.gif"}; // Valor por defecto
 
-            File carpetaDestino = new File("imagenes_cargadas");
-            if (!carpetaDestino.exists()) carpetaDestino.mkdir();
+    JButton btnSeleccionarGif = new JButton("Seleccionar GIF");
+    btnSeleccionarGif.addActionListener(e -> seleccionarArchivo(previewGif, rutaGif, "GIF"));
 
-            try {
-                Files.copy(archivoSeleccionado.toPath(), new File(rutaDestino).toPath(), StandardCopyOption.REPLACE_EXISTING);
-                rutaImagen[0] = rutaDestino;
+    JPanel panelMultimedia = new JPanel(new GridLayout(1, 2, 10, 10));
+    panelMultimedia.add(crearPanelMedia(previewImagen, btnSeleccionarImagen, "Imagen Principal"));
+    panelMultimedia.add(crearPanelMedia(previewGif, btnSeleccionarGif, "GIF Animado"));
 
-                ImageIcon icono = new ImageIcon(rutaDestino);
-                Image imgEscalada = icono.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
-                previewImagen.setIcon(new ImageIcon(imgEscalada));
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Error al copiar la imagen: " + ex.getMessage());
-            }
-        }
-    });
-
-    JPanel panelImagen = new JPanel(new BorderLayout(5, 5));
-    panelImagen.add(previewImagen, BorderLayout.CENTER);
-    panelImagen.add(btnSeleccionarImagen, BorderLayout.SOUTH);
-
-    // Generar ID automático
-    String idGenerado = String.format("02413", Propiedades.listaCasas.size() + 1);
+    // Generar ID automático (corregido)
+    String idGenerado = String.format("%05d", Propiedades.listaCasas.size() + 2403);
     JLabel lblIdGenerado = new JLabel(idGenerado);
 
-    // Campos de texto básicos (sin ID manual)
+    // Campos del formulario
     JTextField txtTipo = new JTextField();
     JTextField txtUbicacion = new JTextField();
     JTextField txtArea = new JTextField();
     JTextField txtPrecio = new JTextField();
-    JTextField txtPropietario = new JTextField();
-
-    // Campos para descripción (números)
+//    JTextField txtPropietario = new JTextField();
     JTextField txtHabitaciones = new JTextField();
     JTextField txtPisos = new JTextField();
     JTextField txtCocinas = new JTextField();
@@ -510,7 +508,7 @@ public static int obtenerNumeroMes(String mes) {
     panelCampos.add(new JLabel("Ubicación:")); panelCampos.add(txtUbicacion);
     panelCampos.add(new JLabel("Área:")); panelCampos.add(txtArea);
     panelCampos.add(new JLabel("Precio:")); panelCampos.add(txtPrecio);
-    panelCampos.add(new JLabel("Propietario:")); panelCampos.add(txtPropietario);
+//    panelCampos.add(new JLabel("Propietario:")); panelCampos.add(txtPropietario);
     panelCampos.add(new JLabel("Habitaciones:")); panelCampos.add(txtHabitaciones);
     panelCampos.add(new JLabel("Pisos:")); panelCampos.add(txtPisos);
     panelCampos.add(new JLabel("Cocinas:")); panelCampos.add(txtCocinas);
@@ -518,12 +516,14 @@ public static int obtenerNumeroMes(String mes) {
     panelCampos.add(new JLabel("Otros:")); panelCampos.add(txtOtros);
     panelCampos.add(new JLabel("Estado:")); panelCampos.add(comboEstado);
     panelCampos.add(new JLabel("Agente:")); panelCampos.add(comboAgente);
+    panelCampos.add(new JLabel("Propietario:")); panelCampos.add(comboPropietario);
 
     JPanel panelFinal = new JPanel(new BorderLayout(10, 10));
     panelFinal.add(panelCampos, BorderLayout.CENTER);
-    panelFinal.add(panelImagen, BorderLayout.EAST);
+    panelFinal.add(panelMultimedia, BorderLayout.SOUTH);
 
-    int respuesta = JOptionPane.showConfirmDialog(null, panelFinal, "Agregar Propiedad", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+    int respuesta = JOptionPane.showConfirmDialog(null, panelFinal, "Agregar Propiedad", 
+            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
     if (respuesta == JOptionPane.OK_OPTION) {
         String id = idGenerado;
@@ -531,7 +531,7 @@ public static int obtenerNumeroMes(String mes) {
         String ubicacion = txtUbicacion.getText().trim();
         String area = txtArea.getText().trim();
         String precio = txtPrecio.getText().trim();
-        String propietario = txtPropietario.getText().trim();
+        String propietario = (String) comboPropietario.getSelectedItem();
         String estado = (String) comboEstado.getSelectedItem();
         String agente = (String) comboAgente.getSelectedItem();
         String strHabitaciones = txtHabitaciones.getText().trim();
@@ -540,60 +540,143 @@ public static int obtenerNumeroMes(String mes) {
         String strBanios = txtBanios.getText().trim();
         String otros = txtOtros.getText().trim();
 
-        // Validar campos vacíos y que la imagen esté seleccionada
+        // Validar campos vacíos
         if (tipo.isEmpty() || ubicacion.isEmpty() || area.isEmpty() || precio.isEmpty() ||
-            propietario.isEmpty() || strHabitaciones.isEmpty() || strPisos.isEmpty() || strCocinas.isEmpty() ||
-            strBanios.isEmpty() || otros.isEmpty() || rutaImagen[0] == null) {
-            JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos y selecciona una imagen.", "Campos incompletos", JOptionPane.WARNING_MESSAGE);
+            propietario.isEmpty() || strHabitaciones.isEmpty() || strPisos.isEmpty() || 
+            strCocinas.isEmpty() || strBanios.isEmpty() || otros.isEmpty() || rutaImagen[0] == null) {
+            JOptionPane.showMessageDialog(null, 
+                "Por favor, completa todos los campos y selecciona una imagen.", 
+                "Campos incompletos", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        // Convertir los campos numéricos a int
-        int habitaciones;
-        int pisos;
-        int cocinas;
-        int banios;
+        // Convertir campos numéricos
+        int habitaciones, pisos, cocinas, banios;
         try {
             habitaciones = Integer.parseInt(strHabitaciones);
             pisos = Integer.parseInt(strPisos);
             cocinas = Integer.parseInt(strCocinas);
             banios = Integer.parseInt(strBanios);
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Los campos de Habitaciones, Pisos, Cocinas y Baños deben ser números enteros.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, 
+                "Los campos de Habitaciones, Pisos, Cocinas y Baños deben ser números enteros.", 
+                "Error de formato", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Crear el objeto Propiedades
+        // Crear la nueva propiedad
         Propiedades nueva = new Propiedades(
-            id,
-            tipo,
-            ubicacion,
-            area,
-            precio,
-            estado,
-            propietario,
-            agente,
-            rutaImagen[0],
-            habitaciones,
-            pisos,
-            cocinas,
-            banios,
-            otros
+            id, tipo, ubicacion, area, precio, estado, propietario, agente,
+            rutaImagen[0], habitaciones, pisos, cocinas, banios, otros, rutaGif[0]
         );
+        
+        // Agregar a la lista y actualizar UI
         Propiedades.listaCasas.add(nueva);
-
-        // Agregar fila a la tabla
+        
+        // Actualizar tabla
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         modelo.addRow(new Object[]{id, tipo, ubicacion, area, precio, estado, propietario, agente});
-
-        // Actualizar comboBoxIds
+        
+        // Actualizar comboBox
         comboBoxIds.addItem(nueva.getId());
         comboBoxIds.setSelectedItem("-- Seleccione una propiedad --");
 
-        // Mostrar imagen cargada
-        ImageIcon iconoOriginal = new ImageIcon(rutaImagen[0]);
-        Image img = iconoOriginal.getImage().getScaledInstance(imagenLabel.getWidth(), imagenLabel.getHeight(), Image.SCALE_SMOOTH);
-        imagenLabel.setIcon(new ImageIcon(img));
+        // Mostrar imágenes en los labels principales
+        if (imagenLabel != null && rutaImagen[0] != null) {
+            cargarYMostrarImagen(rutaImagen[0], imagenLabel, false);
+        }
+        
+        if (gifLabel != null && rutaGif[0] != null) {
+            cargarYMostrarImagen(rutaGif[0], gifLabel, true);
+        }
+    }
+}
+
+// Métodos auxiliares
+
+private static JPanel crearPanelMedia(JLabel preview, JButton boton, String titulo) {
+    JPanel panel = new JPanel(new BorderLayout(5, 5));
+    panel.setBorder(BorderFactory.createTitledBorder(titulo));
+    panel.add(preview, BorderLayout.CENTER);
+    panel.add(boton, BorderLayout.SOUTH);
+    return panel;
+}
+
+private static void seleccionarArchivo(JLabel preview, String[] rutaDestino, String tipo) {
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Selecciona un archivo de " + tipo);
+    
+    // Configurar filtro de archivos
+    if (tipo.equals("GIF")) {
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos GIF", "gif"));
+    } else {
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png"));
+    }
+    
+    if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+        try {
+            File archivoSeleccionado = fileChooser.getSelectedFile();
+            
+            // Guardar la ruta ABSOLUTA del archivo seleccionado
+            rutaDestino[0] = archivoSeleccionado.getAbsolutePath();
+            
+            // Mostrar previsualización directamente desde el archivo
+            ImageIcon icono = new ImageIcon(rutaDestino[0]);
+            Image img = icono.getImage().getScaledInstance(
+                preview.getWidth(),
+                preview.getHeight(),
+                tipo.equals("GIF") ? Image.SCALE_DEFAULT : Image.SCALE_SMOOTH
+            );
+            preview.setIcon(new ImageIcon(img));
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, 
+                "Error al cargar el " + tipo + ": " + ex.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+
+private static void cargarYMostrarImagen(String ruta, JLabel label, boolean esGif) {
+    try {
+        ImageIcon icono;
+        
+        // Primero intentar cargar como archivo externo
+        File archivo = new File(ruta);
+        if (archivo.exists()) {
+            icono = new ImageIcon(ruta);
+        }
+        // Si no existe como archivo, intentar como recurso interno
+        else if (ruta.startsWith("/")) {
+            URL url = Propiedades.class.getResource(ruta);
+            if (url != null) {
+                icono = new ImageIcon(url);
+            } else {
+                throw new FileNotFoundException("No se encontró el recurso: " + ruta);
+            }
+        } else {
+            throw new FileNotFoundException("No se encontró el archivo: " + ruta);
+        }
+        
+        // Para GIFs, no escalar para mantener animación
+        if (esGif) {
+            label.setIcon(icono);
+        } 
+        // Para imágenes normales, escalar
+        else {
+            Image img = icono.getImage().getScaledInstance(
+                label.getWidth(),
+                label.getHeight(),
+                Image.SCALE_SMOOTH
+            );
+            label.setIcon(new ImageIcon(img));
+        }
+        
+    } catch (Exception e) {
+        label.setIcon(null);
+        JOptionPane.showMessageDialog(null,
+            "Error al cargar la imagen: " + e.getMessage(),
+            "Error", JOptionPane.WARNING_MESSAGE);
     }
 }
 

@@ -11,6 +11,7 @@ import java.awt.CardLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -118,7 +119,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         Metodos.ponerImagenEscalada(CerrarRepAdBot, "/imagenes/Apagar.png");
         Metodos.ponerImagenEscalada(CerrarRepaBot, "/imagenes/Apagar.png");
     
-  
+
     }
     //Leila actualizo el metodo para mostrar imagenes y elimino Systems innecesarios
   private void actualizarComboPropiedades() {
@@ -222,6 +223,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         DetCasa = new javax.swing.JTextArea();
         ImagenesCombo = new javax.swing.JComboBox<>();
         ImagUnoLbl = new javax.swing.JLabel();
+        VideoUnoLbl = new javax.swing.JLabel();
         ContratosPan = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         ContratosTable = new javax.swing.JTable();
@@ -847,7 +849,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         );
         VacioPanLayout.setVerticalGroup(
             VacioPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
 
         ParentPan.add(VacioPan, "card12");
@@ -875,29 +877,36 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         PropImagenesPan.setLayout(PropImagenesPanLayout);
         PropImagenesPanLayout.setHorizontalGroup(
             PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropImagenesPanLayout.createSequentialGroup()
-                .addContainerGap(665, Short.MAX_VALUE)
+            .addGroup(PropImagenesPanLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(VolverProBot)
                 .addGap(97, 97, 97))
             .addGroup(PropImagenesPanLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
+                .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ImagUnoLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ImagenesCombo, 0, 266, Short.MAX_VALUE))
-                .addGap(97, 97, 97)
-                .addComponent(DetCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ImagenesCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DetCasa, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(VideoUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         PropImagenesPanLayout.setVerticalGroup(
             PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PropImagenesPanLayout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
-                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ImagUnoLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DetCasa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropImagenesPanLayout.createSequentialGroup()
+                .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PropImagenesPanLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ImagUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PropImagenesPanLayout.createSequentialGroup()
+                        .addContainerGap(90, Short.MAX_VALUE)
+                        .addGroup(PropImagenesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(DetCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(VideoUnoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(56, 56, 56)
                 .addComponent(ImagenesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(71, 71, 71)
                 .addComponent(VolverProBot)
                 .addGap(58, 58, 58))
         );
@@ -954,7 +963,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ContratosPanLayout.setVerticalGroup(
             ContratosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContratosPanLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(ContratosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1004,7 +1013,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                     .addComponent(jButton25)
                     .addComponent(jButton24)
                     .addComponent(jButton7))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         ParentPan.add(ReportesPan, "card7");
@@ -1036,7 +1045,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         UsuariosPanLayout.setVerticalGroup(
             UsuariosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UsuariosPanLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -1083,7 +1092,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(EliminarCliBot)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         ParentPan.add(ClientesPan, "card2");
@@ -1147,7 +1156,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         PropiedadesPanLayout.setVerticalGroup(
             PropiedadesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropiedadesPanLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(PropiedadesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1189,11 +1198,11 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
             .addGroup(PagosPanLayout.createSequentialGroup()
                 .addGroup(PagosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PagosPanLayout.createSequentialGroup()
-                        .addGap(423, 423, 423)
-                        .addComponent(AgregarPagoBot))
-                    .addGroup(PagosPanLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PagosPanLayout.createSequentialGroup()
+                        .addGap(364, 364, 364)
+                        .addComponent(AgregarPagoBot)))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         PagosPanLayout.setVerticalGroup(
@@ -1203,7 +1212,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(AgregarPagoBot)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         ParentPan.add(PagosPan, "card4");
@@ -1255,7 +1264,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         VisitasPanLayout.setVerticalGroup(
             VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VisitasPanLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(VisitasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1293,7 +1302,7 @@ ImagUnoLbl.setIcon(null); // Esto cargará todas las IDs existentes
         ReportesBasicosPanLayout.setVerticalGroup(
             ReportesBasicosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportesBasicosPanLayout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
@@ -1336,6 +1345,7 @@ PropiedadesTable.setModel(modelo);
         ParentPan.add(ContratosPan);
         ParentPan.repaint();
         ParentPan.revalidate();
+        Metodos.mostrarSoloColumnas(ContratosTable,new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8});
     }//GEN-LAST:event_ContratosAdBotActionPerformed
 
     private void PagosAdBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagosAdBotActionPerformed
@@ -1585,6 +1595,7 @@ Metodos.mostrarSoloColumnas(PropiedadesTable, new int[]{0, 5});
         ParentPan.add(ContratosPan);
         ParentPan.repaint();
         ParentPan.revalidate();
+        Metodos.mostrarColumnasOcultas(ContratosTable);
     }//GEN-LAST:event_ContVencerRepBotActionPerformed
 
     private void ProRegisRepBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProRegisRepBotActionPerformed
@@ -1644,54 +1655,116 @@ Metodos.mostrarSoloColumnas(PropiedadesTable, new int[]{0, 5});
     private void ImagenesComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImagenesComboActionPerformed
 String idSeleccionado = (String) ImagenesCombo.getSelectedItem();
 
-// Validar si hay un valor seleccionado
-if (idSeleccionado == null || idSeleccionado.equals("-- Seleccione una propiedad --")) {
-    DetCasa.setText(""); // limpiar descripción
-    ImagUnoLbl.setIcon(null); // limpiar imagen
-    return;
+    // Limpiar todo al inicio
+    DetCasa.setText("");
+    ImagUnoLbl.setIcon(null);
+    VideoUnoLbl.setIcon(null);
+
+    // Validar selección
+    if (idSeleccionado == null || idSeleccionado.equals("-- Seleccione una propiedad --")) {
+        return;
+    }
+
+    // Buscar propiedad seleccionada
+    for (Propiedades p : Propiedades.listaCasas) {
+        if (p.getId().equals(idSeleccionado)) {
+            // Mostrar descripción
+            DetCasa.setText(p.getDescripcion());
+
+            // Cargar imagen principal
+            cargarImagen(p.getRuta(), ImagUnoLbl, "imagen de la propiedad");
+
+            // Cargar GIF solo si tiene ruta definida
+            if (p.getRutaGif() != null && !p.getRutaGif().isEmpty()) {
+                cargarGif(p.getRutaGif(), VideoUnoLbl);
+            }
+            break;
+        }
+    }
 }
 
-// Buscar y mostrar la descripción e imagen
-for (Propiedades p : Propiedades.listaCasas) {
-    if (p.getId().equals(idSeleccionado)) {
-        
-        // Mostrar descripción
-        DetCasa.setText(p.getDescripcion());
+private void cargarImagen(String ruta, JLabel label, String tipoImagen) {
+    if (ruta == null || ruta.isEmpty()) {
+        label.setIcon(null);
+        JOptionPane.showMessageDialog(this,
+            "No se ha especificado una ruta para la " + tipoImagen,
+            tipoImagen + " no disponible",
+            JOptionPane.INFORMATION_MESSAGE);
+        return;
+    }
 
-        // Cargar imagen
-        String ruta = p.getRuta(); 
-
-        ImageIcon iconoOriginal = null;
+    try {
+        ImageIcon icono;
         if (ruta.startsWith("/")) {
-            URL urlRecurso = Administrador.class.getResource(ruta);
-            if (urlRecurso != null) {
-                iconoOriginal = new ImageIcon(urlRecurso);
+            URL url = getClass().getResource(ruta);
+            if (url != null) {
+                icono = new ImageIcon(url);
+            } else {
+                // Intentar cargar como archivo si no se encuentra como recurso
+                File imgFile = new File(ruta.substring(1));
+                if (imgFile.exists()) {
+                    icono = new ImageIcon(imgFile.getAbsolutePath());
+                } else {
+                    throw new FileNotFoundException("No se encontró el recurso: " + ruta);
+                }
+            }
+        } else {
+            File imgFile = new File(ruta);
+            if (imgFile.exists()) {
+                icono = new ImageIcon(ruta);
+            } else {
+                throw new FileNotFoundException("No se encontró el archivo: " + ruta);
             }
         }
 
-        if (iconoOriginal == null) {
-            File archivo = new File(ruta);
-            if (archivo.exists()) {
-                iconoOriginal = new ImageIcon(ruta);
-            }
-        }
-
-        if (iconoOriginal != null) {
-            Image img = iconoOriginal.getImage().getScaledInstance(
-                ImagUnoLbl.getWidth(),
-                ImagUnoLbl.getHeight(),
+        if (icono.getImage() != null) {
+            Image img = icono.getImage().getScaledInstance(
+                label.getWidth(), 
+                label.getHeight(), 
                 Image.SCALE_SMOOTH
             );
-            ImagUnoLbl.setIcon(new ImageIcon(img));
+            label.setIcon(new ImageIcon(img));
+        }
+    } catch (Exception e) {
+        label.setIcon(null);
+        JOptionPane.showMessageDialog(this,
+            "Error al cargar la " + tipoImagen + ":\n" + e.getMessage(),
+            "Error",
+            JOptionPane.WARNING_MESSAGE);
+    }
+}
+
+private void cargarGif(String ruta, JLabel label) {
+    try {
+        // Eliminar barras diagonales adicionales
+        ruta = ruta.replaceAll("/+$", "");
+        
+        ImageIcon gifIcon;
+        if (ruta.startsWith("/")) {
+            URL gifUrl = getClass().getResource(ruta);
+            if (gifUrl == null) {
+                throw new FileNotFoundException("No se encontró el GIF en: " + ruta);
+            }
+            gifIcon = new ImageIcon(gifUrl);
         } else {
-            ImagUnoLbl.setIcon(null);
-            JOptionPane.showMessageDialog(this,
-                "No se encontró la imagen para la propiedad:\n" + ruta,
-                "Imagen no hallada", JOptionPane.WARNING_MESSAGE);
+            File gifFile = new File(ruta);
+            if (!gifFile.exists()) {
+                throw new FileNotFoundException("No se encontró el archivo GIF: " + ruta);
+            }
+            gifIcon = new ImageIcon(ruta);
         }
 
-        break; // salir del for, ya encontramos la propiedad
-    }}  
+        // No escalar el GIF para mantener la animación
+        label.setIcon(gifIcon);
+        
+    } catch (Exception e) {
+        label.setIcon(null);
+        JOptionPane.showMessageDialog(this,
+            "Error al cargar el GIF:\n" + e.getMessage(),
+            "Error en GIF",
+            JOptionPane.WARNING_MESSAGE);
+    }
+  
 
     }//GEN-LAST:event_ImagenesComboActionPerformed
 
@@ -1750,7 +1823,7 @@ private void actualizarTablaPagos() {
 
     private void AgregarProBotActionPerformed(java.awt.event.ActionEvent evt) {                                              
  // Leila agrego un metodo para pedir los datos al usuario
-      Metodos.agregarNuevaPropiedadConImagen(PropiedadesTable, ImagenesCombo, ImagUnoLbl);
+      Metodos.agregarNuevaPropiedadConImagen(PropiedadesTable, ImagenesCombo, ImagUnoLbl, VideoUnoLbl);
     }                                        
 
     /**
@@ -1859,6 +1932,7 @@ private void actualizarTablaPagos() {
     private javax.swing.JTable UsuariosTable;
     private javax.swing.JPanel VacioPan;
     private javax.swing.JButton VerPropiBot;
+    private javax.swing.JLabel VideoUnoLbl;
     private javax.swing.JButton VisAgeRepBot;
     private javax.swing.JButton VisitasAdBot;
     private javax.swing.JButton VisitasAgeBot;
